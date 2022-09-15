@@ -1,0 +1,1 @@
+﻿//#define _IMPROVED_PACKET_ENCRYPTION_
