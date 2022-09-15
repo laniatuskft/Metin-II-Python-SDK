@@ -1,0 +1,2 @@
+﻿##define ENABLE_UDP_BLOCK
+##define _IMPROVED_PACKET_ENCRYPTION_
