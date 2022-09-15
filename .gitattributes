@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+*.bat eol=crlf
+*.sh eol=lf
+cryptopp-static_release.pyc filter=lfs diff=lfs merge=lfs -text
+cryptopp-static_debug.pyc filter=lfs diff=lfs merge=lfs -text
