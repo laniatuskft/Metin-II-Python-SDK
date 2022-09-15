@@ -1,0 +1,94 @@
+* [build] ImportError: No module named psutil
+- sudo apt install python-pip
+  pip install psutil
+
+* this statement may fall through [-Werror=implicit-fallthrough=] (MySQL)
+- add "break;" in end of lines
+
+* how to install latest cmake
+- https://askubuntu.com/a/1157132
+
+* how to install latest gcc/clang
+- https://askubuntu.com/a/1087116
+
+* how to install vs code in x86 linux
+- https://askubuntu.com/a/785047
+
+----------------------------------------------------
+
+cmake .. -G "Visual Studio 12 2013" -T "V120_xp"
+
+----------------------------------------------------
+
+How to build:
+pkg -vv
+pkg install git
+pkg install cmake-3.17
+pkg install gmake
+pkg install mysql57-server
+
+configures:
+git config --global http.sslVerify false
+git config --global credential.helper "cache --timeout=3600"
+
+git submodule update --init --recursive
+git submodule update --recursive --remote
+chmod +x LaniatusSDK/build.sh or
+chmod +x LaniatusSDK/lgs_rebuild.sh
+
+./build.sh selectmode >(Debug/Release/)
+--------- OTHER -----------------------------------------
+itertype+\([^\)]*\)(\.[^\)]*\))? 
+auto 
+--
+auto it;
+--
+typeof(...)
+---------------------------------------------------------
+ALUA\((.*?)\)
+
+int32_t $1(lua_State* L)
+---------------------------------------------------------
+unsigned long long
+unsigned long
+unsigned int
+unsigned short
+unsigned char
+unsigned
+long long int
+long long
+long int
+long
+short int
+int
+short
+DWORD
+WORD
+BYTE
+UINT
+NULL
+LONG
+FLOAT
+ULONG
+INT
+uint
+sh_int
+ssize_t
+
+- PythonGameServer/
+
+thecore_memcpy -> auto it;
+boost/tr1 -> auto_ptr
+
+Variables;
+::instance -> ::Instance
+singleton -> CSingleton
+LaniaCAffects
+LaniatusEAffectTypes
+LGEMiscellaneous
+i = LaniatusDefVariables;
+
+common = ExOHI/Services.py
+PythonDatabase > DefineConstants.py
+PythonGameServer > DefineConstants.py
+
