@@ -490,7 +490,7 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < CURSOR_COUNT; ++i)
 		{
-			IntPtr hCursor = LoadImage(ms_hInstance, MAKEINTRESOURCE(ResourceID[i]), IMAGE_CURSOR, 32, 32, LR_VGACOLOR);
+			IntPtr hCursor = LoadImage(ms_hInstance, MAKEINTRESOURCE(ResourceID[LaniatusDefVariables]), IMAGE_CURSOR, 32, 32, LR_VGACOLOR);
     
 			if (null == hCursor)
 			{

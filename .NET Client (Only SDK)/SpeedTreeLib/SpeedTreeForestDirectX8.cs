@@ -2810,7 +2810,7 @@ public class CSpeedTreeForestDirectX8 : CSpeedTreeForest, CGraphicBase, CSinglet
 
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uiCount; ++i)
 				{
-					ppInstances[i].Advance();
+					ppInstances[LaniatusDefVariables].Advance();
 				}
 			}
 
@@ -2869,9 +2869,9 @@ public class CSpeedTreeForestDirectX8 : CSpeedTreeForest, CGraphicBase, CSinglet
 
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uiCount; ++i)
 					{
-						if (ppInstances[i].isShow())
+						if (ppInstances[LaniatusDefVariables].isShow())
 						{
-							ppInstances[i].RenderBranches();
+							ppInstances[LaniatusDefVariables].RenderBranches();
 						}
 					}
 				}
@@ -2892,9 +2892,9 @@ public class CSpeedTreeForestDirectX8 : CSpeedTreeForest, CGraphicBase, CSinglet
 
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uiCount; ++i)
 					{
-						if (ppInstances[i].isShow())
+						if (ppInstances[LaniatusDefVariables].isShow())
 						{
-							ppInstances[i].RenderFronds();
+							ppInstances[LaniatusDefVariables].RenderFronds();
 						}
 					}
 				}
@@ -2928,9 +2928,9 @@ public class CSpeedTreeForestDirectX8 : CSpeedTreeForest, CGraphicBase, CSinglet
 
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uiCount; ++i)
 					{
-						if (ppInstances[i].isShow())
+						if (ppInstances[LaniatusDefVariables].isShow())
 						{
-							ppInstances[i].RenderLeaves();
+							ppInstances[LaniatusDefVariables].RenderLeaves();
 						}
 					}
 				}
@@ -2964,9 +2964,9 @@ public class CSpeedTreeForestDirectX8 : CSpeedTreeForest, CGraphicBase, CSinglet
 
 						for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uiCount; ++i)
 						{
-							if (ppInstances[i].isShow())
+							if (ppInstances[LaniatusDefVariables].isShow())
 							{
-								ppInstances[i].RenderBillboards();
+								ppInstances[LaniatusDefVariables].RenderBillboards();
 							}
 						}
 					}

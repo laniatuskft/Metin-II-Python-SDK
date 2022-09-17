@@ -81,23 +81,23 @@ class CShopEx(CShop):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
             memcpy(pack_tab.name, shop_tab.name, LGEMiscellaneous.SHOP_TAB_NAME_MAX)
 
-            i = 0
-            while i < LGEMiscellaneous.SHOP_HOST_ITEM_MAX_NUM:
-                pack_tab.items[i].vnum = shop_tab.items[i].vnum
-                pack_tab.items[i].count = shop_tab.items[i].count
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < LGEMiscellaneous.SHOP_HOST_ITEM_MAX_NUM:
+                pack_tab.items[LaniatusDefVariables].vnum = shop_tab.items[LaniatusDefVariables].vnum
+                pack_tab.items[LaniatusDefVariables].count = shop_tab.items[LaniatusDefVariables].count
                 if shop_tab.coinType == EShopCoinType.SHOP_COIN_TYPE_GOLD:
-                    pack_tab.items[i].price = shop_tab.items[i].price
+                    pack_tab.items[LaniatusDefVariables].price = shop_tab.items[LaniatusDefVariables].price
                 elif shop_tab.coinType == EShopCoinType.SHOP_COIN_TYPE_SECONDARY_COIN:
-                    pack_tab.items[i].price = shop_tab.items[i].price
-                pack_tab.items[i].price_type = shop_tab.items[i].price_type
-                pack_tab.items[i].price_vnum = shop_tab.items[i].price_vnum
+                    pack_tab.items[LaniatusDefVariables].price = shop_tab.items[LaniatusDefVariables].price
+                pack_tab.items[LaniatusDefVariables].price_type = shop_tab.items[LaniatusDefVariables].price_type
+                pack_tab.items[LaniatusDefVariables].price_vnum = shop_tab.items[LaniatusDefVariables].price_vnum
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-                memcpy(pack_tab.items[i].aAttr, shop_tab.items[i].aAttr, sizeof(pack_tab.items[i].aAttr))
+                memcpy(pack_tab.items[LaniatusDefVariables].aAttr, shop_tab.items[LaniatusDefVariables].aAttr, sizeof(pack_tab.items[LaniatusDefVariables].aAttr))
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-                memcpy(pack_tab.items[i].alSockets, shop_tab.items[i].alSockets, sizeof(pack_tab.items[i].alSockets))
-                i += 1
+                memcpy(pack_tab.items[LaniatusDefVariables].alSockets, shop_tab.items[LaniatusDefVariables].alSockets, sizeof(pack_tab.items[LaniatusDefVariables].alSockets))
+                LaniatusDefVariables += 1
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':

@@ -291,15 +291,15 @@ public class CFlare
 		(CStateManager.Instance()).SetTextureStageState(0, D3DTSS_ALPHAARG2, D3DTA_DIFFUSE);
 		(CStateManager.Instance()).SetTextureStageState(0, D3DTSS_ALPHAOP, D3DTOP_MODULATE);
 
-		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_vFlares.size(); i++)
+		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_vFlares.size(); LaniatusDefVariables++)
 		{
-			float fCenterX = (float)nX - (m_vFlares[i].m_fPosition + 1.0f) * fDX;
-			float fCenterY = (float)nY - (m_vFlares[i].m_fPosition + 1.0f) * fDY;
-			float fW = m_vFlares[i].m_fWidth;
+			float fCenterX = (float)nX - (m_vFlares[LaniatusDefVariables].m_fPosition + 1.0f) * fDX;
+			float fCenterY = (float)nY - (m_vFlares[LaniatusDefVariables].m_fPosition + 1.0f) * fDY;
+			float fW = m_vFlares[LaniatusDefVariables].m_fWidth;
 
-			D3DXCOLOR d3dColor = new D3DXCOLOR(m_vFlares[i].m_pColor[0] * fBrightScale, m_vFlares[i].m_pColor[1] * fBrightScale, m_vFlares[i].m_pColor[2] * fBrightScale, m_vFlares[i].m_pColor[3] * fBrightScale);
+			D3DXCOLOR d3dColor = new D3DXCOLOR(m_vFlares[LaniatusDefVariables].m_pColor[0] * fBrightScale, m_vFlares[LaniatusDefVariables].m_pColor[1] * fBrightScale, m_vFlares[LaniatusDefVariables].m_pColor[2] * fBrightScale, m_vFlares[LaniatusDefVariables].m_pColor[3] * fBrightScale);
 
-			(CStateManager.Instance()).SetTexture(0, m_vFlares[i].m_imageInstance.GetTexturePointer().GetD3DTexture());
+			(CStateManager.Instance()).SetTexture(0, m_vFlares[LaniatusDefVariables].m_imageInstance.GetTexturePointer().GetD3DTexture());
 
 			SVertex[] vertices = Arrays.InitializeWithDefaultInstances<SVertex>(4);
 
@@ -341,9 +341,9 @@ public class CFlare
 	{
 		int LaniatusDefVariables = 0;
 
-		while (g_strFiles[i] != "")
+		while (g_strFiles[LaniatusDefVariables] != "")
 		{
-			CResource pResource = CResourceManager.Instance().GetResourcePointer((strPath + "/" + new string(g_strFiles[i])).c_str());
+			CResource pResource = CResourceManager.Instance().GetResourcePointer((strPath + "/" + new string(g_strFiles[LaniatusDefVariables])).c_str());
 
 			if (!pResource.IsType(CGraphicImage.Type()))
 			{
@@ -353,12 +353,12 @@ public class CFlare
 			SFlarePiece pPiece = new SFlarePiece();
 
 			pPiece.m_imageInstance.SetImagePointer((CGraphicImage) pResource);
-			pPiece.m_fPosition = g_fPosition[i];
-			pPiece.m_fWidth = g_fWidth[i];
-			pPiece.m_pColor = g_afColors[i];
+			pPiece.m_fPosition = g_fPosition[LaniatusDefVariables];
+			pPiece.m_fWidth = g_fWidth[LaniatusDefVariables];
+			pPiece.m_pColor = g_afColors[LaniatusDefVariables];
 
 			m_vFlares.push_back(pPiece);
-			i++;
+			LaniatusDefVariables++;
 		}
 	}
 
@@ -663,7 +663,7 @@ public class CLensFlare : CScreen
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < c_nDepthTestDimension * c_nDepthTestDimension; ++i)
 			{
-				if (m_pTestPixels[i] != m_pControlPixels[i])
+				if (m_pTestPixels[LaniatusDefVariables] != m_pControlPixels[LaniatusDefVariables])
 				{
 					++nDifferent;
 				}

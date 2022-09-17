@@ -1977,7 +1977,7 @@
 			{
 			for (uint j = 0; j < c_pDefendingSphereVector.Count; ++j)
 			{
-				CDynamicSphereInstance c_rAttackingSphere = c_pAttackingSphereVector[i];
+				CDynamicSphereInstance c_rAttackingSphere = c_pAttackingSphereVector[LaniatusDefVariables];
 				CDynamicSphereInstance c_rDefendingSphere = c_pDefendingSphereVector[j];
     
 				if (DetectCollisionDynamicSphereVSDynamicSphere(c_rAttackingSphere, c_rDefendingSphere))
@@ -2333,7 +2333,7 @@
     
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < c_rMainSphereVector.Count; ++i)
 				{
-					CDynamicSphereInstance c_rMainSphere = c_rMainSphereVector[i];
+					CDynamicSphereInstance c_rMainSphere = c_rMainSphereVector[LaniatusDefVariables];
 					prevLastPosition = c_rMainSphere.v3LastPosition;
 					prevPosition = c_rMainSphere.v3Position;
     
@@ -3697,7 +3697,7 @@
 			int iPercentage = random() % 100;
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < c_pMotionVector.Count; ++i)
 			{
-				SMotion c_rMotion = c_pMotionVector[i];
+				SMotion c_rMotion = c_pMotionVector[LaniatusDefVariables];
 				iPercentage -= c_rMotion.byPercentage;
     
 				if (iPercentage < 0)
@@ -4306,8 +4306,8 @@
 		m_kSplashArea.SphereInstanceVector.resize(c_pAttackingData.CollisionData.SphereDataVector.size());
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < c_pAttackingData.CollisionData.SphereDataVector.size(); ++i)
 		{
-			SSphereData c_rSphereData = c_pAttackingData.CollisionData.SphereDataVector[i].GetAttribute();
-			CDynamicSphereInstance rSphereInstance = m_kSplashArea.SphereInstanceVector[i];
+			SSphereData c_rSphereData = c_pAttackingData.CollisionData.SphereDataVector[LaniatusDefVariables].GetAttribute();
+			CDynamicSphereInstance rSphereInstance = m_kSplashArea.SphereInstanceVector[LaniatusDefVariables];
     
 			rSphereInstance.fRadius = c_rSphereData.fRadius;
     
@@ -4982,7 +4982,7 @@
 			TCollisionPointInstance c_rInstance = *itor;
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < c_rInstance.SphereInstanceVector.size(); ++i)
 			{
-				CDynamicSphereInstance c_rSphereInstance = c_rInstance.SphereInstanceVector[i];
+				CDynamicSphereInstance c_rSphereInstance = c_rInstance.SphereInstanceVector[LaniatusDefVariables];
 				RenderCollisionData_s_Screen.RenderCircle3d(c_rSphereInstance.v3Position.x, c_rSphereInstance.v3Position.y, c_rSphereInstance.v3Position.z, c_rSphereInstance.fRadius);
 			}
 		}
@@ -4996,7 +4996,7 @@
 			TCollisionPointInstance c_rInstance = *itor;
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < c_rInstance.SphereInstanceVector.size(); ++i)
 			{
-				CDynamicSphereInstance c_rSphereInstance = c_rInstance.SphereInstanceVector[i];
+				CDynamicSphereInstance c_rSphereInstance = c_rInstance.SphereInstanceVector[LaniatusDefVariables];
 				RenderCollisionData_s_Screen.RenderCircle3d(c_rSphereInstance.v3Position.x, c_rSphereInstance.v3Position.y, c_rSphereInstance.v3Position.z, c_rSphereInstance.fRadius);
 			}
 		}

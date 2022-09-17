@@ -2853,7 +2853,7 @@ public class CInputKeyboard : CInputDevice
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < 256; ++i)
 			{
-				if ((ms_diks[i] & 0x80) != 0)
+				if ((ms_diks[LaniatusDefVariables] & 0x80) != 0)
 				{
 					if (!IsPressed(i))
 					{

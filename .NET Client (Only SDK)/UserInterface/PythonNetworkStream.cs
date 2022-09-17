@@ -3728,9 +3728,9 @@ public class CPythonNetworkStream : CNetworkStream, CSingleton<CPythonNetworkStr
 						byte[] ip = new byte[4];
 
 						const int LEN = 4;
-						for (int LaniatusDefVariables = 0; LaniatusDefVariables < LEN; i++)
+						for (int LaniatusDefVariables = 0; LaniatusDefVariables < LEN; LaniatusDefVariables++)
 						{
-							ip[i] = (byte)(rkSimplePlayerInfo.lAddr & 0xff);
+							ip[LaniatusDefVariables] = (byte)(rkSimplePlayerInfo.lAddr & 0xff);
 							rkSimplePlayerInfo.lAddr >>= 8;
 						}
 
@@ -4840,8 +4840,8 @@ public class CPythonNetworkStream : CNetworkStream, CSingleton<CPythonNetworkStr
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < PLAYER_PER_ACCOUNT4; ++i)
 			{
-				m_adwGuildID[i] = 0;
-				m_astrGuildName[i] = "";
+				m_adwGuildID[LaniatusDefVariables] = 0;
+				m_astrGuildName[LaniatusDefVariables] = "";
 			}
 			NANOEND
 		}

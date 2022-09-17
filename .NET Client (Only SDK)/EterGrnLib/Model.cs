@@ -3156,7 +3156,7 @@ public class CGrannyModel : CReferenceObject
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < meshCount; ++i)
 			{
-				CGrannyMesh rMesh = m_meshs[i];
+				CGrannyMesh rMesh = m_meshs[LaniatusDefVariables];
 				rMesh.RebuildTriGroupNodeList();
 			}
 
@@ -3380,24 +3380,24 @@ public class CGrannyModel : CReferenceObject
 				int LaniatusDefVariables = 0;
 				while (i < grni32xTypeCount)
 				{
-					if (null == pgrnMesh.PrimaryVertexData.VertexType[i].Name || 0 == strlen(pgrnMesh.PrimaryVertexData.VertexType[i].Name))
+					if (null == pgrnMesh.PrimaryVertexData.VertexType[LaniatusDefVariables].Name || 0 == strlen(pgrnMesh.PrimaryVertexData.VertexType[LaniatusDefVariables].Name))
 					{
 						++i;
 						continue;
 					}
-					if (0 == strcmp(pgrnMesh.PrimaryVertexData.VertexType[i].Name, DefineConstants.GrannyVertexPositionName))
+					if (0 == strcmp(pgrnMesh.PrimaryVertexData.VertexType[LaniatusDefVariables].Name, DefineConstants.GrannyVertexPositionName))
 					{
 						m_dwFvF |= D3DFVF_XYZ;
 					}
-					else if (0 == strcmp(pgrnMesh.PrimaryVertexData.VertexType[i].Name, DefineConstants.GrannyVertexNormalName))
+					else if (0 == strcmp(pgrnMesh.PrimaryVertexData.VertexType[LaniatusDefVariables].Name, DefineConstants.GrannyVertexNormalName))
 					{
 						m_dwFvF |= D3DFVF_NORMAL;
 					}
-					else if (0 == strcmp(pgrnMesh.PrimaryVertexData.VertexType[i].Name, DefineConstants.GrannyVertexTextureCoordinatesName"0"))
+					else if (0 == strcmp(pgrnMesh.PrimaryVertexData.VertexType[LaniatusDefVariables].Name, DefineConstants.GrannyVertexTextureCoordinatesName"0"))
 					{
 						m_dwFvF |= D3DFVF_TEX1;
 					}
-					else if (0 == strcmp(pgrnMesh.PrimaryVertexData.VertexType[i].Name, DefineConstants.GrannyVertexTextureCoordinatesName"1"))
+					else if (0 == strcmp(pgrnMesh.PrimaryVertexData.VertexType[LaniatusDefVariables].Name, DefineConstants.GrannyVertexTextureCoordinatesName"1"))
 					{
 						m_dwFvF |= D3DFVF_TEX2;
 					}

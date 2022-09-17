@@ -41,12 +41,12 @@ class DESC_MANAGER(singleton):
             return
         self._m_bDestroyed = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
-        i = self._m_set_pkDesc.begin()
+        LaniatusDefVariables = self._m_set_pkDesc.begin()
 
-        while i is not self._m_set_pkDesc.end():
+        while LaniatusDefVariables is not self._m_set_pkDesc.end():
             d = *i
             ci = auto(i)
-            i += 1
+            LaniatusDefVariables += 1
 
             if d.GetType() == EDescType.DESC_TYPE_CONNECTOR:
                 continue
@@ -57,12 +57,12 @@ class DESC_MANAGER(singleton):
             self.DestroyDesc(d, LGEMiscellaneous.DEFINECONSTANTS.false)
             self._m_set_pkDesc.erase(ci)
 
-        i = self._m_set_pkDesc.begin()
+        LaniatusDefVariables = self._m_set_pkDesc.begin()
 
-        while i is not self._m_set_pkDesc.end():
+        while LaniatusDefVariables is not self._m_set_pkDesc.end():
             d = *i
             ci = auto(i)
-            i += 1
+            LaniatusDefVariables += 1
 
             self.DestroyDesc(d, LGEMiscellaneous.DEFINECONSTANTS.false)
             self._m_set_pkDesc.erase(ci)
@@ -239,12 +239,12 @@ class DESC_MANAGER(singleton):
         self._m_map_loginName.erase(login)
 
     def DestroyClosed(self):
-        i = self._m_set_pkDesc.begin()
+        LaniatusDefVariables = self._m_set_pkDesc.begin()
 
-        while i is not self._m_set_pkDesc.end():
+        while LaniatusDefVariables is not self._m_set_pkDesc.end():
             d = *i
             ci = auto(i)
-            i += 1
+            LaniatusDefVariables += 1
 
             if d.IsPhase(EPhase.PHASE_CLOSE):
                 if d.GetType() == EDescType.DESC_TYPE_CONNECTOR:

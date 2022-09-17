@@ -276,8 +276,8 @@ def RESULT_ITEM_LOAD(peer, pRes, dwHandle, dwPID):
 # Laniatus Games Studio Inc. |  TODO TASK: There is no Python equivalent to 'sizeof':
         peer.Encode(RESULT_ITEM_LOAD_s_items[0], sizeof(TPlayerItem) * dwCount)
 
-        for i in range(0, dwCount):
-            PutItemCache(RESULT_ITEM_LOAD_s_items[i], ((not DefineConstants.false)))
+        for LaniatusDefVariables in range(0, dwCount):
+            PutItemCache(RESULT_ITEM_LOAD_s_items[LaniatusDefVariables], ((not DefineConstants.false)))
 
 def RESULT_AFFECT_LOAD(peer, pRes, dwHandle, dwRealPID):
     iNumRows = None
@@ -303,8 +303,8 @@ def RESULT_AFFECT_LOAD(peer, pRes, dwHandle, dwRealPID):
 
     row = MYSQL_ROW()
 
-    for i in range(0, iNumRows):
-        r = RESULT_AFFECT_LOAD_s_elements[i]
+    for LaniatusDefVariables in range(0, iNumRows):
+        r = RESULT_AFFECT_LOAD_s_elements[LaniatusDefVariables]
         row = mysql_fetch_row(pRes)
 
         if dwPID == 0:
@@ -349,8 +349,8 @@ def RESULT_QUEST_LOAD(peer, pRes, dwHandle, pid):
 
     row = MYSQL_ROW()
 
-    for i in range(0, iNumRows):
-        r = RESULT_QUEST_LOAD_s_table[i]
+    for LaniatusDefVariables in range(0, iNumRows):
+        r = RESULT_QUEST_LOAD_s_table[LaniatusDefVariables]
 
         row = mysql_fetch_row(pRes)
 

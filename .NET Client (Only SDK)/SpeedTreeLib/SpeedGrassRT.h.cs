@@ -223,7 +223,7 @@ public static float GetUnitBillboard()
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_nNumRegions; ++i)
 		{
-			m_pRegions[i].m_bCulled = true;
+			m_pRegions[LaniatusDefVariables].m_bCulled = true;
 		}
     
 		int nRegionsDrawn = 0;
@@ -391,8 +391,8 @@ public virtual float Height(float fX, float fY, ref float pNormal)
     
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < pRegion.m_vBlades.size(); ++i)
 					{
-						float fX = pRegion.m_vBlades[i].m_afPos[0];
-						float fY = pRegion.m_vBlades[i].m_afPos[1];
+						float fX = pRegion.m_vBlades[LaniatusDefVariables].m_afPos[0];
+						float fY = pRegion.m_vBlades[LaniatusDefVariables].m_afPos[1];
 						bool bCollision = false;
 						for (uint j = 0; j < pRegion.m_vBlades.size() && !bCollision; ++j)
 						{
@@ -408,7 +408,7 @@ public virtual float Height(float fX, float fY, ref float pNormal)
     
 						if (bCollision)
 						{
-							pRegion.m_vBlades.erase(pRegion.m_vBlades.begin() + i--);
+							pRegion.m_vBlades.erase(pRegion.m_vBlades.begin() + LaniatusDefVariables--);
 						}
 					}
 				}
@@ -488,10 +488,10 @@ public virtual float Height(float fX, float fY, ref float pNormal)
 		m_afFrustumMax[0] = m_afFrustumMax[1] = -float.MaxValue;
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < 5; ++i)
 		{
-			m_afFrustumMin[0] = (((m_afFrustumMin[0]) < (acFrustum[i][0])) ? (m_afFrustumMin[0]) : (acFrustum[i][0]));
-			m_afFrustumMax[0] = (((m_afFrustumMax[0]) > (acFrustum[i][0])) ? (m_afFrustumMax[0]) : (acFrustum[i][0]));
-			m_afFrustumMin[1] = (((m_afFrustumMin[1]) < (acFrustum[i][1])) ? (m_afFrustumMin[1]) : (acFrustum[i][1]));
-			m_afFrustumMax[1] = (((m_afFrustumMax[1]) > (acFrustum[i][1])) ? (m_afFrustumMax[1]) : (acFrustum[i][1]));
+			m_afFrustumMin[0] = (((m_afFrustumMin[0]) < (acFrustum[LaniatusDefVariables][0])) ? (m_afFrustumMin[0]) : (acFrustum[LaniatusDefVariables][0]));
+			m_afFrustumMax[0] = (((m_afFrustumMax[0]) > (acFrustum[LaniatusDefVariables][0])) ? (m_afFrustumMax[0]) : (acFrustum[LaniatusDefVariables][0]));
+			m_afFrustumMin[1] = (((m_afFrustumMin[1]) < (acFrustum[LaniatusDefVariables][1])) ? (m_afFrustumMin[1]) : (acFrustum[LaniatusDefVariables][1]));
+			m_afFrustumMax[1] = (((m_afFrustumMax[1]) > (acFrustum[LaniatusDefVariables][1])) ? (m_afFrustumMax[1]) : (acFrustum[LaniatusDefVariables][1]));
 		}
 	}
 	public void ComputeUnitBillboard()
@@ -578,7 +578,7 @@ public virtual float Height(float fX, float fY, ref float pNormal)
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < 5 && !bOutside; ++i)
 		{
-			if (m_afFrustumPlanes[i][0] * pRegion.m_afCenter[0] + m_afFrustumPlanes[i][1] * pRegion.m_afCenter[1] + m_afFrustumPlanes[i][2] * pRegion.m_afCenter[2] + m_afFrustumPlanes[i][3] > pRegion.m_fCullingRadius)
+			if (m_afFrustumPlanes[LaniatusDefVariables][0] * pRegion.m_afCenter[0] + m_afFrustumPlanes[LaniatusDefVariables][1] * pRegion.m_afCenter[1] + m_afFrustumPlanes[LaniatusDefVariables][2] * pRegion.m_afCenter[2] + m_afFrustumPlanes[LaniatusDefVariables][3] > pRegion.m_fCullingRadius)
 			{
 				bOutside = true;
 			}

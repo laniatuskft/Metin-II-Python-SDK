@@ -1459,7 +1459,7 @@ public class CSoundData
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < SOUND_FILE_MAX_NUM; ++i)
 			{
-				ms_isSoundFile[i] = false;
+				ms_isSoundFile[LaniatusDefVariables] = false;
 			}
 		}
 
@@ -1682,7 +1682,7 @@ public class CSoundData
 		{
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < SOUND_FILE_MAX_NUM; ++i)
 			{
-				if (!ms_isSoundFile[i])
+				if (!ms_isSoundFile[LaniatusDefVariables])
 				{
 					return i;
 				}

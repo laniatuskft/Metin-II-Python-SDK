@@ -3376,30 +3376,30 @@ public class CEffectElementBase
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < pTokenVector.size(); ++dwIndex)
 				{
 					SEffectPosition EffectPosition = new SEffectPosition();
-					EffectPosition.m_fTime = atof(pTokenVector.at(i++).c_str());
+					EffectPosition.m_fTime = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
 					if (pTokenVector.at(i) == "MOVING_TYPE_BEZIER_CURVE")
 					{
-						i++;
+						LaniatusDefVariables++;
 
 						EffectPosition.m_iMovingType = MOVING_TYPE_BEZIER_CURVE;
 
-						EffectPosition.m_vecPosition.x = atof(pTokenVector.at(i++).c_str());
-						EffectPosition.m_vecPosition.y = atof(pTokenVector.at(i++).c_str());
-						EffectPosition.m_vecPosition.z = atof(pTokenVector.at(i++).c_str());
+						EffectPosition.m_vecPosition.x = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
+						EffectPosition.m_vecPosition.y = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
+						EffectPosition.m_vecPosition.z = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
 
-						EffectPosition.m_vecControlPoint.x = atof(pTokenVector.at(i++).c_str());
-						EffectPosition.m_vecControlPoint.y = atof(pTokenVector.at(i++).c_str());
-						EffectPosition.m_vecControlPoint.z = atof(pTokenVector.at(i++).c_str());
+						EffectPosition.m_vecControlPoint.x = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
+						EffectPosition.m_vecControlPoint.y = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
+						EffectPosition.m_vecControlPoint.z = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
 					}
 					else if (pTokenVector.at(i) == "MOVING_TYPE_DIRECT")
 					{
-						i++;
+						LaniatusDefVariables++;
 
 						EffectPosition.m_iMovingType = MOVING_TYPE_DIRECT;
 
-						EffectPosition.m_vecPosition.x = atof(pTokenVector.at(i++).c_str());
-						EffectPosition.m_vecPosition.y = atof(pTokenVector.at(i++).c_str());
-						EffectPosition.m_vecPosition.z = atof(pTokenVector.at(i++).c_str());
+						EffectPosition.m_vecPosition.x = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
+						EffectPosition.m_vecPosition.y = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
+						EffectPosition.m_vecPosition.z = atof(pTokenVector.at(LaniatusDefVariables++).c_str());
 
 						EffectPosition.m_vecControlPoint = D3DXVECTOR3(0.0f,0.0f,0.0f);
 					}

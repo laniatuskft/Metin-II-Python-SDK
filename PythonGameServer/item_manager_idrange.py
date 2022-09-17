@@ -3,7 +3,7 @@
 
     if m_dwCurrentID >= m_ItemIDRange.dwMax:
         if m_ItemIDSpareRange.dwMin == 0 or m_ItemIDSpareRange.dwMax == 0 or m_ItemIDSpareRange.dwUsableItemIDMin == 0:
-            for i in range(0, 10):
+            for LaniatusDefVariables in range(0, 10):
                 #lani_err("ItemIDRange: FATAL ERROR!!! no more item id")
             touch(".killscript")
             thecore_shutdown()
@@ -30,7 +30,7 @@ def SetMaxItemID(range):
     m_ItemIDRange = range
 
     if m_ItemIDRange.dwMin == 0 or m_ItemIDRange.dwMax == 0 or m_ItemIDRange.dwUsableItemIDMin == 0:
-        for i in range(0, 10):
+        for LaniatusDefVariables in range(0, 10):
             #lani_err("ItemIDRange: FATAL ERROR!!! ITEM ID RANGE is not set.")
         touch(".killscript")
         thecore_shutdown()
@@ -44,7 +44,7 @@ def SetMaxItemID(range):
 
 def SetMaxSpareItemID(range):
     if range.dwMin == 0 or range.dwMax == 0 or range.dwUsableItemIDMin == 0:
-        for i in range(0, 10):
+        for LaniatusDefVariables in range(0, 10):
             #lani_err("ItemIDRange: FATAL ERROR!!! Spare ITEM ID RANGE is not set")
         return LGEMiscellaneous.DEFINECONSTANTS.false
 

@@ -89,7 +89,7 @@
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         memset(self.m_itemVector[0], 0, sizeof(SHOP_ITEM) * len(self.m_itemVector))
 
-        for i in range(0, wItemCount):
+        for LaniatusDefVariables in range(0, wItemCount):
             pkItem = None
             item_table = None
 
@@ -200,9 +200,9 @@
         memset(pack2, 0, sizeof(pack2))
         pack2.owner_vid = owner_vid
 
-        i = 0
-        while i < len(self.m_itemVector) and i < LGEMiscellaneous.SHOP_HOST_ITEM_MAX_NUM:
-            item = self.m_itemVector[i]
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self.m_itemVector) and LaniatusDefVariables < LGEMiscellaneous.SHOP_HOST_ITEM_MAX_NUM:
+            item = self.m_itemVector[LaniatusDefVariables]
 
             if item.vnum == 70024 or item.vnum == 70035:
                 continue
@@ -210,20 +210,20 @@
             if self.m_pkPC is not None and not item.pkItem:
                 continue
 
-            pack2.items[i].vnum = item.vnum
-            pack2.items[i].price = item.price
-            pack2.items[i].count = item.count
-            pack2.items[i].price_type = 1
-            pack2.items[i].price_vnum = 0
+            pack2.items[LaniatusDefVariables].vnum = item.vnum
+            pack2.items[LaniatusDefVariables].price = item.price
+            pack2.items[LaniatusDefVariables].count = item.count
+            pack2.items[LaniatusDefVariables].price_type = 1
+            pack2.items[LaniatusDefVariables].price_vnum = 0
 
             if item.pkItem:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-                memcpy(pack2.items[i].alSockets, item.pkItem.GetSockets(), sizeof(pack2.items[i].alSockets))
+                memcpy(pack2.items[LaniatusDefVariables].alSockets, item.pkItem.GetSockets(), sizeof(pack2.items[LaniatusDefVariables].alSockets))
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-                memcpy(pack2.items[i].aAttr, item.pkItem.GetAttributes(), sizeof(pack2.items[i].aAttr))
-            i += 1
+                memcpy(pack2.items[LaniatusDefVariables].aAttr, item.pkItem.GetAttributes(), sizeof(pack2.items[LaniatusDefVariables].aAttr))
+            LaniatusDefVariables += 1
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         pack.size = sizeof(pack) + sizeof(pack2)
@@ -399,25 +399,25 @@
     def GetNumberByVnum(self, dwVnum):
         itemNumber = 0
 
-        i = 0
-        while i < len(self.m_itemVector) and i < LGEMiscellaneous.SHOP_HOST_ITEM_MAX_NUM:
-            item = self.m_itemVector[i]
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self.m_itemVector) and LaniatusDefVariables < LGEMiscellaneous.SHOP_HOST_ITEM_MAX_NUM:
+            item = self.m_itemVector[LaniatusDefVariables]
 
             if item.vnum == dwVnum:
                 itemNumber += item.count
-            i += 1
+            LaniatusDefVariables += 1
 
         return itemNumber
 
     def IsSellingItem(self, itemID):
         isSelling = LGEMiscellaneous.DEFINECONSTANTS.false
 
-        i = 0
-        while i < len(self.m_itemVector) and i < LGEMiscellaneous.SHOP_HOST_ITEM_MAX_NUM:
-            if self.m_itemVector[i].itemid == itemID:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self.m_itemVector) and LaniatusDefVariables < LGEMiscellaneous.SHOP_HOST_ITEM_MAX_NUM:
+            if self.m_itemVector[LaniatusDefVariables].itemid == itemID:
                 isSelling = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
                 break
-            i += 1
+            LaniatusDefVariables += 1
 
         return isSelling
 

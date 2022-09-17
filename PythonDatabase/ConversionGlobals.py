@@ -117,8 +117,8 @@
         if pRes is None:
             return
 
-        i = 0
-        while i < mysql_num_rows(pRes):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < mysql_num_rows(pRes):
             row = mysql_fetch_row(pRes)
             col = 0
 
@@ -242,7 +242,7 @@
                     sys_log(0, "%s %lu %lu hair %u", pkTab.players[j].szName, pkTab.players[j].x, pkTab.players[j].y, pkTab.players[j].wHairPart)
                     break
                 j += 1
-            i += 1
+            LaniatusDefVariables += 1
     #Laniatus Games Studio Inc. | Python Metin II Server Warnings Statement interrupted by a preprocessor statement:
     #The original statement from the file sal.h starts with:
     #    __inner_fallthrough_dec
@@ -272,9 +272,9 @@
 
         pVec.resize(rows)
 
-        for i in range(0, rows):
+        for LaniatusDefVariables in range(0, rows):
             row = mysql_fetch_row(res)
-            item = pVec[i]
+            item = pVec[LaniatusDefVariables]
 
             cur = 0
 

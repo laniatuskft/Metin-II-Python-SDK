@@ -1,10 +1,10 @@
 ﻿def DragonSoul_Initialize():
-    i = INVENTORY_MAX_NUM + WEAR_MAX_NUM
-    while i < LGEMiscellaneous2.DRAGON_SOUL_EQUIP_SLOT_END:
+    LaniatusDefVariables = INVENTORY_MAX_NUM + WEAR_MAX_NUM
+    while LaniatusDefVariables < LGEMiscellaneous2.DRAGON_SOUL_EQUIP_SLOT_END:
         pItem = GetItem(TItemPos(EWindows.INVENTORY, i))
         if None is not pItem:
             pItem.SetSocket(EItemDragonSoulSockets.LG_ITEM_SOCKET_DRAGON_SOUL_ACTIVE_IDX, 0, ((not DefineConstants.false)))
-        i += 1
+        LaniatusDefVariables += 1
 
     if FindAffect(LaniatusEAffectTypes.LANIA_AFFECT_DRAGON_SOUL_DECK_0):
         DragonSoul_ActivateDeck(EDragonSoulDeckType.DRAGON_SOUL_DECK_0)
@@ -46,28 +46,28 @@ def DragonSoul_ActivateDeck(deck_idx):
 
     m_pointsInstant.iDragonSoulActiveDeck = deck_idx
 
-    i = DRAGON_SOUL_EQUIP_SLOT_START + DS_SLOT_MAX * deck_idx
-    while i < LGEMiscellaneous2.DRAGON_SOUL_EQUIP_SLOT_START + EDragonSoulSubType.DS_SLOT_MAX * (deck_idx + 1):
+    LaniatusDefVariables = DRAGON_SOUL_EQUIP_SLOT_START + DS_SLOT_MAX * deck_idx
+    while LaniatusDefVariables < LGEMiscellaneous2.DRAGON_SOUL_EQUIP_SLOT_START + EDragonSoulSubType.DS_SLOT_MAX * (deck_idx + 1):
         pItem = GetInventoryItem(i)
         if None is not pItem:
             DSManager.instance().ActivateDragonSoul(pItem)
-        i += 1
+        LaniatusDefVariables += 1
     return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
 def DragonSoul_DeactivateAll():
-    i = DRAGON_SOUL_EQUIP_SLOT_START
-    while i < LGEMiscellaneous2.DRAGON_SOUL_EQUIP_SLOT_END:
+    LaniatusDefVariables = DRAGON_SOUL_EQUIP_SLOT_START
+    while LaniatusDefVariables < LGEMiscellaneous2.DRAGON_SOUL_EQUIP_SLOT_END:
         DSManager.instance().DeactivateDragonSoul(GetInventoryItem(i), ((not LGEMiscellaneous.DEFINECONSTANTS.false)))
-        i += 1
+        LaniatusDefVariables += 1
     m_pointsInstant.iDragonSoulActiveDeck = -1
     RemoveAffect(LaniatusEAffectTypes.LANIA_AFFECT_DRAGON_SOUL_DECK_0)
     RemoveAffect(LaniatusEAffectTypes.LANIA_AFFECT_DRAGON_SOUL_DECK_1)
 
 def DragonSoul_CleanUp():
-    i = DRAGON_SOUL_EQUIP_SLOT_START
-    while i < LGEMiscellaneous2.DRAGON_SOUL_EQUIP_SLOT_END:
+    LaniatusDefVariables = DRAGON_SOUL_EQUIP_SLOT_START
+    while LaniatusDefVariables < LGEMiscellaneous2.DRAGON_SOUL_EQUIP_SLOT_END:
         DSManager.instance().DeactivateDragonSoul(GetInventoryItem(i), ((not LGEMiscellaneous.DEFINECONSTANTS.false)))
-        i += 1
+        LaniatusDefVariables += 1
 
 def DragonSoul_RefineWindow_Open(pEntity):
     if None == m_pointsInstant.m_pDragonSoulRefineWindowOpener:

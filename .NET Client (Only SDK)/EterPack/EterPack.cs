@@ -4470,7 +4470,7 @@ public class CEterPack
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < FREE_INDEX_MAX_SIZE + 1; ++i)
 			{
-				m_FreeIndexList[i].clear();
+				m_FreeIndexList[LaniatusDefVariables].clear();
 			}
 
 			{
@@ -4956,7 +4956,7 @@ public class CEterPack
 
 			while (i.MoveNext())
 			{
-				SEterPackIndex pIndex = (i++).second;
+				SEterPackIndex pIndex = (LaniatusDefVariables++).second;
 
 				if (0 == m_map_indexRefCount[pIndex.id])
 				{

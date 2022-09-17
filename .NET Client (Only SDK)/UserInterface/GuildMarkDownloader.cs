@@ -3358,13 +3358,13 @@ break;
 			{
 				command_symbol_crc kSymbolCRCPacket = new command_symbol_crc();
 				kSymbolCRCPacket.header = LG_HEADER_CG_GUILD_SYMBOL_CRC;
-				kSymbolCRCPacket.dwGuildID = m_kVec_dwGuildID[i];
+				kSymbolCRCPacket.dwGuildID = m_kVec_dwGuildID[LaniatusDefVariables];
 
-				string strFileName = GetGuildSymbolFileName(m_kVec_dwGuildID[i]);
+				string strFileName = GetGuildSymbolFileName(m_kVec_dwGuildID[LaniatusDefVariables]);
 				kSymbolCRCPacket.dwCRC = GetFileCRC32(strFileName);
 				kSymbolCRCPacket.dwSize = GetFileSize(strFileName);
 #if DEBUG
-				printf("__SendSymbolCRCList [GuildID:%d / CRC:%u]\n", m_kVec_dwGuildID[i], kSymbolCRCPacket.dwCRC);
+				printf("__SendSymbolCRCList [GuildID:%d / CRC:%u]\n", m_kVec_dwGuildID[LaniatusDefVariables], kSymbolCRCPacket.dwCRC);
 #endif
 				if (!Send(sizeof(command_symbol_crc), kSymbolCRCPacket))
 				{

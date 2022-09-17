@@ -23,12 +23,12 @@ class CExchange:
 
         self._m_bAccept = LGEMiscellaneous.DEFINECONSTANTS.false
 
-        i = 0
-        while i < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
-            self._m_apItems[i] = None
-            self._m_aItemPos[i] = NPOS
-            self._m_abItemDisplayPos[i] = 0
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
+            self._m_apItems[LaniatusDefVariables] = None
+            self._m_aItemPos[LaniatusDefVariables] = NPOS
+            self._m_abItemDisplayPos[LaniatusDefVariables] = 0
+            LaniatusDefVariables += 1
 
         self._m_lGold = 0
 
@@ -117,11 +117,11 @@ class CExchange:
         Globals.exchange_packet(self.GetOwner(), EPacketTradeSubHeaders.EXCHANGE_SUBLG_HEADER_GC_END, False, 0, NPOS, 0, NULL)
         self.GetOwner().SetExchange(None)
 
-        i = 0
-        while i < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
-            if self._m_apItems[i]:
-                self._m_apItems[i].SetExchanging(LGEMiscellaneous.DEFINECONSTANTS.false)
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
+            if self._m_apItems[LaniatusDefVariables]:
+                self._m_apItems[LaniatusDefVariables].SetExchanging(LGEMiscellaneous.DEFINECONSTANTS.false)
+            LaniatusDefVariables += 1
 
         if self.GetCompany():
             self.GetCompany().SetCompany(None)
@@ -184,16 +184,16 @@ class CExchange:
         self.Accept(LGEMiscellaneous.DEFINECONSTANTS.false)
         self.GetCompany().Accept(LGEMiscellaneous.DEFINECONSTANTS.false)
 
-        i = 0
-        while i < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
-            if self._m_apItems[i]:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
+            if self._m_apItems[LaniatusDefVariables]:
                 continue
 
-            self._m_apItems[i] = item
+            self._m_apItems[LaniatusDefVariables] = item
 ## Laniatus Games Studio Inc. | ROLE OF DEVELOPMENT SECTION: The following line has been determined to be tokenless assignment (rather than reference assignment) - this should be verified and a 'copy_from' method should be created: For this, follow the instructions from the dependencies addendum convteam@laniatusgames.com.
-#ORIGINAL METINII C CODE: m_aItemPos[i] = item_pos;
-            self._m_aItemPos[i].copy_from(item_pos)
-            self._m_abItemDisplayPos[i] = display_pos
+#ORIGINAL METINII C CODE: m_aItemPos[LaniatusDefVariables] = item_pos;
+            self._m_aItemPos[LaniatusDefVariables].copy_from(item_pos)
+            self._m_abItemDisplayPos[LaniatusDefVariables] = display_pos
             self._m_pGrid.Put(display_pos, 1, item.GetSize())
 
             item.SetExchanging(((not LGEMiscellaneous.DEFINECONSTANTS.false)))
@@ -205,7 +205,7 @@ class CExchange:
             #sys_log(0, "EXCHANGE AddItem success %s pos(%d, %d) %d", item.GetName(LOCALE_LANIATUS), item_pos.window_type, item_pos.cell, display_pos)
 
             return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-            i += 1
+            LaniatusDefVariables += 1
 
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
@@ -243,16 +243,16 @@ class CExchange:
 
     def _Done(self):
         empty_pos = None
-        i = None
+        LaniatusDefVariables = None
         item = None
 
         victim = self.GetCompany().GetOwner()
 
-        i = 0
-        while i < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
-#ORIGINAL METINII C CODE: if (!(item = m_apItems[i]))
-            if not(item = self._m_apItems[i]):
+#ORIGINAL METINII C CODE: if (!(item = m_apItems[LaniatusDefVariables]))
+            if not(item = self._m_apItems[LaniatusDefVariables]):
                 continue
 
             if item.IsDragonSoul():
@@ -278,8 +278,8 @@ class CExchange:
             item.SetExchanging(LGEMiscellaneous.DEFINECONSTANTS.false)
                 LogManager.instance().ExchangeLogItems(self.GetOwner().GetName(LOCALE_LANIATUS), victim.GetName(LOCALE_LANIATUS), item.GetName(LOCALE_LANIATUS), item.GetID(), ushort(item.GetCount()), self.GetOwner().GetAID(), victim.GetAID())
 
-            self._m_apItems[i] = None
-            i += 1
+            self._m_apItems[LaniatusDefVariables] = None
+            LaniatusDefVariables += 1
 
         if self._m_lGold != 0:
             self.GetOwner().PointChange(EPointTypes.LG_POINT_GOLD, -self._m_lGold, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), DefineConstants.false)
@@ -297,19 +297,19 @@ class CExchange:
 
         item_count = 0
 
-        i = 0
-        while i < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
-            if self._m_apItems[i] is None:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
+            if self._m_apItems[LaniatusDefVariables] is None:
                 continue
 
-            if not self._m_aItemPos[i].IsValidItemPosition():
+            if not self._m_aItemPos[LaniatusDefVariables].IsValidItemPosition():
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-            if self._m_apItems[i] is not self.GetOwner().GetItem(self._m_aItemPos[i]):
+            if self._m_apItems[LaniatusDefVariables] is not self.GetOwner().GetItem(self._m_aItemPos[LaniatusDefVariables]):
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
             item_count += 1
-            i += 1
+            LaniatusDefVariables += 1
 
         piItemCount.arg_value = item_count
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
@@ -348,24 +348,24 @@ class CExchange:
         victim = self.GetCompany().GetOwner()
         item = None
 
-        i = None
+        LaniatusDefVariables = None
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
         perPageSlotCount = LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM
 
-        i = 0
+        LaniatusDefVariables = 0
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
-        while i < LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM:
+        while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if (!(item = victim->GetInventoryItem(i)))
             if not(item = victim.GetInventoryItem(ushort(i))):
                 continue
 
             _CheckSpace_s_grid1.Put(i, 1, item.GetSize())
-            i += 1
-        i = (INVENTORY_MAX_NUM / INVENTORY_PAGE_NUM) * 1
+            LaniatusDefVariables += 1
+        LaniatusDefVariables = (INVENTORY_MAX_NUM / INVENTORY_PAGE_NUM) * 1
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
-        while i < (LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM) * 2:
+        while LaniatusDefVariables < (LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM) * 2:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if (!(item = victim->GetInventoryItem(i)))
             if not(item = victim.GetInventoryItem(ushort(i))):
@@ -373,10 +373,10 @@ class CExchange:
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
             _CheckSpace_s_grid2.Put(i - (LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM) * 1, 1, item.GetSize())
-            i += 1
-        i = (INVENTORY_MAX_NUM / INVENTORY_PAGE_NUM) * 2
+            LaniatusDefVariables += 1
+        LaniatusDefVariables = (INVENTORY_MAX_NUM / INVENTORY_PAGE_NUM) * 2
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
-        while i < (LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM) * 3:
+        while LaniatusDefVariables < (LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM) * 3:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if (!(item = victim->GetInventoryItem(i)))
             if not(item = victim.GetInventoryItem(ushort(i))):
@@ -384,9 +384,9 @@ class CExchange:
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
             _CheckSpace_s_grid3.Put(i - (LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM) * 2, 1, item.GetSize())
-            i += 1
-        i = (INVENTORY_MAX_NUM / INVENTORY_PAGE_NUM) * 3
-        while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+            LaniatusDefVariables += 1
+        LaniatusDefVariables = (INVENTORY_MAX_NUM / INVENTORY_PAGE_NUM) * 3
+        while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if (!(item = victim->GetInventoryItem(i)))
             if not(item = victim.GetInventoryItem(ushort(i))):
@@ -394,17 +394,17 @@ class CExchange:
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
             _CheckSpace_s_grid4.Put(i - (LGEMiscellaneous.INVENTORY_MAX_NUM / LGEMiscellaneous.INVENTORY_PAGE_NUM) * 3, 1, item.GetSize())
-            i += 1
+            LaniatusDefVariables += 1
 
         ## Laniatus Games Studio Inc. | NOTE: This static local variable declaration (not allowed in Python) has been moved just prior to the method:
         #        static list<ushort> s_vDSGrid(DRAGON_SOUL_INVENTORY_MAX_NUM)
         bDSInitialized = LGEMiscellaneous.DEFINECONSTANTS.false
 
-        i = 0
-        while i < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EExchangeValues.EXCHANGE_ITEM_MAX_NUM:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
-#ORIGINAL METINII C CODE: if (!(item = m_apItems[i]))
-            if not(item = self._m_apItems[i]):
+#ORIGINAL METINII C CODE: if (!(item = m_apItems[LaniatusDefVariables]))
+            if not(item = self._m_apItems[LaniatusDefVariables]):
                 continue
 
             if item.IsDragonSoul():
@@ -420,8 +420,8 @@ class CExchange:
                 if wBasePos >= EDSInventoryMaxNum.DRAGON_SOUL_INVENTORY_MAX_NUM:
                     return LGEMiscellaneous.DEFINECONSTANTS.false
 
-                i = 0
-                while i < LGEMiscellaneous.DRAGON_SOUL_BOX_SIZE:
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < LGEMiscellaneous.DRAGON_SOUL_BOX_SIZE:
                     wPos = ushort(wBasePos + i)
                     if 0 == _CheckSpace_s_vDSGrid[wPos]:
                         bEmpty = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
@@ -440,7 +440,7 @@ class CExchange:
                             break
                     if bExistEmptySpace:
                         break
-                    i += 1
+                    LaniatusDefVariables += 1
                 if not bExistEmptySpace:
                     return LGEMiscellaneous.DEFINECONSTANTS.false
             else:
@@ -465,7 +465,7 @@ class CExchange:
                                 _CheckSpace_s_grid4.Put(iPos, 1, item.GetSize())
                             else:
                                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            i += 1
+            LaniatusDefVariables += 1
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
 

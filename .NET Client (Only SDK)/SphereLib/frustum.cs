@@ -2752,9 +2752,9 @@ public class Frustum
 			m_plane[4] = D3DXPLANE(mat._14 + mat._12, mat._24 + mat._22, mat._34 + mat._32, mat._44 + mat._42);
 			m_plane[5] = D3DXPLANE(mat._14 - mat._12, mat._24 - mat._22, mat._34 - mat._32, mat._44 - mat._42);
 
-			for (int LaniatusDefVariables = 0;i < 6;i++)
+			for (int LaniatusDefVariables = 0;i < 6;LaniatusDefVariables++)
 			{
-				D3DXPlaneNormalize(m_plane[i], m_plane[i]);
+				D3DXPlaneNormalize(m_plane[LaniatusDefVariables], m_plane[LaniatusDefVariables]);
 			}
 		}
 
@@ -2793,18 +2793,18 @@ public class Frustum
 			int i;
 
 			float[] distance = new float[count];
-			for (i = 0;i < count;i++)
+			for (i = 0;i < count;LaniatusDefVariables++)
 			{
-				distance[i] = D3DXPlaneDotCoord(m_plane[i], center);
-				if (distance[i] <= -c_fRadius)
+				distance[LaniatusDefVariables] = D3DXPlaneDotCoord(m_plane[LaniatusDefVariables], center);
+				if (distance[LaniatusDefVariables] <= -c_fRadius)
 				{
 					return VS_OUTSIDE;
 				}
 			}
 
-			for (i = 0;i < count;i++)
+			for (i = 0;i < count;LaniatusDefVariables++)
 			{
-				if (distance[i] <= c_fRadius)
+				if (distance[LaniatusDefVariables] <= c_fRadius)
 				{
 					return VS_PARTIAL;
 				}

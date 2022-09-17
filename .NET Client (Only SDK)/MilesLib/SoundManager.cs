@@ -1472,7 +1472,7 @@ public class CSoundManager : CSingleton<CSoundManager>
 
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < CSoundManagerStream.MUSIC_INSTANCE_MAX_NUM; ++i)
 		{
-			TMusicInstance rInstance = m_MusicInstances[i];
+			TMusicInstance rInstance = m_MusicInstances[LaniatusDefVariables];
 			rInstance.dwMusicFileNameCRC = 0;
 			rInstance.MusicState = MUSIC_STATE_OFF;
 			rInstance.fVolume = 0.0f;
@@ -1532,7 +1532,7 @@ public class CSoundManager : CSingleton<CSoundManager>
 
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < CSoundManagerStream.MUSIC_INSTANCE_MAX_NUM; ++i)
 		{
-			TMusicInstance rMusicInstance = m_MusicInstances[i];
+			TMusicInstance rMusicInstance = m_MusicInstances[LaniatusDefVariables];
 			if (MUSIC_STATE_OFF == rMusicInstance.MusicState)
 			{
 				continue;
@@ -1854,7 +1854,7 @@ public class CSoundManager : CSingleton<CSoundManager>
 
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < CSoundManagerStream.MUSIC_INSTANCE_MAX_NUM; ++i)
 		{
-			TMusicInstance rMusicInstance = m_MusicInstances[i];
+			TMusicInstance rMusicInstance = m_MusicInstances[LaniatusDefVariables];
 			if (MUSIC_STATE_OFF != rMusicInstance.MusicState)
 			{
 				continue;
@@ -1911,13 +1911,13 @@ public class CSoundManager : CSingleton<CSoundManager>
 	{
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < CSoundManagerStream.MUSIC_INSTANCE_MAX_NUM; ++i)
 		{
-			if (MUSIC_STATE_OFF == m_MusicInstances[i].MusicState)
+			if (MUSIC_STATE_OFF == m_MusicInstances[LaniatusDefVariables].MusicState)
 			{
 				continue;
 			}
 
-			m_MusicInstances[i].MusicState = MUSIC_STATE_FADE_OUT;
-			m_MusicInstances[i].fVolumeSpeed = 0.01f;
+			m_MusicInstances[LaniatusDefVariables].MusicState = MUSIC_STATE_FADE_OUT;
+			m_MusicInstances[LaniatusDefVariables].fVolumeSpeed = 0.01f;
 		}
 	}
 
@@ -1940,7 +1940,7 @@ public class CSoundManager : CSingleton<CSoundManager>
 	{
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < c_pSoundInstanceVector.Count; ++i)
 		{
-			SSoundInstance c_rSoundInstance = c_pSoundInstanceVector[i];
+			SSoundInstance c_rSoundInstance = c_pSoundInstanceVector[LaniatusDefVariables];
 			if (c_rSoundInstance.dwFrame == dwcurFrame)
 			{
 				PlayCharacterSound3D(fx, fy, fz, c_rSoundInstance.strSoundFileName.c_str(), bCheckFrequency);
@@ -1952,7 +1952,7 @@ public class CSoundManager : CSingleton<CSoundManager>
 	{
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < c_pSoundInstanceVector.Count; ++i)
 		{
-			SSoundInstance c_rSoundInstance = c_pSoundInstanceVector[i];
+			SSoundInstance c_rSoundInstance = c_pSoundInstanceVector[LaniatusDefVariables];
 
 			if (c_rSoundInstance.dwFrame == dwcurFrame)
 			{
@@ -2041,7 +2041,7 @@ public class CSoundManager : CSingleton<CSoundManager>
 
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < CSoundManagerStream.MUSIC_INSTANCE_MAX_NUM; ++i)
 		{
-			TMusicInstance c_rMusicInstance = m_MusicInstances[i];
+			TMusicInstance c_rMusicInstance = m_MusicInstances[LaniatusDefVariables];
 			if (MUSIC_STATE_OFF != c_rMusicInstance.MusicState)
 			{
 			if (c_rMusicInstance.dwMusicFileNameCRC == dwCRC)
@@ -2089,7 +2089,7 @@ public class CSoundManager : CSingleton<CSoundManager>
 
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < CSoundManagerStream.MUSIC_INSTANCE_MAX_NUM; ++i)
 		{
-			TMusicInstance rMusicInstance = m_MusicInstances[i];
+			TMusicInstance rMusicInstance = m_MusicInstances[LaniatusDefVariables];
 			if (MUSIC_STATE_OFF == rMusicInstance.MusicState)
 			{
 				continue;

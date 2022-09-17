@@ -144,10 +144,10 @@ class COXEventManager(singleton):
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
     def ClearQuiz(self):
-        i = 0
-        while i < len(self._m_vec_quiz):
-            self._m_vec_quiz[i].clear()
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self._m_vec_quiz):
+            self._m_vec_quiz[LaniatusDefVariables].clear()
+            LaniatusDefVariables += 1
 
         self._m_vec_quiz.clear()
 
@@ -168,14 +168,14 @@ class COXEventManager(singleton):
     def ShowQuizList(self, pkChar):
         c = 0
 
-        i = 0
-        while i < len(self._m_vec_quiz):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self._m_vec_quiz):
             j = 0
-            while j < len(self._m_vec_quiz[i]):
-                pkChar.ChatPacket(EChatType.CHAT_TYPE_INFO, "%d %s %s", self._m_vec_quiz[i][j].level, self._m_vec_quiz[i][j].Quiz,LC_TEXT("��") if self._m_vec_quiz[i][j].answer else LC_TEXT("FALSE"))
+            while j < len(self._m_vec_quiz[LaniatusDefVariables]):
+                pkChar.ChatPacket(EChatType.CHAT_TYPE_INFO, "%d %s %s", self._m_vec_quiz[LaniatusDefVariables][j].level, self._m_vec_quiz[LaniatusDefVariables][j].Quiz,LC_TEXT("��") if self._m_vec_quiz[LaniatusDefVariables][j].answer else LC_TEXT("FALSE"))
                 j += 1
                 c += 1
-            i += 1
+            LaniatusDefVariables += 1
 
         pkChar.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Total number of the Quiz: %d "), c)
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))

@@ -36,10 +36,10 @@
 
     @staticmethod
     def stl_lowers(rstRet):
-        i = 0
-        while i < len(rstRet):
-            rstRet[i] = tolower(rstRet[i])
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(rstRet):
+            rstRet[LaniatusDefVariables] = tolower(rstRet[LaniatusDefVariables])
+            LaniatusDefVariables += 1
 
 
     LG_HEADER_GD_LOGIN = 1

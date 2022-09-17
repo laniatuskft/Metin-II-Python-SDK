@@ -343,8 +343,8 @@ def Entergame(d, data):
 
     _send_bonus_info(ch)
 
-    i = 0
-    while i <= EPremiumTypes.PREMIUM_MAX_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables <= EPremiumTypes.PREMIUM_MAX_NUM:
         remain = ch.GetPremiumRemainSeconds(byte(i))
 
         if remain <= 0:
@@ -352,7 +352,7 @@ def Entergame(d, data):
 
         ch.AddAffect(LaniatusEAffectTypes.LANIA_AFFECT_PREMIUM_START + i, EPointTypes.LG_POINT_NONE, 0, 0, remain, 0, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), DefineConstants.false)
         #sys_log(0, "PREMIUM: %s type %d %dmin", ch.GetName(LOCALE_LANIATUS), i, remain)
-        i += 1
+        LaniatusDefVariables += 1
 
     if (not d.GetClientVersion()) != '\0':
         d.DelayedDisconnect(20)
@@ -417,12 +417,12 @@ def Empire(d, c_pData):
     r = d.GetAccountTable()
 
     if r.bEmpire != 0:
-        i = 0
-        while i < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
-            if 0 != r.players[i].dwID:
-                #lani_err("EmpireSelectFailed %d", r.players[i].dwID)
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
+            if 0 != r.players[LaniatusDefVariables].dwID:
+                #lani_err("EmpireSelectFailed %d", r.players[LaniatusDefVariables].dwID)
                 return
-            i += 1
+            LaniatusDefVariables += 1
 
     pd = SEmpireSelectPacket()
 

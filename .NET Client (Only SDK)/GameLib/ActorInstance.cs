@@ -4924,7 +4924,7 @@ public class CActorInstance : IActorInstance, IFlyTargetableObject
 				List<CDynamicSphereInstance> c_rMainSphereVector = itMain.SphereInstanceVector;
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < c_rMainSphereVector.Count; ++i)
 				{
-					CDynamicSphereInstance c_rMainSphere = c_rMainSphereVector[i];
+					CDynamicSphereInstance c_rMainSphere = c_rMainSphereVector[LaniatusDefVariables];
 
 					_D3DVECTOR v3Delta = c_pGraphicObjectInstance.GetCollisionMovementAdjust(c_rMainSphere);
 					m_v3Movement += v3Delta;
@@ -4977,7 +4977,7 @@ public class CActorInstance : IActorInstance, IFlyTargetableObject
 					List<CDynamicSphereInstance> c_rMainSphereVector = itMain.SphereInstanceVector;
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < c_rMainSphereVector.Count; ++i)
 					{
-						CDynamicSphereInstance c_rMainSphere = c_rMainSphereVector[i];
+						CDynamicSphereInstance c_rMainSphere = c_rMainSphereVector[LaniatusDefVariables];
 
 						TCollisionPointInstanceList.const_iterator itOpp = c_pActorInstance.m_BodyPointInstanceList.begin();
 						for (;itOpp != c_pActorInstance.m_BodyPointInstanceList.end();++itOpp)

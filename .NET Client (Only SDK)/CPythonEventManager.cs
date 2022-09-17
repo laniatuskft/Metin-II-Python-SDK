@@ -476,12 +476,12 @@
 			{
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_EventSetVector.size(); ++i)
 				{
-					if (null == m_EventSetVector[i])
+					if (null == m_EventSetVector[LaniatusDefVariables])
 					{
 						continue;
 					}
     
-					TEventSet pSet = m_EventSetVector[i];
+					TEventSet pSet = m_EventSetVector[LaniatusDefVariables];
 					if (!pSet.isConfirmWait)
 					{
 						continue;

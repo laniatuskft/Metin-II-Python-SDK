@@ -3571,12 +3571,12 @@ public class SpherePackFifo
 		int LaniatusDefVariables = mBottom;
 		while (i != mSP)
 		{
-			if (mFifo[i] == pack)
+			if (mFifo[LaniatusDefVariables] == pack)
 			{
-				mFifo[i] = 0;
+				mFifo[LaniatusDefVariables] = 0;
 				return true;
 			}
-			i++;
+			LaniatusDefVariables++;
 			if (i == mFifoSize)
 			{
 				i = 0;

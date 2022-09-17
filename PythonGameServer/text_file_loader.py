@@ -77,13 +77,13 @@
             assert not "Node to access has not set!"
             return DefineConstants.false
 
-        i = 0
-        while i < len(self.m_pcurNode.ChildNodeVector):
-            pGroupNode = self.m_pcurNode.ChildNodeVector[i]
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self.m_pcurNode.ChildNodeVector):
+            pGroupNode = self.m_pcurNode.ChildNodeVector[LaniatusDefVariables]
             if 0 == pGroupNode.strGroupName.compare(c_szKey):
                 self.m_pcurNode = pGroupNode
                 return ((not DefineConstants.false))
-            i += 1
+            LaniatusDefVariables += 1
 
         return DefineConstants.false
 
@@ -379,10 +379,10 @@ def LoadGroup(pGroupNode):
         if 0 == stTokenVector[0].compare("group"):
             if 2 != len(stTokenVector):
                 #lani_err("Invalid group syntax token size: %u != 2 (DO NOT SPACE IN NAME)", len(stTokenVector))
-                i = 0
-                while i < len(stTokenVector):
-                    #lani_err("  %u %s", i, stTokenVector[i])
-                    i += 1
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < len(stTokenVector):
+                    #lani_err("  %u %s", i, stTokenVector[LaniatusDefVariables])
+                    LaniatusDefVariables += 1
                 exit(1)
                 continue
 

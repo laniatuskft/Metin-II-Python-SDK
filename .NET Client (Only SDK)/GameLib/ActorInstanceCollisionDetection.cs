@@ -5018,9 +5018,9 @@ using System.Diagnostics;
 
 
 //# Laniatus Games Studio Inc. | TODO TASK: The following method format was not recognized, possibly due to an unrecognized macro:
-	for (int LaniatusDefVariables = 0; LaniatusDefVariables < _countof(pListGlobal); i++)
+	for (int LaniatusDefVariables = 0; LaniatusDefVariables < _countof(pListGlobal); LaniatusDefVariables++)
 	{
-		if (rVictim.GetRace() == pListGlobal[i])
+		if (rVictim.GetRace() == pListGlobal[LaniatusDefVariables])
 		{
 			return false;
 		}

@@ -140,17 +140,17 @@
         fclose(fp)
 
     def Print(self, fp = stderr):
-        i = 0
-        while i < self.m_ProfileStackDataCount:
-            rProfileStackData = self.m_ProfileStackDatas[i]
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < self.m_ProfileStackDataCount:
+            rProfileStackData = self.m_ProfileStackDatas[LaniatusDefVariables]
 
-            i = 0
-            while i < rProfileStackData.iCallStep:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < rProfileStackData.iCallStep:
                 fprintf(fp, "\t")
-                i += 1
+                LaniatusDefVariables += 1
 
             fprintf(fp, "%-24s: %lu\n", rProfileStackData.strName, rProfileStackData.iEndTime - rProfileStackData.iStartTime)
-            i += 1
+            LaniatusDefVariables += 1
 
         fprintf(fp, "Name                                 Call/Load       Ratio\n")
 
@@ -185,15 +185,15 @@
         #sys_log(0, "%-10s : [CollapsedTime : %3d] / [CallingCount : %3d]", rData.strName, rData.iCollapsedTime, rData.iCallingCount)
 
     def GetProfileStackDataPointer(self, c_szName, ppProfileStackData):
-        i = 0
-        while i < self.m_ProfileStackDataCount:
-            if 0 == self.m_ProfileStackDatas[i].strName.compare(c_szName):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < self.m_ProfileStackDataCount:
+            if 0 == self.m_ProfileStackDatas[LaniatusDefVariables].strName.compare(c_szName):
 ## Laniatus Games Studio Inc. | ROLE OF DEVELOPMENT SECTION: The following line has been determined to be tokenless assignment (rather than reference assignment) - this should be verified and a 'copy_from' method should be created: For this, follow the instructions from the dependencies addendum convteam@laniatusgames.com.
-#ORIGINAL METINII C CODE: *ppProfileStackData = &m_ProfileStackDatas[i];
-                ppProfileStackData[0].copy_from(self.m_ProfileStackDatas[i])
+#ORIGINAL METINII C CODE: *ppProfileStackData = &m_ProfileStackDatas[LaniatusDefVariables];
+                ppProfileStackData[0].copy_from(self.m_ProfileStackDatas[LaniatusDefVariables])
 
                 return True
-            i += 1
+            LaniatusDefVariables += 1
 
         return False
 

@@ -6238,10 +6238,10 @@ public class CEffectMesh : CResource
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_pEffectMeshDataVector.size(); ++i)
 			{
-				m_pEffectMeshDataVector[i].pImageVector.clear();
-				m_pEffectMeshDataVector[i].EffectFrameDataVector.clear();
+				m_pEffectMeshDataVector[LaniatusDefVariables].pImageVector.clear();
+				m_pEffectMeshDataVector[LaniatusDefVariables].EffectFrameDataVector.clear();
 
-				SEffectMeshData.Delete(m_pEffectMeshDataVector[i]);
+				SEffectMeshData.Delete(m_pEffectMeshDataVector[LaniatusDefVariables]);
 			}
 			m_pEffectMeshDataVector.clear();
 
@@ -6313,7 +6313,7 @@ public class CEffectMesh : CResource
 
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_iFrameCount; ++i)
 				{
-					TEffectFrameData rFrameData = pMeshData.EffectFrameDataVector[i];
+					TEffectFrameData rFrameData = pMeshData.EffectFrameDataVector[LaniatusDefVariables];
 
 					rFrameData.dwVertexCount = dwVertexCount;
 					rFrameData.dwIndexCount = dwIndexCount;
@@ -6447,7 +6447,7 @@ public class CEffectMesh : CResource
 
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_iFrameCount; ++i)
 				{
-					TEffectFrameData rFrameData = pMeshData.EffectFrameDataVector[i];
+					TEffectFrameData rFrameData = pMeshData.EffectFrameDataVector[LaniatusDefVariables];
 
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memcpy' has no equivalent in C#:
 					memcpy(rFrameData.byChangedFrame, c_pbBuf, sizeof(byte));
@@ -6621,7 +6621,7 @@ public class CEffectMeshScript : CEffectElementBase
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_MeshDataVector.size(); ++i)
 			{
-				TMeshData rMeshData = m_MeshDataVector[i];
+				TMeshData rMeshData = m_MeshDataVector[LaniatusDefVariables];
 
 				rMeshData.byBillboardType = MESH_BILLBOARD_TYPE_NONE;
 				rMeshData.bBlendingEnable = true;
@@ -6845,7 +6845,7 @@ public class CEffectMeshScript : CEffectElementBase
 			{
 				CTextFileLoader.CGotoChild GotoChild = new CTextFileLoader.CGotoChild(rTextFileLoader, i);
 
-				TMeshData rMeshData = m_MeshDataVector[i];
+				TMeshData rMeshData = m_MeshDataVector[LaniatusDefVariables];
 
 				if (!rTextFileLoader.GetTokenByte("billboardtype", rMeshData.byBillboardType))
 				{

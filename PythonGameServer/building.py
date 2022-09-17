@@ -325,7 +325,7 @@ class building: #this class replaces the original namespace 'building'
                 r = SECTREE_MANAGER.instance().GetMapRegion(self.m_data.lMapIndex)
 
                 if r:
-                    i = CharacterVectorInteractor()
+                    LaniatusDefVariables = CharacterVectorInteractor()
 
                     if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(20040, i):
                         it = i.begin()
@@ -645,18 +645,18 @@ class building: #this class replaces the original namespace 'building'
             elif wallSize < 0:
                 wallSize = 0
 
-            i = 0
-            while i < 4:
-                if i == 0:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < 4:
+                if LaniatusDefVariables == 0:
                     delta = -1
                     ptr = startY
-                elif i == 1:
+                elif LaniatusDefVariables == 1:
                     delta = 1
                     ptr = startX
-                elif i == 2:
+                elif LaniatusDefVariables == 2:
                     ptr = startY
                     delta = 1
-                elif i == 3:
+                elif LaniatusDefVariables == 3:
                     ptr = startX
                     delta = -1
 
@@ -664,7 +664,7 @@ class building: #this class replaces the original namespace 'building'
 
                 ptr = ptr + (700 * delta)
 
-                if doorOpen[i]:
+                if doorOpen[LaniatusDefVariables]:
                     temp_ref_startX = RefObject(startX);
                     temp_ref_startY = RefObject(startY);
                     self._DrawWall(wall, nMapIndex, temp_ref_startX, temp_ref_startY, wallSize, rot)
@@ -690,7 +690,7 @@ class building: #this class replaces the original namespace 'building'
                     startX = temp_ref_startX3.arg_value
 
                 ptr = ptr + (100 * delta)
-                i += 1
+                LaniatusDefVariables += 1
                 rot -= 90
 
             return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
@@ -737,7 +737,7 @@ class building: #this class replaces the original namespace 'building'
                 dx = 0
                 dy = -500
 
-            for i in range(0, length):
+            for LaniatusDefVariables in range(0, length):
                 self.RequestCreateObject(dwVnum, nMapIndex, x.arg_value, y.arg_value, 0, 0, rot, LGEMiscellaneous.DEFINECONSTANTS.false)
                 x.arg_value += dx
                 y.arg_value += dy
@@ -807,8 +807,8 @@ class building: #this class replaces the original namespace 'building'
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
             memcpy(self.m_vec_kObjectProto[0], pProto, sizeof(TObjectProto) * size)
 
-            for i in range(0, size):
-                r = self.m_vec_kObjectProto[i]
+            for LaniatusDefVariables in range(0, size):
+                r = self.m_vec_kObjectProto[LaniatusDefVariables]
 
                 #sys_log(0, "ObjectProto %u price %lld upgrade %u upg_limit %u life %d NPC %u", r.dwVnum, r.lldPrice, r.dwUpgradeVnum, r.dwUpgradeLimitTime, r.lLife, r.dwNPCVnum)
 
@@ -824,7 +824,7 @@ class building: #this class replaces the original namespace 'building'
                     #sys_log(0, "          mat: %u %u", r.kMaterials[j].dwItemVnum, r.kMaterials[j].dwCount)
                     j += 1
 
-                self.m_map_pkObjectProto.update({r.dwVnum: self.m_vec_kObjectProto[i]})
+                self.m_map_pkObjectProto.update({r.dwVnum: self.m_vec_kObjectProto[LaniatusDefVariables]})
 
             return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 

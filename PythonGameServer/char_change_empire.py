@@ -33,9 +33,9 @@
         pGuild = [None for _ in range(4)]
         pMsg = None
 
-        for i in range(0, LOOP):
+        for LaniatusDefVariables in range(0, LOOP):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-            snprintf(szQuery, sizeof(szQuery), "SELECT guild_id FROM guild_member%s WHERE pid=%u", get_table_postfix(), dwPID[i])
+            snprintf(szQuery, sizeof(szQuery), "SELECT guild_id FROM guild_member%s WHERE pid=%u", get_table_postfix(), dwPID[LaniatusDefVariables])
 
             pMsg = DBManager.instance().DirectQuery(szQuery)
 
@@ -43,21 +43,21 @@
                 if pMsg.Get().uiNumRows > 0:
                     row = mysql_fetch_row(pMsg.Get().pSQLResult)
 
-                    str_to_number(ushort(short(1 if dwGuildID[i] != 0 else 0)), row[0])
+                    str_to_number(ushort(short(1 if dwGuildID[LaniatusDefVariables] != 0 else 0)), row[0])
 
-                    pGuild[i] = CGuildManager.instance().FindGuild(dwGuildID[i])
+                    pGuild[LaniatusDefVariables] = CGuildManager.instance().FindGuild(dwGuildID[LaniatusDefVariables])
 
-                    if pGuild[i] is not None:
+                    if pGuild[LaniatusDefVariables] is not None:
                         LG_DEL_MEM(pMsg)
                         return 2
                 else:
-                    dwGuildID[i] = 0
-                    pGuild[i] = None
+                    dwGuildID[LaniatusDefVariables] = 0
+                    pGuild[LaniatusDefVariables] = None
 
                 LG_DEL_MEM(pMsg)
 
-        for i in range(0, LOOP):
-            if marriage.CManager.instance().IsEngagedOrMarried(dwPID[i]) == ((not LGEMiscellaneous.DEFINECONSTANTS.false)):
+        for LaniatusDefVariables in range(0, LOOP):
+            if marriage.CManager.instance().IsEngagedOrMarried(dwPID[LaniatusDefVariables]) == ((not LGEMiscellaneous.DEFINECONSTANTS.false)):
                 return 3
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':

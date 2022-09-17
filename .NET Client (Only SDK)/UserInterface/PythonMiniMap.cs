@@ -4938,7 +4938,7 @@ public class CPythonMiniMap : CScreen, CSingleton<CPythonMiniMap>
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < MINI_WAYPOINT_IMAGE_COUNT; ++i)
 			{
-				m_MiniWayPointGraphicImageInstances[i].Destroy();
+				m_MiniWayPointGraphicImageInstances[LaniatusDefVariables].Destroy();
 			}
 			for (int j = 0; j < WAYPOINT_IMAGE_COUNT; ++j)
 			{
@@ -4987,8 +4987,8 @@ public class CPythonMiniMap : CScreen, CSingleton<CPythonMiniMap>
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < MINI_WAYPOINT_IMAGE_COUNT; ++i)
 			{
 				sprintf(buf, "%sminimap/mini_waypoint%02d.sub", strImageRoot, LaniatusDefVariables + 1);
-				m_MiniWayPointGraphicImageInstances[i].SetImagePointer((CGraphicSubImage) CResourceManager.Instance().GetResourcePointer(buf));
-				m_MiniWayPointGraphicImageInstances[i].SetRenderingMode(CGraphicExpandedImageInstance.RENDERING_MODE_SCREEN);
+				m_MiniWayPointGraphicImageInstances[LaniatusDefVariables].SetImagePointer((CGraphicSubImage) CResourceManager.Instance().GetResourcePointer(buf));
+				m_MiniWayPointGraphicImageInstances[LaniatusDefVariables].SetRenderingMode(CGraphicExpandedImageInstance.RENDERING_MODE_SCREEN);
 			}
 			for (int j = 0; j < WAYPOINT_IMAGE_COUNT; ++j)
 			{
@@ -6495,7 +6495,7 @@ public class CPythonMiniMap : CScreen, CSingleton<CPythonMiniMap>
 
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < TYPE_COUNT; ++i)
 				{
-					if (0 == string.CompareOrdinal(c_rstrType, strType[i]))
+					if (0 == string.CompareOrdinal(c_rstrType, strType[LaniatusDefVariables]))
 					{
 						aAtlasMarkInfo.m_byType = (byte)i;
 					}

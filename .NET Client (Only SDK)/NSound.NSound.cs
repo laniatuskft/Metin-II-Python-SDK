@@ -53,15 +53,15 @@
 						return false;
 					}
         
-					rSoundDataVector[i].fTime = (float) atof(pTokenVector[0]);
+					rSoundDataVector[LaniatusDefVariables].fTime = (float) atof(pTokenVector[0]);
 					if (c_szPathHeader != '\0')
 					{
-						rSoundDataVector[i].strSoundFileName = c_szPathHeader;
-						rSoundDataVector[i].strSoundFileName += pTokenVector[1];
+						rSoundDataVector[LaniatusDefVariables].strSoundFileName = c_szPathHeader;
+						rSoundDataVector[LaniatusDefVariables].strSoundFileName += pTokenVector[1];
 					}
 					else
 					{
-						rSoundDataVector[i].strSoundFileName = pTokenVector[1];
+						rSoundDataVector[LaniatusDefVariables].strSoundFileName = pTokenVector[1];
 					}
 				}
         
@@ -102,7 +102,7 @@
         
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < rSoundDataVector.Count; ++i)
 				{
-					SSoundData rSoundData = rSoundDataVector[i];
+					SSoundData rSoundData = rSoundDataVector[LaniatusDefVariables];
 					fprintf(File, "SoundData%02d       %f \"%s\"\n", i, rSoundData.fTime, rSoundData.strSoundFileName.c_str());
 				}
         

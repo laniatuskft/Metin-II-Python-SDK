@@ -236,10 +236,10 @@
                 os = ostringstream()
                 os << "select("
                 os << '"' << ScriptToString(AvailScript[0].arg) << '"'
-                i = 1
-                while i < len(AvailScript):
-                    os << ",\"" << ScriptToString(AvailScript[i].arg) << '"'
-                    i += 1
+                LaniatusDefVariables = 1
+                while LaniatusDefVariables < len(AvailScript):
+                    os << ",\"" << ScriptToString(AvailScript[LaniatusDefVariables].arg) << '"'
+                    LaniatusDefVariables += 1
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no preprocessor in Python:
 ##if __MULTI_LANGUAGE_SYSTEM__
                 os << ", '" << LC_LOCALE_TEXT("Close", bLocale) << "'"
@@ -357,22 +357,22 @@
 
             r = LGEMiscellaneous.DEFINECONSTANTS.false
             if fMatch.Matched():
-                i = 0
-                while i < fMatch.size:
-                    if i != 0:
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < fMatch.size:
+                    if LaniatusDefVariables != 0:
                         pPC = CQuestManager.instance().GetPC(pc.GetID())
 
-                    CQuestManager.ExecuteQuestScript(pc, list(fMatch.vdwQuesIndices[i]), list(fMatch.viPCStates[i]), list(fMatch.vcodes[i]), list(fMatch.vcode_sizes[i]), NULL, ((not DefineConstants.false)))
-                    i += 1
+                    CQuestManager.ExecuteQuestScript(pc, list(fMatch.vdwQuesIndices[LaniatusDefVariables]), list(fMatch.viPCStates[LaniatusDefVariables]), list(fMatch.vcodes[LaniatusDefVariables]), list(fMatch.vcode_sizes[LaniatusDefVariables]), NULL, ((not DefineConstants.false)))
+                    LaniatusDefVariables += 1
                 r = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
             if fMiss.Matched():
                 rmapEventOwnQuest = self.m_mapOwnQuest[EventIndex]
 
-                i = 0
-                while i < fMiss.size:
-                    script = rmapEventOwnQuest[fMiss.vdwNewStartQuestIndices[i]][0]
-                    CQuestManager.ExecuteQuestScript(pc, list(fMiss.vdwNewStartQuestIndices[i]), 0, script.GetCode(), script.GetSize(), NULL, ((not DefineConstants.false)))
-                    i += 1
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < fMiss.size:
+                    script = rmapEventOwnQuest[fMiss.vdwNewStartQuestIndices[LaniatusDefVariables]][0]
+                    CQuestManager.ExecuteQuestScript(pc, list(fMiss.vdwNewStartQuestIndices[LaniatusDefVariables]), 0, script.GetCode(), script.GetSize(), NULL, ((not DefineConstants.false)))
+                    LaniatusDefVariables += 1
                 r = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
             else:
                 return r
@@ -454,7 +454,7 @@
             inf = ifstream(filename)
             s = script_name
 
-            i = s.find('.')
+            LaniatusDefVariables = s.find('.')
 
             q = CQuestManager.instance()
             stQuestName = s[0:i]
@@ -469,38 +469,38 @@
             stStateName = ""
 
             j = i
-            i = s.find('.', i + 1)
+            LaniatusDefVariables = s.find('.', LaniatusDefVariables + 1)
 
-            if i == s.npos:
+            if LaniatusDefVariables == s.npos:
                 stStateName = s[j + 1:j + 1 + s.npos]
             else:
-                stStateName = s[j + 1:j + 1 + i - j - 1]
+                stStateName = s[j + 1:j + 1 + LaniatusDefVariables - j - 1]
 
             state_index = q.GetQuestStateIndex(stQuestName, stStateName)
 
             #sys_log(0, "QUEST loading %s : %s [STATE] %s", filename, stQuestName, stStateName)
 
-            if i == s.npos:
+            if LaniatusDefVariables == s.npos:
                 ib = istreambuf_iterator(inf)
                 ie = istreambuf_iterator()
                 copy(ib, ie, back_inserter(self.m_mapOwnQuest[event_index][quest_index][q.GetQuestStateIndex(stQuestName, stStateName)].m_code))
             else:
                 j = i
-                i = s.find('.', i + 1)
+                LaniatusDefVariables = s.find('.', LaniatusDefVariables + 1)
 
-                if i == s.npos:
+                if LaniatusDefVariables == s.npos:
                     #lani_err("invalid QUEST STATE index [%s] [%s]",filename, script_name)
                     return
 
-                index = strtol(s[j + 1:j + 1 + i - j - 1].c_str(), None, 10)
+                index = strtol(s[j + 1:j + 1 + LaniatusDefVariables - j - 1].c_str(), None, 10)
                 j = i
-                i = s.find('.', i + 1)
+                LaniatusDefVariables = s.find('.', LaniatusDefVariables + 1)
 
-                if i != s.npos:
+                if LaniatusDefVariables != s.npos:
                     #lani_err("invalid QUEST STATE name [%s] [%s]",filename, script_name)
                     return
 
-                type_name = s[j + 1:j + 1 + i - j - 1]
+                type_name = s[j + 1:j + 1 + LaniatusDefVariables - j - 1]
 
                 ib = istreambuf_iterator(inf)
                 ie = istreambuf_iterator()
@@ -685,12 +685,12 @@ class quest: #this class replaces the original namespace 'quest'
 
         def functor_method(self, itPCQuest, itQuestMap):
             if CQuestManager.instance().CanStartQuest(itQuestMap.first) and NPC.HasStartState(itQuestMap.second):
-                i = None
-                i = 0
-                while i < itQuestMap.second[QUEST_START_STATE_INDEX].size():
-                    if itQuestMap.second[QUEST_START_STATE_INDEX][i].when_condition.size() == 0 or IsScriptTrue(itQuestMap.second[QUEST_START_STATE_INDEX][i].when_condition[0], itQuestMap.second[QUEST_START_STATE_INDEX][i].when_condition.size()):
-                        self.rAvailScript.append(itQuestMap.second[QUEST_START_STATE_INDEX][i])
-                    i += 1
+                LaniatusDefVariables = None
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < itQuestMap.second[QUEST_START_STATE_INDEX].size():
+                    if itQuestMap.second[QUEST_START_STATE_INDEX][LaniatusDefVariables].when_condition.size() == 0 or IsScriptTrue(itQuestMap.second[QUEST_START_STATE_INDEX][LaniatusDefVariables].when_condition[0], itQuestMap.second[QUEST_START_STATE_INDEX][LaniatusDefVariables].when_condition.size()):
+                        self.rAvailScript.append(itQuestMap.second[QUEST_START_STATE_INDEX][LaniatusDefVariables])
+                    LaniatusDefVariables += 1
 
 
     class FuncMatchChatEvent:
@@ -704,10 +704,10 @@ class quest: #this class replaces the original namespace 'quest'
             iState = itPCQuest.second.st
             itQuestScript = itQuestMap.second.find(iState)
             if itQuestScript is not itQuestMap.second.end():
-                i = None
-                i = 0
-                while i < itQuestMap.second[iState].size():
-                    if itQuestMap.second[iState][i].when_condition.size() == 0 or IsScriptTrue(itQuestMap.second[iState][i].when_condition[0], itQuestMap.second[iState][i].when_condition.size()):
-                        self.rAvailScript.append(itQuestMap.second[iState][i])
-                    i += 1
+                LaniatusDefVariables = None
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < itQuestMap.second[iState].size():
+                    if itQuestMap.second[iState][LaniatusDefVariables].when_condition.size() == 0 or IsScriptTrue(itQuestMap.second[iState][LaniatusDefVariables].when_condition[0], itQuestMap.second[iState][LaniatusDefVariables].when_condition.size()):
+                        self.rAvailScript.append(itQuestMap.second[iState][LaniatusDefVariables])
+                    LaniatusDefVariables += 1
 

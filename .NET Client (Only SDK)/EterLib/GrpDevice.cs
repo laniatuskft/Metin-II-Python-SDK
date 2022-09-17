@@ -3569,7 +3569,7 @@ public class CGraphicDevice : CGraphicBase
 	{
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < DEFAULT_IB_NUM; ++i)
 		{
-			ms_alpd3dDefIB[i] = null;
+			ms_alpd3dDefIB[LaniatusDefVariables] = null;
 		}
 	}
 
@@ -3577,10 +3577,10 @@ public class CGraphicDevice : CGraphicBase
 	{
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < DEFAULT_IB_NUM; ++i)
 		{
-			if (ms_alpd3dDefIB[i])
+			if (ms_alpd3dDefIB[LaniatusDefVariables])
 			{
-				ms_alpd3dDefIB[i].Release();
-				ms_alpd3dDefIB[i] = null;
+				ms_alpd3dDefIB[LaniatusDefVariables].Release();
+				ms_alpd3dDefIB[LaniatusDefVariables] = null;
 			}
 		}
 	}

@@ -3915,9 +3915,9 @@ public class CPythonGraphic : CScreen, CSingleton<CPythonGraphic>
 					val = 32767;
 				}
 
-				NewRamp.red[i] = (ushort)(val | (32768 * ui));
-				NewRamp.green[i] = (ushort)(val | (32768 * ui));
-				NewRamp.blue[i] = (ushort)(val | (32768 * ui));
+				NewRamp.red[LaniatusDefVariables] = (ushort)(val | (32768 * ui));
+				NewRamp.green[LaniatusDefVariables] = (ushort)(val | (32768 * ui));
+				NewRamp.blue[LaniatusDefVariables] = (ushort)(val | (32768 * ui));
 			}
 
 			ms_lpd3dDevice.SetGammaRamp(D3DSGR_NO_CALIBRATION, NewRamp);

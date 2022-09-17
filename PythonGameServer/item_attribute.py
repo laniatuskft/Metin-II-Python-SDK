@@ -33,26 +33,26 @@
     return -1
 
 def HasAttr(bApply):
-    i = 0
-    while i < EItemMisc.ITEM_APPLY_MAX_NUM:
-        if m_pProto.aApplies[i].bType == bApply:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EItemMisc.ITEM_APPLY_MAX_NUM:
+        if m_pProto.aApplies[LaniatusDefVariables].bType == bApply:
             return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-        i += 1
+        LaniatusDefVariables += 1
 
-    i = 0
-    while i < MAX_NORM_ATTR_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < MAX_NORM_ATTR_NUM:
         if GetAttributeType(i) == bApply:
             return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-        i += 1
+        LaniatusDefVariables += 1
 
     return LGEMiscellaneous.DEFINECONSTANTS.false
 
 def HasRareAttr(bApply):
-    i = 0
-    while i < MAX_RARE_ATTR_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < MAX_RARE_ATTR_NUM:
         if GetAttributeType(i + 5) == bApply:
             return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-        i += 1
+        LaniatusDefVariables += 1
 
     return LGEMiscellaneous.DEFINECONSTANTS.false
 
@@ -60,9 +60,9 @@ def AddAttribute(bApply, sValue):
     if HasAttr(bApply):
         return
 
-    i = GetAttributeCount()
+    LaniatusDefVariables = GetAttributeCount()
 
-    if i >= MAX_NORM_ATTR_NUM:
+    if LaniatusDefVariables >= MAX_NORM_ATTR_NUM:
         #lani_err("item attribute overflow!")
     else:
         if sValue != 0:
@@ -75,9 +75,9 @@ def AddAttr(bApply, bLevel):
     if bLevel <= 0:
         return
 
-    i = GetAttributeCount()
+    LaniatusDefVariables = GetAttributeCount()
 
-    if i == MAX_NORM_ATTR_NUM:
+    if LaniatusDefVariables == MAX_NORM_ATTR_NUM:
         #lani_err("item attribute overflow!")
     else:
         r = g_map_itemAttr[bApply]
@@ -99,28 +99,28 @@ def PutAttributeWithLevel(bLevel):
 
     total = 0
 
-    i = 0
-    while i < EApplyTypes.MAX_APPLY_NUM:
-        r = g_map_itemAttr[i]
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EApplyTypes.MAX_APPLY_NUM:
+        r = g_map_itemAttr[LaniatusDefVariables]
 
         if r.bMaxLevelBySet[iAttributeSet] != 0 and not HasAttr(i):
             avail.append(i)
             total += int(r.dwProb)
-        i += 1
+        LaniatusDefVariables += 1
 
     prob = number(1, total)
     attr_idx = EApplyTypes.APPLY_NONE
 
-    i = 0
-    while i < len(avail):
-        r = g_map_itemAttr[avail[i]]
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < len(avail):
+        r = g_map_itemAttr[avail[LaniatusDefVariables]]
 
         if prob <= r.dwProb:
-            attr_idx = avail[i]
+            attr_idx = avail[LaniatusDefVariables]
             break
 
         prob -= r.dwProb
-        i += 1
+        LaniatusDefVariables += 1
 
     if attr_idx == 0:
         #lani_err("Cannot put item attribute %d %d", iAttributeSet, bLevel)
@@ -135,15 +135,15 @@ def PutAttributeWithLevel(bLevel):
 
 def PutAttribute(aiAttrPercentTable):
     iAttrLevelPercent = number(1, 100)
-    i = None
+    LaniatusDefVariables = None
 
-    i = 0
-    while i < EItemMisc.ITEM_ATTRIBUTE_MAX_LEVEL:
-        if iAttrLevelPercent <= aiAttrPercentTable[i]:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EItemMisc.ITEM_ATTRIBUTE_MAX_LEVEL:
+        if iAttrLevelPercent <= aiAttrPercentTable[LaniatusDefVariables]:
             break
 
-        iAttrLevelPercent -= aiAttrPercentTable[i]
-        i += 1
+        iAttrLevelPercent -= aiAttrPercentTable[LaniatusDefVariables]
+        LaniatusDefVariables += 1
 
     PutAttributeWithLevel(i + 1)
 
@@ -162,7 +162,7 @@ def ChangeAttribute(aiChangeProb):
 
     tmpChangeProb = [0, 10, 40, 35, 15] + [0 for _ in range(EItemMisc.ITEM_ATTRIBUTE_MAX_LEVEL - 5)]
 
-    for i in range(GetAttributeCount(), iAttributeCount):
+    for LaniatusDefVariables in range(GetAttributeCount(), iAttributeCount):
         if aiChangeProb is None:
             PutAttribute(tmpChangeProb)
         else:
@@ -175,29 +175,29 @@ def AddAttribute():
         PutAttribute(aiItemAddAttributePercent)
 
 def ClearAttribute():
-    i = 0
-    while i < MAX_NORM_ATTR_NUM:
-        m_aAttr[i].bType = 0
-        m_aAttr[i].sValue = 0
-        i += 1
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < MAX_NORM_ATTR_NUM:
+        m_aAttr[LaniatusDefVariables].bType = 0
+        m_aAttr[LaniatusDefVariables].sValue = 0
+        LaniatusDefVariables += 1
 
 def GetAttributeCount():
-    i = None
+    LaniatusDefVariables = None
 
-    i = 0
-    while i < MAX_NORM_ATTR_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < MAX_NORM_ATTR_NUM:
         if GetAttributeType(i) == 0:
             break
-        i += 1
+        LaniatusDefVariables += 1
 
     return i
 
 def FindAttribute(bType):
-    i = 0
-    while i < MAX_NORM_ATTR_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < MAX_NORM_ATTR_NUM:
         if GetAttributeType(i) == bType:
             return i
-        i += 1
+        LaniatusDefVariables += 1
 
     return -1
 
@@ -205,10 +205,10 @@ def RemoveAttributeAt(index):
     if GetAttributeCount() <= index:
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
-    i = index
-    while i < MAX_NORM_ATTR_NUM - 1:
+    LaniatusDefVariables = index
+    while LaniatusDefVariables < MAX_NORM_ATTR_NUM - 1:
         SetAttribute(i, GetAttributeType(i + 1), GetAttributeValue(i + 1))
-        i += 1
+        LaniatusDefVariables += 1
 
     SetAttribute(MAX_NORM_ATTR_NUM - 1, EApplyTypes.APPLY_NONE, 0)
     return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
@@ -224,10 +224,10 @@ def SetAttributes(c_pAttribute):
     Save()
 
 def SetAttribute(i, bType, sValue):
-    assert i < MAX_NORM_ATTR_NUM
+    assert LaniatusDefVariables < MAX_NORM_ATTR_NUM
 
-    m_aAttr[i].bType = bType
-    m_aAttr[i].sValue = sValue
+    m_aAttr[LaniatusDefVariables].bType = bType
+    m_aAttr[LaniatusDefVariables].sValue = sValue
     UpdatePacket()
     Save()
 
@@ -238,10 +238,10 @@ def SetAttribute(i, bType, sValue):
             pszIP = GetOwner().GetDesc().GetHostName()
 
 def SetForceAttribute(i, bType, sValue):
-    assert i < EItemMisc.ITEM_ATTRIBUTE_MAX_NUM
+    assert LaniatusDefVariables < EItemMisc.ITEM_ATTRIBUTE_MAX_NUM
 
-    m_aAttr[i].bType = bType
-    m_aAttr[i].sValue = sValue
+    m_aAttr[LaniatusDefVariables].bType = bType
+    m_aAttr[LaniatusDefVariables].sValue = sValue
     UpdatePacket()
     Save()
 
@@ -272,11 +272,11 @@ def ChangeRareAttribute():
 
     cnt = GetRareAttrCount()
 
-    for i in range(0, cnt):
+    for LaniatusDefVariables in range(0, cnt):
         m_aAttr[i + 5].bType = 0
         m_aAttr[i + 5].sValue = 0
 
-    for i in range(0, cnt):
+    for LaniatusDefVariables in range(0, cnt):
         AddRareAttribute()
 
     return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
@@ -293,13 +293,13 @@ def AddRareAttribute():
     nAttrSet = GetAttributeSetIndex()
     avail = []
 
-    i = 0
-    while i < EApplyTypes.MAX_APPLY_NUM:
-        r = g_map_itemRare[i]
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EApplyTypes.MAX_APPLY_NUM:
+        r = g_map_itemRare[LaniatusDefVariables]
 
         if r.dwApplyIndex != 0 and r.bMaxLevelBySet[nAttrSet] > 0 and HasRareAttr(i) != ((not LGEMiscellaneous.DEFINECONSTANTS.false)):
             avail.append(i)
-        i += 1
+        LaniatusDefVariables += 1
 
     r = g_map_itemRare[avail[number(0, len(avail) - 1)]]
     nAttrLevel = number(1, 5)

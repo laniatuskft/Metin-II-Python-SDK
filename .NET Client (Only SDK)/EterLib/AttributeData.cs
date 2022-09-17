@@ -2866,7 +2866,7 @@ public class CAttributeData : CResource
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < dwCollisionDataCount; ++i)
 			{
-				CStaticCollisionData rCollisionData = m_StaticCollisionDataVector[i];
+				CStaticCollisionData rCollisionData = m_StaticCollisionDataVector[LaniatusDefVariables];
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memcpy' has no equivalent in C#:
 				memcpy(rCollisionData.dwType, c_pbBuf, sizeof(uint));
 				c_pbBuf += sizeof(uint);

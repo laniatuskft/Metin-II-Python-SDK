@@ -6692,9 +6692,9 @@ public class CInstanceBase
 			{
 				int[] c_iBouquets = {50201, 50202, 50203, 50204, 0};
 
-				for (int LaniatusDefVariables = 0; c_iBouquets[i] != 0; ++i)
+				for (int LaniatusDefVariables = 0; c_iBouquets[LaniatusDefVariables] != 0; ++i)
 				{
-					if (iWeaponID == c_iBouquets[i])
+					if (iWeaponID == c_iBouquets[LaniatusDefVariables])
 					{
 						return true;
 					}
@@ -8032,13 +8032,13 @@ public class CInstanceBase
 				{
 					__ClearWeaponRefineEffect();
 				}
-				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; i++)
+				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; LaniatusDefVariables++)
 				{
-					if (strcmp(shiningTable.szShinings[i], ""))
+					if (strcmp(shiningTable.szShinings[LaniatusDefVariables], ""))
 					{
 						if (pItem.GetSubType() == CItemData.WEAPON_BOW)
 						{
-							__AttachWeaponShiningEffect(i, shiningTable.szShinings[i], "PART_WEAPON_LEFT");
+							__AttachWeaponShiningEffect(i, shiningTable.szShinings[LaniatusDefVariables], "PART_WEAPON_LEFT");
 						}
 						else
 						{
@@ -8049,9 +8049,9 @@ public class CInstanceBase
 #endif
 							if (twoSidedWeapon)
 							{
-								__AttachWeaponShiningEffect(i, shiningTable.szShinings[i], "PART_WEAPON_LEFT");
+								__AttachWeaponShiningEffect(i, shiningTable.szShinings[LaniatusDefVariables], "PART_WEAPON_LEFT");
 							}
-							__AttachWeaponShiningEffect(i, shiningTable.szShinings[i], "PART_WEAPON");
+							__AttachWeaponShiningEffect(i, shiningTable.szShinings[LaniatusDefVariables], "PART_WEAPON");
 						}
 					}
 				}
@@ -8063,11 +8063,11 @@ public class CInstanceBase
 				{
 					__ClearArmorRefineEffect();
 				}
-				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; i++)
+				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; LaniatusDefVariables++)
 				{
-					if (strcmp(shiningTable.szShinings[i], ""))
+					if (strcmp(shiningTable.szShinings[LaniatusDefVariables], ""))
 					{
-						__AttachArmorShiningEffect(i, shiningTable.szShinings[i]);
+						__AttachArmorShiningEffect(i, shiningTable.szShinings[LaniatusDefVariables]);
 					}
 				}
 			}
@@ -8077,15 +8077,15 @@ public class CInstanceBase
 		{
 			if (detaching)
 			{
-				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; i++)
+				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; LaniatusDefVariables++)
 				{
-					if (m_weaponShiningEffects[0][i])
+					if (m_weaponShiningEffects[0][LaniatusDefVariables])
 					{
-						__DetachEffect(m_weaponShiningEffects[0][i]);
+						__DetachEffect(m_weaponShiningEffects[0][LaniatusDefVariables]);
 					}
-					if (m_weaponShiningEffects[1][i])
+					if (m_weaponShiningEffects[1][LaniatusDefVariables])
 					{
-						__DetachEffect(m_weaponShiningEffects[1][i]);
+						__DetachEffect(m_weaponShiningEffects[1][LaniatusDefVariables]);
 					}
 				}
 			}
@@ -8097,9 +8097,9 @@ public class CInstanceBase
 		{
 			if (detaching)
 			{
-				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; i++)
+				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; LaniatusDefVariables++)
 				{
-					__DetachEffect(m_armorShiningEffects[i]);
+					__DetachEffect(m_armorShiningEffects[LaniatusDefVariables]);
 				}
 			}
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memset' has no equivalent in C#:

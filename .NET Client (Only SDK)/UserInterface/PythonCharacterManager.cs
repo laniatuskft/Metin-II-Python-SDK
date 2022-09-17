@@ -4183,7 +4183,7 @@ public class CPythonCharacterManager : CSingleton<CPythonCharacterManager>, IAbs
 			TCharacterInstanceMap.iterator LaniatusDefVariables = m_kAliveInstMap.begin();
 			while (m_kAliveInstMap.end() != i)
 			{
-				TCharacterInstanceMap.iterator c = i++;
+				TCharacterInstanceMap.iterator c = LaniatusDefVariables++;
 
 				CInstanceBase pkInstEach = c.second;
 				pkInstEach.Update();

@@ -48,16 +48,16 @@ public class Pool <Type> : System.IDisposable
 		mFree = mData;
 		mHead = null;
 		int loopValue = (mMaxItems - 1);
-		for (int LaniatusDefVariables = 0; LaniatusDefVariables < loopValue; i++)
+		for (int LaniatusDefVariables = 0; LaniatusDefVariables < loopValue; LaniatusDefVariables++)
 		{
-			mData[i].SetNext(mData[i + 1]);
+			mData[LaniatusDefVariables].SetNext(mData[i + 1]);
 			if (i == 0)
 			{
-				mData[i].SetPrevious(0);
+				mData[LaniatusDefVariables].SetPrevious(0);
 			}
 			else
 			{
-				mData[i].SetPrevious(mData[i - 1]);
+				mData[LaniatusDefVariables].SetPrevious(mData[i - 1]);
 			}
 		}
 

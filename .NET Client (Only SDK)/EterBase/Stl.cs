@@ -974,7 +974,7 @@ public class stl_circle_pool <TData>
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_size; ++i)
 			{
-				m_flags[i] = false;
+				m_flags[LaniatusDefVariables] = false;
 			}
 		}
 		public THandle alloc()

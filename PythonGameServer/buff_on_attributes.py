@@ -110,8 +110,8 @@ class CBuffOnAttributes:
 
         n = len(self._m_p_vec_buff_wear_targets)
         self._m_map_additional_attrs.clear()
-        for i in range(0, n):
-            pItem = self._m_pBuffOwner.GetWear(self._m_p_vec_buff_wear_targets[i])
+        for LaniatusDefVariables in range(0, n):
+            pItem = self._m_pBuffOwner.GetWear(self._m_p_vec_buff_wear_targets[LaniatusDefVariables])
             if None is not pItem:
                 m = pItem.GetAttributeCount()
                 for j in range(0, m):

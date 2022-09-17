@@ -5795,7 +5795,7 @@ public class CEffectMeshInstance : CEffectElementBaseInstance
 			{
 				Debug.Assert(i < m_TextureInstanceVector.size());
 
-				CFrameController rTextureFrameController = m_TextureInstanceVector[i].TextureFrameController;
+				CFrameController rTextureFrameController = m_TextureInstanceVector[LaniatusDefVariables].TextureFrameController;
 				if (!rTextureFrameController.isActive(m_MeshFrameController.GetCurrentFrame()))
 				{
 					continue;
@@ -5898,9 +5898,9 @@ public class CEffectMeshInstance : CEffectElementBaseInstance
 				SEffectFrameData rFrameData = pMeshData.EffectFrameDataVector[m_MeshFrameController.GetCurrentFrame()];
 
 				uint dwcurTextureFrame = rTextureFrameController.GetCurrentFrame();
-				if (dwcurTextureFrame < m_TextureInstanceVector[i].TextureInstanceVector.size())
+				if (dwcurTextureFrame < m_TextureInstanceVector[LaniatusDefVariables].TextureInstanceVector.size())
 				{
-					CGraphicImageInstance pImageInstance = m_TextureInstanceVector[i].TextureInstanceVector[dwcurTextureFrame];
+					CGraphicImageInstance pImageInstance = m_TextureInstanceVector[LaniatusDefVariables].TextureInstanceVector[dwcurTextureFrame];
 					STATEMANAGER.SetTexture(0, pImageInstance.GetTexturePointer().GetD3DTexture());
 				}
 

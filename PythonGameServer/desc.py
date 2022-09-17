@@ -804,18 +804,18 @@ class DESC:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         memcpy(p.players, rTable.players, sizeof(rTable.players))
 
-        i = 0
-        while i < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
-            g = CGuildManager.instance().GetLinkedGuild(rTable.players[i].dwID)
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
+            g = CGuildManager.instance().GetLinkedGuild(rTable.players[LaniatusDefVariables].dwID)
 
             if g:
-                p.guild_id[i] = g.GetID()
+                p.guild_id[LaniatusDefVariables] = g.GetID()
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-                strncpy_s(p.guild_name[i], sizeof(p.guild_name[i]), g.GetName(), _TRUNCATE)
+                strncpy_s(p.guild_name[LaniatusDefVariables], sizeof(p.guild_name[LaniatusDefVariables]), g.GetName(), _TRUNCATE)
             else:
-                p.guild_id[i] = 0
-                p.guild_name[i][0] = '\0'
-            i += 1
+                p.guild_id[LaniatusDefVariables] = 0
+                p.guild_name[LaniatusDefVariables][0] = '\0'
+            LaniatusDefVariables += 1
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         self.Packet(p, sizeof(packet_login_success))

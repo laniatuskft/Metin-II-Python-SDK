@@ -4225,7 +4225,7 @@ namespace UI
 
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_strNumber.size(); ++i)
 				{
-					char cChar = m_strNumber[i];
+					char cChar = m_strNumber[LaniatusDefVariables];
 					string strImageFileName = "";
 
 					if (':' == cChar)
@@ -4297,7 +4297,7 @@ namespace UI
 			{
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_ImageInstanceVector.size(); ++i)
 				{
-					m_ImageInstanceVector[i].Render();
+					m_ImageInstanceVector[LaniatusDefVariables].Render();
 				}
 			}
 
@@ -4326,8 +4326,8 @@ namespace UI
 
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_ImageInstanceVector.size(); ++i)
 				{
-					m_ImageInstanceVector[i].SetPosition(ix, iy);
-					ix += m_ImageInstanceVector[i].GetWidth();
+					m_ImageInstanceVector[LaniatusDefVariables].SetPosition(ix, iy);
+					ix += m_ImageInstanceVector[LaniatusDefVariables].GetWidth();
 				}
 			}
 

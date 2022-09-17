@@ -1105,10 +1105,10 @@ class CParty:
             l.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("<Group> You cannot call the target."))
             return
 
-        for i in range(0, 12):
+        for LaniatusDefVariables in range(0, 12):
             p = pixel_position_s()
 
-            if s.GetMovablePosition(l.GetMapIndex(), l.GetX() + xy [i][0], l.GetY() + xy[i][1], p):
+            if s.GetMovablePosition(l.GetMapIndex(), l.GetX() + xy [LaniatusDefVariables][0], l.GetY() + xy[LaniatusDefVariables][1], p):
                 x[n] = p.x
                 y[n] = p.y
                 n += 1
@@ -1116,8 +1116,8 @@ class CParty:
         if n == 0:
             l.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("<Group> You cannot call Group members to your current position."))
         else:
-            i = number(0, n - 1)
-            ch.Show(l.GetMapIndex(), x[i], y[i], LONG_MAX, DefineConstants.false)
+            LaniatusDefVariables = number(0, n - 1)
+            ch.Show(l.GetMapIndex(), x[LaniatusDefVariables], y[LaniatusDefVariables], LONG_MAX, DefineConstants.false)
             ch.Stop()
 
     def SetPCParty(self, b):

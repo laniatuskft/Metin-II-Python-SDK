@@ -22,8 +22,8 @@ class ItemAwardManager(singleton):
     def Load(self, pMsg):
         pRes = pMsg.Get().pSQLResult
 
-        i = 0
-        while i < pMsg.Get().uiNumRows:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < pMsg.Get().uiNumRows:
             row = mysql_fetch_row(pRes)
             col = 0
 
@@ -97,7 +97,7 @@ class ItemAwardManager(singleton):
 
             if dwID > g_dwLastCachedItemAwardID:
                 g_dwLastCachedItemAwardID = dwID
-            i += 1
+            LaniatusDefVariables += 1
 
     def GetByLogin(self, c_pszLogin):
         it = m_map_kSetAwardByLogin.find(c_pszLogin)

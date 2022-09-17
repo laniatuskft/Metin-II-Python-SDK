@@ -1048,10 +1048,10 @@ class quest: #this class replaces the original namespace 'quest'
 
             item_group = []
 
-            for i in range(0, size):
-                if (not lua_isnumber(L, i * 2 + 3)) or not lua_isnumber(L, i * 2 + 4):
+            for LaniatusDefVariables in range(0, size):
+                if (not lua_isnumber(L, LaniatusDefVariables * 2 + 3)) or not lua_isnumber(L, LaniatusDefVariables * 2 + 4):
                     return 0
-                item_group.append(std::pair  (lua_tonumber(L, i * 2 + 3), lua_tonumber(L, i * 2 + 4)))
+                item_group.append(std::pair  (lua_tonumber(L, LaniatusDefVariables * 2 + 3), lua_tonumber(L, LaniatusDefVariables * 2 + 4)))
             pDungeon = quest.CQuestManager.instance().GetCurrentDungeon()
 
             if pDungeon is None:

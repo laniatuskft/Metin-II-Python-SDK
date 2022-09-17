@@ -3302,9 +3302,9 @@ public class CPythonLauncher : CSingleton<CPythonLauncher>
 			{
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uFileSize; ++i)
 				{
-					if (c_pcFileData[i] != 13)
+					if (c_pcFileData[LaniatusDefVariables] != 13)
 					{
-						stConvFileData += c_pcFileData[i];
+						stConvFileData += c_pcFileData[LaniatusDefVariables];
 					}
 				}
 			}

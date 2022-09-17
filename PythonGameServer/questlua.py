@@ -45,9 +45,9 @@ class quest: #this class replaces the original namespace 'quest'
         buf = str(['\0' for _ in range(32)])
 
         n = lua_gettop(L)
-        i = None
+        LaniatusDefVariables = None
 
-        for i in range(1, n + 1):
+        for LaniatusDefVariables in range(1, n + 1):
             if lua_isstring(L,i):
                 s << lua_tostring(L, i)
             elif lua_isnumber(L, i):
@@ -598,12 +598,12 @@ class quest: #this class replaces the original namespace 'quest'
         os = ostringstream()
         os << "[QUESTION "
 
-        for i in range(1, n + 1):
+        for LaniatusDefVariables in range(1, n + 1):
             lua_rawgeti(qs.co,-1,i)
             if lua_isstring(qs.co,-1):
-                if i != 1:
+                if LaniatusDefVariables != 1:
                     os << "|"
-                os << i << ";" << lua_tostring(qs.co,-1)
+                os << LaniatusDefVariables << ";" << lua_tostring(qs.co,-1)
             else:
                 #lani_err("SELECT wrong data %s", lua_typename(qs.co, -1))
                 #lani_err("here")

@@ -84,12 +84,12 @@ class CSpecialItemGroup:
             if number(1,100) <= self.m_vecProbs[0]:
                 idx_vec.append(0)
                 count += 1
-            i = 1
-            while i < len(self.m_vecProbs):
-                if number(1,100) <= self.m_vecProbs[i] - self.m_vecProbs[i-1]:
+            LaniatusDefVariables = 1
+            while LaniatusDefVariables < len(self.m_vecProbs):
+                if number(1,100) <= self.m_vecProbs[LaniatusDefVariables] - self.m_vecProbs[i-1]:
                     idx_vec.append(int(i))
                     count += 1
-                i += 1
+                LaniatusDefVariables += 1
             return count
         else:
             idx_vec.append(self.GetOneIndex())
@@ -120,11 +120,11 @@ class CSpecialItemGroup:
 ## Laniatus Games Studio Inc. | WARNING: 'const' methods are not available in Python:
 #ORIGINAL METINII C CODE: bool Contains(uint dwVnum) const
     def Contains(self, dwVnum):
-        i = 0
-        while i < len(self.m_vecItems):
-            if self.m_vecItems[i].vnum == dwVnum:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self.m_vecItems):
+            if self.m_vecItems[LaniatusDefVariables].vnum == dwVnum:
                 return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-            i += 1
+            LaniatusDefVariables += 1
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
 ## Laniatus Games Studio Inc. | WARNING: 'const' methods are not available in Python:
@@ -329,40 +329,40 @@ class ITEM_MANAGER(singleton):
         if self.m_vec_prototype:
             self.m_vec_prototype.clear()
 
-        i = None
+        LaniatusDefVariables = None
 
         self.m_vec_prototype.resize(size)
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         memcpy(self.m_vec_prototype[0], table, sizeof(SItemTable) * size)
-        for i in range(0, size):
-            if 0 != self.m_vec_prototype[i].dwVnumRange:
-                self.m_vec_item_vnum_range_info.append(self.m_vec_prototype[i])
+        for LaniatusDefVariables in range(0, size):
+            if 0 != self.m_vec_prototype[LaniatusDefVariables].dwVnumRange:
+                self.m_vec_item_vnum_range_info.append(self.m_vec_prototype[LaniatusDefVariables])
 
         self.m_map_ItemRefineFrom.clear()
-        for i in range(0, size):
+        for LaniatusDefVariables in range(0, size):
 
-            if (self.m_vec_prototype[i].dwRefinedVnum) != 0:
-                self.m_map_ItemRefineFrom.update({self.m_vec_prototype[i].dwRefinedVnum: self.m_vec_prototype[i].dwVnum})
+            if (self.m_vec_prototype[LaniatusDefVariables].dwRefinedVnum) != 0:
+                self.m_map_ItemRefineFrom.update({self.m_vec_prototype[LaniatusDefVariables].dwRefinedVnum: self.m_vec_prototype[LaniatusDefVariables].dwVnum})
 
             ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-            if self.m_vec_prototype[i].bType == EItemTypes.ITEM_QUEST or IS_SET(self.m_vec_prototype[i].dwFlags, EItemFlag.ITEM_FLAG_QUEST_USE | EItemFlag.ITEM_FLAG_QUEST_USE_MULTIPLE):
-                quest.CQuestManager.instance().RegisterNPCVnum(self.m_vec_prototype[i].dwVnum)
+            if self.m_vec_prototype[LaniatusDefVariables].bType == EItemTypes.ITEM_QUEST or IS_SET(self.m_vec_prototype[LaniatusDefVariables].dwFlags, EItemFlag.ITEM_FLAG_QUEST_USE | EItemFlag.ITEM_FLAG_QUEST_USE_MULTIPLE):
+                quest.CQuestManager.instance().RegisterNPCVnum(self.m_vec_prototype[LaniatusDefVariables].dwVnum)
 
-            if self.m_vec_prototype[i].bType == EItemTypes.ITEM_COSTUME and self.m_vec_prototype[i].bSubType == ECostumeSubTypes.COSTUME_MOUNT:
-                CMobManager.instance().InsertCostumeMount(uint(self.m_vec_prototype[i].alValues[0]))
+            if self.m_vec_prototype[LaniatusDefVariables].bType == EItemTypes.ITEM_COSTUME and self.m_vec_prototype[LaniatusDefVariables].bSubType == ECostumeSubTypes.COSTUME_MOUNT:
+                CMobManager.instance().InsertCostumeMount(uint(self.m_vec_prototype[LaniatusDefVariables].alValues[0]))
 
-            self.m_map_vid.insert(dict.value_type(self.m_vec_prototype[i].dwVnum, self.m_vec_prototype[i]))
+            self.m_map_vid.insert(dict.value_type(self.m_vec_prototype[LaniatusDefVariables].dwVnum, self.m_vec_prototype[LaniatusDefVariables]))
             if test_server:
-                #sys_log(0, "ITEM_INFO %d %s ", self.m_vec_prototype[i].dwVnum, self.m_vec_prototype[i].szName)
+                #sys_log(0, "ITEM_INFO %d %s ", self.m_vec_prototype[LaniatusDefVariables].dwVnum, self.m_vec_prototype[LaniatusDefVariables].szName)
 
         len = 0
         len2 = None
         buf = str(['\0' for _ in range(512)])
 
-        for i in range(0, size):
+        for LaniatusDefVariables in range(0, size):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-            len2 = snprintf(buf[len:], sizeof(buf) - len, "%5u %-16s", self.m_vec_prototype[i].dwVnum, self.m_vec_prototype[i].szLocaleName)
+            len2 = snprintf(buf[len:], sizeof(buf) - len, "%5u %-16s", self.m_vec_prototype[LaniatusDefVariables].dwVnum, self.m_vec_prototype[LaniatusDefVariables].szLocaleName)
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
             if len2 < 0 or len2 >= int(sizeof(buf)) - len:
@@ -578,8 +578,8 @@ class ITEM_MANAGER(singleton):
         if item.GetType() == EItemTypes.ITEM_UNIQUE and item.GetValue(2) != 0:
             item.StartUniqueExpireEvent()
 
-        i = 0
-        while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
             if ELimitTypes.LIMIT_REAL_TIME == item.GetLimitType(uint(i)):
                 if item.GetLimitValue(uint(i)) != 0:
                     item.SetSocket(0, time(0) + item.GetLimitValue(uint(i)), ((not DefineConstants.false)))
@@ -600,7 +600,7 @@ class ITEM_MANAGER(singleton):
                         duration = 60 * 60 * 10
 
                     item.SetSocket(0, duration, ((not DefineConstants.false)))
-            i += 1
+            LaniatusDefVariables += 1
 
         if id == 0:
             if EItemTypes.ITEM_BLEND == item.GetType():
@@ -734,12 +734,12 @@ class ITEM_MANAGER(singleton):
         rnum = self.RealNumber(vnum)
 
         if rnum < 0:
-            i = 0
-            while i < len(self.m_vec_item_vnum_range_info):
-                p = self.m_vec_item_vnum_range_info[i]
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < len(self.m_vec_item_vnum_range_info):
+                p = self.m_vec_item_vnum_range_info[LaniatusDefVariables]
                 if (p.dwVnum < vnum) and vnum < (p.dwVnum + p.dwVnumRange):
                     return p
-                i += 1
+                LaniatusDefVariables += 1
 
             return None
 
@@ -754,12 +754,12 @@ class ITEM_MANAGER(singleton):
 #ORIGINAL METINII C CODE: SItemTable * pTable = &m_vec_prototype[0];
         pTable = self.m_vec_prototype[0]
 
-        i = 0
-        while i < len(self.m_vec_prototype):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self.m_vec_prototype):
             if not _strnicmp(c_pszName, pTable.szLocaleName, len):
                 r_dwVnum.arg_value = pTable.dwVnum
                 return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-            i += 1
+            LaniatusDefVariables += 1
             pTable += 1
 
         return LGEMiscellaneous.DEFINECONSTANTS.false
@@ -771,12 +771,12 @@ class ITEM_MANAGER(singleton):
 #ORIGINAL METINII C CODE: SItemTable * pTable = &m_vec_prototype[0];
         pTable = self.m_vec_prototype[0]
 
-        i = 0
-        while i < len(self.m_vec_prototype):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self.m_vec_prototype):
             if not _strnicmp(c_pszName, pTable.szName, len):
                 r_dwVnum.arg_value = pTable.dwVnum
                 return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-            i += 1
+            LaniatusDefVariables += 1
             pTable += 1
 
         return LGEMiscellaneous.DEFINECONSTANTS.false
@@ -972,13 +972,13 @@ class ITEM_MANAGER(singleton):
             if it is not self.m_map_pkDropItemGroup.end():
                 v = it.second.GetVector()
 
-                i = 0
-                while i < v.size():
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < v.size():
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
-                    iPercent = (v[i].dwPct * iDeltaPercent) / 100
+                    iPercent = (v[LaniatusDefVariables].dwPct * iDeltaPercent) / 100
 
                     if iPercent >= number(1, iRandRange):
-                        item = self.CreateItem(v[i].dwVnum, v[i].iCount, 0, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), -1, DefineConstants.false)
+                        item = self.CreateItem(v[LaniatusDefVariables].dwVnum, v[LaniatusDefVariables].iCount, 0, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), -1, DefineConstants.false)
 
                         if item:
                             if item.GetType() == EItemTypes.ITEM_POLYMORPH:
@@ -986,7 +986,7 @@ class ITEM_MANAGER(singleton):
                                     item.SetSocket(0, pkChr.GetRaceNum(), ((not DefineConstants.false)))
 
                             vec_item.append(item)
-                    i += 1
+                    LaniatusDefVariables += 1
 
             it = self.m_map_pkMobItemGroup.find(pkChr.GetRaceNum())
 
@@ -1008,14 +1008,14 @@ class ITEM_MANAGER(singleton):
                 if it.second.GetLevelLimit() <= iLevel:
                     v = it.second.GetVector()
 
-                    i = 0
-                    while i < v.size():
-                        if v[i].dwPct >= number(1, 1000000):
-                            dwVnum = v[i].dwVNum
-                            item = self.CreateItem(dwVnum, v[i].iCount, 0, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), -1, DefineConstants.false)
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables < v.size():
+                        if v[LaniatusDefVariables].dwPct >= number(1, 1000000):
+                            dwVnum = v[LaniatusDefVariables].dwVNum
+                            item = self.CreateItem(dwVnum, v[LaniatusDefVariables].iCount, 0, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), -1, DefineConstants.false)
                             if item:
                                 vec_item.append(item)
-                        i += 1
+                        LaniatusDefVariables += 1
 
             if pkKiller.GetPremiumRemainSeconds(EPremiumTypes.PREMIUM_ITEM) > 0 or pkKiller.IsEquipUniqueGroup(uint(Globals.UNIQUE_GROUP_DOUBLE_ITEM)):
                 it = self.m_map_pkGloveItemGroup.find(pkChr.GetRaceNum())
@@ -1023,17 +1023,17 @@ class ITEM_MANAGER(singleton):
                 if it is not self.m_map_pkGloveItemGroup.end():
                     v = it.second.GetVector()
 
-                    i = 0
-                    while i < v.size():
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables < v.size():
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
-                        iPercent = (v[i].dwPct * iDeltaPercent) / 100
+                        iPercent = (v[LaniatusDefVariables].dwPct * iDeltaPercent) / 100
 
                         if iPercent >= number(1, iRandRange):
-                            dwVnum = v[i].dwVnum
-                            item = self.CreateItem(dwVnum, v[i].iCount, 0, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), -1, DefineConstants.false)
+                            dwVnum = v[LaniatusDefVariables].dwVnum
+                            item = self.CreateItem(dwVnum, v[LaniatusDefVariables].iCount, 0, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), -1, DefineConstants.false)
                             if item:
                                 vec_item.append(item)
-                        i += 1
+                        LaniatusDefVariables += 1
 
         if pkChr.GetMobDropItemVnum() != 0:
             it = self.m_map_dwEtcItemDropProb.find(pkChr.GetMobDropItemVnum())
@@ -1092,23 +1092,23 @@ class ITEM_MANAGER(singleton):
     @staticmethod
     def CopyAllAttrTo(pkOldItem, pkNewItem):
         if pkOldItem.IsAccessoryForSocket():
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 pkNewItem.SetSocket(i, pkOldItem.GetSocket(i), ((not DefineConstants.false)))
-                i += 1
+                LaniatusDefVariables += 1
         else:
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 if pkOldItem.GetSocket(i) == 0:
                     break
                 else:
                     pkNewItem.SetSocket(i, 1, ((not DefineConstants.false)))
-                i += 1
+                LaniatusDefVariables += 1
 
             slot = 0
 
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 socket = pkOldItem.GetSocket(i)
                 ITEM_BROKEN_METIN_VNUM = 28960
                 if socket > 2 and socket != ITEM_BROKEN_METIN_VNUM:
@@ -1116,7 +1116,7 @@ class ITEM_MANAGER(singleton):
 #ORIGINAL METINII C CODE: pkNewItem->SetSocket(slot++, socket);
                     pkNewItem.SetSocket(slot, socket, ((not DefineConstants.false)))
                     slot += 1
-                i += 1
+                LaniatusDefVariables += 1
 
         pkOldItem.CopyAttributeTo(pkNewItem)
 
@@ -1344,8 +1344,8 @@ class ITEM_MANAGER(singleton):
 
         if pkChr.GetLevel() >= 30 and Globals.GetDropPerKillPct(50, 100, iDeltaPercent, "medal_part_drop") >= number(1, iRandRange):
             drop_items = [30265, 30266, 30267, 30268, 30269]
-            i = number(0, 4)
-            item = self.CreateItem(drop_items[i], 1, 0, DefineConstants.false, -1, DefineConstants.false)
+            LaniatusDefVariables = number(0, 4)
+            item = self.CreateItem(drop_items[LaniatusDefVariables], 1, 0, DefineConstants.false, -1, DefineConstants.false)
             if item is not None:
                 vec_item.append(item)
 

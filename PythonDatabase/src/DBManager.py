@@ -18,12 +18,12 @@ class eSQL_SLOT(Enum):
 
 class CDBManager(singleton):
     def Initialize(self):
-        i = 0
-        while i < SQL_MAX_NUM:
-            m_mainSQL[i] = None
-            m_directSQL[i] = None
-            m_asyncSQL[i] = None
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < SQL_MAX_NUM:
+            m_mainSQL[LaniatusDefVariables] = None
+            m_directSQL[LaniatusDefVariables] = None
+            m_asyncSQL[LaniatusDefVariables] = None
+            LaniatusDefVariables += 1
 
     def Destroy(self):
         Clear()
@@ -35,35 +35,35 @@ class CDBManager(singleton):
         Destroy()
 
     def Clear(self):
-        i = 0
-        while i < SQL_MAX_NUM:
-            if m_mainSQL[i]:
-                m_mainSQL[i] = None
-                m_mainSQL[i] = None
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < SQL_MAX_NUM:
+            if m_mainSQL[LaniatusDefVariables]:
+                m_mainSQL[LaniatusDefVariables] = None
+                m_mainSQL[LaniatusDefVariables] = None
 
-            if m_directSQL[i]:
-                m_directSQL[i] = None
-                m_directSQL[i] = None
+            if m_directSQL[LaniatusDefVariables]:
+                m_directSQL[LaniatusDefVariables] = None
+                m_directSQL[LaniatusDefVariables] = None
 
-            if m_asyncSQL[i]:
-                m_asyncSQL[i] = None
-                m_asyncSQL[i] = None
-            i += 1
+            if m_asyncSQL[LaniatusDefVariables]:
+                m_asyncSQL[LaniatusDefVariables] = None
+                m_asyncSQL[LaniatusDefVariables] = None
+            LaniatusDefVariables += 1
 
         Initialize()
 
     def Quit(self):
-        i = 0
-        while i < SQL_MAX_NUM:
-            if m_mainSQL[i]:
-                m_mainSQL[i].Quit()
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < SQL_MAX_NUM:
+            if m_mainSQL[LaniatusDefVariables]:
+                m_mainSQL[LaniatusDefVariables].Quit()
 
-            if m_asyncSQL[i]:
-                m_asyncSQL[i].Quit()
+            if m_asyncSQL[LaniatusDefVariables]:
+                m_asyncSQL[LaniatusDefVariables].Quit()
 
-            if m_directSQL[i]:
-                m_directSQL[i].Quit()
-            i += 1
+            if m_directSQL[LaniatusDefVariables]:
+                m_directSQL[LaniatusDefVariables].Quit()
+            LaniatusDefVariables += 1
 
     def Connect(self, iSlot, db_address, db_port, db_name, user, pwd):
         if db_address is None or db_name is None:
@@ -106,11 +106,11 @@ class CDBManager(singleton):
     def PopResult(self):
         p = None
 
-        i = 0
-        while i < SQL_MAX_NUM:
-            if m_mainSQL[i] and m_mainSQL[i].PopResult(p):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < SQL_MAX_NUM:
+            if m_mainSQL[LaniatusDefVariables] and m_mainSQL[LaniatusDefVariables].PopResult(p):
                 return p
-            i += 1
+            LaniatusDefVariables += 1
 
         return None
 
@@ -127,33 +127,33 @@ class CDBManager(singleton):
         return mysql_real_escape_string(m_directSQL[iSlot].GetSQLHandle(), str(to), str(from_), length)
 
     def CountReturnQuery(self, i):
-        return uint(m_mainSQL[i].CountQuery() if m_mainSQL[i] else 0)
+        return uint(m_mainSQL[LaniatusDefVariables].CountQuery() if m_mainSQL[LaniatusDefVariables] else 0)
     def CountReturnResult(self, i):
-        return uint(m_mainSQL[i].CountResult() if m_mainSQL[i] else 0)
+        return uint(m_mainSQL[LaniatusDefVariables].CountResult() if m_mainSQL[LaniatusDefVariables] else 0)
     def CountReturnQueryFinished(self, i):
-        return uint(m_mainSQL[i].CountQueryFinished() if m_mainSQL[i] else 0)
+        return uint(m_mainSQL[LaniatusDefVariables].CountQueryFinished() if m_mainSQL[LaniatusDefVariables] else 0)
     def CountReturnCopiedQuery(self, i):
-        return uint(m_mainSQL[i].GetCopiedQueryCount() if m_mainSQL[i] else 0)
+        return uint(m_mainSQL[LaniatusDefVariables].GetCopiedQueryCount() if m_mainSQL[LaniatusDefVariables] else 0)
     def CountAsyncQuery(self, i):
-        return uint(m_asyncSQL[i].CountQuery() if m_asyncSQL[i] else 0)
+        return uint(m_asyncSQL[LaniatusDefVariables].CountQuery() if m_asyncSQL[LaniatusDefVariables] else 0)
     def CountAsyncResult(self, i):
-        return uint(m_asyncSQL[i].CountResult() if m_asyncSQL[i] else 0)
+        return uint(m_asyncSQL[LaniatusDefVariables].CountResult() if m_asyncSQL[LaniatusDefVariables] else 0)
     def CountAsyncQueryFinished(self, i):
-        return uint(m_asyncSQL[i].CountQueryFinished() if m_asyncSQL[i] else 0)
+        return uint(m_asyncSQL[LaniatusDefVariables].CountQueryFinished() if m_asyncSQL[LaniatusDefVariables] else 0)
     def CountAsyncCopiedQuery(self, i):
-        return uint(m_asyncSQL[i].GetCopiedQueryCount() if m_asyncSQL[i] else 0)
+        return uint(m_asyncSQL[LaniatusDefVariables].GetCopiedQueryCount() if m_asyncSQL[LaniatusDefVariables] else 0)
 
     def ResetCounter(self):
-        i = 0
-        while i < SQL_MAX_NUM:
-            if m_mainSQL[i]:
-                m_mainSQL[i].ResetQueryFinished()
-                m_mainSQL[i].ResetCopiedQueryCount()
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < SQL_MAX_NUM:
+            if m_mainSQL[LaniatusDefVariables]:
+                m_mainSQL[LaniatusDefVariables].ResetQueryFinished()
+                m_mainSQL[LaniatusDefVariables].ResetCopiedQueryCount()
 
-            if m_asyncSQL[i]:
-                m_asyncSQL[i].ResetQueryFinished()
-                m_asyncSQL[i].ResetCopiedQueryCount()
-            i += 1
+            if m_asyncSQL[LaniatusDefVariables]:
+                m_asyncSQL[LaniatusDefVariables].ResetQueryFinished()
+                m_asyncSQL[LaniatusDefVariables].ResetCopiedQueryCount()
+            LaniatusDefVariables += 1
 
 
 

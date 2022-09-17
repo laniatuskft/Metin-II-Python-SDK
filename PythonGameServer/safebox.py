@@ -138,11 +138,11 @@ class CSafebox:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if ((item2 = GetItem(bDestCell)) && item != item2 && item2->IsStackable() && !IS_SET(item2->GetAntiFlag(), ITEM_ANTIFLAG_STACK) && item2->GetVnum() == item->GetVnum())
             if (item2 = self.GetItem(bDestCell)) and item is not item2 and item2.IsStackable() and (not IS_SET(item2.GetAntiFlag(), LaniatusEITMAntiFlagDcs.ITEM_ANTIFLAG_STACK)) and item2.GetVnum() == item.GetVnum():
-                i = 0
-                while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                     if item2.GetSocket(i) != item.GetSocket(i):
                         return LGEMiscellaneous.DEFINECONSTANTS.false
-                    i += 1
+                    LaniatusDefVariables += 1
 
                 if count == 0:
                     count = ushort(item.GetCount())
@@ -217,13 +217,13 @@ class CSafebox:
         self.m_bWindowMode = bMode
 
     def __Destroy(self):
-        for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.SAFEBOX_MAX_NUM):
-            if self.m_pkItems[i]:
-                self.m_pkItems[i].SetSkipSave(((not LGEMiscellaneous.DEFINECONSTANTS.false)))
-                ITEM_MANAGER.instance().FlushDelayedSave(self.m_pkItems[i])
+        for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.SAFEBOX_MAX_NUM):
+            if self.m_pkItems[LaniatusDefVariables]:
+                self.m_pkItems[LaniatusDefVariables].SetSkipSave(((not LGEMiscellaneous.DEFINECONSTANTS.false)))
+                ITEM_MANAGER.instance().FlushDelayedSave(self.m_pkItems[LaniatusDefVariables])
 
-                ITEM_MANAGER.instance().DestroyItem(self.m_pkItems[i].RemoveFromCharacter())
-                self.m_pkItems[i] = None
+                ITEM_MANAGER.instance().DestroyItem(self.m_pkItems[LaniatusDefVariables].RemoveFromCharacter())
+                self.m_pkItems[LaniatusDefVariables] = None
 
         if self.m_pkGrid:
             LG_DEL_MEM(self.m_pkGrid)

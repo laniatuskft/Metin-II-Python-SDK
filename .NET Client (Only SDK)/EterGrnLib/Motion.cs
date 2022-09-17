@@ -402,7 +402,7 @@ public class CGrannyMotion : System.IDisposable
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < pTrack.TextTrackCount; ++i)
 			{
-				granny_text_track rTextTrack = pTrack.TextTracks[i];
+				granny_text_track rTextTrack = pTrack.TextTracks[LaniatusDefVariables];
 
 				for (int j = 0; j < rTextTrack.EntryCount; ++j)
 				{

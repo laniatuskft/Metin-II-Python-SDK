@@ -1057,7 +1057,7 @@ class quest: #this class replaces the original namespace 'quest'
                             CHARACTER_MANAGER.instance().SpawnMob(uint(xmas.MOB_XMAS_FIRWORK_SELLER_VNUM), p.lMapIndex, posBase.x + p.x * 100, posBase.y + p.y * 100, 0, LGEMiscellaneous.DEFINECONSTANTS.false, -1, ((not DefineConstants.false)))
                         p += 1
                 elif value == 0 and prev_value != 0:
-                    i = CharacterVectorInteractor()
+                    LaniatusDefVariables = CharacterVectorInteractor()
 
                     if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(uint(xmas.MOB_XMAS_FIRWORK_SELLER_VNUM), i):
                         it = i.begin()
@@ -1090,7 +1090,7 @@ class quest: #this class replaces the original namespace 'quest'
                             CHARACTER_MANAGER.instance().SpawnMob(EVENTNPC, pPosition.lMapIndex, pos.x+pPosition.x *100, pos.y+pPosition.y *100, 0, LGEMiscellaneous.DEFINECONSTANTS.false, -1, ((not DefineConstants.false)))
                         pPosition += 1
                 elif value == 0 and prev_value != 0:
-                    i = CharacterVectorInteractor()
+                    LaniatusDefVariables = CharacterVectorInteractor()
 
                     if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(EVENTNPC, i):
                         it = i.begin()
@@ -1109,7 +1109,7 @@ class quest: #this class replaces the original namespace 'quest'
                 ## Laniatus Games Studio Inc. | NOTE: This static local variable declaration (not allowed in Python) has been moved just prior to the method:
                 #                static uint new_santa = 20126
                 if value != 0:
-                    i = CharacterVectorInteractor()
+                    LaniatusDefVariables = CharacterVectorInteractor()
                     map1_santa_exist = LGEMiscellaneous.DEFINECONSTANTS.false
                     map21_santa_exist = LGEMiscellaneous.DEFINECONSTANTS.false
                     map41_santa_exist = LGEMiscellaneous.DEFINECONSTANTS.false
@@ -1140,7 +1140,7 @@ class quest: #this class replaces the original namespace 'quest'
                         pkSectreeMap = SECTREE_MANAGER.instance().GetMap(41)
                         CHARACTER_MANAGER.instance().SpawnMob(SetEventFlag_new_santa, 41, pkSectreeMap.m_setting.iBaseX + 35700, pkSectreeMap.m_setting.iBaseY + 74300, 0, LGEMiscellaneous.DEFINECONSTANTS.false, 140, ((not LGEMiscellaneous.DEFINECONSTANTS.false)))
                 else:
-                    i = CharacterVectorInteractor()
+                    LaniatusDefVariables = CharacterVectorInteractor()
                     CHARACTER_MANAGER.instance().GetCharactersByRaceNum(SetEventFlag_new_santa, i)
 
                     it = i.begin()

@@ -1473,7 +1473,7 @@ public class CSoundManager2D : CSoundBase
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < INSTANCE_MAX_COUNT; ++i)
 			{
-				ms_Instances[i].Initialize();
+				ms_Instances[LaniatusDefVariables].Initialize();
 			}
 
 			return true;
@@ -1483,7 +1483,7 @@ public class CSoundManager2D : CSoundBase
 		{
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < INSTANCE_MAX_COUNT; ++i)
 			{
-				ms_Instances[i].Destroy();
+				ms_Instances[LaniatusDefVariables].Destroy();
 			}
 
 			if (ms_DIGDriver != null)

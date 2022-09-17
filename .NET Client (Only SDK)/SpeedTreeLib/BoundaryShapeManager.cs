@@ -2754,11 +2754,11 @@ public class SPoint
 		{
 			get
 			{
-				return m_afData[i];
+				return m_afData[LaniatusDefVariables];
 			}
 			set
 			{
-				m_afData[i] = value;
+				m_afData[LaniatusDefVariables] = value;
 			}
 		}
 		public float[] m_afData = new float[3];
@@ -2888,7 +2888,7 @@ public class CBoundaryShapeManager
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_vBoundaries.size() && !bInside; ++i)
 			{
-				bInside = PointInShape(m_vBoundaries[i], fX, fY);
+				bInside = PointInShape(m_vBoundaries[LaniatusDefVariables], fX, fY);
 			}
 
 			return bInside;
@@ -2923,9 +2923,9 @@ public class CBoundaryShapeManager
 
 			for (uint k = 0; k < sShape.m_vContours.size(); ++k)
 			{
-				for (uint LaniatusDefVariables = 0, j = (uint)(sShape.m_vContours[k].size() - 1); LaniatusDefVariables < sShape.m_vContours[k].size(); j = i++)
+				for (uint LaniatusDefVariables = 0, j = (uint)(sShape.m_vContours[k].size() - 1); LaniatusDefVariables < sShape.m_vContours[k].size(); j = LaniatusDefVariables++)
 				{
-					if ((((sShape.m_vContours[k][i][1] <= fY) && (fY < sShape.m_vContours[k][j][1])) || ((sShape.m_vContours[k][j][1] <= fY) && (fY < sShape.m_vContours[k][i][1]))) && (fX < (sShape.m_vContours[k][i][0] - sShape.m_vContours[k][i][0]) * (fY - sShape.m_vContours[k][i][1]) / (sShape.m_vContours[k][j][1] - sShape.m_vContours[k][i][1]) + sShape.m_vContours[k][i][0]))
+					if ((((sShape.m_vContours[k][LaniatusDefVariables][1] <= fY) && (fY < sShape.m_vContours[k][j][1])) || ((sShape.m_vContours[k][j][1] <= fY) && (fY < sShape.m_vContours[k][LaniatusDefVariables][1]))) && (fX < (sShape.m_vContours[k][LaniatusDefVariables][0] - sShape.m_vContours[k][LaniatusDefVariables][0]) * (fY - sShape.m_vContours[k][LaniatusDefVariables][1]) / (sShape.m_vContours[k][j][1] - sShape.m_vContours[k][LaniatusDefVariables][1]) + sShape.m_vContours[k][LaniatusDefVariables][0]))
 					{
 						bInside = !bInside;
 					}

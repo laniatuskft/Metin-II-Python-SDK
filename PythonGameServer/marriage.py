@@ -359,11 +359,11 @@ class marriage: #this class replaces the original namespace 'marriage'
             return None
 
         def IsMarriageUniqueItem(self, dwItemVnum):
-            i = 0
-            while i < MAX_MARRIAGE_UNIQUE_ITEM:
-                if g_ItemBonus[i].dwVnum == dwItemVnum:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < MAX_MARRIAGE_UNIQUE_ITEM:
+                if g_ItemBonus[LaniatusDefVariables].dwVnum == dwItemVnum:
                     return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-                i += 1
+                LaniatusDefVariables += 1
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
         def IsMarried(self, dwPlayerID):

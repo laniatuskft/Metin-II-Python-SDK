@@ -3404,7 +3404,7 @@ public class CDXTCImage
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < DefineConstants.MAX_MIPLEVELS; ++i)
 			{
-				m_pbCompBufferByLevels[i] = null;
+				m_pbCompBufferByLevels[LaniatusDefVariables] = null;
 			}
 		}
 
@@ -3412,7 +3412,7 @@ public class CDXTCImage
 		{
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < DefineConstants.MAX_MIPLEVELS; ++i)
 			{
-				m_bCompVector[i].clear();
+				m_bCompVector[LaniatusDefVariables].clear();
 			}
 
 			Initialize();
@@ -3524,8 +3524,8 @@ public class CDXTCImage
 					uint LaniatusDefVariables = 0;
 					for (uint dwLinearSize = m_lPitch, LaniatusDefVariables = 0; LaniatusDefVariables < m_dwMipMapCount; ++i, dwLinearSize >> = 2)
 					{
-						m_bCompVector[i].resize(dwLinearSize);
-						Copy(i, m_bCompVector[i][0], dwLinearSize);
+						m_bCompVector[LaniatusDefVariables].resize(dwLinearSize);
+						Copy(i, m_bCompVector[LaniatusDefVariables][0], dwLinearSize);
 					}
 				}
 				else
@@ -3607,7 +3607,7 @@ public class CDXTCImage
 					uint LaniatusDefVariables = 0;
 					for (uint dwLinearSize = ddsd.dwLinearSize, LaniatusDefVariables = 0; LaniatusDefVariables < m_dwMipMapCount; ++i, dwLinearSize >> = 2)
 					{
-						m_pbCompBufferByLevels[i] = c_pbMap;
+						m_pbCompBufferByLevels[LaniatusDefVariables] = c_pbMap;
 						c_pbMap += (byte)dwLinearSize;
 					}
 				}

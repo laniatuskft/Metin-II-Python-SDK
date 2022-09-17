@@ -156,23 +156,23 @@ def RemoveBleeding():
 ##endif
 
 def ApplyMobAttribute(table):
-    i = 0
-    while i < EMobEnchants.MOB_ENCHANTS_MAX_NUM:
-        if table.cEnchants[i] != 0:
-            ApplyPoint(aiMobEnchantApplyIdx[i], table.cEnchants[i])
-        i += 1
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EMobEnchants.MOB_ENCHANTS_MAX_NUM:
+        if table.cEnchants[LaniatusDefVariables] != 0:
+            ApplyPoint(aiMobEnchantApplyIdx[LaniatusDefVariables], table.cEnchants[LaniatusDefVariables])
+        LaniatusDefVariables += 1
 
-    i = 0
-    while i < EMobResists.MOB_RESISTS_MAX_NUM:
-        if table.cResists[i] != 0:
-            ApplyPoint(aiMobResistsApplyIdx[i], table.cResists[i])
-        i += 1
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EMobResists.MOB_RESISTS_MAX_NUM:
+        if table.cResists[LaniatusDefVariables] != 0:
+            ApplyPoint(aiMobResistsApplyIdx[LaniatusDefVariables], table.cResists[LaniatusDefVariables])
+        LaniatusDefVariables += 1
 
 def UpdateImmuneFlags():
     m_pointsInstant.dwImmuneFlag = 0
 
-    i = 0
-    while i < EWearPositions.WEAR_MAX_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EWearPositions.WEAR_MAX_NUM:
         if GetWear(i):
             i2 = 0
             while i2 < EItemMisc.ITEM_APPLY_MAX_NUM:
@@ -209,7 +209,7 @@ def UpdateImmuneFlags():
                         ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'SET_BIT' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
                         SET_BIT(m_pointsInstant.dwImmuneFlag, EImmuneFlags.IMMUNE_FALL)
                 i3 += 1
-        i += 1
+        LaniatusDefVariables += 1
 
 def IsImmune(dwImmuneFlag):
     UpdateImmuneFlags()

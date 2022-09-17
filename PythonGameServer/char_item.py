@@ -86,8 +86,8 @@ def SetItem(Cell, pItem):
 
             if pOld:
                 if wCell < LGEMiscellaneous.INVENTORY_MAX_NUM:
-                    i = 0
-                    while i < pOld.GetSize():
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables < pOld.GetSize():
                         p = wCell + (i * 5)
 
                         if p >= LGEMiscellaneous.INVENTORY_MAX_NUM:
@@ -97,21 +97,21 @@ def SetItem(Cell, pItem):
                             continue
 
                         m_pointsInstant.wItemGrid[p] = 0
-                        i += 1
+                        LaniatusDefVariables += 1
                 else:
                     m_pointsInstant.wItemGrid[wCell] = 0
 
             if pItem:
                 if wCell < LGEMiscellaneous.INVENTORY_MAX_NUM:
-                    i = 0
-                    while i < pItem.GetSize():
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables < pItem.GetSize():
                         p = wCell + (i * 5)
 
                         if p >= LGEMiscellaneous.INVENTORY_MAX_NUM:
                             continue
 
                         m_pointsInstant.wItemGrid[p] = wCell + 1
-                        i += 1
+                        LaniatusDefVariables += 1
                 else:
                     m_pointsInstant.wItemGrid[wCell] = wCell + 1
 
@@ -122,8 +122,8 @@ def SetItem(Cell, pItem):
 
             if pOld:
                 if wCell < EDSInventoryMaxNum.DRAGON_SOUL_INVENTORY_MAX_NUM:
-                    i = 0
-                    while i < pOld.GetSize():
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables < pOld.GetSize():
                         p = wCell + (i * int(LGEMiscellaneous.DRAGON_SOUL_BOX_COLUMN_NUM))
 
                         if p >= EDSInventoryMaxNum.DRAGON_SOUL_INVENTORY_MAX_NUM:
@@ -133,7 +133,7 @@ def SetItem(Cell, pItem):
                             continue
 
                         m_pointsInstant.wDSItemGrid[p] = 0
-                        i += 1
+                        LaniatusDefVariables += 1
                 else:
                     m_pointsInstant.wDSItemGrid[wCell] = 0
 
@@ -143,15 +143,15 @@ def SetItem(Cell, pItem):
                     return
 
                 if wCell < EDSInventoryMaxNum.DRAGON_SOUL_INVENTORY_MAX_NUM:
-                    i = 0
-                    while i < pItem.GetSize():
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables < pItem.GetSize():
                         p = wCell + (i * int(LGEMiscellaneous.DRAGON_SOUL_BOX_COLUMN_NUM))
 
                         if p >= EDSInventoryMaxNum.DRAGON_SOUL_INVENTORY_MAX_NUM:
                             continue
 
                         m_pointsInstant.wDSItemGrid[p] = wCell + 1
-                        i += 1
+                        LaniatusDefVariables += 1
                 else:
                     m_pointsInstant.wDSItemGrid[wCell] = wCell + 1
 
@@ -237,11 +237,11 @@ def SetWear(wCell, item):
             RemoveAffect(LaniatusETalentXes.LG_SKILL_GEOMKYUNG)
 
 def ClearItem():
-    i = None
+    LaniatusDefVariables = None
     item = None
 
-    i = 0
-    while i < LGEMiscellaneous2.INVENTORY_AND_EQUIP_SLOT_MAX:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous2.INVENTORY_AND_EQUIP_SLOT_MAX:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if ((item = GetInventoryItem(i)))
         if (item = GetInventoryItem(i)):
@@ -252,9 +252,9 @@ def ClearItem():
             ITEM_MANAGER.instance().DestroyItem(item)
 
             SyncQuickslot(LG_QUICKSLOT_TYPE_ITEM, i, 255)
-        i += 1
-    i = 0
-    while i < EDSInventoryMaxNum.DRAGON_SOUL_INVENTORY_MAX_NUM:
+        LaniatusDefVariables += 1
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EDSInventoryMaxNum.DRAGON_SOUL_INVENTORY_MAX_NUM:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if ((item = GetItem(TItemPos(DRAGON_SOUL_INVENTORY, i))))
         if (item = GetItem(TItemPos(EWindows.DRAGON_SOUL_INVENTORY, i))):
@@ -263,7 +263,7 @@ def ClearItem():
 
             item.RemoveFromCharacter()
             ITEM_MANAGER.instance().DestroyItem(item)
-        i += 1
+        LaniatusDefVariables += 1
 
 ## Laniatus Games Studio Inc. | WARNING: 'const' methods are not available in Python:
 #ORIGINAL METINII C CODE: bool CHARACTER::IsEmptyItemGrid(TItemPos Cell, byte bSize, int iExceptionCell) const
@@ -410,11 +410,11 @@ def IsEmptyItemGrid(Cell, bSize, iExceptionCell):
 ## Laniatus Games Studio Inc. | WARNING: 'const' methods are not available in Python:
 #ORIGINAL METINII C CODE: int CHARACTER::GetEmptyInventory(byte size) const
 def GetEmptyInventory(size):
-    i = 0
-    while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
         if IsEmptyItemGrid(TItemPos(EWindows.INVENTORY, i), size):
             return i
-        i += 1
+        LaniatusDefVariables += 1
     return -1
 
 ## Laniatus Games Studio Inc. | WARNING: 'const' methods are not available in Python:
@@ -430,11 +430,11 @@ def GetEmptyDragonSoulInventory(pItem):
     if LGEMiscellaneous.DEFINECONSTANTS.WORD_MAX == wBaseCell:
         return -1
 
-    i = 0
-    while i < LGEMiscellaneous.DRAGON_SOUL_BOX_SIZE:
-        if IsEmptyItemGrid(TItemPos(EWindows.DRAGON_SOUL_INVENTORY, i + wBaseCell), bSize):
-            return i + wBaseCell
-        i += 1
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.DRAGON_SOUL_BOX_SIZE:
+        if IsEmptyItemGrid(TItemPos(EWindows.DRAGON_SOUL_INVENTORY, LaniatusDefVariables + wBaseCell), bSize):
+            return LaniatusDefVariables + wBaseCell
+        LaniatusDefVariables += 1
 
     return -1
 
@@ -450,11 +450,11 @@ def CopyDragonSoulItemGrid(vDragonSoulItemGrid):
 def CountEmptyInventory():
     count = 0
 
-    i = 0
-    while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
         if GetInventoryItem(i):
             count += GetInventoryItem(i).GetSize()
-        i += 1
+        LaniatusDefVariables += 1
 
     return (LGEMiscellaneous.INVENTORY_MAX_NUM - count)
 
@@ -515,19 +515,19 @@ def DoRefine(item, bMoneyOnly):
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
     if (not bMoneyOnly) and RefineChance == 0:
-        i = 0
-        while i < prt.material_count:
-            if CountSpecifyItem(prt.materials[i].vnum, item.GetCell()) < prt.materials[i].count:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < prt.material_count:
+            if CountSpecifyItem(prt.materials[LaniatusDefVariables].vnum, item.GetCell()) < prt.materials[LaniatusDefVariables].count:
                 if test_server:
-                    ChatPacket(EChatType.CHAT_TYPE_INFO, "Find %d, count %d, require %d", prt.materials[i].vnum, CountSpecifyItem(prt.materials[i].vnum), prt.materials[i].count)
+                    ChatPacket(EChatType.CHAT_TYPE_INFO, "Find %d, count %d, require %d", prt.materials[LaniatusDefVariables].vnum, CountSpecifyItem(prt.materials[LaniatusDefVariables].vnum), prt.materials[LaniatusDefVariables].count)
                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Not enough material for an advancement."))
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            i += 1
+            LaniatusDefVariables += 1
 
-        i = 0
-        while i < prt.material_count:
-            RemoveSpecifyItem(prt.materials[i].vnum, prt.materials[i].count, item.GetCell())
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < prt.material_count:
+            RemoveSpecifyItem(prt.materials[LaniatusDefVariables].vnum, prt.materials[LaniatusDefVariables].count, item.GetCell())
+            LaniatusDefVariables += 1
 
     prob = number(1, 100)
 
@@ -644,19 +644,19 @@ def DoRefineWithScroll(item):
         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Not enough Yang for an advancement."))
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
-    i = 0
-    while i < prt.material_count:
-        if CountSpecifyItem(prt.materials[i].vnum, item.GetCell()) < prt.materials[i].count:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < prt.material_count:
+        if CountSpecifyItem(prt.materials[LaniatusDefVariables].vnum, item.GetCell()) < prt.materials[LaniatusDefVariables].count:
             if test_server:
-                ChatPacket(EChatType.CHAT_TYPE_INFO, "Find %d, count %d, require %d", prt.materials[i].vnum, CountSpecifyItem(prt.materials[i].vnum), prt.materials[i].count)
+                ChatPacket(EChatType.CHAT_TYPE_INFO, "Find %d, count %d, require %d", prt.materials[LaniatusDefVariables].vnum, CountSpecifyItem(prt.materials[LaniatusDefVariables].vnum), prt.materials[LaniatusDefVariables].count)
             ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Not enough material for an advancement."))
             return LGEMiscellaneous.DEFINECONSTANTS.false
-        i += 1
+        LaniatusDefVariables += 1
 
-    i = 0
-    while i < prt.material_count:
-        RemoveSpecifyItem(prt.materials[i].vnum, prt.materials[i].count, item.GetCell())
-        i += 1
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < prt.material_count:
+        RemoveSpecifyItem(prt.materials[LaniatusDefVariables].vnum, prt.materials[LaniatusDefVariables].count, item.GetCell())
+        LaniatusDefVariables += 1
 
     prob = number(1, 100)
     success_prob = prt.prob
@@ -846,22 +846,22 @@ def RefineItem(pkItem, pkTarget):
     elif pkItem.GetSubType() == EUseSubTypes.USE_DETACHMENT and IS_SET(pkTarget.GetFlag(), EItemFlag.ITEM_FLAG_REFINEABLE):
         bHasMetinStone = LGEMiscellaneous.DEFINECONSTANTS.false
 
-        i = 0
-        while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
             socket = pkTarget.GetSocket(i)
             if socket > 2 and socket != ITEM_BROKEN_METIN_VNUM:
                 bHasMetinStone = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
                 break
-            i += 1
+            LaniatusDefVariables += 1
 
         if bHasMetinStone:
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 socket = pkTarget.GetSocket(i)
                 if socket > 2 and socket != ITEM_BROKEN_METIN_VNUM:
                     AutoGiveItem(socket)
                     pkTarget.SetSocket(i, ITEM_BROKEN_METIN_VNUM, ((not DefineConstants.false)))
-                i += 1
+                LaniatusDefVariables += 1
             pkItem.SetCount(pkItem.GetCount() - 1)
             return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
         else:
@@ -999,21 +999,21 @@ def UseItemEx(item, DestCell):
 
     wDestCell = DestCell.cell
     bDestInven = DestCell.window_type
-    i = 0
-    while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
-        limitValue = item.GetProto().aLimits[i].lValue
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
+        limitValue = item.GetProto().aLimits[LaniatusDefVariables].lValue
 
-        if item.GetProto().aLimits[i].bType == ELimitTypes.LIMIT_LEVEL:
+        if item.GetProto().aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_LEVEL:
             if GetLevel() < limitValue:
                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Your level is lower than the Level of the Item."))
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-        elif item.GetProto().aLimits[i].bType == ELimitTypes.LIMIT_REAL_TIME_START_FIRST_USE:
+        elif item.GetProto().aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_REAL_TIME_START_FIRST_USE:
             iLimitRealtimeStartFirstUseFlagIndex = i
 
-        elif item.GetProto().aLimits[i].bType == ELimitTypes.LIMIT_TIMER_BASED_ON_WEAR:
+        elif item.GetProto().aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_TIMER_BASED_ON_WEAR:
             iLimitTimerBasedOnWearFlagIndex = i
-        i += 1
+        LaniatusDefVariables += 1
 
     if test_server:
         #sys_log(0, "USE_ITEM %s, Inven %d, Cell %d, ItemType %d, SubType %d", item.GetName(LOCALE_LANIATUS), bDestInven, wDestCell, item.GetType(), item.GetSubType())
@@ -1185,33 +1185,33 @@ def UseItemEx(item, DestCell):
                     ITEM_MANAGER.instance().RemoveItem(item, NULL)
                     ITEM_MANAGER.instance().RemoveItem(item2, NULL)
 
-                    for i in range(0, count):
-                        if dwVnums[i] == CSpecialItemGroup.EGiveType.GOLD:
-                            ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Yang."), dwCounts[i])
-                        elif dwVnums[i] == CSpecialItemGroup.EGiveType.EXP:
+                    for LaniatusDefVariables in range(0, count):
+                        if dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.GOLD:
+                            ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Yang."), dwCounts[LaniatusDefVariables])
+                        elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.EXP:
                             ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Mysterious light comes out of this box."))
-                            ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Experience Points."), dwCounts[i])
-                        elif dwVnums[i] == CSpecialItemGroup.EGiveType.MOB:
+                            ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Experience Points."), dwCounts[LaniatusDefVariables])
+                        elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.MOB:
                             ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("A monster came out of the box!"))
-                        elif dwVnums[i] == CSpecialItemGroup.EGiveType.SLOW:
+                        elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.SLOW:
                             ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("If you inhale the red smoke coming out of the box, you will move faster!"))
-                        elif dwVnums[i] == CSpecialItemGroup.EGiveType.DRAIN_HP:
+                        elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.DRAIN_HP:
                             ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("The box exploded suddenly! Your HP are lower."))
-                        elif dwVnums[i] == CSpecialItemGroup.EGiveType.POISON:
+                        elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.POISON:
                             ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("If you inhale the green smoke coming from the box, poison will spread in your body!"))
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no preprocessor in Python:
 ##if ENABLE_WOLFMAN
-                        elif dwVnums[i] == CSpecialItemGroup.EGiveType.BLEEDING:
+                        elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.BLEEDING:
                             ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("If you inhale the green smoke coming from the box, poison will spread in your body!"))
 ##endif
-                        elif dwVnums[i] == CSpecialItemGroup.EGiveType.MOB_GROUP:
+                        elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.MOB_GROUP:
                             ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("A monster came out of the box!"))
                         else:
-                            if item_gets[i]:
-                                if dwCounts[i] > 1:
-                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There are %s of %d in the box."), item_gets[i].GetName(LOCALE_LANIATUS), dwCounts[i])
+                            if item_gets[LaniatusDefVariables]:
+                                if dwCounts[LaniatusDefVariables] > 1:
+                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There are %s of %d in the box."), item_gets[LaniatusDefVariables].GetName(LOCALE_LANIATUS), dwCounts[LaniatusDefVariables])
                                 else:
-                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There is %s in the box."), item_gets[i].GetName(LOCALE_LANIATUS))
+                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There is %s in the box."), item_gets[LaniatusDefVariables].GetName(LOCALE_LANIATUS))
 
                 else:
                     ChatPacket(EChatType.CHAT_TYPE_TALKING, LC_TEXT("This Key seems not to fit into the lock."))
@@ -1235,33 +1235,33 @@ def UseItemEx(item, DestCell):
             if GiveItemFromSpecialItemGroup(dwBoxVnum, dwVnums, dwCounts, item_gets, count):
                 item.SetCount(item.GetCount()-1)
 
-                for i in range(0, count):
-                    if dwVnums[i] == CSpecialItemGroup.EGiveType.GOLD:
-                        ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Yang."), dwCounts[i])
-                    elif dwVnums[i] == CSpecialItemGroup.EGiveType.EXP:
+                for LaniatusDefVariables in range(0, count):
+                    if dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.GOLD:
+                        ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Yang."), dwCounts[LaniatusDefVariables])
+                    elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.EXP:
                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Mysterious light comes out of this box."))
-                        ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Experience Points."), dwCounts[i])
-                    elif dwVnums[i] == CSpecialItemGroup.EGiveType.MOB:
+                        ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Experience Points."), dwCounts[LaniatusDefVariables])
+                    elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.MOB:
                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("A monster came out of the box!"))
-                    elif dwVnums[i] == CSpecialItemGroup.EGiveType.SLOW:
+                    elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.SLOW:
                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("If you inhale the red smoke coming out of the box, you will move faster!"))
-                    elif dwVnums[i] == CSpecialItemGroup.EGiveType.DRAIN_HP:
+                    elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.DRAIN_HP:
                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("The box exploded suddenly! Your HP are lower."))
-                    elif dwVnums[i] == CSpecialItemGroup.EGiveType.POISON:
+                    elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.POISON:
                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("If you inhale the green smoke coming from the box, poison will spread in your body!"))
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no preprocessor in Python:
 ##if ENABLE_WOLFMAN
-                    elif dwVnums[i] == CSpecialItemGroup.EGiveType.BLEEDING:
+                    elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.BLEEDING:
                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("If you inhale the green smoke coming from the box, poison will spread in your body!"))
 ##endif
-                    elif dwVnums[i] == CSpecialItemGroup.EGiveType.MOB_GROUP:
+                    elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.MOB_GROUP:
                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("A monster came out of the box!"))
                     else:
-                        if item_gets[i]:
-                            if dwCounts[i] > 1:
-                                ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There are %s of %d in the box."), item_gets[i].GetName(LOCALE_LANIATUS), dwCounts[i])
+                        if item_gets[LaniatusDefVariables]:
+                            if dwCounts[LaniatusDefVariables] > 1:
+                                ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There are %s of %d in the box."), item_gets[LaniatusDefVariables].GetName(LOCALE_LANIATUS), dwCounts[LaniatusDefVariables])
                             else:
-                                ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There is %s in the box."), item_gets[i].GetName(LOCALE_LANIATUS))
+                                ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There is %s in the box."), item_gets[LaniatusDefVariables].GetName(LOCALE_LANIATUS))
             else:
                 ChatPacket(EChatType.CHAT_TYPE_TALKING, LC_TEXT("You received nothing."))
                 return LGEMiscellaneous.DEFINECONSTANTS.false
@@ -1489,20 +1489,20 @@ def UseItemEx(item, DestCell):
 
                         pct = number(1, 1000)
 
-                        i = None
-                        for i in range(0, MAX_BAG_INFO):
-                            if pct <= bi[i].prob:
+                        LaniatusDefVariables = None
+                        for LaniatusDefVariables in range(0, MAX_BAG_INFO):
+                            if pct <= bi[LaniatusDefVariables].prob:
                                 break
-                            pct -= bi[i].prob
+                            pct -= bi[LaniatusDefVariables].prob
                         if i>=MAX_BAG_INFO:
                             return LGEMiscellaneous.DEFINECONSTANTS.false
 
-                        if bi[i].vnum == 50300:
+                        if bi[LaniatusDefVariables].vnum == 50300:
                             GiveRandomSkillBook()
-                        elif bi[i].vnum == 1:
+                        elif bi[LaniatusDefVariables].vnum == 1:
                             PointChange(EPointTypes.LG_POINT_GOLD, 1000, ((not LGEMiscellaneous.DEFINECONSTANTS.false)))
                         else:
-                            AutoGiveItem(bi[i].vnum, bi[i].count)
+                            AutoGiveItem(bi[LaniatusDefVariables].vnum, bi[LaniatusDefVariables].count)
                         ITEM_MANAGER.instance().RemoveItem(item, NULL)
 
                 elif (item.GetVnum() == 27989) or (item.GetVnum() == 76006):
@@ -1880,10 +1880,10 @@ def UseItemEx(item, DestCell):
 
                         socket = std::stack()
 
-                        i = 0
-                        while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+                        LaniatusDefVariables = 0
+                        while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                             socket.push(item2.GetSocket(i))
-                            i += 1
+                            LaniatusDefVariables += 1
 
                         idx = EItemMisc.LG_ITEM_SOCKET_MAX_NUM - 1
 
@@ -1935,9 +1935,9 @@ def UseItemEx(item, DestCell):
                         count = 0
 
                         if GiveItemFromSpecialItemGroup(dwBoxVnum, dwVnums, dwCounts, item_gets, count):
-                            for i in range(0, count):
-                                if dwVnums[i] == CSpecialItemGroup.EGiveType.GOLD:
-                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Yang."), dwCounts[i])
+                            for LaniatusDefVariables in range(0, count):
+                                if dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.GOLD:
+                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Yang."), dwCounts[LaniatusDefVariables])
 
                             item.SetCount(item.GetCount() - 1)
 
@@ -1981,43 +1981,43 @@ def UseItemEx(item, DestCell):
                         count = 0
 
                         if GiveItemFromSpecialItemGroup(dwBoxVnum, dwVnums, dwCounts, item_gets, count):
-                            for i in range(0, count):
+                            for LaniatusDefVariables in range(0, count):
                                 item.SetCount(item.GetCount() - 1)
 
-                                if dwVnums[i] == CSpecialItemGroup.EGiveType.GOLD:
-                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Yang."), dwCounts[i])
+                                if dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.GOLD:
+                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Yang."), dwCounts[LaniatusDefVariables])
 
-                                elif dwVnums[i] == CSpecialItemGroup.EGiveType.EXP:
+                                elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.EXP:
                                     ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Mysterious light comes out of this box."))
-                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Experience Points."), dwCounts[i])
+                                    ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You received %d Experience Points."), dwCounts[LaniatusDefVariables])
 
-                                elif dwVnums[i] == CSpecialItemGroup.EGiveType.MOB:
+                                elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.MOB:
                                     ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("A monster came out of the box!"))
 
-                                elif dwVnums[i] == CSpecialItemGroup.EGiveType.SLOW:
+                                elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.SLOW:
                                     ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("If you inhale the red smoke coming out of the box, you will move faster!"))
 
-                                elif dwVnums[i] == CSpecialItemGroup.EGiveType.DRAIN_HP:
+                                elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.DRAIN_HP:
                                     ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("The box exploded suddenly! Your HP are lower."))
 
-                                elif dwVnums[i] == CSpecialItemGroup.EGiveType.POISON:
+                                elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.POISON:
                                     ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("If you inhale the green smoke coming from the box, poison will spread in your body!"))
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no preprocessor in Python:
 ##if ENABLE_WOLFMAN
-                                elif dwVnums[i] == CSpecialItemGroup.EGiveType.BLEEDING:
+                                elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.BLEEDING:
                                     ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("If you inhale the green smoke coming from the box, poison will spread in your body!"))
 ##endif
 
-                                elif dwVnums[i] == CSpecialItemGroup.EGiveType.MOB_GROUP:
+                                elif dwVnums[LaniatusDefVariables] == CSpecialItemGroup.EGiveType.MOB_GROUP:
                                     ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("A monster came out of the box!"))
 
                                 else:
-                                    if item_gets[i]:
-                                        if dwCounts[i] > 1:
-                                            ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There are %s of %d in the box."), item_gets[i].GetName(LOCALE_LANIATUS), dwCounts[i])
+                                    if item_gets[LaniatusDefVariables]:
+                                        if dwCounts[LaniatusDefVariables] > 1:
+                                            ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There are %s of %d in the box."), item_gets[LaniatusDefVariables].GetName(LOCALE_LANIATUS), dwCounts[LaniatusDefVariables])
                                         else:
-                                            ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There is %s in the box."), item_gets[i].GetName(LOCALE_LANIATUS))
+                                            ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("There is %s in the box."), item_gets[LaniatusDefVariables].GetName(LOCALE_LANIATUS))
                         else:
                             ChatPacket(EChatType.CHAT_TYPE_TALKING, LC_TEXT("You received nothing."))
                             return LGEMiscellaneous.DEFINECONSTANTS.false
@@ -2393,27 +2393,27 @@ def UseItemEx(item, DestCell):
                         return LGEMiscellaneous.DEFINECONSTANTS.false
 
                     if item.GetSubType() == EUseSubTypes.USE_CLEAN_SOCKET:
-                            i = None
-                            i = 0
-                            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+                            LaniatusDefVariables = None
+                            LaniatusDefVariables = 0
+                            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                                 if item2.GetSocket(i) == ITEM_BROKEN_METIN_VNUM:
                                     break
-                                i += 1
+                                LaniatusDefVariables += 1
 
-                            if i == EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+                            if LaniatusDefVariables == EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("No Stone there to be cleaned."))
                                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
                             j = 0
 
-                            i = 0
-                            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+                            LaniatusDefVariables = 0
+                            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                                 if item2.GetSocket(i) != ITEM_BROKEN_METIN_VNUM and item2.GetSocket(i) != 0:
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
 #ORIGINAL METINII C CODE: item2->SetSocket(j++, item2->GetSocket(i));
                                     item2.SetSocket(j, item2.GetSocket(i), ((not DefineConstants.false)))
                                     j += 1
-                                i += 1
+                                LaniatusDefVariables += 1
 
                             while j < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                                 if item2.GetSocket(j) > 0:
@@ -2477,12 +2477,12 @@ def UseItemEx(item, DestCell):
                             if item.GetVnum() == 71151 or item.GetVnum() == 76023:
                                 if (item2.GetType() == EItemTypes.ITEM_WEAPON) or (item2.GetType() == EItemTypes.ITEM_ARMOR and item2.GetSubType() == EArmorSubTypes.ARMOR_BODY):
                                     bCanUse = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-                                    i = 0
-                                    while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
+                                    LaniatusDefVariables = 0
+                                    while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
                                         if item2.GetLimitType(uint(i)) == ELimitTypes.LIMIT_LEVEL and item2.GetLimitValue(uint(i)) > 40:
                                             bCanUse = LGEMiscellaneous.DEFINECONSTANTS.false
                                             break
-                                        i += 1
+                                        LaniatusDefVariables += 1
                                     if LGEMiscellaneous.DEFINECONSTANTS.false == bCanUse:
                                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("This item can only be used on weapons or armor up to level 40."))
                                         break
@@ -2512,12 +2512,12 @@ def UseItemEx(item, DestCell):
                             if item.GetVnum() == 71152 or item.GetVnum() == 76024:
                                 if (item2.GetType() == EItemTypes.ITEM_WEAPON) or (item2.GetType() == EItemTypes.ITEM_ARMOR and item2.GetSubType() == EArmorSubTypes.ARMOR_BODY):
                                     bCanUse = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-                                    i = 0
-                                    while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
+                                    LaniatusDefVariables = 0
+                                    while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
                                         if item2.GetLimitType(uint(i)) == ELimitTypes.LIMIT_LEVEL and item2.GetLimitValue(uint(i)) > 40:
                                             bCanUse = LGEMiscellaneous.DEFINECONSTANTS.false
                                             break
-                                        i += 1
+                                        LaniatusDefVariables += 1
                                     if LGEMiscellaneous.DEFINECONSTANTS.false == bCanUse:
                                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("This item can only be used on weapons or armor up to level 40."))
                                         break
@@ -2714,10 +2714,10 @@ def UseItemEx(item, DestCell):
             if item2.GetType() == EItemTypes.ITEM_ROD:
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-            i = None
+            LaniatusDefVariables = None
 
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 dwVnum = None
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
@@ -2733,7 +2733,7 @@ def UseItemEx(item, DestCell):
                 if item.GetValue(5) == p.alValues[5]:
                     ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You cannot attach several Spirit Stones of the same kind."))
                     return LGEMiscellaneous.DEFINECONSTANTS.false
-                i += 1
+                LaniatusDefVariables += 1
 
             if item2.GetType() == EItemTypes.ITEM_ARMOR:
                 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
@@ -2749,8 +2749,8 @@ def UseItemEx(item, DestCell):
                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("No slot free."))
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 if item2.GetSocket(i) >= 1 and item2.GetSocket(i) <= 2 and item2.GetSocket(i) >= item.GetValue(2):
                     if number(1, 100) <= 30:
                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You attached the Stone successfully."))
@@ -2761,9 +2761,9 @@ def UseItemEx(item, DestCell):
 
                     ITEM_MANAGER.instance().RemoveItem(item, "REMOVE (METIN)")
                     break
-                i += 1
+                LaniatusDefVariables += 1
 
-            if i == EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            if LaniatusDefVariables == EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("No slot free."))
 
     elif (item.GetType() == EItemTypes.ITEM_AUTOUSE) or (item.GetType() == EItemTypes.ITEM_MATERIAL) or (item.GetType() == EItemTypes.ITEM_SPECIAL) or (item.GetType() == EItemTypes.ITEM_TOOL) or (item.GetType() == EItemTypes.ITEM_LOTTERY):
@@ -3120,11 +3120,11 @@ def MoveItem(Cell, DestCell, count):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if ((item2 = GetItem(DestCell)) && item != item2 && item2->IsStackable() && !IS_SET(item2->GetAntiFlag(), ITEM_ANTIFLAG_STACK) && item2->GetVnum() == item->GetVnum())
         if (item2 = GetItem(DestCell)) and item is not item2 and item2.IsStackable() and (not IS_SET(item2.GetAntiFlag(), LaniatusEITMAntiFlagDcs.ITEM_ANTIFLAG_STACK)) and item2.GetVnum() == item.GetVnum():
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 if item2.GetSocket(i) != item.GetSocket(i):
                     return LGEMiscellaneous.DEFINECONSTANTS.false
-                i += 1
+                LaniatusDefVariables += 1
 
             if count == 0:
                 count = ushort(item.GetCount())
@@ -3275,8 +3275,8 @@ def PickupItem(item, dwVID):
                 if item.IsStackable() and not IS_SET(item.GetAntiFlag(), LaniatusEITMAntiFlagDcs.ITEM_ANTIFLAG_STACK):
                     wCount = ushort(item.GetCount())
 
-                    i = 0
-                    while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
                         item2 = GetInventoryItem(i)
 
                         if item2 is None:
@@ -3309,7 +3309,7 @@ def PickupItem(item, dwVID):
                                 if item2.GetType() == EItemTypes.ITEM_QUEST:
                                     quest.CQuestManager.instance().PickupItem(GetPlayerID(), item2)
                                 return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-                        i += 1
+                        LaniatusDefVariables += 1
 
                     item.SetCount(wCount)
 
@@ -3355,8 +3355,8 @@ def PickupItem(item, dwVID):
 
             if item.IsStackable():
                 iCount = int(item.GetCount())
-                i = 0
-                while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
                     item2 = owner.GetInventoryItem(ushort(i))
 
                     if item2 is None:
@@ -3392,7 +3392,7 @@ def PickupItem(item, dwVID):
                                     owner.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Received Item: %s, %s "), GetName(), item2.GetName(LOCALE_LANIATUS))
                             ITEM_MANAGER.instance().DestroyItem(item)
                             return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-                    i += 1
+                    LaniatusDefVariables += 1
                 item.SetCount(uint(iCount))
 
             iEmptyCell = None
@@ -3663,26 +3663,26 @@ def EquipItem(item, iCandidateCell):
     return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
 def BuffOnAttr_AddBuffsFromItem(pItem):
-    i = 0
+    LaniatusDefVariables = 0
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
 ## Laniatus Games Studio Inc. | WARNING: This 'sizeof' ratio was replaced with a direct reference to the array length:
-#ORIGINAL METINII C CODE: for (int i = 0; i < sizeof(g_aBuffOnAttrPoints)/sizeof(g_aBuffOnAttrPoints[0]); i++)
-    while i < len(g_aBuffOnAttrPoints):
-        it = m_map_buff_on_attrs.find(g_aBuffOnAttrPoints[i])
+#ORIGINAL METINII C CODE: for (int LaniatusDefVariables = 0; LaniatusDefVariables < sizeof(g_aBuffOnAttrPoints)/sizeof(g_aBuffOnAttrPoints[0]); LaniatusDefVariables++)
+    while LaniatusDefVariables < len(g_aBuffOnAttrPoints):
+        it = m_map_buff_on_attrs.find(g_aBuffOnAttrPoints[LaniatusDefVariables])
         if it != m_map_buff_on_attrs.end():
             it.second.AddBuffFromItem(pItem)
-        i += 1
+        LaniatusDefVariables += 1
 
 def BuffOnAttr_RemoveBuffsFromItem(pItem):
-    i = 0
+    LaniatusDefVariables = 0
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
 ## Laniatus Games Studio Inc. | WARNING: This 'sizeof' ratio was replaced with a direct reference to the array length:
-#ORIGINAL METINII C CODE: for (int i = 0; i < sizeof(g_aBuffOnAttrPoints)/sizeof(g_aBuffOnAttrPoints[0]); i++)
-    while i < len(g_aBuffOnAttrPoints):
-        it = m_map_buff_on_attrs.find(g_aBuffOnAttrPoints[i])
+#ORIGINAL METINII C CODE: for (int LaniatusDefVariables = 0; LaniatusDefVariables < sizeof(g_aBuffOnAttrPoints)/sizeof(g_aBuffOnAttrPoints[0]); LaniatusDefVariables++)
+    while LaniatusDefVariables < len(g_aBuffOnAttrPoints):
+        it = m_map_buff_on_attrs.find(g_aBuffOnAttrPoints[LaniatusDefVariables])
         if it != m_map_buff_on_attrs.end():
             it.second.RemoveBuffFromItem(pItem)
-        i += 1
+        LaniatusDefVariables += 1
 
 def BuffOnAttr_ClearAll():
     it = m_map_buff_on_attrs.begin()
@@ -3731,28 +3731,28 @@ def BuffOnAttr_ValueChange(bType, bOldValue, bNewValue):
 ## Laniatus Games Studio Inc. | WARNING: 'const' methods are not available in Python:
 #ORIGINAL METINII C CODE: CItem* CHARACTER::FindSpecifyItem(uint vnum) const
 def FindSpecifyItem(vnum):
-    i = 0
-    while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
         if GetInventoryItem(i) and GetInventoryItem(i).GetVnum() == vnum:
             return GetInventoryItem(i)
-        i += 1
+        LaniatusDefVariables += 1
 
     return None
 
 ## Laniatus Games Studio Inc. | WARNING: 'const' methods are not available in Python:
 #ORIGINAL METINII C CODE: CItem* CHARACTER::FindItemByID(uint id) const
 def FindItemByID(id):
-    i = 0
-    while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
         if None != GetInventoryItem(i) and GetInventoryItem(i).GetID() == id:
             return GetInventoryItem(i)
-        i += 1
+        LaniatusDefVariables += 1
 
-    i = BELT_INVENTORY_SLOT_START
-    while i < LGEMiscellaneous2.BELT_INVENTORY_SLOT_END:
+    LaniatusDefVariables = BELT_INVENTORY_SLOT_START
+    while LaniatusDefVariables < LGEMiscellaneous2.BELT_INVENTORY_SLOT_END:
         if None != GetInventoryItem(i) and GetInventoryItem(i).GetID() == id:
             return GetInventoryItem(i)
-        i += 1
+        LaniatusDefVariables += 1
 
     return None
 
@@ -3762,9 +3762,9 @@ def CountSpecifyItem(vnum, iExceptionCell):
     count = 0
     item = None
 
-    i = 0
-    while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
-        if i == iExceptionCell:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
+        if LaniatusDefVariables == iExceptionCell:
             continue
 
         item = GetInventoryItem(i)
@@ -3773,7 +3773,7 @@ def CountSpecifyItem(vnum, iExceptionCell):
                 continue
             else:
                 count += int(item.GetCount())
-        i += 1
+        LaniatusDefVariables += 1
 
     return count
 
@@ -3781,9 +3781,9 @@ def RemoveSpecifyItem(vnum, count, iExceptionCell):
     if 0 == count:
         return
 
-    i = 0
-    while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
-        if i == iExceptionCell:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
+        if LaniatusDefVariables == iExceptionCell:
             continue
 
         if None == GetInventoryItem(i):
@@ -3806,7 +3806,7 @@ def RemoveSpecifyItem(vnum, count, iExceptionCell):
         else:
             GetInventoryItem(i).SetCount(GetInventoryItem(i).GetCount() - count)
             return
-        i += 1
+        LaniatusDefVariables += 1
 
     if count != 0:
         #sys_log(0, "CHARACTER::RemoveSpecifyItem cannot remove enough item vnum %u, still remain %d", vnum, count)
@@ -3816,12 +3816,12 @@ def RemoveSpecifyItem(vnum, count, iExceptionCell):
 def CountSpecifyTypeItem(type):
     count = 0
 
-    i = 0
-    while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
         pItem = GetInventoryItem(i)
         if pItem is not None and pItem.GetType() == type:
             count += int(pItem.GetCount())
-        i += 1
+        LaniatusDefVariables += 1
 
     return count
 
@@ -3829,8 +3829,8 @@ def RemoveSpecifyTypeItem(type, count):
     if 0 == count:
         return
 
-    i = 0
-    while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
         if None == GetInventoryItem(i):
             continue
 
@@ -3851,7 +3851,7 @@ def RemoveSpecifyTypeItem(type, count):
         else:
             GetInventoryItem(i).SetCount(GetInventoryItem(i).GetCount() - count)
             return
-        i += 1
+        LaniatusDefVariables += 1
 
 def AutoGiveItem(item, longOwnerShip):
     if None is item:
@@ -3897,8 +3897,8 @@ def AutoGiveItem(dwItemVnum, wCount, iRarePct, bMsg):
         return None
 
     if (p.dwFlags & uint(EItemFlag.ITEM_FLAG_STACKABLE)) != 0 and p.bType != EItemTypes.ITEM_BLEND:
-        i = 0
-        while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
             item = GetInventoryItem(i)
 
             if item is None:
@@ -3920,7 +3920,7 @@ def AutoGiveItem(dwItemVnum, wCount, iRarePct, bMsg):
                         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("%s received"), item.GetName(LOCALE_LANIATUS))
 
                     return item
-            i += 1
+            LaniatusDefVariables += 1
 
     item = ITEM_MANAGER.instance().CreateItem(dwItemVnum, wCount, 0, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), -1, DefineConstants.false)
 
@@ -3929,8 +3929,8 @@ def AutoGiveItem(dwItemVnum, wCount, iRarePct, bMsg):
         return None
 
     if item.GetType() == EItemTypes.ITEM_BLEND:
-        i = 0
-        while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
             inv_item = GetInventoryItem(i)
 
             if inv_item is None:
@@ -3942,7 +3942,7 @@ def AutoGiveItem(dwItemVnum, wCount, iRarePct, bMsg):
                         inv_item.SetCount(inv_item.GetCount() + item.GetCount())
                         ITEM_MANAGER.instance().DestroyItem(item)
                         return inv_item
-            i += 1
+            LaniatusDefVariables += 1
 
     iEmptyCell = None
     if item.IsDragonSoul():
@@ -4191,8 +4191,8 @@ def GiveItemFromSpecialItemGroup(dwGroupNum, dwItemVnums, dwItemCounts, item_get
 
     bSuccess = LGEMiscellaneous.DEFINECONSTANTS.false
 
-    for i in range(0, n):
-        idx = idxes[i]
+    for LaniatusDefVariables in range(0, n):
+        idx = idxes[LaniatusDefVariables]
         dwVnum = uint(pGroup.GetVnum(idx))
         dwCount = uint(pGroup.GetCount(idx))
         iRarePct = pGroup.GetRarePct(idx)
@@ -4403,16 +4403,16 @@ def AutoRecoveryItemProcess(type):
 
         stunSkills = [(int)LaniatusETalentXes.LG_SKILL_TANHWAN, LaniatusETalentXes.LG_SKILL_GEOMPUNG, LaniatusETalentXes.LG_SKILL_BYEURAK, (int)LaniatusETalentXes.LG_SKILL_GIGUNG]
 
-        i = 0
+        LaniatusDefVariables = 0
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
 ## Laniatus Games Studio Inc. | WARNING: This 'sizeof' ratio was replaced with a direct reference to the array length:
-#ORIGINAL METINII C CODE: for (int i=0 ; i < sizeof(stunSkills)/sizeof(uint) ; ++i)
-        while i < len(stunSkills):
-            p = FindAffect(stunSkills[i])
+#ORIGINAL METINII C CODE: for (int i=0 ; LaniatusDefVariables < sizeof(stunSkills)/sizeof(uint) ; ++i)
+        while LaniatusDefVariables < len(stunSkills):
+            p = FindAffect(stunSkills[LaniatusDefVariables])
 
             if None is not p and EAffectBits.AFF_STUN == p.dwFlag:
                 return
-            i += 1
+            LaniatusDefVariables += 1
 
     pAffect = FindAffect(type)
     IDX_OF_AMOUNT_OF_USED = 1
@@ -4521,34 +4521,34 @@ def CanEquipNow(item, srcCell, destCell):
             return LGEMiscellaneous.DEFINECONSTANTS.false
 ##endif
 
-    i = 0
-    while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
-        limit = itemTable.aLimits[i].lValue
-        if itemTable.aLimits[i].bType == ELimitTypes.LIMIT_LEVEL:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
+        limit = itemTable.aLimits[LaniatusDefVariables].lValue
+        if itemTable.aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_LEVEL:
             if GetLevel() < limit:
                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Your Level is too low to equip this."))
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-        elif itemTable.aLimits[i].bType == ELimitTypes.LIMIT_STR:
+        elif itemTable.aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_STR:
             if GetPoint(EPointTypes.LG_POINT_ST) < limit:
                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You are not strong enough to equip this."))
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-        elif itemTable.aLimits[i].bType == ELimitTypes.LIMIT_INT:
+        elif itemTable.aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_INT:
             if GetPoint(EPointTypes.LG_POINT_IQ) < limit:
                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Your Intelligence it too low to equip this."))
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-        elif itemTable.aLimits[i].bType == ELimitTypes.LIMIT_DEX:
+        elif itemTable.aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_DEX:
             if GetPoint(EPointTypes.LG_POINT_DX) < limit:
                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Your Agility is too low to equip this."))
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-        elif itemTable.aLimits[i].bType == ELimitTypes.LIMIT_CON:
+        elif itemTable.aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_CON:
             if GetPoint(EPointTypes.LG_POINT_HT) < limit:
                 ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("You Vitality is too low to equip this."))
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-        i += 1
+        LaniatusDefVariables += 1
 
     if item.GetType() == EItemTypes.ITEM_RING:
         if (GetWear(EWearPositions.WEAR_RING1) and GetWear(EWearPositions.WEAR_RING1).GetVnum() == item.GetVnum()) or (GetWear(EWearPositions.WEAR_RING2) and GetWear(EWearPositions.WEAR_RING2).GetVnum() == item.GetVnum()):
@@ -4626,8 +4626,8 @@ def AcceRefineCheckin(acceSlot, currentCell):
         ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Wrong sash window, detected hacker!"))
         return
 
-    for i in range(0, ACCE_SLOT_MAX_NUM):
-        if m_pointsInstant.pAcceSlots[i] == currentCell.cell:
+    for LaniatusDefVariables in range(0, ACCE_SLOT_MAX_NUM):
+        if m_pointsInstant.pAcceSlots[LaniatusDefVariables] == currentCell.cell:
             ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("This sash is already selected."))
             return
 

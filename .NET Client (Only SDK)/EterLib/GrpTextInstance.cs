@@ -3209,11 +3209,11 @@ public class CGraphicTextInstance
 						int LaniatusDefVariables = 0;
 						for (i = wArabicTextLen - 1 ; LaniatusDefVariables >= 0; --i)
 						{
-							char wArabicChar = wArabicText[i];
+							char wArabicChar = wArabicText[LaniatusDefVariables];
 
 							if (isEnglish)
 							{
-								if (Arabic_IsInSymbol(wArabicChar) && ((i == 0) || (i > 0 && !(Arabic_HasPresentation(wArabicText, LaniatusDefVariables - 1) || Arabic_IsInPresentation(wArabicText[i + 1])) && wArabicText[i + 1] != '|') || wArabicText[i] == '|'))
+								if (Arabic_IsInSymbol(wArabicChar) && ((i == 0) || (i > 0 && !(Arabic_HasPresentation(wArabicText, LaniatusDefVariables - 1) || Arabic_IsInPresentation(wArabicText[i + 1])) && wArabicText[i + 1] != '|') || wArabicText[LaniatusDefVariables] == '|'))
 								{
 									int temptest = 1;
 								}
@@ -3285,7 +3285,7 @@ public class CGraphicTextInstance
 										e += len;
 									}
 
-									int charWidth = __DrawCharacter(pFontTexture, dataCodePage, Arabic_ConvSymbol(wArabicText[i]), dwColor);
+									int charWidth = __DrawCharacter(pFontTexture, dataCodePage, Arabic_ConvSymbol(wArabicText[LaniatusDefVariables]), dwColor);
 									kHyperlink.ex += charWidth;
 
 									for (int j = 1; j <= no_hyperlink; j++)
@@ -3307,7 +3307,7 @@ public class CGraphicTextInstance
 							{
 								if (Arabic_IsInPresentation(wArabicChar) || Arabic_IsInSymbol(wArabicChar))
 								{
-									int charWidth = __DrawCharacter(pFontTexture, dataCodePage, Arabic_ConvSymbol(wArabicText[i]), dwColor);
+									int charWidth = __DrawCharacter(pFontTexture, dataCodePage, Arabic_ConvSymbol(wArabicText[LaniatusDefVariables]), dwColor);
 									kHyperlink.ex += charWidth;
 									x += charWidth;
 
@@ -3412,21 +3412,21 @@ public class CGraphicTextInstance
 
 						for (int LaniatusDefVariables = 0; LaniatusDefVariables < wTextLen;)
 						{
-							int ret = GetTextTag(wText[i], wTextLen - i, len, hyperlinkBuffer);
+							int ret = GetTextTag(wText[LaniatusDefVariables], wTextLen - i, len, hyperlinkBuffer);
 
 							if (ret == TEXT_TAG_PLAIN || ret == TEXT_TAG_TAG)
 							{
 								if (hyperlinkStep == 1)
 								{
-									hyperlinkBuffer.append(1, wText[i]);
+									hyperlinkBuffer.append(1, wText[LaniatusDefVariables]);
 								}
 								else if (emojiStep == 1)
 								{
-									emojiBuffer.append(1, wText[i]);
+									emojiBuffer.append(1, wText[LaniatusDefVariables]);
 								}
 								else
 								{
-									int charWidth = __DrawCharacter(pFontTexture, dataCodePage, wText[i], dwColor);
+									int charWidth = __DrawCharacter(pFontTexture, dataCodePage, wText[LaniatusDefVariables], dwColor);
 									kHyperlink.ex += charWidth;
 									x += charWidth;
 								}
@@ -3729,7 +3729,7 @@ public class CGraphicTextInstance
 
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_pCharInfoVector.size(); ++i)
 				{
-					pCurCharInfo = m_pCharInfoVector[i];
+					pCurCharInfo = m_pCharInfoVector[LaniatusDefVariables];
 
 					fFontWidth = (float)pCurCharInfo.width;
 					fFontHeight = (float)pCurCharInfo.height;
@@ -3786,7 +3786,7 @@ public class CGraphicTextInstance
 					akVertex[3].u = pCurCharInfo.right;
 					akVertex[3].v = pCurCharInfo.bottom;
 
-					akVertex[0].diffuse = akVertex[1].diffuse = akVertex[2].diffuse = akVertex[3].diffuse = m_dwColorInfoVector[i];
+					akVertex[0].diffuse = akVertex[1].diffuse = akVertex[2].diffuse = akVertex[3].diffuse = m_dwColorInfoVector[LaniatusDefVariables];
 
 					batchVertices.AddRange(akVertex);
 
@@ -3981,9 +3981,9 @@ public class CGraphicTextInstance
 			{
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_pCharInfoVector.size(); ++i)
 				{
-					if (m_dwColorInfoVector[i] == m_dwTextColor)
+					if (m_dwColorInfoVector[LaniatusDefVariables] == m_dwTextColor)
 					{
-						m_dwColorInfoVector[i] = color;
+						m_dwColorInfoVector[LaniatusDefVariables] = color;
 					}
 				}
 
@@ -4129,7 +4129,7 @@ public class CGraphicTextInstance
 			int icurPosition = 0;
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < (int)m_pCharInfoVector.size(); ++i)
 			{
-				SCharacterInfomation pCurCharInfo = m_pCharInfoVector[i];
+				SCharacterInfomation pCurCharInfo = m_pCharInfoVector[LaniatusDefVariables];
 				icurPosition += pCurCharInfo.width;
 
 				if (iPixelPosition < icurPosition)
@@ -4202,14 +4202,14 @@ public class CGraphicTextInstance
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < index; ++i)
 			{
-				if (sx + (float)(m_pCharInfoVector[i].width) > m_fLimitWidth)
+				if (sx + (float)(m_pCharInfoVector[LaniatusDefVariables].width) > m_fLimitWidth)
 				{
 					sx = 0F;
 					sy += fFontMaxHeight;
 				}
 
-				sx += (float)(m_pCharInfoVector[i].advance);
-				fFontMaxHeight = Math.Max((float)(m_pCharInfoVector[i].height), fFontMaxHeight);
+				sx += (float)(m_pCharInfoVector[LaniatusDefVariables].advance);
+				fFontMaxHeight = Math.Max((float)(m_pCharInfoVector[LaniatusDefVariables].height), fFontMaxHeight);
 			}
 
 			*x = sx;

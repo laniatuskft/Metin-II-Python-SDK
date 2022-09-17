@@ -4275,7 +4275,7 @@ public class CTextFileLoader
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_pcurNode.ChildNodeVector.size(); ++i)
 			{
-				TGroupNode pGroupNode = m_pcurNode.ChildNodeVector[i];
+				TGroupNode pGroupNode = m_pcurNode.ChildNodeVector[LaniatusDefVariables];
 				if (pGroupNode.IsGroupNameKey(dwKey))
 				{
 					m_pcurNode = pGroupNode;

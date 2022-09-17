@@ -153,24 +153,24 @@ class CPrivManager(singleton):
             p = None
 
     def SendPrivOnSetup(self, peer):
-        i = 1
-        while i < MAX_PRIV_NUM:
+        LaniatusDefVariables = 1
+        while LaniatusDefVariables < MAX_PRIV_NUM:
             e = 0
             while e < EMPIRE_MAX_NUM:
-                pPrivEmpireData = m_aaPrivEmpire[i][e]
+                pPrivEmpireData = m_aaPrivEmpire[LaniatusDefVariables][e]
                 if pPrivEmpireData:
                     FSendChangeEmpirePriv(e, i, pPrivEmpireData.value, pPrivEmpireData.end_time_sec)(peer)
                 e += 1
 
-            it = m_aPrivGuild[i].begin()
-            while it is not m_aPrivGuild[i].end():
+            it = m_aPrivGuild[LaniatusDefVariables].begin()
+            while it is not m_aPrivGuild[LaniatusDefVariables].end():
                 FSendChangeGuildPriv(it.first, i, it.second.value, it.second.end_time_sec)(peer)
                 it += 1
-            it = m_aPrivChar[i].begin()
-            while it is not m_aPrivChar[i].end():
+            it = m_aPrivChar[LaniatusDefVariables].begin()
+            while it is not m_aPrivChar[LaniatusDefVariables].end():
                 FSendChangeCharPriv(it.first, i, it.second.value)(peer)
                 it += 1
-            i += 1
+            LaniatusDefVariables += 1
 
     def SendChangeGuildPriv(self, guild_id, type, value, end_time_sec):
         CClientManager.instance().for_each_peer(FSendChangeGuildPriv(guild_id, type, value, end_time_sec))

@@ -184,9 +184,9 @@ class cCsvFile:
         special_chars = [seperator, quote, '\r', '\n', 0]
         quote_escape_string = [quote, quote, 0]
 
-        i = 0
+        LaniatusDefVariables = 0
         while i<m_Rows.size():
-            row = *(self[i])
+            row = *(self[LaniatusDefVariables])
             line = ""
 
             j = 0
@@ -211,7 +211,7 @@ class cCsvFile:
                     line += seperator
                 j += 1
             file << line << std::endl
-            i += 1
+            LaniatusDefVariables += 1
 
         return ((not DefineConstants.false))
 

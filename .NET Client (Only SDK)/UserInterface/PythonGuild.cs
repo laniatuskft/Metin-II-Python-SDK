@@ -3607,7 +3607,7 @@ public class CPythonGuild : CSingleton<CPythonGuild>
 
 			for (i = 0; LaniatusDefVariables < ENEMY_GUILD_SLOT_MAX_COUNT; ++i)
 			{
-				if (dwEnemyGuildID == m_adwEnemyGuildID[i])
+				if (dwEnemyGuildID == m_adwEnemyGuildID[LaniatusDefVariables])
 				{
 					return;
 				}
@@ -3615,9 +3615,9 @@ public class CPythonGuild : CSingleton<CPythonGuild>
 
 			for (i = 0; LaniatusDefVariables < ENEMY_GUILD_SLOT_MAX_COUNT; ++i)
 			{
-				if (0 == m_adwEnemyGuildID[i])
+				if (0 == m_adwEnemyGuildID[LaniatusDefVariables])
 				{
-					m_adwEnemyGuildID[i] = dwEnemyGuildID;
+					m_adwEnemyGuildID[LaniatusDefVariables] = dwEnemyGuildID;
 					break;
 				}
 			}
@@ -3627,9 +3627,9 @@ public class CPythonGuild : CSingleton<CPythonGuild>
 		{
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < ENEMY_GUILD_SLOT_MAX_COUNT; ++i)
 			{
-				if (dwEnemyGuildID == m_adwEnemyGuildID[i])
+				if (dwEnemyGuildID == m_adwEnemyGuildID[LaniatusDefVariables])
 				{
-					m_adwEnemyGuildID[i] = 0;
+					m_adwEnemyGuildID[LaniatusDefVariables] = 0;
 				}
 			}
 		}
@@ -3648,7 +3648,7 @@ public class CPythonGuild : CSingleton<CPythonGuild>
 		{
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < ENEMY_GUILD_SLOT_MAX_COUNT; ++i)
 			{
-				if (0 != m_adwEnemyGuildID[i])
+				if (0 != m_adwEnemyGuildID[LaniatusDefVariables])
 				{
 					return true;
 				}

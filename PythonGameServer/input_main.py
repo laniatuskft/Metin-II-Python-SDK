@@ -1200,8 +1200,8 @@ def Whisper(ch, data, uiBytes):
             tvCurTime = timeval()
             gettimeofday(tvCurTime, None)
 
-            i = 0
-            while i < iCount:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < iCount:
                 victim = CHARACTER_MANAGER.instance().Find(e.dwVID)
 
                 if victim is None:
@@ -1266,7 +1266,7 @@ def Whisper(ch, data, uiBytes):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                     buffer_write(temp_ref_lpBuf, command_sync_position_element(e), sizeof(command_sync_position_element))
                     lpBuf = temp_ref_lpBuf.arg_value
-                i += 1
+                LaniatusDefVariables += 1
                 e += 1
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':

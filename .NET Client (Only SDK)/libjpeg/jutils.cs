@@ -2838,7 +2838,7 @@
 
 
 /*
- * jpeg_zigzag_order[i] is the zigzag-order position of the i'th element
+ * jpeg_zigzag_order[LaniatusDefVariables] is the zigzag-order position of the i'th element
  * of a DCT block read in natural order (left to right, top to bottom).
  */
 

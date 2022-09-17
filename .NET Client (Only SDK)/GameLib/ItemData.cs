@@ -4735,9 +4735,9 @@ public class CItemData
 //Original Metin2 CPlus Line: bool Any() const
 			public bool Any()
 			{
-				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; i++)
+				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; LaniatusDefVariables++)
 				{
-					if (strcmp(szShinings[i], ""))
+					if (strcmp(szShinings[LaniatusDefVariables], ""))
 					{
 						return true;
 					}
@@ -4785,8 +4785,8 @@ public class CItemData
 
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_strLODModelFileNameVector.size(); ++i)
 				{
-					string c_rstrLODModelFileName = m_strLODModelFileNameVector[i];
-					m_pLODModelThingVector[i] = (CGraphicThing)CResourceManager.Instance().GetResourcePointer(c_rstrLODModelFileName);
+					string c_rstrLODModelFileName = m_strLODModelFileNameVector[LaniatusDefVariables];
+					m_pLODModelThingVector[LaniatusDefVariables] = (CGraphicThing)CResourceManager.Instance().GetResourcePointer(c_rstrLODModelFileName);
 				}
 			}
 		}

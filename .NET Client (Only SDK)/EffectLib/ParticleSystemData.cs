@@ -5695,21 +5695,21 @@ public class CParticleSystemData : CEffectElementBase
 			{
 				SortedSet<float> times = new SortedSet<float>();
 				int i;
-				for (i = 0;i < TimeEventR.Count;i++)
+				for (i = 0;i < TimeEventR.Count;LaniatusDefVariables++)
 				{
-					times.Add(TimeEventR[i].m_fTime);
+					times.Add(TimeEventR[LaniatusDefVariables].m_fTime);
 				}
-				for (i = 0;i < TimeEventG.Count;i++)
+				for (i = 0;i < TimeEventG.Count;LaniatusDefVariables++)
 				{
-					times.Add(TimeEventG[i].m_fTime);
+					times.Add(TimeEventG[LaniatusDefVariables].m_fTime);
 				}
-				for (i = 0;i < TimeEventB.Count;i++)
+				for (i = 0;i < TimeEventB.Count;LaniatusDefVariables++)
 				{
-					times.Add(TimeEventB[i].m_fTime);
+					times.Add(TimeEventB[LaniatusDefVariables].m_fTime);
 				}
-				for (i = 0;i < TimeEventA.Count;i++)
+				for (i = 0;i < TimeEventA.Count;LaniatusDefVariables++)
 				{
-					times.Add(TimeEventA[i].m_fTime);
+					times.Add(TimeEventA[LaniatusDefVariables].m_fTime);
 				}
 				SortedSet<float>.Enumerator it;
 				for (it = times.GetEnumerator(); it.MoveNext();)
@@ -5749,7 +5749,7 @@ public class CParticleSystemData : CEffectElementBase
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < pTextureVector.Count; ++i)
 			{
-				string strTextureFileName = pTextureVector[i];
+				string strTextureFileName = pTextureVector[LaniatusDefVariables];
 
 				if (!IsGlobalFileName(strTextureFileName))
 				{

@@ -11,9 +11,9 @@ class mining: #this class replaces the original namespace 'mining'
 
     @staticmethod
     def GetRawOreFromLoad(dwLoadVnum):
-        for i in range(0, mining.MAX_ORE):
-            if mining.info[i].dwLoadVnum == dwLoadVnum:
-                return mining.info[i].dwRawOreVnum
+        for LaniatusDefVariables in range(0, mining.MAX_ORE):
+            if mining.info[LaniatusDefVariables].dwLoadVnum == dwLoadVnum:
+                return mining.info[LaniatusDefVariables].dwRawOreVnum
         return 0
 
     @staticmethod
@@ -56,11 +56,11 @@ class mining: #this class replaces the original namespace 'mining'
     def GetFractionCount():
         r = number(1, 100)
 
-        for i in range(0, mining.MAX_FRACTION_COUNT):
-            if r <= mining.fraction_info[i][0]:
-                return number(mining.fraction_info[i][1], mining.fraction_info[i][2])
+        for LaniatusDefVariables in range(0, mining.MAX_FRACTION_COUNT):
+            if r <= mining.fraction_info[LaniatusDefVariables][0]:
+                return number(mining.fraction_info[LaniatusDefVariables][1], mining.fraction_info[LaniatusDefVariables][2])
             else:
-                r -= mining.fraction_info[i][0]
+                r -= mining.fraction_info[LaniatusDefVariables][0]
 
         return 0
 
@@ -124,8 +124,8 @@ class mining: #this class replaces the original namespace 'mining'
 
     @staticmethod
     def IsVeinOfOre(vnum):
-        for i in range(0, mining.MAX_ORE):
-            if mining.info[i].dwLoadVnum == vnum:
+        for LaniatusDefVariables in range(0, mining.MAX_ORE):
+            if mining.info[LaniatusDefVariables].dwLoadVnum == vnum:
                 return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
@@ -154,9 +154,9 @@ class mining: #this class replaces the original namespace 'mining'
 
     @staticmethod
     def GetRefineFromRawOre(dwRawOreVnum):
-        for i in range(0, mining.MAX_ORE):
-            if mining.info[i].dwRawOreVnum == dwRawOreVnum:
-                return mining.info[i].dwRefineVnum
+        for LaniatusDefVariables in range(0, mining.MAX_ORE):
+            if mining.info[LaniatusDefVariables].dwRawOreVnum == dwRawOreVnum:
+                return mining.info[LaniatusDefVariables].dwRefineVnum
         return 0
 
     @staticmethod

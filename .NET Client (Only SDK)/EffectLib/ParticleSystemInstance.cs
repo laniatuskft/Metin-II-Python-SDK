@@ -5709,7 +5709,7 @@ public class CParticleSystemInstance : CEffectElementBaseInstance
 			m_kVct_pkImgInst.reserve(m_pParticleProperty.m_ImageVector.size());
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_pParticleProperty.m_ImageVector.size(); ++i)
 			{
-				CGraphicImage pImage = m_pParticleProperty.m_ImageVector[i];
+				CGraphicImage pImage = m_pParticleProperty.m_ImageVector[LaniatusDefVariables];
 
 				CGraphicImageInstance pkImgInstNew = CGraphicImageInstance.New();
 				pkImgInstNew.SetImagePointer(pImage);

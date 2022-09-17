@@ -18,7 +18,7 @@ class CItemIDRangeManager(singleton):
         dwMax = 0
         range = TItemIDRangeTable()
 
-        i = 0
+        LaniatusDefVariables = 0
         while True:
             dwMin = cs_dwMinimumRange * (i + 1) + 1
             dwMax = cs_dwMinimumRange * (i + 2)
@@ -31,7 +31,7 @@ class CItemIDRangeManager(singleton):
 
             if BuildRange(dwMin, dwMax, range) == ((not DefineConstants.false)):
                 m_listData.push_back(range)
-            i += 1
+            LaniatusDefVariables += 1
 
     def BuildRange(self, dwMin, dwMax, range):
         szQuery = str(['\0' for _ in range(1024)])
@@ -107,7 +107,7 @@ class CItemIDRangeManager(singleton):
                 if f.hasCollision == DefineConstants.false:
                     return TItemIDRangeTable(ret)
 
-        for i in range(0, 10):
+        for LaniatusDefVariables in range(0, 10):
             sys_err("ItemIDRange: NO MORE ITEM ID RANGE")
 
         return TItemIDRangeTable(ret)

@@ -3189,8 +3189,8 @@ public class CGraphicExpandedImageInstance : CGraphicImageInstance
 
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < 4; ++i)
 				{
-					vertices[i].position.x += m_v2Origin.x;
-					vertices[i].position.y += m_v2Origin.y;
+					vertices[LaniatusDefVariables].position.x += m_v2Origin.x;
+					vertices[LaniatusDefVariables].position.y += m_v2Origin.y;
 				}
 
 				float fRadian = ((m_fRotation) * (((float) 3.141592654f) / 180.0f));

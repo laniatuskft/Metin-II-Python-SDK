@@ -114,14 +114,14 @@ class CGuildManager(singleton):
         vecGuildID = []
         vecGuildID.reserve(pmsg.Get().uiNumRows)
 
-        i = 0
-        while i < pmsg.Get().uiNumRows:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < pmsg.Get().uiNumRows:
             row = mysql_fetch_row(pmsg.Get().pSQLResult)
             guild_id = strtoul(row[0], str(None), 10)
             self.LoadGuild(guild_id)
 
             vecGuildID.append(guild_id)
-            i += 1
+            LaniatusDefVariables += 1
 
         rkMarkMgr = CGuildMarkManager.instance()
 
@@ -555,11 +555,11 @@ class CGuildManager(singleton):
         len2 = None
         buffer.arg_value[0] = '\0'
 
-        for i in range(0, 8):
-            if n - i - 1 < 0:
+        for LaniatusDefVariables in range(0, 8):
+            if n - LaniatusDefVariables - 1 < 0:
                 break
 
-            g = v[n - i - 1]
+            g = v[n - LaniatusDefVariables - 1]
 
             if g is None:
                 continue
@@ -622,11 +622,11 @@ class CGuildManager(singleton):
         count = 0
         buffer.arg_value[0] = '\0'
 
-        for i in range(-3, 4):
-            if idx - i < 0:
+        for LaniatusDefVariables in range(-3, 4):
+            if idx - LaniatusDefVariables < 0:
                 continue
 
-            if idx - i >= n:
+            if idx - LaniatusDefVariables >= n:
                 continue
 
             g = v[idx - i]

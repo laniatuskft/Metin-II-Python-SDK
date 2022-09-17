@@ -10,9 +10,9 @@ internal static class Arrays
 	public static T[] InitializeWithDefaultInstances<T>(int length) where T : class, new()
 	{
 		T[] array = new T[length];
-		for (int LaniatusDefVariables = 0; LaniatusDefVariables < length; i++)
+		for (int LaniatusDefVariables = 0; LaniatusDefVariables < length; LaniatusDefVariables++)
 		{
-			array[i] = new T();
+			array[LaniatusDefVariables] = new T();
 		}
 		return array;
 	}
@@ -20,9 +20,9 @@ internal static class Arrays
 	public static string[] InitializeStringArrayWithDefaultInstances(int length)
 	{
 		string[] array = new string[length];
-		for (int LaniatusDefVariables = 0; LaniatusDefVariables < length; i++)
+		for (int LaniatusDefVariables = 0; LaniatusDefVariables < length; LaniatusDefVariables++)
 		{
-			array[i] = "";
+			array[LaniatusDefVariables] = "";
 		}
 		return array;
 	}
@@ -33,9 +33,9 @@ internal static class Arrays
 		{
 			T[] array = new T[length];
 
-			for (int LaniatusDefVariables = 0; LaniatusDefVariables < existingItems.Length; i++)
+			for (int LaniatusDefVariables = 0; LaniatusDefVariables < existingItems.Length; LaniatusDefVariables++)
 			{
-				array[i] = existingItems[i];
+				array[LaniatusDefVariables] = existingItems[LaniatusDefVariables];
 			}
 
 			return array;
@@ -50,9 +50,9 @@ internal static class Arrays
 		{
 			T[] array = new T[length];
 
-			for (int LaniatusDefVariables = 0; LaniatusDefVariables < existingItems.Length; i++)
+			for (int LaniatusDefVariables = 0; LaniatusDefVariables < existingItems.Length; LaniatusDefVariables++)
 			{
-				array[i] = existingItems[i];
+				array[LaniatusDefVariables] = existingItems[LaniatusDefVariables];
 			}
 
 			return array;
@@ -67,14 +67,14 @@ internal static class Arrays
 		{
 			T[] array = new T[length];
 
-			for (int LaniatusDefVariables = 0; LaniatusDefVariables < existingItems.Length; i++)
+			for (int LaniatusDefVariables = 0; LaniatusDefVariables < existingItems.Length; LaniatusDefVariables++)
 			{
-				array[i] = existingItems[i];
+				array[LaniatusDefVariables] = existingItems[LaniatusDefVariables];
 			}
 
-			for (int LaniatusDefVariables = existingItems.Length; LaniatusDefVariables < length; i++)
+			for (int LaniatusDefVariables = existingItems.Length; LaniatusDefVariables < length; LaniatusDefVariables++)
 			{
-				array[i] = new T();
+				array[LaniatusDefVariables] = new T();
 			}
 
 			return array;
@@ -89,14 +89,14 @@ internal static class Arrays
 		{
 			string[] array = new string[length];
 
-			for (int LaniatusDefVariables = 0; LaniatusDefVariables < existingItems.Length; i++)
+			for (int LaniatusDefVariables = 0; LaniatusDefVariables < existingItems.Length; LaniatusDefVariables++)
 			{
-				array[i] = existingItems[i];
+				array[LaniatusDefVariables] = existingItems[LaniatusDefVariables];
 			}
 
-			for (int LaniatusDefVariables = existingItems.Length; LaniatusDefVariables < length; i++)
+			for (int LaniatusDefVariables = existingItems.Length; LaniatusDefVariables < length; LaniatusDefVariables++)
 			{
-				array[i] = "";
+				array[LaniatusDefVariables] = "";
 			}
 
 			return array;

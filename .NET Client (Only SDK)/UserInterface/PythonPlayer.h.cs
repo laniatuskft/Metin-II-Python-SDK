@@ -967,7 +967,7 @@ public class CPythonPlayer : CSingleton<CPythonPlayer>, IAbstractPlayer, System.
     
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_ItemAcceInstanceVector.size(); ++i)
 		{
-			TItemData rInstance = m_ItemAcceInstanceVector[i];
+			TItemData rInstance = m_ItemAcceInstanceVector[LaniatusDefVariables];
 			ZeroMemory(rInstance, sizeof(TItemData));
 		}
     
@@ -1006,7 +1006,7 @@ public class CPythonPlayer : CSingleton<CPythonPlayer>, IAbstractPlayer, System.
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < SKILL_MAX_NUM; ++i)
 		{
-			ZeroMemory(m_playerStatus.aSkill[i], sizeof(TSkillInstance));
+			ZeroMemory(m_playerStatus.aSkill[LaniatusDefVariables], sizeof(TSkillInstance));
 		}
     
 		for (int j = 0; j < SKILL_MAX_NUM; ++j)
@@ -1368,7 +1368,7 @@ public class CPythonPlayer : CSingleton<CPythonPlayer>, IAbstractPlayer, System.
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < c_Inventory_Count; ++i)
 		{
-			TItemData c_rItemData = m_playerStatus.aItem[i];
+			TItemData c_rItemData = m_playerStatus.aItem[LaniatusDefVariables];
 			if (c_rItemData.vnum == dwVnum)
 			{
 				dwCount += c_rItemData.count;
@@ -1570,9 +1570,9 @@ public class CPythonPlayer : CSingleton<CPythonPlayer>, IAbstractPlayer, System.
 	{
 		for (byte LaniatusDefVariables = 0; LaniatusDefVariables < QUICKSLOT_MAX_NUM; ++i)
 		{
-			if (iType == m_playerStatus.aQuickSlot[i].Type)
+			if (iType == m_playerStatus.aQuickSlot[LaniatusDefVariables].Type)
 			{
-				if (iPosition == m_playerStatus.aQuickSlot[i].Position)
+				if (iPosition == m_playerStatus.aQuickSlot[LaniatusDefVariables].Position)
 				{
 					CPythonNetworkStream.Instance().SendQuickSlotDelPacket(i);
 				}
@@ -1748,7 +1748,7 @@ public class CPythonPlayer : CSingleton<CPythonPlayer>, IAbstractPlayer, System.
 	{
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < 3; ++i)
 		{
-			if (m_acceRefineActivedSlot[i] == acceSlot)
+			if (m_acceRefineActivedSlot[LaniatusDefVariables] == acceSlot)
 			{
 				return i;
 			}
@@ -2079,7 +2079,7 @@ public class CPythonPlayer : CSingleton<CPythonPlayer>, IAbstractPlayer, System.
 	{
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < DefineConstants.SKILL_MAX_NUM; ++i)
 		{
-			TSkillInstance rkSkillInst = m_playerStatus.aSkill[i];
+			TSkillInstance rkSkillInst = m_playerStatus.aSkill[LaniatusDefVariables];
 			if (dwSkillIndex == rkSkillInst.dwIndex)
 			{
 				pdwSkillSlotIndex = (uint)i;

@@ -378,44 +378,44 @@ public class CStateManagerState
 			uint i;
 			uint y;
 
-			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_RENDERSTATES; i++)
+			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_RENDERSTATES; LaniatusDefVariables++)
 			{
-				m_RenderStates[i] = 0x7FFFFFFF;
+				m_RenderStates[LaniatusDefVariables] = 0x7FFFFFFF;
 			}
 
-			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_STAGES; i++)
+			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_STAGES; LaniatusDefVariables++)
 			{
 				for (y = 0; y < STATEMANAGER_MAX_TEXTURESTATES; y++)
 				{
-					m_TextureStates[i][y] = 0x7FFFFFFF;
+					m_TextureStates[LaniatusDefVariables][y] = 0x7FFFFFFF;
 				}
 			}
 
-			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_STREAMS; i++)
+			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_STREAMS; LaniatusDefVariables++)
 			{
-				m_StreamData[i] = CStreamData();
+				m_StreamData[LaniatusDefVariables] = CStreamData();
 			}
 
 			m_IndexData = CIndexData();
 
-			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_STAGES; i++)
+			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_STAGES; LaniatusDefVariables++)
 			{
-				m_Textures[i] = null;
+				m_Textures[LaniatusDefVariables] = null;
 			}
 
-			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_TRANSFORMSTATES; i++)
+			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_TRANSFORMSTATES; LaniatusDefVariables++)
 			{
-				D3DXMatrixIdentity(m_Matrices[i]);
+				D3DXMatrixIdentity(m_Matrices[LaniatusDefVariables]);
 			}
 
-			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_VCONSTANTS; i++)
+			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_VCONSTANTS; LaniatusDefVariables++)
 			{
-				m_VertexShaderConstants[i] = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 0.0f);
+				m_VertexShaderConstants[LaniatusDefVariables] = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 0.0f);
 			}
 
-			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_PCONSTANTS; i++)
+			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_PCONSTANTS; LaniatusDefVariables++)
 			{
-				m_PixelShaderConstants[i] = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 0.0f);
+				m_PixelShaderConstants[LaniatusDefVariables] = D3DXVECTOR4(0.0f, 0.0f, 0.0f, 0.0f);
 			}
 
 			m_dwPixelShader = 0;
@@ -702,9 +702,9 @@ public class CStateManager : CSingleton<CStateManager>
 #if DEBUG
 			int i;
 			int j;
-			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_RENDERSTATES; i++)
+			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_RENDERSTATES; LaniatusDefVariables++)
 			{
-				m_bRenderStateSavingFlag[i] = false;
+				m_bRenderStateSavingFlag[LaniatusDefVariables] = false;
 			}
 
 			for (j = 0; j < STATEMANAGER_MAX_TRANSFORMSTATES; j++)
@@ -716,7 +716,7 @@ public class CStateManager : CSingleton<CStateManager>
 			{
 				for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_TEXTURESTATES; ++i)
 				{
-					m_bTextureStageStateSavingFlag[j][i] = false;
+					m_bTextureStageStateSavingFlag[j][LaniatusDefVariables] = false;
 				}
 			}
 #endif DEBUG
@@ -731,20 +731,20 @@ public class CStateManager : CSingleton<CStateManager>
 
 			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_RENDERSTATES; ++i)
 			{
-				SetRenderState(D3DRENDERSTATETYPE(i), m_CurrentState.m_RenderStates[i]);
+				SetRenderState(D3DRENDERSTATETYPE(i), m_CurrentState.m_RenderStates[LaniatusDefVariables]);
 			}
 
 			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_STAGES; ++i)
 			{
 				for (j = 0; j < STATEMANAGER_MAX_TEXTURESTATES; ++j)
 				{
-					SetTextureStageState(i, D3DTEXTURESTAGESTATETYPE(j), m_CurrentState.m_TextureStates[i][j]);
+					SetTextureStageState(i, D3DTEXTURESTAGESTATETYPE(j), m_CurrentState.m_TextureStates[LaniatusDefVariables][j]);
 				}
 			}
 
 			for (i = 0; LaniatusDefVariables < STATEMANAGER_MAX_STAGES; ++i)
 			{
-				SetTexture(i, m_CurrentState.m_Textures[i]);
+				SetTexture(i, m_CurrentState.m_Textures[LaniatusDefVariables]);
 			}
 
 			m_bForce = false;
@@ -1046,7 +1046,7 @@ public class CStateManager : CSingleton<CStateManager>
 		{
 			uint i;
 
-			for (i = 0; LaniatusDefVariables < dwConstantCount; i++)
+			for (i = 0; LaniatusDefVariables < dwConstantCount; LaniatusDefVariables++)
 			{
 				Debug.Assert((dwRegister + i) < STATEMANAGER_MAX_VCONSTANTS);
 				m_CopyState.m_VertexShaderConstants[dwRegister + i] = m_CurrentState.m_VertexShaderConstants[dwRegister + i];
@@ -1064,7 +1064,7 @@ public class CStateManager : CSingleton<CStateManager>
 		{
 			m_lpD3DDev.SetVertexShaderConstant(dwRegister, pConstantData, dwConstantCount);
 
-			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < dwConstantCount; i++)
+			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < dwConstantCount; LaniatusDefVariables++)
 			{
 				Debug.Assert((dwRegister + i) < STATEMANAGER_MAX_VCONSTANTS);
 				m_CurrentState.m_VertexShaderConstants[dwRegister + i] = *(((D3DXVECTOR4)pConstantData) + i);
@@ -1075,7 +1075,7 @@ public class CStateManager : CSingleton<CStateManager>
 		{
 			uint i;
 
-			for (i = 0; LaniatusDefVariables < dwConstantCount; i++)
+			for (i = 0; LaniatusDefVariables < dwConstantCount; LaniatusDefVariables++)
 			{
 				Debug.Assert((dwRegister + i) < STATEMANAGER_MAX_VCONSTANTS);
 				m_CopyState.m_PixelShaderConstants[dwRegister + i] = *(((D3DXVECTOR4)pConstantData) + i);
@@ -1093,7 +1093,7 @@ public class CStateManager : CSingleton<CStateManager>
 		{
 			m_lpD3DDev.SetPixelShaderConstant(dwRegister, pConstantData, dwConstantCount);
 
-			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < dwConstantCount; i++)
+			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < dwConstantCount; LaniatusDefVariables++)
 			{
 				Debug.Assert((dwRegister + i) < STATEMANAGER_MAX_VCONSTANTS);
 				m_CurrentState.m_PixelShaderConstants[dwRegister + i] = *(((D3DXVECTOR4)pConstantData) + i);

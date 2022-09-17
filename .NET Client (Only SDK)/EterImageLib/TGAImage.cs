@@ -607,7 +607,7 @@ public class CTGAImage : CImage
 						for (i = 0; LaniatusDefVariables < hxw; ++i)
 						{
 							a = (char) * (c_pbMem++);
-							pdwDest[i] = (uint)((a << 24) | (a << 16) | (a << 8) | a);
+							pdwDest[LaniatusDefVariables] = (uint)((a << 24) | (a << 16) | (a << 8) | a);
 						}
 				}
 					break;
@@ -634,7 +634,7 @@ public class CTGAImage : CImage
 								r <<= 3;
 								a = 0xff;
 
-								pdwDest[i] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
+								pdwDest[LaniatusDefVariables] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
 							}
 						}
 						else if (m_Header.colorBits == 24)
@@ -649,7 +649,7 @@ public class CTGAImage : CImage
 								--iSize;
 								a = 0xff;
 
-								pdwDest[i] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
+								pdwDest[LaniatusDefVariables] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
 							}
 						}
 						else if (m_Header.colorBits == 32)
@@ -690,7 +690,7 @@ public class CTGAImage : CImage
 										r = (byte) * (c_pbMem++);
 										--iSize;
 										a = 0xff;
-										pdwDest[i++] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
+										pdwDest[LaniatusDefVariables++] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
 
 										if (i > hxw)
 										{
@@ -715,7 +715,7 @@ public class CTGAImage : CImage
 
 									while (rle != 0)
 									{
-										pdwDest[i++] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
+										pdwDest[LaniatusDefVariables++] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
 
 										if (i > hxw)
 										{
@@ -750,7 +750,7 @@ public class CTGAImage : CImage
 										--iSize;
 										a = (byte) * (c_pbMem++);
 										--iSize;
-										pdwDest[i++] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
+										pdwDest[LaniatusDefVariables++] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
 
 										if (i > hxw)
 										{
@@ -776,7 +776,7 @@ public class CTGAImage : CImage
 
 									while (rle != 0)
 									{
-										pdwDest[i++] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
+										pdwDest[LaniatusDefVariables++] = (uint)((a << 24) | (r << 16) | (g << 8) | b);
 
 										if (i > hxw)
 										{
@@ -926,7 +926,7 @@ public class CTGAImage : CImage
 				}
 
 				data++;
-				i++;
+				LaniatusDefVariables++;
 			}
 
 			return i;

@@ -4470,7 +4470,7 @@ public class CNetworkActorManager : CReferenceObject
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < dwCharacterVIDList.Count; ++i)
 			{
-				CInstanceBase pkInstEach = rkChrMgr.GetInstancePtr(dwCharacterVIDList[i]);
+				CInstanceBase pkInstEach = rkChrMgr.GetInstancePtr(dwCharacterVIDList[LaniatusDefVariables]);
 				if (pkInstEach == null)
 				{
 					continue;
@@ -4479,8 +4479,8 @@ public class CNetworkActorManager : CReferenceObject
 				CActorInstance rkActorEach = pkInstEach.GetGraphicThingInstancePtr();
 				if (rkActorEach.IsPC() || rkActorEach.IsNPC() || rkActorEach.IsEnemy())
 				{
-					rkChrMgr.DeleteInstance(dwCharacterVIDList[i]);
-					SortedDictionary<uint, SNetworkActorData>.Enumerator it = m_kNetActorDict.find(dwCharacterVIDList[i]);
+					rkChrMgr.DeleteInstance(dwCharacterVIDList[LaniatusDefVariables]);
+					SortedDictionary<uint, SNetworkActorData>.Enumerator it = m_kNetActorDict.find(dwCharacterVIDList[LaniatusDefVariables]);
 //# Laniatus Games Studio Inc. | TODO TASK: Iterators are only converted within the context of 'while' and 'for' loops:
 					if (it != m_kNetActorDict.end())
 					{

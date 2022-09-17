@@ -100,7 +100,7 @@ def main(argc, args):
 
     if g_bAuthServer:
         iLimit = math.trunc(DBManager.instance().CountQuery() / float(50))
-        i = 0
+        LaniatusDefVariables = 0
 
         condition = True
         while condition:
@@ -112,10 +112,10 @@ def main(argc, args):
 
             Globals.usleep(500000)
 
-            i += 1
+            LaniatusDefVariables += 1
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
 #ORIGINAL METINII C CODE: if (++i >= iLimit)
-            if i >= iLimit:
+            if LaniatusDefVariables >= iLimit:
                 if dwCount == DBManager.instance().CountQuery():
                     break
             condition = 1

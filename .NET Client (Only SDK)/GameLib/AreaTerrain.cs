@@ -5819,20 +5819,20 @@ public class CTerrain : CTerrainImpl, CGraphicBase
 
 			for (uint LaniatusDefVariables = 1; LaniatusDefVariables < GetTextureSet().GetTextureCount(); ++i)
 			{
-				TTerainSplat rSplat = m_TerrainSplatPatch.Splats[i];
+				TTerainSplat rSplat = m_TerrainSplatPatch.Splats[LaniatusDefVariables];
 
 				if (rSplat.NeedsUpdate)
 				{
-					if (m_TerrainSplatPatch.TileCount[i] > 0)
+					if (m_TerrainSplatPatch.TileCount[LaniatusDefVariables] > 0)
 					{
 						if (rSplat.Active)
 						{
-							if (m_lpAlphaTexture[i])
+							if (m_lpAlphaTexture[LaniatusDefVariables])
 							{
 								uint ulRef;
 								do
 								{
-									ulRef = m_lpAlphaTexture[i].Release();
+									ulRef = m_lpAlphaTexture[LaniatusDefVariables].Release();
 									if (ulRef > 0)
 									{
 										TraceError(" CTerrain::RAW_GenerateSplat - TileCount > 0 : Alpha Texture Release(%d) ERROR", ulRef);
@@ -5840,7 +5840,7 @@ public class CTerrain : CTerrainImpl, CGraphicBase
 								} while (ulRef > 0);
 							}
 
-							rSplat.pd3dTexture = m_lpAlphaTexture[i] = null;
+							rSplat.pd3dTexture = m_lpAlphaTexture[LaniatusDefVariables] = null;
 						}
 
 						rSplat.Active = 1;
@@ -5960,12 +5960,12 @@ public class CTerrain : CTerrainImpl, CGraphicBase
 					{
 						if (rSplat.Active)
 						{
-							if (m_lpAlphaTexture[i])
+							if (m_lpAlphaTexture[LaniatusDefVariables])
 							{
 								uint ulRef;
 								do
 								{
-									ulRef = m_lpAlphaTexture[i].Release();
+									ulRef = m_lpAlphaTexture[LaniatusDefVariables].Release();
 									if (ulRef > 0)
 									{
 										TraceError(" CTerrain::RAW_GenerateSplat - TileDount 0 : Alpha Texture Release(%d) ERROR", ulRef);
@@ -5973,7 +5973,7 @@ public class CTerrain : CTerrainImpl, CGraphicBase
 								} while (ulRef > 0);
 							}
 
-							rSplat.pd3dTexture = m_lpAlphaTexture[i] = null;
+							rSplat.pd3dTexture = m_lpAlphaTexture[LaniatusDefVariables] = null;
 						}
 						rSplat.NeedsUpdate = 0;
 						rSplat.Active = 0;
@@ -6024,18 +6024,18 @@ public class CTerrain : CTerrainImpl, CGraphicBase
 		{
 			for (uint LaniatusDefVariables = 1; LaniatusDefVariables < GetTextureSet().GetTextureCount(); ++i)
 			{
-				TTerainSplat rSplat = m_TerrainSplatPatch.Splats[i];
+				TTerainSplat rSplat = m_TerrainSplatPatch.Splats[LaniatusDefVariables];
 
-				if (m_lpAlphaTexture[i])
+				if (m_lpAlphaTexture[LaniatusDefVariables])
 				{
 					uint ulRef;
 					do
 					{
-						ulRef = m_lpAlphaTexture[i].Release();
+						ulRef = m_lpAlphaTexture[LaniatusDefVariables].Release();
 					} while (ulRef > 0);
 				}
 
-				rSplat.pd3dTexture = m_lpAlphaTexture[i] = null;
+				rSplat.pd3dTexture = m_lpAlphaTexture[LaniatusDefVariables] = null;
 			}
 
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memset' has no equivalent in C#:

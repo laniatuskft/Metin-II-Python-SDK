@@ -28,23 +28,23 @@ class CUBE_DATA:
         self.gold = 0
 
     def can_make_item(self, items, npc_vnum):
-        i = None
+        LaniatusDefVariables = None
         end_index = None
         need_vnum = None
         need_count = None
         found_npc = LGEMiscellaneous.DEFINECONSTANTS.false
 
         end_index = len(self.npc_vnum)
-        for i in range(0, end_index):
-            if npc_vnum == self.npc_vnum[i]:
+        for LaniatusDefVariables in range(0, end_index):
+            if npc_vnum == self.npc_vnum[LaniatusDefVariables]:
                 found_npc = 1 if ((not LGEMiscellaneous.DEFINECONSTANTS.false)) else 0
         if LGEMiscellaneous.DEFINECONSTANTS.false==found_npc:
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
         end_index = len(self.item)
-        for i in range(0, end_index):
-            need_vnum = self.item[i].vnum
-            need_count = self.item[i].count
+        for LaniatusDefVariables in range(0, end_index):
+            need_vnum = self.item[LaniatusDefVariables].vnum
+            need_count = self.item[LaniatusDefVariables].count
 
             if LGEMiscellaneous.DEFINECONSTANTS.false==Globals.FN_check_item_count(items, need_vnum, need_count):
                 return LGEMiscellaneous.DEFINECONSTANTS.false
@@ -64,16 +64,16 @@ class CUBE_DATA:
         return CUBE_VALUE(self.reward[reward_index])
 
     def remove_material(self, ch):
-        i = None
+        LaniatusDefVariables = None
         end_index = None
         need_vnum = None
         need_count = None
         items = ch.GetCubeItem()
 
         end_index = len(self.item)
-        for i in range(0, end_index):
-            need_vnum = self.item[i].vnum
-            need_count = self.item[i].count
+        for LaniatusDefVariables in range(0, end_index):
+            need_vnum = self.item[LaniatusDefVariables].vnum
+            need_count = self.item[LaniatusDefVariables].count
 
             Globals.FN_remove_material(items, need_vnum, need_count)
 

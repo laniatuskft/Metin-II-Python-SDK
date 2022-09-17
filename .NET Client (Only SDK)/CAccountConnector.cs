@@ -11,7 +11,7 @@
     
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < 4; ++i)
 		{
-			g_adwEncryptKey[i] = random();
+			g_adwEncryptKey[LaniatusDefVariables] = random();
 		}
     
 		tea_encrypt((uint) g_adwDecryptKey, (uint) g_adwEncryptKey, (uint)(c_pszKey + 37), 16);

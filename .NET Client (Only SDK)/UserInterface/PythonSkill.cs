@@ -4348,7 +4348,7 @@ public class CPythonSkill : CSingleton<CPythonSkill>
 					SkillData.ConditionDataVector.resize(dwSize);
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < dwSize; ++i)
 					{
-						SkillData.ConditionDataVector[i] = pConditionDataVector.at(i);
+						SkillData.ConditionDataVector[LaniatusDefVariables] = pConditionDataVector.at(i);
 					}
 				}
 			}
@@ -4375,9 +4375,9 @@ public class CPythonSkill : CSingleton<CPythonSkill>
 					SkillData.AffectDataVector.resize(dwSize);
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < dwSize; ++i)
 					{
-						SkillData.AffectDataVector[i].strAffectDescription = pAffectDataVector.at(i * 3 + 0);
-						SkillData.AffectDataVector[i].strAffectMinFormula = pAffectDataVector.at(i * 3 + 1);
-						SkillData.AffectDataVector[i].strAffectMaxFormula = pAffectDataVector.at(i * 3 + 2);
+						SkillData.AffectDataVector[LaniatusDefVariables].strAffectDescription = pAffectDataVector.at(i * 3 + 0);
+						SkillData.AffectDataVector[LaniatusDefVariables].strAffectMinFormula = pAffectDataVector.at(i * 3 + 1);
+						SkillData.AffectDataVector[LaniatusDefVariables].strAffectMaxFormula = pAffectDataVector.at(i * 3 + 2);
 					}
 				}
 			}
@@ -4397,9 +4397,9 @@ public class CPythonSkill : CSingleton<CPythonSkill>
 
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < Math.Min(SKILL_GRADE_COUNT, pGradeDataVector.size() / 2); ++i)
 					{
-						SkillData.GradeData[i].strName = pGradeDataVector.at(i * 2 + 0);
+						SkillData.GradeData[LaniatusDefVariables].strName = pGradeDataVector.at(i * 2 + 0);
 						string strIconFileName = g_strImagePath + pGradeDataVector.at(i * 2 + 1);
-						SkillData.GradeData[i].pImage = (CGraphicImage)CResourceManager.Instance().GetResourcePointer(strIconFileName);
+						SkillData.GradeData[LaniatusDefVariables].pImage = (CGraphicImage)CResourceManager.Instance().GetResourcePointer(strIconFileName);
 					}
 				}
 			}

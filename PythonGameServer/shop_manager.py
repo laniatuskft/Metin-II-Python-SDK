@@ -24,10 +24,10 @@ class CShopManager(singleton):
         if self._m_map_pkShop:
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
-        i = None
+        LaniatusDefVariables = None
 
-        i = 0
-        while i < size:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < size:
             ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The typedef 'LPSHOP' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
             shop = LG_NEW_M2 CShop
 
@@ -37,7 +37,7 @@ class CShopManager(singleton):
 
             self._m_map_pkShop.insert(TShopMap.value_type(table.dwVnum, shop))
             self._m_map_pkShopByNPCVnum.insert(TShopMap.value_type(table.dwNPCVnum, shop))
-            i += 1
+            LaniatusDefVariables += 1
             table += 1
         szShopTableExFileName = str(['\0' for _ in range(256)])
 
@@ -301,8 +301,8 @@ class CShopManager(singleton):
             for del_ in v:
                 del_ = None
 
-        i = 0
-        while i < pShopNPCGroup.GetRowCount():
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < pShopNPCGroup.GetRowCount():
             npcVnum = None
             shopName = ""
             if (not pShopNPCGroup.GetValue(i, "npc", npcVnum)) or not pShopNPCGroup.GetValue(i, "group", shopName):
@@ -322,7 +322,7 @@ class CShopManager(singleton):
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
             map_npcShop.insert(std::multimap .value_type(npcVnum, table))
-            i += 1
+            LaniatusDefVariables += 1
 
         it = map_npcShop.begin()
         while it is not map_npcShop.end():

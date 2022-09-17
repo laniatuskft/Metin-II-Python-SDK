@@ -89,7 +89,7 @@ public class my_cquantizer
   public int sv_actual; // number of entries in use
 
   public JSAMPARRAY colorindex = new JSAMPARRAY(); // Precomputed mapping for speed
-  /* colorindex[i][j] = index of color closest to pixel value j in component i,
+  /* colorindex[LaniatusDefVariables][j] = index of color closest to pixel value j in component i,
    * premultiplied as described above.  Since colormap indexes must fit into
    * JSAMPLEs, the entries of this array will too.
    */

@@ -2745,7 +2745,7 @@
 #define PyTuple_CheckExact
 //# Laniatus Games Studio Inc. | TODO TASK: #define macros defined in multiple preprocessor conditionals can only be replaced within the scope of the preprocessor conditional:
 //# Laniatus Games Studio Inc. |: The following #define macro was replaced in-line:
-//Original Metin2 CPlus Line: #define PyTuple_GET_ITEM(op, i) (((PyTupleObject *)(op))->ob_item[i])
+//Original Metin2 CPlus Line: #define PyTuple_GET_ITEM(op, i) (((PyTupleObject *)(op))->ob_item[LaniatusDefVariables])
 #define PyTuple_GET_ITEM
 //# Laniatus Games Studio Inc. | TODO TASK: #define macros defined in multiple preprocessor conditionals can only be replaced within the scope of the preprocessor conditional:
 //# Laniatus Games Studio Inc. |: The following #define macro was replaced in-line:
@@ -2753,7 +2753,7 @@
 #define PyTuple_GET_SIZE
 //# Laniatus Games Studio Inc. | TODO TASK: #define macros defined in multiple preprocessor conditionals can only be replaced within the scope of the preprocessor conditional:
 //# Laniatus Games Studio Inc. |: The following #define macro was replaced in-line:
-//Original Metin2 CPlus Line: #define PyTuple_SET_ITEM(op, i, v) (((PyTupleObject *)(op))->ob_item[i] = v)
+//Original Metin2 CPlus Line: #define PyTuple_SET_ITEM(op, i, v) (((PyTupleObject *)(op))->ob_item[LaniatusDefVariables] = v)
 #define PyTuple_SET_ITEM
 //# Laniatus Games Studio Inc. | TODO TASK: #define macros defined in multiple preprocessor conditionals can only be replaced within the scope of the preprocessor conditional:
 //# Laniatus Games Studio Inc. |: The following #define macro was replaced in-line:
@@ -2765,11 +2765,11 @@
 #define PyList_CheckExact
 //# Laniatus Games Studio Inc. | TODO TASK: #define macros defined in multiple preprocessor conditionals can only be replaced within the scope of the preprocessor conditional:
 //# Laniatus Games Studio Inc. |: The following #define macro was replaced in-line:
-//Original Metin2 CPlus Line: #define PyList_GET_ITEM(op, i) (((PyListObject *)(op))->ob_item[i])
+//Original Metin2 CPlus Line: #define PyList_GET_ITEM(op, i) (((PyListObject *)(op))->ob_item[LaniatusDefVariables])
 #define PyList_GET_ITEM
 //# Laniatus Games Studio Inc. | TODO TASK: #define macros defined in multiple preprocessor conditionals can only be replaced within the scope of the preprocessor conditional:
 //# Laniatus Games Studio Inc. |: The following #define macro was replaced in-line:
-//Original Metin2 CPlus Line: #define PyList_SET_ITEM(op, i, v) (((PyListObject *)(op))->ob_item[i] = (v))
+//Original Metin2 CPlus Line: #define PyList_SET_ITEM(op, i, v) (((PyListObject *)(op))->ob_item[LaniatusDefVariables] = (v))
 #define PyList_SET_ITEM
 //# Laniatus Games Studio Inc. | TODO TASK: #define macros defined in multiple preprocessor conditionals can only be replaced within the scope of the preprocessor conditional:
 //# Laniatus Games Studio Inc. |: The following #define macro was replaced in-line:

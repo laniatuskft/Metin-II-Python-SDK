@@ -3048,7 +3048,7 @@ public class CAccountConnector : CNetworkStream, CSingleton<CAccountConnector>
 
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < 4; ++i)
 				{
-					LoginPacket.adwClientKey[i] = g_adwEncryptKey[i];
+					LoginPacket.adwClientKey[LaniatusDefVariables] = g_adwEncryptKey[LaniatusDefVariables];
 				}
 
 #if ENABLE_MULTI_LANGUAGE_SYSTEM
@@ -3292,7 +3292,7 @@ public class CAccountConnector : CNetworkStream, CSingleton<CAccountConnector>
 		{
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < 4; ++i)
 			{
-				g_adwEncryptKey[i] = random();
+				g_adwEncryptKey[LaniatusDefVariables] = random();
 			}
 
 //# Laniatus Games Studio Inc. | TODO TASK: C# does not have an equivalent to pointers to value types:

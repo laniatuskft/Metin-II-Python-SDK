@@ -272,23 +272,23 @@ class FSkillEarthQuake:
                     tx = ch.GetX() + vec.x * NFLYDISTANCE
                     ty = ch.GetY() + vec.y * NFLYDISTANCE
 
-                    for i in range(0, 5):
+                    for LaniatusDefVariables in range(0, 5):
                         if True == SECTREE_MANAGER.instance().IsMovablePosition(ch.GetMapIndex(), tx, ty):
                             break
 
-                        if i == 0:
+                        if LaniatusDefVariables == 0:
                             tx = ch.GetX() + vec.x * NFLYDISTANCE * -1
                             ty = ch.GetY() + vec.y * NFLYDISTANCE * -1
-                        elif i == 1:
+                        elif LaniatusDefVariables == 1:
                             tx = ch.GetX() + vec.x * NFLYDISTANCE * -1
                             ty = ch.GetY() + vec.y * NFLYDISTANCE
-                        elif i == 2:
+                        elif LaniatusDefVariables == 2:
                             tx = ch.GetX() + vec.x * NFLYDISTANCE
                             ty = ch.GetY() + vec.y * NFLYDISTANCE * -1
-                        elif i == 3:
+                        elif LaniatusDefVariables == 3:
                             tx = ch.GetX() + vec.x * number(1,100)
                             ty = ch.GetY() + vec.y * number(1,100)
-                        elif i == 4:
+                        elif LaniatusDefVariables == 4:
                             tx = ch.GetX() + vec.x * number(1,10)
                             ty = ch.GetY() + vec.y * number(1,10)
 

@@ -3832,7 +3832,7 @@ namespace UI
 
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < ITEM_MAX_SIZE; ++i)
 				{
-					m_apSlotActiveEffect[i] = null;
+					m_apSlotActiveEffect[LaniatusDefVariables] = null;
 				}
 
 				m_pBaseImageInstance = null;
@@ -3865,7 +3865,7 @@ namespace UI
 					pEff.SetRenderingMode(CGraphicExpandedImageInstance.RENDERING_MODE_SCREEN);
 					pEff.Show();
 
-					m_apSlotActiveEffect[i] = pEff;
+					m_apSlotActiveEffect[LaniatusDefVariables] = pEff;
 				}
 			}
 
@@ -3894,10 +3894,10 @@ namespace UI
 			{
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < ITEM_MAX_SIZE; ++i)
 				{
-					if (m_apSlotActiveEffect[i])
+					if (m_apSlotActiveEffect[LaniatusDefVariables])
 					{
-						m_apSlotActiveEffect[i] = null;
-						m_apSlotActiveEffect[i] = null;
+						m_apSlotActiveEffect[LaniatusDefVariables] = null;
+						m_apSlotActiveEffect[LaniatusDefVariables] = null;
 					}
 				}
 			}
@@ -3929,11 +3929,11 @@ namespace UI
 				}
 				m_ReserveDestroyEffectDeque.clear();
 
-				for (int LaniatusDefVariables = 0; LaniatusDefVariables < ITEM_MAX_SIZE; i++)
+				for (int LaniatusDefVariables = 0; LaniatusDefVariables < ITEM_MAX_SIZE; LaniatusDefVariables++)
 				{
-					if (m_apSlotActiveEffect[i])
+					if (m_apSlotActiveEffect[LaniatusDefVariables])
 					{
-						m_apSlotActiveEffect[i].Update();
+						m_apSlotActiveEffect[LaniatusDefVariables].Update();
 					}
 				}
 			}

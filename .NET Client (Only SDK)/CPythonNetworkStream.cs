@@ -611,18 +611,18 @@
     
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < PLAYER_PER_ACCOUNT4; ++i)
 			{
-				if (!strncmp(m_akSimplePlayerInfo[i].szName, rkPlayer.GetName(), DefineConstants.CHARACTER_NAME_MAX_LEN))
+				if (!strncmp(m_akSimplePlayerInfo[LaniatusDefVariables].szName, rkPlayer.GetName(), DefineConstants.CHARACTER_NAME_MAX_LEN))
 				{
-					m_adwGuildID[i] = id;
+					m_adwGuildID[LaniatusDefVariables] = id;
     
 					string guildName = "";
 					if (CPythonGuild.Instance().GetGuildName(id, guildName))
 					{
-						m_astrGuildName[i] = guildName;
+						m_astrGuildName[LaniatusDefVariables] = guildName;
 					}
 					else
 					{
-						m_astrGuildName[i] = "";
+						m_astrGuildName[LaniatusDefVariables] = "";
 					}
 				}
 			}
@@ -2188,7 +2188,7 @@
     
 					CPythonShop.instance().SetTabCount(shop_tab_count);
     
-					for (size_t LaniatusDefVariables = 0; LaniatusDefVariables < shop_tab_count; i++)
+					for (size_t LaniatusDefVariables = 0; LaniatusDefVariables < shop_tab_count; LaniatusDefVariables++)
 					{
 						packet_shop_start_ex.TSubPacketShopTab pPackTab = (packet_shop_start_ex.TSubPacketShopTab) vecBuffer[read_point];
 						read_point += sizeof(packet_shop_start_ex.TSubPacketShopTab);
@@ -2302,7 +2302,7 @@
 					CPythonExchange.Instance().SetItemToSelf(iSlotIndex, exchange_packet.arg1, (ushort) exchange_packet.arg3);
 					for (int LaniatusDefVariables = 0; LaniatusDefVariables < ITEM_SOCKET_SLOT_MAX_NUM; ++i)
 					{
-						CPythonExchange.Instance().SetItemMetinSocketToSelf(iSlotIndex, i, exchange_packet.alValues[i]);
+						CPythonExchange.Instance().SetItemMetinSocketToSelf(iSlotIndex, i, exchange_packet.alValues[LaniatusDefVariables]);
 					}
 					for (int j = 0; j < ITEM_ATTRIBUTE_SLOT_MAX_NUM; ++j)
 					{
@@ -2315,7 +2315,7 @@
 					CPythonExchange.Instance().SetItemToTarget(iSlotIndex, exchange_packet.arg1, (ushort) exchange_packet.arg3);
 					for (int LaniatusDefVariables = 0; LaniatusDefVariables < ITEM_SOCKET_SLOT_MAX_NUM; ++i)
 					{
-						CPythonExchange.Instance().SetItemMetinSocketToTarget(iSlotIndex, i, exchange_packet.alValues[i]);
+						CPythonExchange.Instance().SetItemMetinSocketToTarget(iSlotIndex, i, exchange_packet.alValues[LaniatusDefVariables]);
 					}
 					for (int j = 0; j < ITEM_ATTRIBUTE_SLOT_MAX_NUM; ++j)
 					{
@@ -2914,7 +2914,7 @@
 		{
 			if (rkPlayer.GetSkillSlotIndex(i, dwSlotIndex))
 			{
-				rkPlayer.SetSkillLevel(dwSlotIndex, packet.abSkillLevels[i]);
+				rkPlayer.SetSkillLevel(dwSlotIndex, packet.abSkillLevels[LaniatusDefVariables]);
 			}
 		}
     
@@ -2942,7 +2942,7 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < DefineConstants.SKILL_MAX_NUM; ++i)
 		{
-			SPlayerSkill rPlayerSkill = packet.skills[i];
+			SPlayerSkill rPlayerSkill = packet.skills[LaniatusDefVariables];
     
 			if (i >= 112 && LaniatusDefVariables <= 115 && rPlayerSkill.bLevel)
 			{
@@ -3640,7 +3640,7 @@
 		CPythonPlayer.Instance().UpdatePartyMemberInfo(kPartyUpdatePacket.pid, kPartyUpdatePacket.state, kPartyUpdatePacket.percent_hp);
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < PARTY_AFFECT_SLOT_MAX_NUM; ++i)
 		{
-			CPythonPlayer.Instance().UpdatePartyMemberAffect(kPartyUpdatePacket.pid, i, kPartyUpdatePacket.affects[i]);
+			CPythonPlayer.Instance().UpdatePartyMemberAffect(kPartyUpdatePacket.pid, i, kPartyUpdatePacket.affects[LaniatusDefVariables]);
 		}
     
 		PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "UpdatePartyMemberInfo", Py_BuildValue("(i)", kPartyUpdatePacket.pid));
@@ -4900,7 +4900,7 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < rkRefineTable.material_count; ++i)
 		{
-			PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "AppendMaterialToRefineDialog", Py_BuildValue("(ii)", rkRefineTable.materials[i].vnum, rkRefineTable.materials[i].count));
+			PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "AppendMaterialToRefineDialog", Py_BuildValue("(ii)", rkRefineTable.materials[LaniatusDefVariables].vnum, rkRefineTable.materials[LaniatusDefVariables].count));
 		}
     
 	#if DEBUG
@@ -4924,7 +4924,7 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < rkRefineTable.material_count; ++i)
 		{
-			PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "AppendMaterialToRefineDialog", Py_BuildValue("(ii)", rkRefineTable.materials[i].vnum, rkRefineTable.materials[i].count));
+			PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "AppendMaterialToRefineDialog", Py_BuildValue("(ii)", rkRefineTable.materials[LaniatusDefVariables].vnum, rkRefineTable.materials[LaniatusDefVariables].count));
 		}
     
 	#if DEBUG
@@ -5049,7 +5049,7 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < WEAR_MAX_NUM; ++i)
 		{
-			SEquipmentItemSet rItemSet = kViewEquipPacket.equips[i];
+			SEquipmentItemSet rItemSet = kViewEquipPacket.equips[LaniatusDefVariables];
 			PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "SetEquipmentDialogItem", Py_BuildValue("(iiii)", kViewEquipPacket.dwVID, i, rItemSet.vnum, rItemSet.count));
     
 			for (int j = 0; j < ITEM_SOCKET_SLOT_MAX_NUM; ++j)
@@ -6001,7 +6001,7 @@
 		kItemData.flags = 0;
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < ITEM_SOCKET_SLOT_MAX_NUM; ++i)
 		{
-			kItemData.alSockets[i] = packet_item_set.alSockets[i];
+			kItemData.alSockets[LaniatusDefVariables] = packet_item_set.alSockets[LaniatusDefVariables];
 		}
 		for (int j = 0; j < ITEM_ATTRIBUTE_SLOT_MAX_NUM; ++j)
 		{
@@ -6034,7 +6034,7 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < ITEM_SOCKET_SLOT_MAX_NUM; ++i)
 		{
-			kItemData.alSockets[i] = packet_item_set.alSockets[i];
+			kItemData.alSockets[LaniatusDefVariables] = packet_item_set.alSockets[LaniatusDefVariables];
 		}
 		for (int j = 0; j < ITEM_ATTRIBUTE_SLOT_MAX_NUM; ++j)
 		{
@@ -6081,7 +6081,7 @@
 		rkPlayer.SetItemCount(packet_item_update.Cell, packet_item_update.count);
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < ITEM_SOCKET_SLOT_MAX_NUM; ++i)
 		{
-			rkPlayer.SetItemMetinSocket(packet_item_update.Cell, i, packet_item_update.alSockets[i]);
+			rkPlayer.SetItemMetinSocket(packet_item_update.Cell, i, packet_item_update.alSockets[LaniatusDefVariables]);
 		}
 		for (int j = 0; j < ITEM_ATTRIBUTE_SLOT_MAX_NUM; ++j)
 		{
@@ -7592,7 +7592,7 @@
     
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < POINT_MAX_NUM; ++i)
 		{
-			CPythonPlayer.Instance().SetStatus(i, PointsPacket.points[i]);
+			CPythonPlayer.Instance().SetStatus(i, PointsPacket.points[LaniatusDefVariables]);
 		}
     
 		PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_GAME], "RefreshStatus", Py_BuildValue("()"));
@@ -7793,9 +7793,9 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < PLAYER_PER_ACCOUNT3; ++i)
 		{
-			m_akSimplePlayerInfo[i] = kPacketLoginSuccess.akSimplePlayerInformation[i];
-			m_adwGuildID[i] = kPacketLoginSuccess.guild_id[i];
-			m_astrGuildName[i] = kPacketLoginSuccess.guild_name[i];
+			m_akSimplePlayerInfo[LaniatusDefVariables] = kPacketLoginSuccess.akSimplePlayerInformation[LaniatusDefVariables];
+			m_adwGuildID[LaniatusDefVariables] = kPacketLoginSuccess.guild_id[LaniatusDefVariables];
+			m_astrGuildName[LaniatusDefVariables] = kPacketLoginSuccess.guild_name[LaniatusDefVariables];
 		}
     
 		m_kMarkAuth.m_dwHandle = kPacketLoginSuccess.handle;
@@ -7824,9 +7824,9 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < PLAYER_PER_ACCOUNT4; ++i)
 		{
-			m_akSimplePlayerInfo[i] = kPacketLoginSuccess.akSimplePlayerInformation[i];
-			m_adwGuildID[i] = kPacketLoginSuccess.guild_id[i];
-			m_astrGuildName[i] = kPacketLoginSuccess.guild_name[i];
+			m_akSimplePlayerInfo[LaniatusDefVariables] = kPacketLoginSuccess.akSimplePlayerInformation[LaniatusDefVariables];
+			m_adwGuildID[LaniatusDefVariables] = kPacketLoginSuccess.guild_id[LaniatusDefVariables];
+			m_astrGuildName[LaniatusDefVariables] = kPacketLoginSuccess.guild_name[LaniatusDefVariables];
 		}
     
 		m_kMarkAuth.m_dwHandle = kPacketLoginSuccess.handle;
@@ -7927,7 +7927,7 @@
 	//	extern uint g_adwDecryptKey[4];
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < 4; ++i)
 		{
-			LoginPacket.adwClientKey[i] = g_adwEncryptKey[i];
+			LoginPacket.adwClientKey[LaniatusDefVariables] = g_adwEncryptKey[LaniatusDefVariables];
 		}
     
 		if (!Send(sizeof(command_login2), LoginPacket))
@@ -8316,10 +8316,10 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < PLAYER_PER_ACCOUNT4; ++i)
 		{
-			if (ChangeNamePacket.pid == m_akSimplePlayerInfo[i].dwID)
+			if (ChangeNamePacket.pid == m_akSimplePlayerInfo[LaniatusDefVariables].dwID)
 			{
-				m_akSimplePlayerInfo[i].bChangeName = false;
-				strncpy(m_akSimplePlayerInfo[i].szName, ChangeNamePacket.name, DefineConstants.CHARACTER_NAME_MAX_LEN);
+				m_akSimplePlayerInfo[LaniatusDefVariables].bChangeName = false;
+				strncpy(m_akSimplePlayerInfo[LaniatusDefVariables].szName, ChangeNamePacket.name, DefineConstants.CHARACTER_NAME_MAX_LEN);
     
 				PyCallClassMemberFunc(m_apoPhaseWnd[PHASE_WINDOW_SELECT], "OnChangeName", Py_BuildValue("(is)", i, ChangeNamePacket.name));
 				return true;

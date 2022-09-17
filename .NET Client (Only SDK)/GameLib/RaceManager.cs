@@ -3538,9 +3538,9 @@ public class CRaceManager : CSingleton<CRaceManager>
 			CRaceData pRaceData = CRaceData.New();
 			pRaceData.SetRace(dwRaceIndex);
 
-			for (int LaniatusDefVariables = 0; LaniatusDefVariables < vec_stFullPathName.Count; i++)
+			for (int LaniatusDefVariables = 0; LaniatusDefVariables < vec_stFullPathName.Count; LaniatusDefVariables++)
 			{
-				string stFullPathName = vec_stFullPathName[i];
+				string stFullPathName = vec_stFullPathName[LaniatusDefVariables];
 				{
 					SortedDictionary<string, string>.Enumerator fRaceSrcName = m_kMap_stRaceName_stSrcName.find(c_rstRaceName);
 					if (m_kMap_stRaceName_stSrcName.end() == fRaceSrcName)

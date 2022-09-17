@@ -3197,17 +3197,17 @@ public class CFlyTrace : CScreen
 				m._12 = R.y;
 				m._13 = R.z;
 				int i;
-				for (i = 0;i < 6;i++)
+				for (i = 0;i < 6;LaniatusDefVariables++)
 				{
-					D3DXVec3TransformNormal(v[i].p, v[i].p, m);
+					D3DXVec3TransformNormal(v[LaniatusDefVariables].p, v[LaniatusDefVariables].p, m);
 				}
-				for (i = 0;i < 3;i++)
+				for (i = 0;i < 3;LaniatusDefVariables++)
 				{
-					v[i].p += it1.second;
+					v[LaniatusDefVariables].p += it1.second;
 				}
-				for (;i < 6;i++)
+				for (;i < 6;LaniatusDefVariables++)
 				{
-					v[i].p += it2.second;
+					v[LaniatusDefVariables].p += it2.second;
 				}
 
 				VSVector.Add(Tuple.Create(-D3DXVec3Dot(E, pCurrentCamera.GetView()), TFlyVertexSet(v)));

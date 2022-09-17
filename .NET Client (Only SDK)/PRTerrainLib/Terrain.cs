@@ -3705,7 +3705,7 @@ public class CTerrainImpl
 
 						for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_byNumWater; ++i)
 						{
-							m_lWaterHeight[i] = wWaterHeight[i];
+							m_lWaterHeight[LaniatusDefVariables] = wWaterHeight[LaniatusDefVariables];
 						}
 					}
 				}
@@ -3813,10 +3813,10 @@ public class CTerrainImpl
 		{
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < GetTextureSet().GetTextureCount(); ++i)
 			{
-				if (m_lpAlphaTexture[i])
+				if (m_lpAlphaTexture[LaniatusDefVariables])
 				{
-					m_lpAlphaTexture[i].Release();
-					m_lpAlphaTexture[i] = null;
+					m_lpAlphaTexture[LaniatusDefVariables].Release();
+					m_lpAlphaTexture[LaniatusDefVariables] = null;
 				}
 			}
 

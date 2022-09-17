@@ -1470,7 +1470,7 @@ public class CSoundManagerStream : CSoundBase
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < MUSIC_INSTANCE_MAX_NUM; ++i)
 			{
-				m_Instances[i].Initialize();
+				m_Instances[LaniatusDefVariables].Initialize();
 			}
 
 			return true;
@@ -1480,7 +1480,7 @@ public class CSoundManagerStream : CSoundBase
 		{
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < MUSIC_INSTANCE_MAX_NUM; ++i)
 			{
-				m_Instances[i].Stop();
+				m_Instances[LaniatusDefVariables].Stop();
 			}
 
 			CSoundBase.Destroy();

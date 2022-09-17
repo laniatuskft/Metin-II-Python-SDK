@@ -745,8 +745,8 @@ class CGuildManager(singleton):
     def BootReserveWar(self):
         c_apszQuery = ["SELECT id, guild1, guild2, UNIX_TIMESTAMP(time), type, warprice, initscore, bet_from, bet_to, power1, power2, handicap FROM guild_war_reservation WHERE started=1 AND winner=-1", "SELECT id, guild1, guild2, UNIX_TIMESTAMP(time), type, warprice, initscore, bet_from, bet_to, power1, power2, handicap FROM guild_war_reservation WHERE started=0"]
 
-        for i in range(0, 2):
-            pmsg = std::unique_ptr(CDBManager.instance().DirectQuery(c_apszQuery[i]))
+        for LaniatusDefVariables in range(0, 2):
+            pmsg = std::unique_ptr(CDBManager.instance().DirectQuery(c_apszQuery[LaniatusDefVariables]))
 
             if pmsg.Get().uiNumRows == 0:
                 continue
@@ -816,8 +816,8 @@ class CGuildManager(singleton):
 # Laniatus Games Studio Inc. |  TODO TASK: There is no Python equivalent to 'sizeof':
                 snprintf(buf, sizeof(buf), "GuildWar: BootReserveWar : step %d id %u GID1 %u GID2 %u", i, t.dwID, t.dwGuildFrom, t.dwGuildTo)
 
-                if i == 0 or int(t.dwTime) - CClientManager.instance().GetCurrentTime() < 0:
-                    if i == 0:
+                if LaniatusDefVariables == 0 or int(t.dwTime) - CClientManager.instance().GetCurrentTime() < 0:
+                    if LaniatusDefVariables == 0:
                         sys_log(0, "%s : DB was shutdowned while war is being.", buf)
                     else:
                         sys_log(0, "%s : left time lower than 5 minutes, will be canceled", buf)

@@ -212,9 +212,9 @@ class quest: #this class replaces the original namespace 'quest'
             vecQuestStateChange = []
             self._m_QuestStateChange.swap(vecQuestStateChange)
 
-            i = 0
+            LaniatusDefVariables = 0
             while i<len(vecQuestStateChange):
-                rInfo = vecQuestStateChange[i]
+                rInfo = vecQuestStateChange[LaniatusDefVariables]
                 if rInfo.quest_idx == 0:
                     continue
 
@@ -245,7 +245,7 @@ class quest: #this class replaces the original namespace 'quest'
 
                 if self.GetFlag(stQuestName + ".__status") == rInfo.next_state:
                     CQuestManager.instance().Letter(ch.GetPlayerID(), dwQuestIdx, rInfo.next_state)
-                i += 1
+                LaniatusDefVariables += 1
 
         class TQuestStateChangeInfo:
 
@@ -422,7 +422,7 @@ class quest: #this class replaces the original namespace 'quest'
             #            static list<SQuestTable> s_table
             Save_s_table.resize(len(self._m_FlagSaveMap))
 
-            i = 0
+            LaniatusDefVariables = 0
 
             it = self._m_FlagSaveMap.begin()
 
@@ -459,9 +459,9 @@ class quest: #this class replaces the original namespace 'quest'
                     continue
 
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
-#ORIGINAL METINII C CODE: SQuestTable & r = s_table[i++];
-                r = Save_s_table[i]
-                i += 1
+#ORIGINAL METINII C CODE: SQuestTable & r = s_table[LaniatusDefVariables++];
+                r = Save_s_table[LaniatusDefVariables]
+                LaniatusDefVariables += 1
 
                 r.dwPID = self._m_dwID
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
@@ -470,7 +470,7 @@ class quest: #this class replaces the original namespace 'quest'
                 strncpy_s(r.szState, sizeof(r.szState), stState, _TRUNCATE)
                 r.lValue = lValue
 
-            if i > 0:
+            if LaniatusDefVariables > 0:
                 #sys_log(1, "QuestPC::Save %d", i)
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                 db_clientdesc.DBPacketHeader(Globals.LG_HEADER_GD_QUEST_SAVE, 0, sizeof(SQuestTable) * i)

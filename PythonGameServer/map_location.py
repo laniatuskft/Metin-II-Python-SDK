@@ -26,10 +26,10 @@
 
         if self.m_map_address.end() is it:
             #sys_log(0, "CMapLocation::Get - Error MapIndex[%d]", iIndex)
-            i = m_map_address.begin()
-            while i is not self.m_map_address.end():
+            LaniatusDefVariables = m_map_address.begin()
+            while LaniatusDefVariables is not self.m_map_address.end():
                 #sys_log(0, "Map(%d): Server(%x:%d)", i.first, i.second.addr, i.second.port)
-                i += 1
+                LaniatusDefVariables += 1
             return DefineConstants.false
 
         lAddr.arg_value = it.second.addr

@@ -3357,7 +3357,7 @@ public class CSkyBox : CSkyObject
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < 6; ++i)
 			{
-				CGraphicImageInstance pFaceImageInstance = m_GraphicImageInstanceMap[m_Faces[i].m_strFaceTextureFileName];
+				CGraphicImageInstance pFaceImageInstance = m_GraphicImageInstanceMap[m_Faces[LaniatusDefVariables].m_strFaceTextureFileName];
 				if (pFaceImageInstance == null)
 				{
 					break;
@@ -3365,7 +3365,7 @@ public class CSkyBox : CSkyObject
 
 				(CStateManager.Instance()).SetTexture(0, pFaceImageInstance.GetTextureReference().GetD3DTexture());
 
-				m_Faces[i].Render();
+				m_Faces[LaniatusDefVariables].Render();
 			}
 
 			(CStateManager.Instance()).RestoreTextureStageState(0, D3DTSS_ADDRESSU);
@@ -3375,7 +3375,7 @@ public class CSkyBox : CSkyObject
 		{
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < 6; ++i)
 			{
-				m_Faces[i].Render();
+				m_Faces[LaniatusDefVariables].Render();
 			}
 		}
 

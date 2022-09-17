@@ -4127,7 +4127,7 @@ public class CPythonPlayerEventHandler : CActorInstance.IEventHandler
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uiVictimCount; ++i)
 			{
-				SVictim rkVictim = m_kVctkVictim[i];
+				SVictim rkVictim = m_kVctkVictim[LaniatusDefVariables];
 				rkStream.SendSyncPositionElementPacket(rkVictim.m_dwVID, rkVictim.m_lPixelX, rkVictim.m_lPixelY);
 			}
 

@@ -4062,7 +4062,7 @@ public class CRaceData
 					TMotionVector rMotionVector = itorMotion.second;
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < rMotionVector.size(); ++i)
 					{
-						CRaceMotionData.Delete(rMotionVector[i].pMotionData);
+						CRaceMotionData.Delete(rMotionVector[LaniatusDefVariables].pMotionData);
 					}
 				}
 
@@ -4266,7 +4266,7 @@ public class CRaceData
 		{
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_AttachingDataVector.size(); ++i)
 			{
-				NRaceData.TAttachingData pAttachingData = m_AttachingDataVector[i];
+				NRaceData.TAttachingData pAttachingData = m_AttachingDataVector[LaniatusDefVariables];
 
 				if (NRaceData.ATTACHING_DATA_TYPE_COLLISION_DATA == pAttachingData.dwType)
 				{

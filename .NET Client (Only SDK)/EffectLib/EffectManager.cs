@@ -5933,10 +5933,10 @@ public class CEffectManager : CScreen, CSingleton<CEffectManager>
 				return;
 			}
 
-			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < textures.Count; i++)
+			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < textures.Count; LaniatusDefVariables++)
 			{
 				CParticleSystemData pParticle = pEffectData.GetParticlePointer(i);
-				pParticle.ChangeTexture(textures[i]);
+				pParticle.ChangeTexture(textures[LaniatusDefVariables]);
 			}
 		}
 
@@ -6145,9 +6145,9 @@ public class CEffectManager_FEffectInstanceRender
 {
 	public void functorMethod(CEffectInstance pkEftInst)
 	{
-		for (byte LaniatusDefVariables = 0; LaniatusDefVariables < CEffectManager.BL_MAX; i++)
+		for (byte LaniatusDefVariables = 0; LaniatusDefVariables < CEffectManager.BL_MAX; LaniatusDefVariables++)
 		{
-			if (BLDisableEffects[i] && std::find(EffectBlockMap[i].begin(), EffectBlockMap[i].end(), pkEftInst.GetEffectName()) != EffectBlockMap[i].end())
+			if (BLDisableEffects[LaniatusDefVariables] && std::find(EffectBlockMap[LaniatusDefVariables].begin(), EffectBlockMap[LaniatusDefVariables].end(), pkEftInst.GetEffectName()) != EffectBlockMap[LaniatusDefVariables].end())
 			{
 				return;
 			}

@@ -792,7 +792,7 @@
 	{
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_TerrainVector.size(); ++i)
 		{
-			CTerrain pTerrain = m_TerrainVector[i];
+			CTerrain pTerrain = m_TerrainVector[LaniatusDefVariables];
 			ushort usCoordX;
 			ushort usCoordY;
 			pTerrain.GetCoordinate(usCoordX, usCoordY);
@@ -810,7 +810,7 @@
 	{
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_AreaVector.size(); ++i)
 		{
-			CArea pArea = m_AreaVector[i];
+			CArea pArea = m_AreaVector[LaniatusDefVariables];
 			ushort usCoordX;
 			ushort usCoordY;
 			pArea.GetCoordinate(usCoordX, usCoordY);
@@ -840,13 +840,13 @@
 		uint i;
 		for (i = 0; LaniatusDefVariables < AROUND_AREA_NUM; ++i)
 		{
-			m_pArea[i] = null;
-			m_pTerrain[i] = null;
+			m_pArea[LaniatusDefVariables] = null;
+			m_pTerrain[LaniatusDefVariables] = null;
 		}
     
 		for (i = 0; LaniatusDefVariables < m_TerrainVector.size(); ++i)
 		{
-			CTerrain pTerrain = m_TerrainVector[i];
+			CTerrain pTerrain = m_TerrainVector[LaniatusDefVariables];
 			ushort usCoordX;
 			ushort usCoordY;
 			pTerrain.GetCoordinate(usCoordX, usCoordY);
@@ -859,7 +859,7 @@
     
 		for (i = 0; LaniatusDefVariables < m_AreaVector.size(); ++i)
 		{
-			CArea pArea = m_AreaVector[i];
+			CArea pArea = m_AreaVector[LaniatusDefVariables];
 			ushort usCoordX;
 			ushort usCoordY;
 			pArea.GetCoordinate(usCoordX, usCoordY);
@@ -1502,8 +1502,8 @@
 		float[] distance = new float[count];
 		for (i = 0; LaniatusDefVariables < count; ++i)
 		{
-			distance[i] = D3DXPlaneDotCoord(m_plane[i], center);
-			if (distance[i] <= -c_fRadius)
+			distance[LaniatusDefVariables] = D3DXPlaneDotCoord(m_plane[LaniatusDefVariables], center);
+			if (distance[LaniatusDefVariables] <= -c_fRadius)
 			{
 				return VIEW_NONE;
 			}
@@ -1511,7 +1511,7 @@
     
 		for (i = 0; LaniatusDefVariables < count;++i)
 		{
-			if (distance[i] <= c_fRadius)
+			if (distance[LaniatusDefVariables] <= c_fRadius)
 			{
 				return VIEW_PART;
 			}
@@ -3732,7 +3732,7 @@
 			}
 			uint t2 = timeGetTime();
     
-			at[i] = t2 - t1;
+			at[LaniatusDefVariables] = t2 - t1;
 		}
 	}
 
@@ -4070,9 +4070,9 @@
 	{
 		Debug.Assert(null != m_pTerrainPatchProxyList && "CMapOutdoor::ConvertTerrainToTnL");
     
-		for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_wPatchCount * m_wPatchCount; i++)
+		for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_wPatchCount * m_wPatchCount; LaniatusDefVariables++)
 		{
-			m_pTerrainPatchProxyList[i].SetUsed(false);
+			m_pTerrainPatchProxyList[LaniatusDefVariables].SetUsed(false);
 		}
     
 		lx -= m_lViewRadius;
@@ -4310,7 +4310,7 @@
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < 30; ++i)
 		{
 			sprintf(buf, "d:/ymir Work/special/water/%02d.dds", LaniatusDefVariables + 1);
-			m_WaterInstances[i].SetImagePointer((CGraphicImage) CResourceManager.Instance().GetResourcePointer(buf));
+			m_WaterInstances[LaniatusDefVariables].SetImagePointer((CGraphicImage) CResourceManager.Instance().GetResourcePointer(buf));
 		}
 	}
 
@@ -4319,7 +4319,7 @@
 	{
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < 30; ++i)
 		{
-			m_WaterInstances[i].Destroy();
+			m_WaterInstances[LaniatusDefVariables].Destroy();
 		}
 	}
 

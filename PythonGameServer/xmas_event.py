@@ -27,12 +27,12 @@ class xmas: #this class replaces the original namespace 'xmas'
                     xmas.SpawnEventHelper(LGEMiscellaneous.DEFINECONSTANTS.false)
             elif name == "xmas_tree":
                 if value > 0 and prev_value == 0:
-                    i = CharacterVectorInteractor()
+                    LaniatusDefVariables = CharacterVectorInteractor()
 
                     if not CHARACTER_MANAGER.instance().GetCharactersByRaceNum(uint(xmas.MOB_XMAS_TREE_VNUM), i):
                         CHARACTER_MANAGER.instance().SpawnMob(uint(xmas.MOB_XMAS_TREE_VNUM), 61, 76500 + 358400, 60900 + 153600, 0, LGEMiscellaneous.DEFINECONSTANTS.false, -1, ((not DefineConstants.false)))
                 elif prev_value > 0 and value == 0:
-                    i = CharacterVectorInteractor()
+                    LaniatusDefVariables = CharacterVectorInteractor()
 
                     if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(uint(xmas.MOB_XMAS_TREE_VNUM), i):
                         it = i.begin()
@@ -44,7 +44,7 @@ class xmas: #this class replaces the original namespace 'xmas'
                             it += 1
         elif name == "xmas_santa":
             if value == 0:
-                    i = CharacterVectorInteractor()
+                    LaniatusDefVariables = CharacterVectorInteractor()
 
                     if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(uint(xmas.MOB_SANTA_VNUM), i):
                         it = i.begin()
@@ -60,7 +60,7 @@ class xmas: #this class replaces the original namespace 'xmas'
                 if map_allow_find(61):
                     quest.CQuestManager.instance().RequestSetEventFlag("xmas_santa", 2)
 
-                    i = CharacterVectorInteractor()
+                    LaniatusDefVariables = CharacterVectorInteractor()
 
                     if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(uint(xmas.MOB_SANTA_VNUM), i):
                         CHARACTER_MANAGER.instance().SpawnMobRandomPosition(uint(xmas.MOB_SANTA_VNUM), 61)
@@ -108,7 +108,7 @@ class xmas: #this class replaces the original namespace 'xmas'
                     CHARACTER_MANAGER.instance().SpawnMob(uint(xmas.MOB_XMAS_FIRWORK_SELLER_VNUM), p.lMapIndex, posBase.x + p.x * 100, posBase.y + p.y * 100, 0, LGEMiscellaneous.DEFINECONSTANTS.false, -1, ((not DefineConstants.false)))
                 p += 1
         else:
-            i = CharacterVectorInteractor()
+            LaniatusDefVariables = CharacterVectorInteractor()
 
             if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(uint(xmas.MOB_XMAS_FIRWORK_SELLER_VNUM), i):
                 it = i.begin()
@@ -144,7 +144,7 @@ class xmas: #this class replaces the original namespace 'xmas'
         if quest.CQuestManager.instance().GetEventFlag("xmas_santa") == 0:
             return 0
 
-        i = CharacterVectorInteractor()
+        LaniatusDefVariables = CharacterVectorInteractor()
 
         if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(uint(xmas.MOB_SANTA_VNUM), i):
             return 0

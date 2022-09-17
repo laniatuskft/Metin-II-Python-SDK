@@ -89,10 +89,10 @@
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                             offset = sizeof(buf) - 1
 
-                        i = 0
-                        while i < len(lpDesc.m_seq_vector):
+                        LaniatusDefVariables = 0
+                        while LaniatusDefVariables < len(lpDesc.m_seq_vector):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-                            len = snprintf(buf[offset:], sizeof(buf) - offset, "\t[%03d : 0x%x]\n", lpDesc.m_seq_vector[i].hdr, lpDesc.m_seq_vector[i].seq)
+                            len = snprintf(buf[offset:], sizeof(buf) - offset, "\t[%03d : 0x%x]\n", lpDesc.m_seq_vector[LaniatusDefVariables].hdr, lpDesc.m_seq_vector[LaniatusDefVariables].seq)
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                             if len < 0 or len >= int(sizeof(buf)) - offset:
@@ -100,7 +100,7 @@
                                 offset += (sizeof(buf) - offset) - 1
                             else:
                                 offset += len
-                            i += 1
+                            LaniatusDefVariables += 1
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                         snprintf(buf[offset:], sizeof(buf) - offset, "\t[%03d : 0x%x]\n", bHeader, bSeq)

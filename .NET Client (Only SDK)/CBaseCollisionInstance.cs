@@ -33,7 +33,7 @@
 					PlaneData.v3QuadPosition[3].z = 0.0f;
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < 4; ++i)
 					{
-						D3DXVec3TransformCoord(PlaneData.v3QuadPosition[i], PlaneData.v3QuadPosition[i], matTransform);
+						D3DXVec3TransformCoord(PlaneData.v3QuadPosition[LaniatusDefVariables], PlaneData.v3QuadPosition[LaniatusDefVariables], matTransform);
 					}
 					_D3DVECTOR v3Line0 = PlaneData.v3QuadPosition[1] - PlaneData.v3QuadPosition[0];
 					_D3DVECTOR v3Line1 = PlaneData.v3QuadPosition[2] - PlaneData.v3QuadPosition[0];

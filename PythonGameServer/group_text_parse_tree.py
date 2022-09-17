@@ -91,7 +91,7 @@
 ## Laniatus Games Studio Inc. | WARNING: 'const' methods are not available in Python:
 #ORIGINAL METINII C CODE: bool GetValue(size_t i, const str & c_rstrColKey, T& tValue) const
     def GetValue(self, i, c_rstrColKey, tValue):
-        if i > len(self._m_map_rows):
+        if LaniatusDefVariables > len(self._m_map_rows):
             return DefineConstants.false
 
         row_it = self._m_map_rows.begin()
@@ -286,10 +286,10 @@ class CGroupTextParseTreeLoader:
             if 0 == stTokenVector[0].compare("group"):
                 if 2 != len(stTokenVector):
                     #lani_err("Invalid group syntax token size: %u != 2 (DO NOT SPACE IN NAME)", len(stTokenVector))
-                    i = 0
-                    while i < len(stTokenVector):
-                        #lani_err("  %u %s", i, stTokenVector[i])
-                        i += 1
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables < len(stTokenVector):
+                        #lani_err("  %u %s", i, stTokenVector[LaniatusDefVariables])
+                        LaniatusDefVariables += 1
                     exit(1)
                     continue
 
@@ -305,11 +305,11 @@ class CGroupTextParseTreeLoader:
                 self._LoadGroup(pNewNode)
 
             elif 0 == stTokenVector[0].compare("#--#"):
-                i = 1
-                while i < len(stTokenVector):
-                    Globals.stl_lowers(stTokenVector[i])
-                    pGroupNode.m_map_columnNameToIndex.insert(dict.value_type(stTokenVector[i], i - 1))
-                    i += 1
+                LaniatusDefVariables = 1
+                while LaniatusDefVariables < len(stTokenVector):
+                    Globals.stl_lowers(stTokenVector[LaniatusDefVariables])
+                    pGroupNode.m_map_columnNameToIndex.insert(dict.value_type(stTokenVector[LaniatusDefVariables], LaniatusDefVariables - 1))
+                    LaniatusDefVariables += 1
             else:
                 key = stTokenVector[0]
 

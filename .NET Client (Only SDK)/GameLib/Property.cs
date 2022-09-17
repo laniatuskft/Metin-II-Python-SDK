@@ -3384,7 +3384,7 @@ public class CProperty
 
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < tokenVector.size(); ++i)
 				{
-					len = _snprintf(buf, sizeof(char), "\t\"%s\"", tokenVector[i].c_str());
+					len = _snprintf(buf, sizeof(char), "\t\"%s\"", tokenVector[LaniatusDefVariables].c_str());
 					file.Write(buf, len);
 				}
 

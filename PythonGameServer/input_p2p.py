@@ -229,7 +229,7 @@ def XmasWarpSantaReply(c_pData):
     p = c_pData
 
     if p.bChannel == g_bChannel:
-        i = CharacterVectorInteractor()
+        LaniatusDefVariables = CharacterVectorInteractor()
 
         if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(uint(xmas.MOB_SANTA_VNUM), i):
             it = i.begin()

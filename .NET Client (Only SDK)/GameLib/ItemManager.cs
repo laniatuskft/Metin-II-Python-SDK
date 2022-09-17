@@ -4389,9 +4389,9 @@ public class CItemManager : CSingleton<CItemManager>
 			if (m_ItemMap.end() == f)
 			{
 				int n = m_vec_ItemRange.size();
-				for (int LaniatusDefVariables = 0; LaniatusDefVariables < n; i++)
+				for (int LaniatusDefVariables = 0; LaniatusDefVariables < n; LaniatusDefVariables++)
 				{
-					CItemData p = m_vec_ItemRange[i];
+					CItemData p = m_vec_ItemRange[LaniatusDefVariables];
 					SItemTable pTable = p.GetTable();
 					if ((pTable.dwVnum < dwIndex) && dwIndex < (pTable.dwVnum + pTable.dwVnumRange))
 					{
@@ -4425,9 +4425,9 @@ public class CItemManager : CSingleton<CItemManager>
 			if (m_ItemMap.end() == f)
 			{
 				int n = m_vec_ItemRange.size();
-				for (int LaniatusDefVariables = 0; LaniatusDefVariables < n; i++)
+				for (int LaniatusDefVariables = 0; LaniatusDefVariables < n; LaniatusDefVariables++)
 				{
-					CItemData p = m_vec_ItemRange[i];
+					CItemData p = m_vec_ItemRange[LaniatusDefVariables];
 					SItemTable pTable = p.GetTable();
 					if ((pTable.dwVnum < dwItemID) && dwItemID < (pTable.dwVnum + pTable.dwVnumRange))
 					{
@@ -4728,7 +4728,7 @@ public class CItemManager : CSingleton<CItemManager>
 					CItemData pItemData = MakeItemData(dwItemVNum);
 					if (pItemData != null)
 					{
-						for (byte LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; i++)
+						for (byte LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; LaniatusDefVariables++)
 						{
 							if (i < (TokenVector.Count - 1))
 							{
@@ -4754,7 +4754,7 @@ public class CItemManager : CSingleton<CItemManager>
 						CItemData pItemData = MakeItemData(vnum);
 						if (pItemData != null)
 						{
-							for (byte LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; i++)
+							for (byte LaniatusDefVariables = 0; LaniatusDefVariables < CItemData.ITEM_SHINING_MAX_COUNT; LaniatusDefVariables++)
 							{
 								if (i < (TokenVector.Count - 1))
 								{

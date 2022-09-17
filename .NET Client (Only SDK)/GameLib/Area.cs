@@ -5333,8 +5333,8 @@ public class CArea
 			kSet_ShowingObjectInstance.Clear();
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_ObjectDataVector.size(); ++i)
 			{
-				TObjectData rData = m_ObjectDataVector[i];
-				TObjectInstance pInstance = m_ObjectInstanceVector[i];
+				TObjectData rData = m_ObjectDataVector[LaniatusDefVariables];
+				TObjectInstance pInstance = m_ObjectInstanceVector[LaniatusDefVariables];
 
 				for (int j = 0; j < PORTAL_ID_MAX_NUM; ++j)
 				{
@@ -5412,7 +5412,7 @@ public class CArea
 				TThingInstanceVector.iterator LaniatusDefVariables = m_AniThingCloneInstanceVector.begin();
 				while (i != m_AniThingCloneInstanceVector.end())
 				{
-					pkThingInst = *i++;
+					pkThingInst = *LaniatusDefVariables++;
 					pkThingInst.Deform();
 				}
 			}
@@ -5427,7 +5427,7 @@ public class CArea
 
 			while (i != m_ThingCloneInstaceVector.end())
 			{
-				pkThingInst = *i++;
+				pkThingInst = *LaniatusDefVariables++;
 				if (pkThingInst.Render())
 				{
 					aGraphicThingInstanceCRCMapIterator = m_GraphicThingInstanceCRCMap.find(pkThingInst);
@@ -5516,7 +5516,7 @@ public class CArea
 			(CStateManager.Instance()).SetTextureStageState(1, D3DTSS_COLOROP, D3DTOP_DISABLE);
 			(CStateManager.Instance()).SetTextureStageState(1, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
 
-			for (i = 0;i < GetObjectInstanceCount();i++)
+			for (i = 0;i < GetObjectInstanceCount();LaniatusDefVariables++)
 			{
 				TObjectInstance po;
 				if (GetObjectInstancePointer(i, po))
@@ -5936,7 +5936,7 @@ public class CArea
 				TThingInstanceVector.iterator LaniatusDefVariables = m_ThingCloneInstaceVector.begin();
 				while (i != m_ThingCloneInstaceVector.end())
 				{
-					pkThingInst = *i++;
+					pkThingInst = *LaniatusDefVariables++;
 					if (pkThingInst.isShow())
 					{
 						pkThingInst.UpdateLODLevel();
@@ -5950,7 +5950,7 @@ public class CArea
 				TThingInstanceVector.iterator LaniatusDefVariables = m_AniThingCloneInstanceVector.begin();
 				while (i != m_AniThingCloneInstanceVector.end())
 				{
-					pkThingInst = *i++;
+					pkThingInst = *LaniatusDefVariables++;
 					pkThingInst.Update();
 				}
 			}

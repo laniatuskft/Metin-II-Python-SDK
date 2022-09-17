@@ -4188,32 +4188,32 @@ public class CWeaponTrace
 
 				for (i = 0;i < n;++i)
 				{
-					h[i] = Input[i + 1].first - Input[i].first;
-					r[i] = (Input[i + 1].second - Input[i].second) * (3 / h[i]);
+					h[LaniatusDefVariables] = Input[i + 1].first - Input[LaniatusDefVariables].first;
+					r[LaniatusDefVariables] = (Input[i + 1].second - Input[LaniatusDefVariables].second) * (3 / h[LaniatusDefVariables]);
 				}
 				r[n] = D3DXVECTOR3(0.0f,0.0f,0.0f);
-				for (i = n;i > 0;i--)
+				for (i = n;i > 0;LaniatusDefVariables--)
 				{
-					r[i] += r[i - 1];
+					r[LaniatusDefVariables] += r[i - 1];
 				}
 
 				float rate = 0.5f;
 				r[0] *= 0.5f;
 				stk[sp++] = rate;
-				for (i = 1;i < n;i++)
+				for (i = 1;i < n;LaniatusDefVariables++)
 				{
-					r[i] -= r[i - 1];
+					r[LaniatusDefVariables] -= r[i - 1];
 					rate = 1 / (4 - rate);
-					r[i] *= rate;
+					r[LaniatusDefVariables] *= rate;
 					stk[sp++] = rate;
 				}
 				r[n] -= r[n - 1];
 				rate = 1 / (2 - rate);
 				r[n] *= rate;
 
-				for (i = n - 1;i >= 0;i--)
+				for (i = n - 1;i >= 0;LaniatusDefVariables--)
 				{
-					r[i] -= stk[--sp] * r[i + 1];
+					r[LaniatusDefVariables] -= stk[--sp] * r[i + 1];
 				}
 
 				int @base = 0;

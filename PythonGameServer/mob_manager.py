@@ -27,12 +27,12 @@ class CMob:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         memset(self.m_table, 0, sizeof(self.m_table))
 
-        i = 0
-        while i < LGEMiscellaneous.MOB_LG_SKILL_MAX_NUM:
-            self.m_mobSkillInfo[i].dwSkillVnum = 0
-            self.m_mobSkillInfo[i].bSkillLevel = 0
-            self.m_mobSkillInfo[i].vecSplashAttack.clear()
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.MOB_LG_SKILL_MAX_NUM:
+            self.m_mobSkillInfo[LaniatusDefVariables].dwSkillVnum = 0
+            self.m_mobSkillInfo[LaniatusDefVariables].bSkillLevel = 0
+            self.m_mobSkillInfo[LaniatusDefVariables].vecSplashAttack.clear()
+            LaniatusDefVariables += 1
 
     def close(self):
         pass
@@ -145,8 +145,8 @@ class CMobManager(singleton):
         t = SMobTable(pTable)
 
 
-        i = 0
-        while i < iSize:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < iSize:
             pkMob = LG_NEW_M2 CMob
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
@@ -170,7 +170,7 @@ class CMobManager(singleton):
                 CHARACTER_MANAGER.instance().RegisterRaceNum(t.dwVnum)
 
             quest.CQuestManager.instance().RegisterNPCVnum(t.dwVnum)
-            i += 1
+            LaniatusDefVariables += 1
             t += 1
 
         FILE_NAME_LEN = 256
@@ -202,8 +202,8 @@ class CMobManager(singleton):
 
         stName = ""
 
-        i = 0
-        while i < loader.GetChildNodeCount():
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < loader.GetChildNodeCount():
             loader.SetChildNode(i)
 
             loader.GetCurrentNodeName(stName)
@@ -261,7 +261,7 @@ class CMobManager(singleton):
 
             loader.SetParentNode()
             self._m_map_pkMobGroup.insert(dict.value_type(iVnum, pkGroup))
-            i += 1
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -273,8 +273,8 @@ class CMobManager(singleton):
 
         stName = ""
 
-        i = 0
-        while i < loader.GetChildNodeCount():
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < loader.GetChildNodeCount():
             loader.SetChildNode(i)
 
             loader.GetCurrentNodeName(stName)
@@ -321,7 +321,7 @@ class CMobManager(singleton):
             loader.SetParentNode()
 
             self._m_map_pkMobGroupGroup.update({iVnum: pkGroup})
-            i += 1
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -392,10 +392,10 @@ class CMobManager(singleton):
                     return
                 c_rdwMembers = pkGroup.GetMemberVector()
 
-                i = 0
+                LaniatusDefVariables = 0
                 while i<len(c_rdwMembers):
-                    self._m_mapRegenCount[c_rdwMembers[i]] += iCount * 86400.0 / iTime
-                    i += 1
+                    self._m_mapRegenCount[c_rdwMembers[LaniatusDefVariables]] += iCount * 86400.0 / iTime
+                    LaniatusDefVariables += 1
 
         elif bRegenType == Globals.REGEN_TYPE_GROUP_GROUP:
                 it = self._m_map_pkMobGroupGroup.find(dwVnum)
@@ -404,18 +404,18 @@ class CMobManager(singleton):
                     return
 
                 v = it.second.m_vec_dwMemberVnum
-                i = 0
+                LaniatusDefVariables = 0
                 while i<len(v):
-                    pkGroup = CMobManager.Instance().GetGroup(list(v[i]))
+                    pkGroup = CMobManager.Instance().GetGroup(list(v[LaniatusDefVariables]))
                     if pkGroup is None:
                         return
                     c_rdwMembers = pkGroup.GetMemberVector()
 
-                    i = 0
+                    LaniatusDefVariables = 0
                     while i<len(c_rdwMembers):
-                        self._m_mapRegenCount[c_rdwMembers[i]] += iCount * 86400.0 / iTime / len(v)
-                        i += 1
-                    i += 1
+                        self._m_mapRegenCount[c_rdwMembers[LaniatusDefVariables]] += iCount * 86400.0 / iTime / len(v)
+                        LaniatusDefVariables += 1
+                    LaniatusDefVariables += 1
 
     def InsertCostumeMount(self, dwVnum):
         if dwVnum == 0:

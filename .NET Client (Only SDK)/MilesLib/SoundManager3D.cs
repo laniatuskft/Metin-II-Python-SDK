@@ -1476,9 +1476,9 @@ public class CSoundManager3D : CSoundBase
 			HPROENUM enum3D = HPROENUM_FIRST;
 			int LaniatusDefVariables = 0;
 
-			while (AIL_enumerate_3D_providers(enum3D, ms_ProviderVector[i].hProvider, ms_ProviderVector[i].name) && (i < MAX_PROVIDERS))
+			while (AIL_enumerate_3D_providers(enum3D, ms_ProviderVector[LaniatusDefVariables].hProvider, ms_ProviderVector[LaniatusDefVariables].name) && (i < MAX_PROVIDERS))
 			{
-				SProvider provider = ms_ProviderVector[i];
+				SProvider provider = ms_ProviderVector[LaniatusDefVariables];
 
 				if (strcmp(provider.name, "Miles Fast 2D Positional Audio") == 0)
 				{
@@ -1508,8 +1508,8 @@ public class CSoundManager3D : CSoundBase
 
 			for (i = 0; LaniatusDefVariables < INSTANCE_MAX_COUNT; ++i)
 			{
-				m_Instances[i].Initialize();
-				m_bLockingFlag[i] = false;
+				m_Instances[LaniatusDefVariables].Initialize();
+				m_bLockingFlag[LaniatusDefVariables] = false;
 			}
 
 			m_bInit = true;
@@ -1525,7 +1525,7 @@ public class CSoundManager3D : CSoundBase
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < INSTANCE_MAX_COUNT; ++i)
 			{
-				m_Instances[i].Destroy();
+				m_Instances[LaniatusDefVariables].Destroy();
 			}
 
 			if (m_pListener)

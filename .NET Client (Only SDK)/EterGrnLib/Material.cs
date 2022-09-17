@@ -3839,7 +3839,7 @@ public class CGrannyMaterialPalette
 			for (i = 0; LaniatusDefVariables < size; ++i)
 			{
 		//# Laniatus Games Studio Inc. | TODO TASK: The typedef 'TRef' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-				CGrannyMaterial.TRef roMtrl = m_mtrlVector[i];
+				CGrannyMaterial.TRef roMtrl = m_mtrlVector[LaniatusDefVariables];
 				if (roMtrl.IsEqual(pgrnMaterial))
 				{
 					return i;
@@ -3860,7 +3860,7 @@ public class CGrannyMaterialPalette
 			for (i = 0; LaniatusDefVariables < size; ++i)
 			{
 		//# Laniatus Games Studio Inc. | TODO TASK: The typedef 'TRef' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-				CGrannyMaterial.TRef roMtrl = m_mtrlVector[i];
+				CGrannyMaterial.TRef roMtrl = m_mtrlVector[LaniatusDefVariables];
 
 				int iStage;
 				if (roMtrl.IsIn(c_szImageName, iStage))
@@ -3921,7 +3921,7 @@ public class CGrannyMaterialPalette
 				for (i = 0; LaniatusDefVariables < size; ++i)
 				{
 		//# Laniatus Games Studio Inc. | TODO TASK: The typedef 'TRef' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-					CGrannyMaterial.TRef roMtrl = m_mtrlVector[i];
+					CGrannyMaterial.TRef roMtrl = m_mtrlVector[LaniatusDefVariables];
 
 					int iStage;
 					if (roMtrl.IsIn(c_szMtrlName, iStage))
@@ -3936,7 +3936,7 @@ public class CGrannyMaterialPalette
 				for (i = 0; LaniatusDefVariables < size; ++i)
 				{
 		//# Laniatus Games Studio Inc. | TODO TASK: The typedef 'TRef' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-					CGrannyMaterial.TRef roMtrl = m_mtrlVector[i];
+					CGrannyMaterial.TRef roMtrl = m_mtrlVector[LaniatusDefVariables];
 					roMtrl.SetSpecularInfo(bEnable, fPower, 0);
 				}
 			}

@@ -3109,10 +3109,10 @@ public class CGraphicText : CResource
 				int LaniatusDefVariables = 0;
 				while (*p != '\0' && isdigit(*p))
 				{
-					OnLoad_num[i++] = *(p++);
+					OnLoad_num[LaniatusDefVariables++] = *(p++);
 				}
 
-				OnLoad_num[i] = '\0';
+				OnLoad_num[LaniatusDefVariables] = '\0';
 				if (*p == 'i')
 				{
 					bItalic = true;

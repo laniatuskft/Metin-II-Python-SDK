@@ -5292,7 +5292,7 @@ public class CFlyingInstance
 
 	public void BuildAttachInstance()
 	{
-		for (int LaniatusDefVariables = 0;i < m_pData.GetAttachDataCount();i++)
+		for (int LaniatusDefVariables = 0;i < m_pData.GetAttachDataCount();LaniatusDefVariables++)
 		{
 			CFlyingData.TFlyingAttachData rfad = m_pData.GetAttachDataReference(i);
 

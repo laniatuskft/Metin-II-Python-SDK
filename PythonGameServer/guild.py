@@ -201,28 +201,28 @@ class CGuild:
 ##endif
         self._m_data.grade_array[0].auth_flag = byte(Globals.GUILD_AUTH_ADD_MEMBER | Globals.GUILD_AUTH_REMOVE_MEMBER | Globals.GUILD_AUTH_NOTICE | Globals.GUILD_AUTH_USE_SKILL)
 
-        i = 1
-        while i < Globals.GUILD_GRADE_COUNT:
+        LaniatusDefVariables = 1
+        while LaniatusDefVariables < Globals.GUILD_GRADE_COUNT:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no preprocessor in Python:
 ##if __MULTI_LANGUAGE_SYSTEM__
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-            strncpy_s(self._m_data.grade_array[i].grade_name, sizeof(self._m_data.grade_array[i].grade_name), "...", _TRUNCATE)
+            strncpy_s(self._m_data.grade_array[LaniatusDefVariables].grade_name, sizeof(self._m_data.grade_array[LaniatusDefVariables].grade_name), "...", _TRUNCATE)
 ##else
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-            strncpy_s(self._m_data.grade_array[i].grade_name, sizeof(self._m_data.grade_array[i].grade_name), LC_TEXT("Member"), _TRUNCATE)
+            strncpy_s(self._m_data.grade_array[LaniatusDefVariables].grade_name, sizeof(self._m_data.grade_array[LaniatusDefVariables].grade_name), LC_TEXT("Member"), _TRUNCATE)
 ##endif
-            self._m_data.grade_array[i].auth_flag = 0
-            i += 1
+            self._m_data.grade_array[LaniatusDefVariables].auth_flag = 0
+            LaniatusDefVariables += 1
 
         ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The typedef 'SQLMsg' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
         pmsg = std::unique_ptr(DBManager.instance().DirectQuery("INSERT INTO guild%s(name, master, sp, level, exp, LG_SKILL_point, skill) " + "VALUES('%s', %u, 1000, 1, 0, 0, '\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0')", get_table_postfix(), self._m_data.name, self._m_data.master_pid))
 
         self._m_data.guild_id = pmsg.Get().uiInsertID
 
-        i = 0
-        while i < Globals.GUILD_GRADE_COUNT:
-            DBManager.instance().Query("INSERT INTO guild_grade%s VALUES(%u, %d, '%s', %d)", get_table_postfix(), self._m_data.guild_id, i + 1, self._m_data.grade_array[i].grade_name, self._m_data.grade_array[i].auth_flag)
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < Globals.GUILD_GRADE_COUNT:
+            DBManager.instance().Query("INSERT INTO guild_grade%s VALUES(%u, %d, '%s', %d)", get_table_postfix(), self._m_data.guild_id, LaniatusDefVariables + 1, self._m_data.grade_array[LaniatusDefVariables].grade_name, self._m_data.grade_array[LaniatusDefVariables].auth_flag)
+            LaniatusDefVariables += 1
 
         self.ComputeGuildPoints()
         self._m_data.power = self._m_data.max_power
@@ -838,13 +838,13 @@ class CGuild:
         n = 15
         buf.write(n, 1)
 
-        i = 0
+        LaniatusDefVariables = 0
         while i<Globals.GUILD_GRADE_COUNT:
             j = byte(i+1)
             buf.write(j, 1)
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-            buf.write(self._m_data.grade_array[i], sizeof(SGuildGrade))
-            i += 1
+            buf.write(self._m_data.grade_array[LaniatusDefVariables], sizeof(SGuildGrade))
+            LaniatusDefVariables += 1
 
         d.Packet(buf.read_peek(), buf.size())
 
@@ -1205,8 +1205,8 @@ class CGuild:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         memset(szContent, 0, sizeof(szContent))
 
-        i = 0
-        while i < pmsg.Get().uiNumRows:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < pmsg.Get().uiNumRows:
             row = mysql_fetch_row(pmsg.Get().pSQLResult)
             id = strtoul(row[0], None, 10)
 
@@ -1220,13 +1220,13 @@ class CGuild:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
             d.BufferedPacket(szName, sizeof(szName))
 
-            if i == pmsg.Get().uiNumRows - 1:
+            if LaniatusDefVariables == pmsg.Get().uiNumRows - 1:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                 d.Packet(szContent, sizeof(szContent))
             else:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                 d.BufferedPacket(szContent, sizeof(szContent))
-            i += 1
+            LaniatusDefVariables += 1
 
     def GetSkillLevel(self, vnum):
         dwRealVnum = vnum - uint(LaniatusETalentXes.GUILD_LG_SKILL_START)
@@ -1805,10 +1805,10 @@ class CGuild:
         memset(self._m_data, 0, sizeof(self._m_data))
         self._m_data.level = 1
 
-        i = 0
-        while i < LaniatusETalentXes.GUILD_LG_SKILL_COUNT:
-            self._abSkillUsable[i] = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LaniatusETalentXes.GUILD_LG_SKILL_COUNT:
+            self._abSkillUsable[LaniatusDefVariables] = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
+            LaniatusDefVariables += 1
 
         self._m_iMemberCountBonus = 0
 
@@ -1865,8 +1865,8 @@ class CGuild:
 
     ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The typedef 'SQLMsg' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
     def _LoadGuildGradeData(self, pmsg):
-        i = 0
-        while i < pmsg.Get().uiNumRows:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < pmsg.Get().uiNumRows:
             row = mysql_fetch_row(pmsg.Get().pSQLResult)
             grade = 0
             temp_ref_grade = RefObject(grade);
@@ -1879,7 +1879,7 @@ class CGuild:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                 strncpy_s(self._m_data.grade_array[grade-1].grade_name, sizeof(self._m_data.grade_array[grade-1].grade_name), name, _TRUNCATE)
                 self._m_data.grade_array[grade-1].auth_flag = byte(auth)
-            i += 1
+            LaniatusDefVariables += 1
 
     ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The typedef 'SQLMsg' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
     def _LoadGuildMemberData(self, pmsg):
@@ -1890,8 +1890,8 @@ class CGuild:
 
         self._m_member.clear()
 
-        i = 0
-        while i < pmsg.Get().uiNumRows:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < pmsg.Get().uiNumRows:
             row = mysql_fetch_row(pmsg.Get().pSQLResult)
 
             pid = strtoul(row[0], str(None), 10)
@@ -1911,7 +1911,7 @@ class CGuild:
 
             self._m_member.update({pid: TGuildMember(pid, grade, is_general, job, level, offer, name)})
             CGuildManager.instance().Link(pid, self)
-            i += 1
+            LaniatusDefVariables += 1
 
     ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The typedef 'SQLMsg' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
     def _P2PUpdateGrade(self, pmsg):

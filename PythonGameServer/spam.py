@@ -11,14 +11,14 @@
         strOrig = src
         strOrig = strOrig[0:remove_if(strOrig.begin(), strOrig.end(), isspace)] + strOrig[remove_if(strOrig.begin(), strOrig.end(), isspace) + strOrig.end():]
 
-        i = 0
-        while i < len(self._m_vec_word):
-            r = self._m_vec_word[i]
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self._m_vec_word):
+            r = self._m_vec_word[LaniatusDefVariables]
 
             if True == WildCaseCmp(r[0].c_str(), strOrig):
                 word = r[0].c_str()
                 score.arg_value += r[1]
-            i += 1
+            LaniatusDefVariables += 1
 
         return word
 

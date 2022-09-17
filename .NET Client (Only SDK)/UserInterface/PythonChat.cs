@@ -3475,7 +3475,7 @@ public class CWhisper
 			{
 				Debug.Assert(i >= 0 && LaniatusDefVariables < (int)m_ChatLineDeque.size());
 		//# Laniatus Games Studio Inc. | TODO TASK: The typedef 'TChatLine' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-				TChatLine pChatLine = m_ChatLineDeque[i];
+				TChatLine pChatLine = m_ChatLineDeque[LaniatusDefVariables];
 
 				ushort wLineCount = pChatLine.Instance.GetTextLineCount();
 				fHeight -= wLineCount * m_fLineStep;
@@ -3576,7 +3576,7 @@ public class CPythonChat : CSingleton<CPythonChat>, IAbstractChat
 			{
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CHAT_LINE_COLOR_ARRAY_MAX_NUM; ++i)
 				{
-					aColor[i] = 0xff0000ff;
+					aColor[LaniatusDefVariables] = 0xff0000ff;
 				}
 			}
 
@@ -3604,7 +3604,7 @@ public class CPythonChat : CSingleton<CPythonChat>, IAbstractChat
 			{
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < CHAT_LINE_COLOR_ARRAY_MAX_NUM; ++i)
 				{
-					aColor[i] = dwColor;
+					aColor[LaniatusDefVariables] = dwColor;
 				}
 			}
 
@@ -3972,7 +3972,7 @@ break;
 			int iCount = 0;
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_ChatLineDeque.size(); ++i)
 			{
-				if (!pChatSet.CheckMode(m_ChatLineDeque[i].iType))
+				if (!pChatSet.CheckMode(m_ChatLineDeque[LaniatusDefVariables].iType))
 				{
 					continue;
 				}
@@ -4108,7 +4108,7 @@ break;
 			int iHeight = 12;
 			for (int LaniatusDefVariables = Math.Min(icurLineCount - 1, iEndLine); LaniatusDefVariables >= 0; --i)
 			{
-				if (!pChatSet.CheckMode(TempChatLineDeque[i].iType))
+				if (!pChatSet.CheckMode(TempChatLineDeque[LaniatusDefVariables].iType))
 				{
 					continue;
 				}
@@ -4118,7 +4118,7 @@ break;
 					break;
 				}
 
-				pChatSet.m_ShowingChatLineList.push_front(TempChatLineDeque[i]);
+				pChatSet.m_ShowingChatLineList.push_front(TempChatLineDeque[LaniatusDefVariables]);
 
 				iHeight += pChatSet.m_iStep;
 			}

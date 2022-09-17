@@ -6370,7 +6370,7 @@
 #define FD_SETSIZE
 //# Laniatus Games Studio Inc. | TODO TASK: #define macros defined in multiple preprocessor conditionals can only be replaced within the scope of the preprocessor conditional:
 //# Laniatus Games Studio Inc. |: The following #define macro was replaced in-line:
-//Original Metin2 CPlus Line: #define FD_CLR(fd, set) do { u_int __i; for (__i = 0; __i < ((fd_set FAR *)(set))->fd_count ; __i++) { if (((fd_set FAR *)(set))->fd_array[__i] == fd) { while (__i < ((fd_set FAR *)(set))->fd_count-1) { ((fd_set FAR *)(set))->fd_array[__i] = ((fd_set FAR *)(set))->fd_array[__i+1]; __i++; } ((fd_set FAR *)(set))->fd_count--; break; } } } while(0)
+//Original Metin2 CPlus Line: #define FD_CLR(fd, set) do { u_int __i; for (__i = 0; __i < ((fd_set FAR *)(set))->fd_count ; __LaniatusDefVariables++) { if (((fd_set FAR *)(set))->fd_array[__i] == fd) { while (__i < ((fd_set FAR *)(set))->fd_count-1) { ((fd_set FAR *)(set))->fd_array[__i] = ((fd_set FAR *)(set))->fd_array[__i+1]; __LaniatusDefVariables++; } ((fd_set FAR *)(set))->fd_count--; break; } } } while(0)
 #define FD_CLR
 //# Laniatus Games Studio Inc. | TODO TASK: #define macros defined in multiple preprocessor conditionals can only be replaced within the scope of the preprocessor conditional:
 //# Laniatus Games Studio Inc. |: The following #define macro was replaced in-line:

@@ -237,11 +237,11 @@ class DSManager(singleton):
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
         set_items = std::set()
-        i = 0
-        while i < LGEMiscellaneous.DRAGON_SOUL_REFINE_GRID_SIZE:
-            if aItemPoses[i].IsEquipPosition():
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.DRAGON_SOUL_REFINE_GRID_SIZE:
+            if aItemPoses[LaniatusDefVariables].IsEquipPosition():
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            pItem = ch.GetItem(aItemPoses[i])
+            pItem = ch.GetItem(aItemPoses[LaniatusDefVariables])
             if None is not pItem:
                 if not pItem.IsDragonSoul():
                     ch.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("This item is not required for improving the clarity level."))
@@ -250,7 +250,7 @@ class DSManager(singleton):
                     return LGEMiscellaneous.DEFINECONSTANTS.false
 
                 set_items.insert(pItem)
-            i += 1
+            LaniatusDefVariables += 1
 
         if set_items.size() == 0:
             self._SendRefineResultPacket(ch, EPacketCGDragonSoulSubHeaderType.DS_SUB_LG_HEADER_REFINE_FAIL_NOT_ENOUGH_MATERIAL, NPOS)
@@ -369,16 +369,16 @@ class DSManager(singleton):
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
         set_items = std::set()
-        i = 0
-        while i < LGEMiscellaneous.DRAGON_SOUL_REFINE_GRID_SIZE:
-            pItem = ch.GetItem(aItemPoses[i])
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.DRAGON_SOUL_REFINE_GRID_SIZE:
+            pItem = ch.GetItem(aItemPoses[LaniatusDefVariables])
             if None is not pItem:
                 if not pItem.IsDragonSoul():
                     ch.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("This item is not required for refinement."))
                     self._SendRefineResultPacket(ch, EPacketCGDragonSoulSubHeaderType.DS_SUB_LG_HEADER_REFINE_FAIL_INVALID_MATERIAL, TItemPos(pItem.GetWindow(), pItem.GetCell()))
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 set_items.insert(pItem)
-            i += 1
+            LaniatusDefVariables += 1
 
         if set_items.size() == 0:
             self._SendRefineResultPacket(ch, EPacketCGDragonSoulSubHeaderType.DS_SUB_LG_HEADER_REFINE_FAIL_NOT_ENOUGH_MATERIAL, NPOS)
@@ -495,12 +495,12 @@ class DSManager(singleton):
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
         set_items = std::set()
-        i = 0
-        while i < LGEMiscellaneous.DRAGON_SOUL_REFINE_GRID_SIZE:
-            pItem = ch.GetItem(aItemPoses[i])
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.DRAGON_SOUL_REFINE_GRID_SIZE:
+            pItem = ch.GetItem(aItemPoses[LaniatusDefVariables])
             if pItem:
                 set_items.insert(pItem)
-            i += 1
+            LaniatusDefVariables += 1
         if set_items.size() == 0:
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
@@ -720,13 +720,13 @@ class DSManager(singleton):
     def _RefreshDragonSoulState(self, ch):
         if None is ch:
             return
-        i = WEAR_MAX_NUM
-        while i < EWearPositions.WEAR_MAX_NUM + EDragonSoulSubType.DS_SLOT_MAX * EDragonSoulDeckType.DRAGON_SOUL_DECK_MAX_NUM:
+        LaniatusDefVariables = WEAR_MAX_NUM
+        while LaniatusDefVariables < EWearPositions.WEAR_MAX_NUM + EDragonSoulSubType.DS_SLOT_MAX * EDragonSoulDeckType.DRAGON_SOUL_DECK_MAX_NUM:
             pItem = ch.GetWear(ushort(i))
             if pItem is not None:
                 if self.IsActiveDragonSoul(pItem):
                     return
-            i += 1
+            LaniatusDefVariables += 1
         ch.DragonSoul_DeactivateAll()
 
     def _MakeDragonSoulVnum(self, bType, grade, step, refine):
@@ -789,8 +789,8 @@ class DSManager(singleton):
         fWeight /= 100.0
 
         n = MIN(basic_apply_num, len(vec_basic_applys))
-        for i in range(0, n):
-            basic_apply = vec_basic_applys[i]
+        for LaniatusDefVariables in range(0, n):
+            basic_apply = vec_basic_applys[LaniatusDefVariables]
             bType = basic_apply.apply_type
             sValue = short(int((math.ceil(float(basic_apply.apply_value) * fWeight - 0.01))))
 
@@ -802,16 +802,16 @@ class DSManager(singleton):
         if additional_attr_num > 0:
             random_set.resize(additional_attr_num)
             list_probs = std::list()
-            i = 0
-            while i < len(vec_addtional_applys):
-                list_probs.push_back(vec_addtional_applys[i].prob)
-                i += 1
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < len(vec_addtional_applys):
+                list_probs.push_back(vec_addtional_applys[LaniatusDefVariables].prob)
+                LaniatusDefVariables += 1
             if not Globals.MakeDistinctRandomNumberSet(std::list(list_probs), random_set):
                 #lani_err("MakeDistinctRandomNumberSet error.")
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-            for i in range(0, additional_attr_num):
-                r = random_set[i]
+            for LaniatusDefVariables in range(0, additional_attr_num):
+                r = random_set[LaniatusDefVariables]
                 additional_attr = vec_addtional_applys[r]
                 bType = additional_attr.apply_type
                 sValue = short(int((math.ceil(float(additional_attr.apply_value) * fWeight - 0.01))))
@@ -877,15 +877,15 @@ class DSManager(singleton):
         fWeight /= 100.0
 
         n = MIN(basic_apply_num, len(vec_basic_applys))
-        for i in range(0, n):
-            basic_apply = vec_basic_applys[i]
+        for LaniatusDefVariables in range(0, n):
+            basic_apply = vec_basic_applys[LaniatusDefVariables]
             bType = basic_apply.apply_type
             sValue = short(int((math.ceil(float(basic_apply.apply_value) * fWeight - 0.01))))
 
             pDS.SetForceAttribute(i, bType, sValue)
 
-        i = DRAGON_SOUL_ADDITIONAL_ATTR_START_IDX
-        while i < EItemMisc.ITEM_ATTRIBUTE_MAX_NUM:
+        LaniatusDefVariables = DRAGON_SOUL_ADDITIONAL_ATTR_START_IDX
+        while LaniatusDefVariables < EItemMisc.ITEM_ATTRIBUTE_MAX_NUM:
             bType = pDS.GetAttributeType(i)
             sValue = 0
             if EApplyTypes.APPLY_NONE == bType:
@@ -897,5 +897,5 @@ class DSManager(singleton):
                     break
                 j += 1
             pDS.SetForceAttribute(i, bType, short(int((math.ceil(float(sValue) * fWeight - 0.01)))))
-            i += 1
+            LaniatusDefVariables += 1
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))

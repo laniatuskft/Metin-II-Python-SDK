@@ -759,24 +759,24 @@
                     return LGEMiscellaneous.DEFINECONSTANTS.false
             else:
                 TOKEN("apply_value")
-                for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.MAX_BLEND_ITEM_VALUE):
+                for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.MAX_BLEND_ITEM_VALUE):
                     v = strtok(None, delim)
 
                     if None==v:
                         fclose(fp)
                         return LGEMiscellaneous.DEFINECONSTANTS.false
 
-                    Globals.str_to_number(ushort(short(1 if blend_item_info.apply_value[i] != 0 else 0)), v)
+                    Globals.str_to_number(ushort(short(1 if blend_item_info.apply_value[LaniatusDefVariables] != 0 else 0)), v)
             else:
                 TOKEN("apply_duration")
-                for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.MAX_BLEND_ITEM_VALUE):
+                for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.MAX_BLEND_ITEM_VALUE):
                     v = strtok(None, delim)
 
                     if None==v:
                         fclose(fp)
                         return LGEMiscellaneous.DEFINECONSTANTS.false
 
-                    Globals.str_to_number(ushort(short(1 if blend_item_info.apply_duration[i] != 0 else 0)), v)
+                    Globals.str_to_number(ushort(short(1 if blend_item_info.apply_duration[LaniatusDefVariables] != 0 else 0)), v)
             else:
                 TOKEN("end")
                 Globals.s_blend_info.append(blend_item_info)
@@ -894,8 +894,8 @@
 
         timeNow = get_dword_time()
 
-        for i in range(0, SKILLCOUNT):
-            SkillIndex = SkillPriority[i]
+        for LaniatusDefVariables in range(0, SKILLCOUNT):
+            SkillIndex = SkillPriority[LaniatusDefVariables]
 
             if BlueDragon_StateBattle_timeSkillCanUseTime[SkillIndex] < timeNow:
                 SkillUsingDuration = int(CMotionManager.instance().GetMotionDuration(pChar.GetRaceNum(), uint((((EMotionMode.MOTION_MODE_GENERAL) << 24) | ((EPublicMotion.MOTION_SPECIAL_1 + SkillIndex) << 8) | (0)))))
@@ -963,7 +963,7 @@
             return dam
 
         if ((not LGEMiscellaneous.DEFINECONSTANTS.false)) == pAttacker.IsMonster() and 2493 == pAttacker.GetMobTable().dwVnum:
-            for i in range(1, 5):
+            for LaniatusDefVariables in range(1, 5):
                 if BLUEDRAGON_STONE_EFFECT.ATK_BONUS == Globals.BlueDragon_GetIndexFactor("DragonStone", i, "effect_type"):
                     dwDragonStoneID = Globals.BlueDragon_GetIndexFactor("DragonStone", i, "vnum")
                     val = Globals.BlueDragon_GetIndexFactor("DragonStone", i, "val")
@@ -975,7 +975,7 @@
                     break
 
         if ((not LGEMiscellaneous.DEFINECONSTANTS.false)) == me.IsMonster() and 2493 == me.GetMobTable().dwVnum:
-            for i in range(1, 5):
+            for LaniatusDefVariables in range(1, 5):
                 if BLUEDRAGON_STONE_EFFECT.DEF_BONUS == Globals.BlueDragon_GetIndexFactor("DragonStone", i, "effect_type"):
                     dwDragonStoneID = Globals.BlueDragon_GetIndexFactor("DragonStone", i, "vnum")
                     val = Globals.BlueDragon_GetIndexFactor("DragonStone", i, "val")
@@ -990,7 +990,7 @@
                     break
 
         if ((not LGEMiscellaneous.DEFINECONSTANTS.false)) == me.IsStone() and 0 != pAttacker.GetMountVnum():
-            for i in range(1, 5):
+            for LaniatusDefVariables in range(1, 5):
                 if me.GetMobTable().dwVnum == Globals.BlueDragon_GetIndexFactor("DragonStone", i, "vnum"):
                     if pAttacker.GetMountVnum() == Globals.BlueDragon_GetIndexFactor("DragonStone", i, "enemy"):
                         val = Globals.BlueDragon_GetIndexFactor("DragonStone", i, "enemy_val")
@@ -1032,7 +1032,7 @@
 
         cnt = int(luaL_getn(L, -1))
 
-        for i in range(1, cnt + 1):
+        for LaniatusDefVariables in range(1, cnt + 1):
             lua_rawgeti(L, -1, i)
 
             if DefineConstants.false == lua_istable(L, -1):
@@ -1113,7 +1113,7 @@
     ParamCount = -1
     #    va_start(vl, cnt)
 
-        for i in range(0, cnt):
+        for LaniatusDefVariables in range(0, cnt):
         ParamCount += 1
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: Python does not have an equivalent to pointers to value types:
 #ORIGINAL METINII C CODE: const char* key = va_arg(vl, const char*);
@@ -1128,7 +1128,7 @@
             lua_pushstring(L, key)
             lua_gettable(L, -2)
 
-            if DefineConstants.false == lua_istable(L, -1) and i != cnt-1:
+            if DefineConstants.false == lua_istable(L, -1) and LaniatusDefVariables != cnt-1:
     #            va_end(vl)
                 lua_settop(L, stack_top)
                 #lani_err("BlueDragon: wrong key table %s", key)
@@ -1295,13 +1295,13 @@
             ret = 0.95
             factor = 0.1
 
-            i = 0
-            while i < ch.GetLevel()-100:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < ch.GetLevel()-100:
                 if (math.fmod(i, 10)) == 0:
                     factor /= 2.0
 
                 ret *= 1.0 - factor
-                i += 1
+                LaniatusDefVariables += 1
 
             ret = ret * float(exp)
 
@@ -1513,20 +1513,20 @@
 
     @staticmethod
     def FN_check_LG_ITEM_SOCKET(item):
-        i = 0
-        while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
-            if item.GetSocket(i) != item.GetProto().alSockets[i]:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            if item.GetSocket(i) != item.GetProto().alSockets[LaniatusDefVariables]:
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            i += 1
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
     @staticmethod
     def FN_copy_LG_ITEM_SOCKET(dest, src):
-        i = 0
-        while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
             dest.SetSocket(i, src.GetSocket(i), ((not DefineConstants.false)))
-            i += 1
+            LaniatusDefVariables += 1
     @staticmethod
     def FN_check_item_sex(ch, item):
         ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
@@ -1544,23 +1544,23 @@
     @staticmethod
     def TransformRefineItem(pkOldItem, pkNewItem):
         if pkOldItem.IsAccessoryForSocket():
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 pkNewItem.SetSocket(i, pkOldItem.GetSocket(i), ((not DefineConstants.false)))
-                i += 1
+                LaniatusDefVariables += 1
         else:
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 if pkOldItem.GetSocket(i) == 0:
                     break
                 else:
                     pkNewItem.SetSocket(i, 1, ((not DefineConstants.false)))
-                i += 1
+                LaniatusDefVariables += 1
 
             slot = 0
 
-            i = 0
-            while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                 socket = pkOldItem.GetSocket(i)
 
                 if socket > 2 and socket != Globals.ITEM_BROKEN_METIN_VNUM:
@@ -1568,7 +1568,7 @@
 #ORIGINAL METINII C CODE: pkNewItem->SetSocket(slot++, socket);
                     pkNewItem.SetSocket(slot, socket, ((not DefineConstants.false)))
                     slot += 1
-                i += 1
+                LaniatusDefVariables += 1
 
         pkOldItem.CopyAttributeTo(pkNewItem)
 
@@ -1867,26 +1867,26 @@
 
     @staticmethod
     def (UnnamedParameter):
-        i = None
+        LaniatusDefVariables = None
             if ch.IsRiding():
                 ch.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("you cannot exchange emotions on a horse."))
                 return
 
-        i = 0
-        while Globals.emotion_types[i].command[0] != '\n':
-            if not strcmp(cmd_info[cmd].command, Globals.emotion_types[i].command):
+        LaniatusDefVariables = 0
+        while Globals.emotion_types[LaniatusDefVariables].command[0] != '\n':
+            if not strcmp(cmd_info[cmd].command, Globals.emotion_types[LaniatusDefVariables].command):
                 break
 
-            if not strcmp(cmd_info[cmd].command, Globals.emotion_types[i].command_to_client):
+            if not strcmp(cmd_info[cmd].command, Globals.emotion_types[LaniatusDefVariables].command_to_client):
                 break
-            i += 1
+            LaniatusDefVariables += 1
 
-        if Globals.emotion_types[i].command[0] == '\n':
+        if Globals.emotion_types[LaniatusDefVariables].command[0] == '\n':
             #lani_err("cannot find emotion")
             return
 
         ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-        if IS_SET(Globals.emotion_types[i].flag, (1 << 2)) and ESex.LG_SEX_MALE == Globals.GET_SEX(ch):
+        if IS_SET(Globals.emotion_types[LaniatusDefVariables].flag, (1 << 2)) and ESex.LG_SEX_MALE == Globals.GET_SEX(ch):
             ch.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Only women can do this."))
             return
 
@@ -1900,10 +1900,10 @@
 
         if arg1[0] != '\0':
             ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-            victim = ch.FindCharacterInView(arg1, IS_SET(Globals.emotion_types[i].flag, (1 << 1)))
+            victim = ch.FindCharacterInView(arg1, IS_SET(Globals.emotion_types[LaniatusDefVariables].flag, (1 << 1)))
 
         ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-        if IS_SET(Globals.emotion_types[i].flag, (1 << 0) | (1 << 1)):
+        if IS_SET(Globals.emotion_types[LaniatusDefVariables].flag, (1 << 0) | (1 << 1)):
             if victim is None:
                 ch.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("This person doesn't exist."))
                 return
@@ -1927,13 +1927,13 @@
                 return
 
             ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-            if IS_SET(Globals.emotion_types[i].flag, (1 << 3)):
+            if IS_SET(Globals.emotion_types[LaniatusDefVariables].flag, (1 << 3)):
                 if Globals.GET_SEX(ch) == Globals.GET_SEX(victim):
                     ch.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("This can only be done with another gender."))
                     return
 
             ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
-            if IS_SET(Globals.emotion_types[i].flag, (1 << 1)):
+            if IS_SET(Globals.emotion_types[LaniatusDefVariables].flag, (1 << 1)):
                 if Globals.s_emotion_set.find((victim.GetVID(), ch.GetVID())) == Globals.s_emotion_set.end():
                     if ((not LGEMiscellaneous.DEFINECONSTANTS.false)) == marriage.CManager.instance().IsMarried(ch.GetPlayerID()):
                         marriageInfo = marriage.CManager.instance().Get(ch.GetPlayerID())
@@ -1951,7 +1951,7 @@
 
         chatbuf = str(['\0' for _ in range(256+1)])
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-        len = snprintf(chatbuf, sizeof(chatbuf), "%s %u %u", Globals.emotion_types[i].command_to_client, ch.GetVID(),victim.GetVID() if victim is not None else 0)
+        len = snprintf(chatbuf, sizeof(chatbuf), "%s %u %u", Globals.emotion_types[LaniatusDefVariables].command_to_client, ch.GetVID(),victim.GetVID() if victim is not None else 0)
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         if len < 0 or len >= int(sizeof(chatbuf)):
@@ -1974,9 +1974,9 @@
         ch.PacketAround(buf.read_peek(), buf.size())
 
         if victim:
-            #sys_log(1, "ACTION: %s TO %s", Globals.emotion_types[i].command, victim.GetName(LOCALE_LANIATUS))
+            #sys_log(1, "ACTION: %s TO %s", Globals.emotion_types[LaniatusDefVariables].command, victim.GetName(LOCALE_LANIATUS))
         else:
-            Globals.#sys_log(1, "ACTION: %s", Globals.emotion_types[i].command)
+            Globals.#sys_log(1, "ACTION: %s", Globals.emotion_types[LaniatusDefVariables].command)
 
 
     ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no preprocessor in Python:
@@ -3265,7 +3265,7 @@
             count = temp_ref_count2.arg_value
             count = MIN(count, LGEMiscellaneous.INVENTORY_MAX_NUM)
 
-        for i in range(0, count):
+        for LaniatusDefVariables in range(0, count):
             if index >= LGEMiscellaneous.INVENTORY_MAX_NUM:
                 break
 
@@ -3398,10 +3398,10 @@
         HEX = "0123456789abcdef"
         digest = [0 for _ in range(16)]
         Globals.MD5Final(digest, ctx)
-        i = None
-        for i in range(0, 16):
-            sas[i + i] = HEX[digest[i] >> 4]
-            sas[i + i + 1] = HEX[digest[i] & 0x0f]
+        LaniatusDefVariables = None
+        for LaniatusDefVariables in range(0, 16):
+            sas[i + i] = HEX[digest[LaniatusDefVariables] >> 4]
+            sas[i + LaniatusDefVariables + 1] = HEX[digest[LaniatusDefVariables] & 0x0f]
         sas[i + i] = '\0'
     ##endif
 
@@ -3436,8 +3436,8 @@
             ch.StartRiding()
             return
         else:
-            i = 0
-            while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
                 item = ch.GetInventoryItem(i)
                 if None is item:
                     continue
@@ -3447,7 +3447,7 @@
                     ch.HorseSummon(((not LGEMiscellaneous.DEFINECONSTANTS.false)))
                     ch.StartRiding()
                     return
-                i += 1
+                LaniatusDefVariables += 1
 
         ch.ChatPacket(EChatType.CHAT_TYPE_INFO, LC_TEXT("Please call your Horse first."))
 
@@ -3594,8 +3594,8 @@
 
         while it is not Globals.s_set_map_allows.end():
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
-#ORIGINAL METINII C CODE: int i = *(it++);
-            i = *(it)
+#ORIGINAL METINII C CODE: int LaniatusDefVariables = *(it++);
+            LaniatusDefVariables = *(it)
             it += 1
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
 #ORIGINAL METINII C CODE: *(pl++) = i;
@@ -3876,10 +3876,10 @@ class is_twobyteDelegate:
 
     @staticmethod
     def map_allow_log():
-        i = s_set_map_allows.begin()
-        while i is not Globals.s_set_map_allows.end():
+        LaniatusDefVariables = s_set_map_allows.begin()
+        while LaniatusDefVariables is not Globals.s_set_map_allows.end():
             Globals.#sys_log(0, "MAP_ALLOW: %d", i)
-            i += 1
+            LaniatusDefVariables += 1
 
     @staticmethod
     def map_allow_add(index):
@@ -4265,10 +4265,10 @@ class is_twobyteDelegate:
                 continue
 
             TOKEN("log_keep_days")
-                i = 0
+                LaniatusDefVariables = 0
                 temp_ref_i = RefObject(i);
                 Globals.str_to_number(temp_ref_i, value_string)
-                i = temp_ref_i.arg_value
+                LaniatusDefVariables = temp_ref_i.arg_value
                 Globals.log_set_expiration_days(MINMAX(1, i, 90))
                 continue
 
@@ -4678,26 +4678,26 @@ class is_twobyteDelegate:
     CRCTable = [0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3, 0x0EDB8832, 0x79DCB8A4, 0xE0D5E91E, 0x97D2D988, 0x09B64C2B, 0x7EB17CBD, 0xE7B82D07, 0x90BF1D91, 0x1DB71064, 0x6AB020F2, 0xF3B97148, 0x84BE41DE, 0x1ADAD47D, 0x6DDDE4EB, 0xF4D4B551, 0x83D385C7, 0x136C9856, 0x646BA8C0, 0xFD62F97A, 0x8A65C9EC, 0x14015C4F, 0x63066CD9, 0xFA0F3D63, 0x8D080DF5, 0x3B6E20C8, 0x4C69105E, 0xD56041E4, 0xA2677172, 0x3C03E4D1, 0x4B04D447, 0xD20D85FD, 0xA50AB56B, 0x35B5A8FA, 0x42B2986C, 0xDBBBC9D6, 0xACBCF940, 0x32D86CE3, 0x45DF5C75, 0xDCD60DCF, 0xABD13D59, 0x26D930AC, 0x51DE003A, 0xC8D75180, 0xBFD06116, 0x21B4F4B5, 0x56B3C423, 0xCFBA9599, 0xB8BDA50F, 0x2802B89E, 0x5F058808, 0xC60CD9B2, 0xB10BE924, 0x2F6F7C87, 0x58684C11, 0xC1611DAB, 0xB6662D3D, 0x76DC4190, 0x01DB7106, 0x98D220BC, 0xEFD5102A, 0x71B18589, 0x06B6B51F, 0x9FBFE4A5, 0xE8B8D433, 0x7807C9A2, 0x0F00F934, 0x9609A88E, 0xE10E9818, 0x7F6A0DBB, 0x086D3D2D, 0x91646C97, 0xE6635C01, 0x6B6B51F4, 0x1C6C6162, 0x856530D8, 0xF262004E, 0x6C0695ED, 0x1B01A57B, 0x8208F4C1, 0xF50FC457, 0x65B0D9C6, 0x12B7E950, 0x8BBEB8EA, 0xFCB9887C, 0x62DD1DDF, 0x15DA2D49, 0x8CD37CF3, 0xFBD44C65, 0x4DB26158, 0x3AB551CE, 0xA3BC0074, 0xD4BB30E2, 0x4ADFA541, 0x3DD895D7, 0xA4D1C46D, 0xD3D6F4FB, 0x4369E96A, 0x346ED9FC, 0xAD678846, 0xDA60B8D0, 0x44042D73, 0x33031DE5, 0xAA0A4C5F, 0xDD0D7CC9, 0x5005713C, 0x270241AA, 0xBE0B1010, 0xC90C2086, 0x5768B525, 0x206F85B3, 0xB966D409, 0xCE61E49F, 0x5EDEF90E, 0x29D9C998, 0xB0D09822, 0xC7D7A8B4, 0x59B33D17, 0x2EB40D81, 0xB7BD5C3B, 0xC0BA6CAD, 0xEDB88320, 0x9ABFB3B6, 0x03B6E20C, 0x74B1D29A, 0xEAD54739, 0x9DD277AF, 0x04DB2615, 0x73DC1683, 0xE3630B12, 0x94643B84, 0x0D6D6A3E, 0x7A6A5AA8, 0xE40ECF0B, 0x9309FF9D, 0x0A00AE27, 0x7D079EB1, 0xF00F9344, 0x8708A3D2, 0x1E01F268, 0x6906C2FE, 0xF762575D, 0x806567CB, 0x196C3671, 0x6E6B06E7, 0xFED41B76, 0x89D32BE0, 0x10DA7A5A, 0x67DD4ACC, 0xF9B9DF6F, 0x8EBEEFF9, 0x17B7BE43, 0x60B08ED5, 0xD6D6A3E8, 0xA1D1937E, 0x38D8C2C4, 0x4FDFF252, 0xD1BB67F1, 0xA6BC5767, 0x3FB506DD, 0x48B2364B, 0xD80D2BDA, 0xAF0A1B4C, 0x36034AF6, 0x41047A60, 0xDF60EFC3, 0xA867DF55, 0x316E8EEF, 0x4669BE79, 0xCB61B38C, 0xBC66831A, 0x256FD2A0, 0x5268E236, 0xCC0C7795, 0xBB0B4703, 0x220216B9, 0x5505262F, 0xC5BA3BBE, 0xB2BD0B28, 0x2BB45A92, 0x5CB36A04, 0xC2D7FFA7, 0xB5D0CF31, 0x2CD99E8B, 0x5BDEAE1D, 0x9B64C2B0, 0xEC63F226, 0x756AA39C, 0x026D930A, 0x9C0906A9, 0xEB0E363F, 0x72076785, 0x05005713, 0x95BF4A82, 0xE2B87A14, 0x7BB12BAE, 0x0CB61B38, 0x92D28E9B, 0xE5D5BE0D, 0x7CDCEFB7, 0x0BDBDF21, 0x86D3D2D4, 0xF1D4E242, 0x68DDB3F8, 0x1FDA836E, 0x81BE16CD, 0xF6B9265B, 0x6FB077E1, 0x18B74777, 0x88085AE6, 0xFF0F6A70, 0x66063BCA, 0x11010B5C, 0x8F659EFF, 0xF862AE69, 0x616BFFD3, 0x166CCF45, 0xA00AE278, 0xD70DD2EE, 0x4E048354, 0x3903B3C2, 0xA7672661, 0xD06016F7, 0x4969474D, 0x3E6E77DB, 0xAED16A4A, 0xD9D65ADC, 0x40DF0B66, 0x37D83BF0, 0xA9BCAE53, 0xDEBB9EC5, 0x47B2CF7F, 0x30B5FFE9, 0xBDBDF21C, 0xCABAC28A, 0x53B39330, 0x24B4A3A6, 0xBAD03605, 0xCDD70693, 0x54DE5729, 0x23D967BF, 0xB3667A2E, 0xC4614AB8, 0x5D681B02, 0x2A6F2B94, 0xB40BBE37, 0xC30C8EA1, 0x5A05DF1B, 0x2D02EF8D]
 
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO1(buf, i) crc = CRCTable[(crc ^ buf[i]) & 0xff] ^ (crc >> 8)
+    #ORIGINAL METINII C CODE: #define DO1(buf, i) crc = CRCTable[(crc ^ buf[LaniatusDefVariables]) & 0xff] ^ (crc >> 8)
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO2(buf, i) DO1(buf, i); DO1(buf, i + 1);
+    #ORIGINAL METINII C CODE: #define DO2(buf, i) DO1(buf, i); DO1(buf, LaniatusDefVariables + 1);
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO4(buf, i) DO2(buf, i); DO2(buf, i + 2);
+    #ORIGINAL METINII C CODE: #define DO4(buf, i) DO2(buf, i); DO2(buf, LaniatusDefVariables + 2);
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO8(buf, i) DO4(buf, i); DO4(buf, i + 4);
+    #ORIGINAL METINII C CODE: #define DO8(buf, i) DO4(buf, i); DO4(buf, LaniatusDefVariables + 4);
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO16(buf, i) DO8(buf, i); DO8(buf, i + 8);
+    #ORIGINAL METINII C CODE: #define DO16(buf, i) DO8(buf, i); DO8(buf, LaniatusDefVariables + 8);
 
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO1CI(buf, i) crc = CRCTable[(crc ^ UPPER(buf[i])) & 0xff] ^ (crc >> 8)
+    #ORIGINAL METINII C CODE: #define DO1CI(buf, i) crc = CRCTable[(crc ^ UPPER(buf[LaniatusDefVariables])) & 0xff] ^ (crc >> 8)
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO2CI(buf, i) DO1CI(buf, i); DO1CI(buf, i + 1);
+    #ORIGINAL METINII C CODE: #define DO2CI(buf, i) DO1CI(buf, i); DO1CI(buf, LaniatusDefVariables + 1);
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO4CI(buf, i) DO2CI(buf, i); DO2CI(buf, i + 2);
+    #ORIGINAL METINII C CODE: #define DO4CI(buf, i) DO2CI(buf, i); DO2CI(buf, LaniatusDefVariables + 2);
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO8CI(buf, i) DO4CI(buf, i); DO4CI(buf, i + 4);
+    #ORIGINAL METINII C CODE: #define DO8CI(buf, i) DO4CI(buf, i); DO4CI(buf, LaniatusDefVariables + 4);
     ## Laniatus Games Studio Inc. | NOTE: The following #define macro was replaced in-line:
-    #ORIGINAL METINII C CODE: #define DO16CI(buf, i) DO8CI(buf, i); DO8CI(buf, i + 8);
+    #ORIGINAL METINII C CODE: #define DO16CI(buf, i) DO8CI(buf, i); DO8CI(buf, LaniatusDefVariables + 8);
 
 
 
@@ -4864,11 +4864,11 @@ class is_twobyteDelegate:
 
         cube_item = ch.GetCubeItem()
 
-        for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
-            if None is cube_item[i]:
+        for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
+            if None is cube_item[LaniatusDefVariables]:
                 continue
 
-            cube_item[i] = None
+            cube_item[LaniatusDefVariables] = None
 
     @staticmethod
     def Cube_open(ch):
@@ -4922,8 +4922,8 @@ class is_twobyteDelegate:
 
         cube_item = ch.GetCubeItem()
 
-        for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
-            item = cube_item[i]
+        for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
+            item = cube_item[LaniatusDefVariables]
             if None is item:
                 continue
 
@@ -4949,9 +4949,9 @@ class is_twobyteDelegate:
 
         cube_item = ch.GetCubeItem()
 
-        for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
-            if item is cube_item[i]:
-                cube_item[i] = None
+        for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
+            if item is cube_item[LaniatusDefVariables]:
+                cube_item[LaniatusDefVariables] = None
                 break
 
 ## Laniatus Games Studio Inc. | ROLE OF DEVELOPMENT SECTION: The following line has been determined to be tokenless assignment (rather than reference assignment) - this should be verified and a 'copy_from' method should be created: For this, follow the instructions from the dependencies addendum convteam@laniatusgames.com.
@@ -5085,9 +5085,9 @@ class is_twobyteDelegate:
 
     @staticmethod
     def Cube_InformationInitialize():
-        i = 0
-        while i < len(Globals.s_cube_proto):
-            cubeData = Globals.s_cube_proto[i]
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(Globals.s_cube_proto):
+            cubeData = Globals.s_cube_proto[LaniatusDefVariables]
 
             rewards = cubeData.reward
 
@@ -5140,7 +5140,7 @@ class is_twobyteDelegate:
 
             if LGEMiscellaneous.DEFINECONSTANTS.false == bComplicate:
                 resultList.append(materialInfo)
-            i += 1
+            LaniatusDefVariables += 1
 
         Globals.Cube_MakeCubeInformationText()
 
@@ -5165,12 +5165,12 @@ class is_twobyteDelegate:
     def FN_check_item_count(items, item_vnum, need_count):
         count = 0
 
-        for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
-            if None is items[i]:
+        for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
+            if None is items[LaniatusDefVariables]:
                 continue
 
-            if item_vnum == items[i].GetVnum():
-                count += int(items[i].GetCount())
+            if item_vnum == items[LaniatusDefVariables].GetVnum():
+                count += int(items[LaniatusDefVariables].GetCount())
 
         return (count>=need_count)
 
@@ -5179,11 +5179,11 @@ class is_twobyteDelegate:
         count = 0
         item = None
 
-        for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
-            if None is items[i]:
+        for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.CUBE_MAX_NUM):
+            if None is items[LaniatusDefVariables]:
                 continue
 
-            item = items[i]
+            item = items[LaniatusDefVariables]
             if item_vnum == item.GetVnum():
                 count += int(item.GetCount())
 
@@ -5192,22 +5192,22 @@ class is_twobyteDelegate:
                     return
                 else:
                     item.SetCount(0)
-                    items[i] = None
+                    items[LaniatusDefVariables] = None
 
     @staticmethod
     def FN_find_cube(items, npc_vnum):
-        i = None
+        LaniatusDefVariables = None
         end_index = None
 
         if 0==npc_vnum:
             return None
 
         end_index = len(Globals.s_cube_proto)
-        for i in range(0, end_index):
-            if Globals.s_cube_proto[i].can_make_item(items, npc_vnum):
+        for LaniatusDefVariables in range(0, end_index):
+            if Globals.s_cube_proto[LaniatusDefVariables].can_make_item(items, npc_vnum):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following line was determined to contain a copy constructor call - this should be verified and a copy constructor should be created:
-#ORIGINAL METINII C CODE: return s_cube_proto[i];
-                return CUBE_DATA(Globals.s_cube_proto[i])
+#ORIGINAL METINII C CODE: return s_cube_proto[LaniatusDefVariables];
+                return CUBE_DATA(Globals.s_cube_proto[LaniatusDefVariables])
 
         return None
 
@@ -5221,26 +5221,26 @@ class is_twobyteDelegate:
 
     @staticmethod
     def FN_check_cube_data(cube_data):
-        i = 0
+        LaniatusDefVariables = 0
         end_index = 0
 
         end_index = uint(len(cube_data.npc_vnum))
-        for i in range(0, end_index):
-            if cube_data.npc_vnum[i] == 0:
+        for LaniatusDefVariables in range(0, end_index):
+            if cube_data.npc_vnum[LaniatusDefVariables] == 0:
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
         end_index = uint(len(cube_data.item))
-        for i in range(0, end_index):
-            if cube_data.item[i].vnum == 0:
+        for LaniatusDefVariables in range(0, end_index):
+            if cube_data.item[LaniatusDefVariables].vnum == 0:
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            if cube_data.item[i].count == 0:
+            if cube_data.item[LaniatusDefVariables].count == 0:
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
         end_index = uint(len(cube_data.reward))
-        for i in range(0, end_index):
-            if cube_data.reward[i].vnum == 0:
+        for LaniatusDefVariables in range(0, end_index):
+            if cube_data.reward[LaniatusDefVariables].vnum == 0:
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            if cube_data.reward[i].count == 0:
+            if cube_data.reward[LaniatusDefVariables].count == 0:
                 return LGEMiscellaneous.DEFINECONSTANTS.false
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -5455,13 +5455,13 @@ class is_twobyteDelegate:
             GetKey_20050304Myevan_bGenerated = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
             seed = 1491971513
 
-            i = 0
-            while i < int(seed):
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < int(seed):
                 seed ^= 2148941891
                 seed += 3592385981
 
-                GetKey_20050304Myevan_s_adwKey[i] = seed
-                i += 1
+                GetKey_20050304Myevan_s_adwKey[LaniatusDefVariables] = seed
+                LaniatusDefVariables += 1
 
         return byte(int(GetKey_20050304Myevan_s_adwKey))
 
@@ -5500,12 +5500,12 @@ class is_twobyteDelegate:
 
     @staticmethod
     def IsValidIP(ip_table, host):
-        i = None
+        LaniatusDefVariables = None
         j = None
         ip_addr = str(['\0' for _ in range(256)])
 
-        i = 0
-        while ip_table[i].ip != '\n':
+        LaniatusDefVariables = 0
+        while ip_table[LaniatusDefVariables].ip != '\n':
             j = 255 - (ip_table + i).mask
 
             condition = True
@@ -5522,7 +5522,7 @@ class is_twobyteDelegate:
 #ORIGINAL METINII C CODE: } while (j--);
                 condition = j
             j -= 1
-            i += 1
+            LaniatusDefVariables += 1
 
         return LGEMiscellaneous.DEFINECONSTANTS.false
     DRAGON_SOUL_ADDITIONAL_ATTR_START_IDX = 3
@@ -5587,10 +5587,10 @@ class is_twobyteDelegate:
     @staticmethod
     def Gamble(vec_probs):
         range = 0.0
-        i = 0
-        while i < len(vec_probs):
-            range += vec_probs[i]
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(vec_probs):
+            range += vec_probs[LaniatusDefVariables]
+            LaniatusDefVariables += 1
         fProb = fnumber(0.0, range)
         sum = 0.0
         idx = 0
@@ -5609,7 +5609,7 @@ class is_twobyteDelegate:
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
         select_bit = [0 for _ in range(size)]
-        for i in range(0, n):
+        for LaniatusDefVariables in range(0, n):
             range = 0.0
             it = prob_lst.begin()
             while it is not prob_lst.end():
@@ -5630,7 +5630,7 @@ class is_twobyteDelegate:
                 sum += *it
                 if sum >= r:
                     select_bit[idx - 1] = 1
-                    random_set[i] = idx - 1
+                    random_set[LaniatusDefVariables] = idx - 1
                     prob_lst.erase(it)
                     break
                 it += 1
@@ -6280,28 +6280,28 @@ class is_twobyteDelegate:
     def GetServerLocation(rTab, bEmpire):
         bFound = LGEMiscellaneous.DEFINECONSTANTS.false
 
-        i = 0
-        while i < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
-            if 0 == rTab.players[i].dwID:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
+            if 0 == rTab.players[LaniatusDefVariables].dwID:
                 continue
 
             bFound = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
             lIndex = 0
 
             temp_ref_lIndex = RefObject(lIndex);
-            if not CMapLocation.instance().Get(rTab.players[i].x, rTab.players[i].y, temp_ref_lIndex, rTab.players[i].lAddr, rTab.players[i].wPort):
+            if not CMapLocation.instance().Get(rTab.players[LaniatusDefVariables].x, rTab.players[LaniatusDefVariables].y, temp_ref_lIndex, rTab.players[LaniatusDefVariables].lAddr, rTab.players[LaniatusDefVariables].wPort):
                 lIndex = temp_ref_lIndex.arg_value
-                #lani_err("location error name %s mapindex %d %d x %d empire %d", rTab.players[i].szName, lIndex, rTab.players[i].x, rTab.players[i].y, rTab.bEmpire)
+                #lani_err("location error name %s mapindex %d %d x %d empire %d", rTab.players[LaniatusDefVariables].szName, lIndex, rTab.players[LaniatusDefVariables].x, rTab.players[LaniatusDefVariables].y, rTab.bEmpire)
 
-                rTab.players[i].x = int(Globals.EMPIRE_START_X(rTab.bEmpire))
-                rTab.players[i].y = int(Globals.EMPIRE_START_Y(rTab.bEmpire))
+                rTab.players[LaniatusDefVariables].x = int(Globals.EMPIRE_START_X(rTab.bEmpire))
+                rTab.players[LaniatusDefVariables].y = int(Globals.EMPIRE_START_Y(rTab.bEmpire))
 
                 lIndex = 0
 
                 temp_ref_lIndex2 = RefObject(lIndex);
-                if not CMapLocation.instance().Get(rTab.players[i].x, rTab.players[i].y, temp_ref_lIndex2, rTab.players[i].lAddr, rTab.players[i].wPort):
+                if not CMapLocation.instance().Get(rTab.players[LaniatusDefVariables].x, rTab.players[LaniatusDefVariables].y, temp_ref_lIndex2, rTab.players[LaniatusDefVariables].lAddr, rTab.players[LaniatusDefVariables].wPort):
                     lIndex = temp_ref_lIndex2.arg_value
-                    #lani_err("cannot find server for mapindex %d %d x %d (name %s)", lIndex, rTab.players[i].x, rTab.players[i].y, rTab.players[i].szName)
+                    #lani_err("cannot find server for mapindex %d %d x %d (name %s)", lIndex, rTab.players[LaniatusDefVariables].x, rTab.players[LaniatusDefVariables].y, rTab.players[LaniatusDefVariables].szName)
 
                     continue
                 else:
@@ -6310,9 +6310,9 @@ class is_twobyteDelegate:
                 lIndex = temp_ref_lIndex.arg_value
 
             in_ = in_addr()
-            in_.s_addr = rTab.players[i].lAddr
-            #sys_log(0, "success to %s:%d", inet_ntoa(in_), rTab.players[i].wPort)
-            i += 1
+            in_.s_addr = rTab.players[LaniatusDefVariables].lAddr
+            #sys_log(0, "success to %s:%d", inet_ntoa(in_), rTab.players[LaniatusDefVariables].wPort)
+            LaniatusDefVariables += 1
 
         return bFound
 
@@ -6673,9 +6673,9 @@ class is_twobyteDelegate:
         len = None
         extraInfo = ""
 
-        i = 0
-        while i < src_len:
-            tag = Globals.GetTextTag(src[i], src_len - i, len, extraInfo)
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < src_len:
+            tag = Globals.GetTextTag(src[LaniatusDefVariables], src_len - i, len, extraInfo)
 
             if tag == Globals.TEXT_TAG_HYPERLINK_START:
                 hyperlinks.arg_value += 1
@@ -6683,7 +6683,7 @@ class is_twobyteDelegate:
             if tag == Globals.TEXT_TAG_COLOR:
                 colored.arg_value = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
-            i += len
+            LaniatusDefVariables += len
 
     @staticmethod
     def ProcessTextTag(ch, c_pszText, len):
@@ -7264,7 +7264,7 @@ class is_twobyteDelegate:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: Pointer arithmetic is detected on this variable:
 #ORIGINAL METINII C CODE: const char *tmp;
         tmp = None
-        i = None
+        LaniatusDefVariables = None
         j = None
         buf = None
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: Pointer arithmetic is detected on this variable:
@@ -7278,10 +7278,10 @@ class is_twobyteDelegate:
 
         buf = LG_NEW_M2 char[len + 1]
 
-        j = i = 0
+        j = LaniatusDefVariables = 0
         tmp = src
         dest = buf
-        while i < len:
+        while LaniatusDefVariables < len:
             if *tmp == '"':
                 if last_char != '\\':
                     start = 1 if start == 0 else 0
@@ -7312,7 +7312,7 @@ class is_twobyteDelegate:
                     last_char = *tmp
 
                 j += 1
-            i += 1
+            LaniatusDefVariables += 1
             tmp += 1
 
         if j == 0:
@@ -7338,18 +7338,18 @@ class is_twobyteDelegate:
             return
 
         fseek(fp, 0, SEEK_END)
-        i = ftell(fp)
+        LaniatusDefVariables = ftell(fp)
         fseek(fp, 0, SEEK_SET)
 
-        i += 1
+        LaniatusDefVariables += 1
 
-        buf = LG_NEW_M2 char[i]
+        buf = LG_NEW_M2 char[LaniatusDefVariables]
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memset' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
         memset(buf, 0, i)
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-        fread(buf, i - 1, sizeof(char), fp)
+        fread(buf, LaniatusDefVariables - 1, sizeof(char), fp)
 
         fclose(fp)
 
@@ -7370,17 +7370,17 @@ class is_twobyteDelegate:
 
         condition = True
         while condition:
-            for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.NUM_LOCALES):
-                strings[i] = None
+            for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.NUM_LOCALES):
+                strings[LaniatusDefVariables] = None
 
             if *tmp == '"':
-                for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.NUM_LOCALES):
+                for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.NUM_LOCALES):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if (!(end = quote_find_end(tmp)))
                     if not(end = Globals.quote_find_end(tmp)):
                         break
 
-                    strings[i] = Globals.locale_convert(tmp, end - tmp)
+                    strings[LaniatusDefVariables] = Globals.locale_convert(tmp, end - tmp)
                     end += 1
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
 #ORIGINAL METINII C CODE: tmp = ++end;
@@ -7389,7 +7389,7 @@ class is_twobyteDelegate:
                     while *tmp == '\n' or *tmp == '\r' or *tmp == ' ':
                         tmp += 1
 
-                    if i + 1 == LGEMiscellaneous.DEFINECONSTANTS.NUM_LOCALES:
+                    if LaniatusDefVariables + 1 == LGEMiscellaneous.DEFINECONSTANTS.NUM_LOCALES:
                         break
 
                     if *tmp != '"':
@@ -7406,9 +7406,9 @@ class is_twobyteDelegate:
                 Globals.locale_add(str(strings))
     ##endif
 
-                for i in range(0, LGEMiscellaneous.DEFINECONSTANTS.NUM_LOCALES):
-                    if strings[i] != '\0':
-                        LG_DEL_MEM_ARRAY(strings[i])
+                for LaniatusDefVariables in range(0, LGEMiscellaneous.DEFINECONSTANTS.NUM_LOCALES):
+                    if strings[LaniatusDefVariables] != '\0':
+                        LG_DEL_MEM_ARRAY(strings[LaniatusDefVariables])
             else:
                 tmp = strchr(tmp, '\n')
 
@@ -8045,8 +8045,8 @@ class _malloc_messageDelegate:
 
         oss = std::ostringstream()
         oss << std::endl
-        for i in range(0, size):
-            oss << "  Stack> " << symbols[i] << std::endl
+        for LaniatusDefVariables in range(0, size):
+            oss << "  Stack> " << symbols[LaniatusDefVariables] << std::endl
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'free' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
         free(symbols)
@@ -8131,11 +8131,11 @@ class _malloc_messageDelegate:
                 if Globals.save_idx < g_vec_save.size():
                     count = MIN(100, g_vec_save.size() - Globals.save_idx)
 
-                    i = 0
-                    while i < count:
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables < count:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                         db_clientdesc.DBPacket(Globals.LG_HEADER_GD_PLAYER_SAVE, 0, g_vec_save[Globals.save_idx], sizeof(SPlayerTable))
-                        i += 1
+                        LaniatusDefVariables += 1
                         save_idx += 1
 
                     Globals.#sys_log(0, "SAVE_FLUSH %d", count)
@@ -8791,7 +8791,7 @@ class _malloc_messageDelegate:
 
     @staticmethod
     def get_word(fp, buf):
-        i = 0
+        LaniatusDefVariables = 0
         c = None
 
         semicolon_mode = 0
@@ -8799,7 +8799,7 @@ class _malloc_messageDelegate:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: while ((c = fgetc(fp)) != EOF)
         while (c = fgetc(fp)) != EOF:
-            if i == 0:
+            if LaniatusDefVariables == 0:
                 if c == '"':
                     semicolon_mode = 1
                     continue
@@ -8809,28 +8809,28 @@ class _malloc_messageDelegate:
 
             if semicolon_mode != 0:
                 if c == '"':
-                    buf.arg_value[i] = '\0'
+                    buf.arg_value[LaniatusDefVariables] = '\0'
                     return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
-#ORIGINAL METINII C CODE: buf[i++] = c;
-                buf.arg_value[i] = c
-                i += 1
+#ORIGINAL METINII C CODE: buf[LaniatusDefVariables++] = c;
+                buf.arg_value[LaniatusDefVariables] = c
+                LaniatusDefVariables += 1
             else:
                 if (c == ' ' or c == '\t' or c == '\n' or c == '\r'):
-                    buf.arg_value[i] = '\0'
+                    buf.arg_value[LaniatusDefVariables] = '\0'
                     return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
-#ORIGINAL METINII C CODE: buf[i++] = c;
-                buf.arg_value[i] = c
-                i += 1
+#ORIGINAL METINII C CODE: buf[LaniatusDefVariables++] = c;
+                buf.arg_value[LaniatusDefVariables] = c
+                LaniatusDefVariables += 1
 
-            if i == 2 and buf.arg_value[0] == '/' and buf.arg_value[1] == '/':
-                buf.arg_value[i] = '\0'
+            if LaniatusDefVariables == 2 and buf.arg_value[0] == '/' and buf.arg_value[1] == '/':
+                buf.arg_value[LaniatusDefVariables] = '\0'
                 return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
-        buf.arg_value[i] = '\0'
+        buf.arg_value[LaniatusDefVariables] = '\0'
         return (i != 0)
 
     @staticmethod
@@ -8849,7 +8849,7 @@ class _malloc_messageDelegate:
 
         mode = ERegenModes.MODE_TYPE
         tmpTime = None
-        i = None
+        LaniatusDefVariables = None
 
         temp_ref_szTmp = RefObject(szTmp);
         while Globals.get_word(fp, temp_ref_szTmp):
@@ -8938,25 +8938,25 @@ class _malloc_messageDelegate:
                 regen.time = 0
                 tmpTime = 0
 
-                i = 0
-                while i < strlen(szTmp):
-                    if szTmp[i] == 'h':
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < strlen(szTmp):
+                    if szTmp[LaniatusDefVariables] == 'h':
                         regen.time += uint(tmpTime * 3600)
                         tmpTime = 0
 
-                    elif szTmp[i] == 'm':
+                    elif szTmp[LaniatusDefVariables] == 'm':
                         regen.time += uint(tmpTime * 60)
                         tmpTime = 0
 
-                    elif szTmp[i] == 's':
+                    elif szTmp[LaniatusDefVariables] == 's':
                         regen.time += uint(tmpTime)
                         tmpTime = 0
 
                     else:
-                        if szTmp[i] >= '0' and szTmp[i] <= '9':
+                        if szTmp[LaniatusDefVariables] >= '0' and szTmp[LaniatusDefVariables] <= '9':
                             tmpTime *= 10
-                            tmpTime += (szTmp[i] - '0')
-                    i += 1
+                            tmpTime += (szTmp[LaniatusDefVariables] - '0')
+                    LaniatusDefVariables += 1
 
                 mode += 1
 
@@ -8983,14 +8983,14 @@ class _malloc_messageDelegate:
     @staticmethod
     def regen_spawn_dungeon(regen, pDungeon, bOnce):
         num = None
-        i = None
+        LaniatusDefVariables = None
 
         num = uint((regen.max_count - regen.count))
 
         if num == 0:
             return
 
-        for i in range(0, num):
+        for LaniatusDefVariables in range(0, num):
             ch = None
 
             if regen.type == Globals.REGEN_TYPE_ANYWHERE:
@@ -9025,14 +9025,14 @@ class _malloc_messageDelegate:
     @staticmethod
     def regen_spawn(regen, bOnce):
         num = None
-        i = None
+        LaniatusDefVariables = None
 
         num = uint((regen.max_count - regen.count))
 
         if num == 0:
             return
 
-        for i in range(0, num):
+        for LaniatusDefVariables in range(0, num):
             ch = None
 
             if regen.type == Globals.REGEN_TYPE_ANYWHERE:
@@ -9163,18 +9163,18 @@ class _malloc_messageDelegate:
             #lani_err("count(%d) of rows of group items of group %s must be smaller than %d", itemGroupSize, pNode.GetNodeName(), LGEMiscellaneous.SHOP_HOST_ITEM_MAX_NUM)
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
-        for i in range(0, itemGroupSize):
-            if not pItemGroup.GetValue(i, "vnum", shopItems[i].vnum):
+        for LaniatusDefVariables in range(0, itemGroupSize):
+            if not pItemGroup.GetValue(i, "vnum", shopItems[LaniatusDefVariables].vnum):
                 #lani_err("row(%d) of group items of group %s does not have vnum column", i, pNode.GetNodeName())
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
-            if not pItemGroup.GetValue(i, "count", shopItems[i].count):
+            if not pItemGroup.GetValue(i, "count", shopItems[LaniatusDefVariables].count):
                 #lani_err("row(%d) of group items of group %s does not have count column", i, pNode.GetNodeName())
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            if not pItemGroup.GetValue(i, "price", shopItems[i].price):
+            if not pItemGroup.GetValue(i, "price", shopItems[LaniatusDefVariables].price):
                 #lani_err("row(%d) of group items of group %s does not have price column", i, pNode.GetNodeName())
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            if shopItems[i].price_type >= EX_MAX or shopItems[i].price_type < EX_GOLD:
+            if shopItems[LaniatusDefVariables].price_type >= EX_MAX or shopItems[LaniatusDefVariables].price_type < EX_GOLD:
                 #lani_err("row(%d) of group items of group %s price_type is wrong!", i, pNode.GetNodeName())
                 return LGEMiscellaneous.DEFINECONSTANTS.false
             getval = str(['\0' for _ in range(20)])
@@ -9182,7 +9182,7 @@ class _malloc_messageDelegate:
             while j < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                 snprintf(getval, sizeof(getval), "socket%d", j)
-                if not pItemGroup.GetValue(i, getval, shopItems[i].alSockets[j]):
+                if not pItemGroup.GetValue(i, getval, shopItems[LaniatusDefVariables].alSockets[j]):
                     #lani_err("row(%d) stage %d of group items of group %s does not have socket column", i, j, pNode.GetNodeName())
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 j += 1
@@ -9190,18 +9190,18 @@ class _malloc_messageDelegate:
             while j < EItemMisc.ITEM_ATTRIBUTE_MAX_NUM:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                 snprintf(getval, sizeof(getval), "attr_type%d", j)
-                if not pItemGroup.GetValue(i, getval, shopItems[i].aAttr[j].bType):
+                if not pItemGroup.GetValue(i, getval, shopItems[LaniatusDefVariables].aAttr[j].bType):
                     #lani_err("row(%d) stage %d of group items of group %s does not have attr_type column", i, j, pNode.GetNodeName())
                     return LGEMiscellaneous.DEFINECONSTANTS.false
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
                 snprintf(getval, sizeof(getval), "attr_value%d", j)
-                if not pItemGroup.GetValue(i, getval, shopItems[i].aAttr[j].sValue):
+                if not pItemGroup.GetValue(i, getval, shopItems[LaniatusDefVariables].aAttr[j].sValue):
                     #lani_err("row(%d) stage %d of group items of group %s does not have attr_value column", i, j, pNode.GetNodeName())
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 j += 1
-            if pItemGroup.GetValue(i, "price_type", shopItems[i].price_type) and pItemGroup.GetValue(i, "price_vnum", shopItems[i].price_vnum) and shopItems[i].price_type == 3:
-                if ITEM_MANAGER.instance().GetTable(shopItems[i].price_vnum) is None:
-                    #lani_err("NOT GET ITEM PROTO %d", shopItems[i].price_vnum)
+            if pItemGroup.GetValue(i, "price_type", shopItems[LaniatusDefVariables].price_type) and pItemGroup.GetValue(i, "price_vnum", shopItems[LaniatusDefVariables].price_vnum) and shopItems[LaniatusDefVariables].price_type == 3:
+                if ITEM_MANAGER.instance().GetTable(shopItems[LaniatusDefVariables].price_vnum) is None:
+                    #lani_err("NOT GET ITEM PROTO %d", shopItems[LaniatusDefVariables].price_vnum)
                     return LGEMiscellaneous.DEFINECONSTANTS.false
         stSort = ""
         if not pNode.GetValue("sort", 0, stSort):
@@ -9236,20 +9236,20 @@ class _malloc_messageDelegate:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         memset(shopTable.items[0], 0, sizeof(shopTable.items))
 
-        i = 0
-        while i < len(shopItems):
-            item_table = ITEM_MANAGER.instance().GetTable(shopItems[i].vnum)
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(shopItems):
+            item_table = ITEM_MANAGER.instance().GetTable(shopItems[LaniatusDefVariables].vnum)
             if item_table is None:
-                #lani_err("vnum(%d) of group items of group %s does not exist", shopItems[i].vnum, pNode.GetNodeName())
+                #lani_err("vnum(%d) of group items of group %s does not exist", shopItems[LaniatusDefVariables].vnum, pNode.GetNodeName())
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
             iPos = grid.FindBlank(1, item_table.bSize)
 
             grid.Put(iPos, 1, item_table.bSize)
 ## Laniatus Games Studio Inc. | ROLE OF DEVELOPMENT SECTION: The following line has been determined to be tokenless assignment (rather than reference assignment) - this should be verified and a 'copy_from' method should be created: For this, follow the instructions from the dependencies addendum convteam@laniatusgames.com.
-#ORIGINAL METINII C CODE: shopTable.items[iPos] = shopItems[i];
-            shopTable.items[iPos].copy_from(shopItems[i])
-            i += 1
+#ORIGINAL METINII C CODE: shopTable.items[iPos] = shopItems[LaniatusDefVariables];
+            shopTable.items[iPos].copy_from(shopItems[LaniatusDefVariables])
+            LaniatusDefVariables += 1
 
         shopTable.byItemCount = len(shopItems)
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
@@ -9613,16 +9613,16 @@ class _malloc_messageDelegate:
 
     @staticmethod
     def CalculateDuration(iSpd, iDur):
-        i = 100 - iSpd
+        LaniatusDefVariables = 100 - iSpd
 
-        if i > 0:
-            i = 100 + i
-        elif i < 0:
-            i = math.trunc(10000 / float(100 - i))
+        if LaniatusDefVariables > 0:
+            LaniatusDefVariables = 100 + i
+        elif LaniatusDefVariables < 0:
+            LaniatusDefVariables = math.trunc(10000 / float(100 - i))
         else:
-            i = 100
+            LaniatusDefVariables = 100
 
-        return math.trunc(iDur * i / float(100))
+        return math.trunc(iDur * LaniatusDefVariables / float(100))
 
     ## Laniatus Games Studio Inc. | NOTE: This was formerly a static local variable declaration (not allowed in Python):
     gauss_random_haveNextGaussian = DefineConstants.false
@@ -9696,11 +9696,11 @@ class _malloc_messageDelegate:
             if *w == '*':
                 if '\0' == w[1]:
                     return ((not DefineConstants.false))
-                    i = 0
-                    while i <= strlen(s):
+                    LaniatusDefVariables = 0
+                    while LaniatusDefVariables <= strlen(s):
                         if ((not DefineConstants.false)) == Globals.WildCaseCmp(w + 1, s + i):
                             return ((not DefineConstants.false))
-                        i += 1
+                        LaniatusDefVariables += 1
                 return DefineConstants.false
 
             if (*w == '*') or (*w == '?'):

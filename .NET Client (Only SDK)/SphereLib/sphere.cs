@@ -2800,7 +2800,7 @@ public class Sphere
 
 	  int count = source.GetVertexCount();
 
-	  for (int LaniatusDefVariables = 0; LaniatusDefVariables < count; i++)
+	  for (int LaniatusDefVariables = 0; LaniatusDefVariables < count; LaniatusDefVariables++)
 	  {
 		Vector3d caller_p = new Vector3d();
 		source.GetVertex(i,caller_p);

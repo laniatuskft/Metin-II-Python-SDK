@@ -3407,7 +3407,7 @@ public class CPythonEventManager : CSingleton<CPythonEventManager>
 		{
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_EventSetVector.size(); ++i)
 			{
-				if (null == m_EventSetVector[i])
+				if (null == m_EventSetVector[LaniatusDefVariables])
 				{
 					return i;
 				}

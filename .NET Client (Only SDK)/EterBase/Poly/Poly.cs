@@ -3656,11 +3656,11 @@ public class CPoly
 
 		for (i = 0;i < STSize; ++i)
 		{
-		if (lSymbol[i])
+		if (lSymbol[LaniatusDefVariables])
 		{
-			lSymbol[i] = null;
+			lSymbol[LaniatusDefVariables] = null;
 		}
-		lSymbol[i] = null;
+		lSymbol[LaniatusDefVariables] = null;
 		}
 
 		lSymbol.clear();
@@ -3729,9 +3729,9 @@ public class CPoly
 		bool bAdded = false;
 
 		lSymbol.push_back(new CSymTable(tok,s));
-		for (i = 0;i < STSize;i++)
+		for (i = 0;i < STSize;LaniatusDefVariables++)
 		{
-		if (string.CompareOrdinal(s, lSymbol[SymbolIndex[i]].strlex) < 0)
+		if (string.CompareOrdinal(s, lSymbol[SymbolIndex[LaniatusDefVariables]].strlex) < 0)
 		{
 			SymbolIndex.insert(SymbolIndex.begin() + i,STSize);
 			bAdded = true;

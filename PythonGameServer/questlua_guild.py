@@ -178,7 +178,7 @@
     def guild_get_reserve_war_table(L):
         con = CGuildManager.instance().GetReserveWarRef()
 
-        i = 0
+        LaniatusDefVariables = 0
         it = con.begin()
 
         #sys_log(0, "con.size(): %d", len(con))
@@ -215,7 +215,7 @@
 
             lua_pushnumber(L, p.lHandicap)
             lua_rawseti(L, -2, 4)
-            i += 1
+            LaniatusDefVariables += 1
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
 #ORIGINAL METINII C CODE: lua_rawseti(L, -2, ++i);
             lua_rawseti(L, -2, i)

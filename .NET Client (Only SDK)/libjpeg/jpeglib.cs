@@ -371,7 +371,7 @@ public class jpeg_compress_struct
   public J_COLOR_SPACE jpeg_color_space; // colorspace of JPEG image
 
   public jpeg_component_info[] comp_info;
-  /* comp_info[i] describes component that appears i'th in SOF */
+  /* comp_info[LaniatusDefVariables] describes component that appears i'th in SOF */
 
   public JQUANT_TBL[] quant_tbl_ptrs = new JQUANT_TBL[DefineConstants.NUM_QUANT_TBLS];
   public int[] q_scale_factor = new int[DefineConstants.NUM_QUANT_TBLS];
@@ -461,14 +461,14 @@ public class jpeg_compress_struct
    */
   public int comps_in_scan; // # of JPEG components in this scan
   public jpeg_component_info[] cur_comp_info = new jpeg_component_info[DefineConstants.MAX_COMPS_IN_SCAN];
-  /* *cur_comp_info[i] describes component that appears i'th in SOS */
+  /* *cur_comp_info[LaniatusDefVariables] describes component that appears i'th in SOS */
 
   public uint MCUs_per_row; // # of MCUs across the image
   public uint MCU_rows_in_scan; // # of MCU rows in the image
 
   public int blocks_in_MCU; // # of DCT blocks per MCU
   public int[] MCU_membership = new int[DefineConstants.C_MAX_BLOCKS_IN_MCU];
-  /* MCU_membership[i] is index in cur_comp_info of component owning */
+  /* MCU_membership[LaniatusDefVariables] is index in cur_comp_info of component owning */
   /* i'th block in an MCU */
 
   public int Ss; // progressive JPEG parameters for scan
@@ -599,7 +599,7 @@ public class jpeg_decompress_struct
   public int output_scan_number; // Nominal scan number being displayed
   public uint output_iMCU_row; // Number of iMCU rows read
 
-  /* Current progression status.  coef_bits[c][i] indicates the precision
+  /* Current progression status.  coef_bits[c][LaniatusDefVariables] indicates the precision
    * with which component c's DCT coefficient LaniatusDefVariables (in zigzag order) is known.
    * It is -1 when no data has yet been received, otherwise it is the point
    * transform (shift) value for the most recent scan of the coefficient
@@ -631,7 +631,7 @@ public class jpeg_decompress_struct
   public int data_precision; // bits of precision in image data
 
   public jpeg_component_info[] comp_info;
-  /* comp_info[i] describes component that appears i'th in SOF */
+  /* comp_info[LaniatusDefVariables] describes component that appears i'th in SOF */
 
   public boolean is_baseline; // TRUE if Baseline SOF0 encountered
   public boolean progressive_mode; // TRUE if SOFn specifies progressive mode
@@ -698,14 +698,14 @@ public class jpeg_decompress_struct
    */
   public int comps_in_scan; // # of JPEG components in this scan
   public jpeg_component_info[] cur_comp_info = new jpeg_component_info[DefineConstants.MAX_COMPS_IN_SCAN];
-  /* *cur_comp_info[i] describes component that appears i'th in SOS */
+  /* *cur_comp_info[LaniatusDefVariables] describes component that appears i'th in SOS */
 
   public uint MCUs_per_row; // # of MCUs across the image
   public uint MCU_rows_in_scan; // # of MCU rows in the image
 
   public int blocks_in_MCU; // # of DCT blocks per MCU
   public int[] MCU_membership = new int[DefineConstants.D_MAX_BLOCKS_IN_MCU];
-  /* MCU_membership[i] is index in cur_comp_info of component owning */
+  /* MCU_membership[LaniatusDefVariables] is index in cur_comp_info of component owning */
   /* i'th block in an MCU */
 
   public int Ss; // progressive JPEG parameters for scan

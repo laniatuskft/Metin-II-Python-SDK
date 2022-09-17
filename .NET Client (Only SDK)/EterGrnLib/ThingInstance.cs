@@ -643,9 +643,9 @@ public class CGraphicThingInstance : CGraphicObjectInstance
 		{
 			m_bUpdated = true;
 
-			for (List<CGrannyLODController>.size_type LaniatusDefVariables = 0; LaniatusDefVariables != m_LODControllerVector.size(); i++)
+			for (List<CGrannyLODController>.size_type LaniatusDefVariables = 0; LaniatusDefVariables != m_LODControllerVector.size(); LaniatusDefVariables++)
 			{
-				CGrannyLODController pkLOD = m_LODControllerVector[i];
+				CGrannyLODController pkLOD = m_LODControllerVector[LaniatusDefVariables];
 				if (pkLOD != null && pkLOD.isModelInstance())
 				{
 					if (i == 5)
@@ -709,9 +709,9 @@ public class CGraphicThingInstance : CGraphicObjectInstance
 		{
 			m_bUpdated = true;
 
-			for (List<CGrannyLODController>.size_type LaniatusDefVariables = 0; LaniatusDefVariables != m_LODControllerVector.size(); i++)
+			for (List<CGrannyLODController>.size_type LaniatusDefVariables = 0; LaniatusDefVariables != m_LODControllerVector.size(); LaniatusDefVariables++)
 			{
-				CGrannyLODController pkLOD = m_LODControllerVector[i];
+				CGrannyLODController pkLOD = m_LODControllerVector[LaniatusDefVariables];
 				if (pkLOD != null && pkLOD.isModelInstance())
 				{
 					if (i == 5)
@@ -918,12 +918,12 @@ public class CGraphicThingInstance : CGraphicObjectInstance
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < rModelThingSet.m_pLODThingRefVector.size(); ++i)
 			{
-				if (rModelThingSet.m_pLODThingRefVector[i].IsNull())
+				if (rModelThingSet.m_pLODThingRefVector[LaniatusDefVariables].IsNull())
 				{
 					return false;
 				}
 
-				pController.AddModel(rModelThingSet.m_pLODThingRefVector[i].GetPointer(), iSrcModel, pSkelController);
+				pController.AddModel(rModelThingSet.m_pLODThingRefVector[LaniatusDefVariables].GetPointer(), iSrcModel, pSkelController);
 			}
 			return true;
 		}
@@ -1478,41 +1478,41 @@ public class CGraphicThingInstance : CGraphicObjectInstance
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < 8; ++i)
 			{
-				D3DXVec4Transform(m_v4TBBox[i], m_v4TBBox[i], c_rmatTransform);
+				D3DXVec4Transform(m_v4TBBox[LaniatusDefVariables], m_v4TBBox[LaniatusDefVariables], c_rmatTransform);
 				if (0 == i)
 				{
-					m_v3TBBoxMin.x = m_v4TBBox[i].x;
-					m_v3TBBoxMin.y = m_v4TBBox[i].y;
-					m_v3TBBoxMin.z = m_v4TBBox[i].z;
-					m_v3TBBoxMax.x = m_v4TBBox[i].x;
-					m_v3TBBoxMax.y = m_v4TBBox[i].y;
-					m_v3TBBoxMax.z = m_v4TBBox[i].z;
+					m_v3TBBoxMin.x = m_v4TBBox[LaniatusDefVariables].x;
+					m_v3TBBoxMin.y = m_v4TBBox[LaniatusDefVariables].y;
+					m_v3TBBoxMin.z = m_v4TBBox[LaniatusDefVariables].z;
+					m_v3TBBoxMax.x = m_v4TBBox[LaniatusDefVariables].x;
+					m_v3TBBoxMax.y = m_v4TBBox[LaniatusDefVariables].y;
+					m_v3TBBoxMax.z = m_v4TBBox[LaniatusDefVariables].z;
 				}
 				else
 				{
-					if (m_v3TBBoxMin.x > m_v4TBBox[i].x)
+					if (m_v3TBBoxMin.x > m_v4TBBox[LaniatusDefVariables].x)
 					{
-						m_v3TBBoxMin.x = m_v4TBBox[i].x;
+						m_v3TBBoxMin.x = m_v4TBBox[LaniatusDefVariables].x;
 					}
-					if (m_v3TBBoxMax.x < m_v4TBBox[i].x)
+					if (m_v3TBBoxMax.x < m_v4TBBox[LaniatusDefVariables].x)
 					{
-						m_v3TBBoxMax.x = m_v4TBBox[i].x;
+						m_v3TBBoxMax.x = m_v4TBBox[LaniatusDefVariables].x;
 					}
-					if (m_v3TBBoxMin.y > m_v4TBBox[i].y)
+					if (m_v3TBBoxMin.y > m_v4TBBox[LaniatusDefVariables].y)
 					{
-						m_v3TBBoxMin.y = m_v4TBBox[i].y;
+						m_v3TBBoxMin.y = m_v4TBBox[LaniatusDefVariables].y;
 					}
-					if (m_v3TBBoxMax.y < m_v4TBBox[i].y)
+					if (m_v3TBBoxMax.y < m_v4TBBox[LaniatusDefVariables].y)
 					{
-						m_v3TBBoxMax.y = m_v4TBBox[i].y;
+						m_v3TBBoxMax.y = m_v4TBBox[LaniatusDefVariables].y;
 					}
-					if (m_v3TBBoxMin.z > m_v4TBBox[i].z)
+					if (m_v3TBBoxMin.z > m_v4TBBox[LaniatusDefVariables].z)
 					{
-						m_v3TBBoxMin.z = m_v4TBBox[i].z;
+						m_v3TBBoxMin.z = m_v4TBBox[LaniatusDefVariables].z;
 					}
-					if (m_v3TBBoxMax.z < m_v4TBBox[i].z)
+					if (m_v3TBBoxMax.z < m_v4TBBox[LaniatusDefVariables].z)
 					{
-						m_v3TBBoxMax.z = m_v4TBBox[i].z;
+						m_v3TBBoxMax.z = m_v4TBBox[LaniatusDefVariables].z;
 					}
 				}
 			}
@@ -1563,9 +1563,9 @@ public class CGraphicThingInstance : CGraphicObjectInstance
 		{
 			m_bUpdated = true;
 
-			for (List<CGrannyLODController>.size_type LaniatusDefVariables = 0; LaniatusDefVariables != m_LODControllerVector.size(); i++)
+			for (List<CGrannyLODController>.size_type LaniatusDefVariables = 0; LaniatusDefVariables != m_LODControllerVector.size(); LaniatusDefVariables++)
 			{
-				CGrannyLODController pkLOD = m_LODControllerVector[i];
+				CGrannyLODController pkLOD = m_LODControllerVector[LaniatusDefVariables];
 				if (pkLOD != null && pkLOD.isModelInstance())
 				{
 					if (i == 5)
@@ -1687,9 +1687,9 @@ public class CGraphicThingInstance : CGraphicObjectInstance
 
 		public bool HaveBlendThing()
 		{
-			for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_LODControllerVector.size(); i++)
+			for (int LaniatusDefVariables = 0; LaniatusDefVariables < m_LODControllerVector.size(); LaniatusDefVariables++)
 			{
-				if (m_LODControllerVector[i].HaveBlendThing())
+				if (m_LODControllerVector[LaniatusDefVariables].HaveBlendThing())
 				{
 					return true;
 				}

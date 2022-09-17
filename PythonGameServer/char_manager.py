@@ -159,14 +159,14 @@ class CHARACTER_MANAGER(singleton):
                 v.extend(self._m_set_pkChrState)
                 for_each(v.begin(), v.end(), std::bind(CHARACTER.UpdateStateMachine, std::placeholders._1, iPulse))
 
-            i = CharacterVectorInteractor()
+            LaniatusDefVariables = CharacterVectorInteractor()
 
             temp_ref_i = RefObject(i);
             if CHARACTER_MANAGER.instance().GetCharactersByRaceNum(uint(xmas.MOB_SANTA_VNUM), temp_ref_i):
-                i = temp_ref_i.arg_value
+                LaniatusDefVariables = temp_ref_i.arg_value
                 for_each(i.begin(), i.end(), std::bind(CHARACTER.UpdateStateMachine, std::placeholders._1, iPulse))
             else:
-                i = temp_ref_i.arg_value
+                LaniatusDefVariables = temp_ref_i.arg_value
 
         if 0 == (math.fmod(iPulse, ((3600) * passes_per_sec))):
             self._m_map_dwMobKillCount.clear()
@@ -266,12 +266,12 @@ class CHARACTER_MANAGER(singleton):
         if pkMob.m_table.bType == ECharType.CHAR_TYPE_STONE:
             bSpawnMotion = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
-        i = 16
+        LaniatusDefVariables = 16
 
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
-#ORIGINAL METINII C CODE: while (i--)
+#ORIGINAL METINII C CODE: while (LaniatusDefVariables--)
         while (i) != 0:
-            i -= 1
+            LaniatusDefVariables -= 1
             x = number(sx, ex)
             y = number(sy, ey)
 
@@ -282,7 +282,7 @@ class CHARACTER_MANAGER(singleton):
                 if bAggressive:
                     ch.SetAggressive()
                 return (ch)
-        i -= 1
+        LaniatusDefVariables -= 1
 
         return None
 
@@ -309,17 +309,17 @@ class CHARACTER_MANAGER(singleton):
 
         chLeader = None
 
-        i = 0
-        while i < len(c_rdwMembers):
-            tch = self.SpawnMobRange(list(c_rdwMembers[i]), lMapIndex, sx, sy, ex, ey, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), bSpawnedByStone, DefineConstants.false)
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(c_rdwMembers):
+            tch = self.SpawnMobRange(list(c_rdwMembers[LaniatusDefVariables]), lMapIndex, sx, sy, ex, ey, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), bSpawnedByStone, DefineConstants.false)
 
             if tch is None:
-                if i == 0:
+                if LaniatusDefVariables == 0:
                     return None
 
                 continue
 
-            if i == 0:
+            if LaniatusDefVariables == 0:
                 chLeader = tch
 
             tch.SetDungeon(pDungeon)
@@ -342,7 +342,7 @@ class CHARACTER_MANAGER(singleton):
 
             if bAggressive:
                 tch.SetAggressive()
-            i += 1
+            LaniatusDefVariables += 1
 
         return chLeader
 
@@ -375,12 +375,12 @@ class CHARACTER_MANAGER(singleton):
             if self._m_pkChrSelectedStone.GetDungeon():
                 bAggressive = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
-        i = 0
-        while i < len(c_rdwMembers):
-            tch = self.SpawnMobRange(list(c_rdwMembers[i]), lMapIndex, sx, sy, ex, ey, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), bSpawnedByStone, DefineConstants.false)
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(c_rdwMembers):
+            tch = self.SpawnMobRange(list(c_rdwMembers[LaniatusDefVariables]), lMapIndex, sx, sy, ex, ey, ((not LGEMiscellaneous.DEFINECONSTANTS.false)), bSpawnedByStone, DefineConstants.false)
 
             if tch is None:
-                if i == 0:
+                if LaniatusDefVariables == 0:
                     return LGEMiscellaneous.DEFINECONSTANTS.false
 
                 continue
@@ -405,7 +405,7 @@ class CHARACTER_MANAGER(singleton):
 
             if tch.Goto(tx, ty):
                 tch.SendMovePacket(EMoveFuncType.FUNC_WAIT, 0, 0, 0, 0, 0, -1)
-            i += 1
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -436,10 +436,10 @@ class CHARACTER_MANAGER(singleton):
         if pkSectreeMap is None:
             return None
 
-        i = None
+        LaniatusDefVariables = None
         x = None
         y = None
-        for i in range(0, 2000):
+        for LaniatusDefVariables in range(0, 2000):
             x = number(1, (math.trunc(pkSectreeMap.m_setting.iWidth / float(100))) - 1) * 100 + pkSectreeMap.m_setting.iBaseX
             y = number(1, (math.trunc(pkSectreeMap.m_setting.iHeight / float(100))) - 1) * 100 + pkSectreeMap.m_setting.iBaseY
 
@@ -460,7 +460,7 @@ class CHARACTER_MANAGER(singleton):
 
             break
 
-        if i == 2000:
+        if LaniatusDefVariables == 2000:
             #lani_err("cannot find valid location")
             return None
 

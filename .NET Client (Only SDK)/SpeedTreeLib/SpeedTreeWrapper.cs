@@ -3373,41 +3373,41 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < 8; ++i)
 		{
-			D3DXVec4Transform(m_v4TBBox[i], m_v4TBBox[i], c_rmatTransform);
+			D3DXVec4Transform(m_v4TBBox[LaniatusDefVariables], m_v4TBBox[LaniatusDefVariables], c_rmatTransform);
 			if (0 == i)
 			{
-				m_v3TBBoxMin.x = m_v4TBBox[i].x;
-				m_v3TBBoxMin.y = m_v4TBBox[i].y;
-				m_v3TBBoxMin.z = m_v4TBBox[i].z;
-				m_v3TBBoxMax.x = m_v4TBBox[i].x;
-				m_v3TBBoxMax.y = m_v4TBBox[i].y;
-				m_v3TBBoxMax.z = m_v4TBBox[i].z;
+				m_v3TBBoxMin.x = m_v4TBBox[LaniatusDefVariables].x;
+				m_v3TBBoxMin.y = m_v4TBBox[LaniatusDefVariables].y;
+				m_v3TBBoxMin.z = m_v4TBBox[LaniatusDefVariables].z;
+				m_v3TBBoxMax.x = m_v4TBBox[LaniatusDefVariables].x;
+				m_v3TBBoxMax.y = m_v4TBBox[LaniatusDefVariables].y;
+				m_v3TBBoxMax.z = m_v4TBBox[LaniatusDefVariables].z;
 			}
 			else
 			{
-				if (m_v3TBBoxMin.x > m_v4TBBox[i].x)
+				if (m_v3TBBoxMin.x > m_v4TBBox[LaniatusDefVariables].x)
 				{
-					m_v3TBBoxMin.x = m_v4TBBox[i].x;
+					m_v3TBBoxMin.x = m_v4TBBox[LaniatusDefVariables].x;
 				}
-				if (m_v3TBBoxMax.x < m_v4TBBox[i].x)
+				if (m_v3TBBoxMax.x < m_v4TBBox[LaniatusDefVariables].x)
 				{
-					m_v3TBBoxMax.x = m_v4TBBox[i].x;
+					m_v3TBBoxMax.x = m_v4TBBox[LaniatusDefVariables].x;
 				}
-				if (m_v3TBBoxMin.y > m_v4TBBox[i].y)
+				if (m_v3TBBoxMin.y > m_v4TBBox[LaniatusDefVariables].y)
 				{
-					m_v3TBBoxMin.y = m_v4TBBox[i].y;
+					m_v3TBBoxMin.y = m_v4TBBox[LaniatusDefVariables].y;
 				}
-				if (m_v3TBBoxMax.y < m_v4TBBox[i].y)
+				if (m_v3TBBoxMax.y < m_v4TBBox[LaniatusDefVariables].y)
 				{
-					m_v3TBBoxMax.y = m_v4TBBox[i].y;
+					m_v3TBBoxMax.y = m_v4TBBox[LaniatusDefVariables].y;
 				}
-				if (m_v3TBBoxMin.z > m_v4TBBox[i].z)
+				if (m_v3TBBoxMin.z > m_v4TBBox[LaniatusDefVariables].z)
 				{
-					m_v3TBBoxMin.z = m_v4TBBox[i].z;
+					m_v3TBBoxMin.z = m_v4TBBox[LaniatusDefVariables].z;
 				}
-				if (m_v3TBBoxMax.z < m_v4TBBox[i].z)
+				if (m_v3TBBoxMax.z < m_v4TBBox[LaniatusDefVariables].z)
 				{
-					m_v3TBBoxMax.z = m_v4TBBox[i].z;
+					m_v3TBBoxMax.z = m_v4TBBox[LaniatusDefVariables].z;
 				}
 			}
 		}
@@ -3543,7 +3543,7 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_unBranchVertexCount; ++i)
 				{
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memcpy' has no equivalent in C#:
-					memcpy((pVertexBuffer[i].m_vPosition), (m_pGeometryCache.m_sBranches.m_pCoords[i * 3]), 3 * sizeof(float));
+					memcpy((pVertexBuffer[LaniatusDefVariables].m_vPosition), (m_pGeometryCache.m_sBranches.m_pCoords[i * 3]), 3 * sizeof(float));
 				}
 				m_pBranchVertexBuffer.Unlock();
 			}
@@ -3579,7 +3579,7 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_unFrondVertexCount; ++i)
 				{
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memcpy' has no equivalent in C#:
-					memcpy((pVertexBuffer[i].m_vPosition), (m_pGeometryCache.m_sFronds.m_pCoords[i * 3]), 3 * sizeof(float));
+					memcpy((pVertexBuffer[LaniatusDefVariables].m_vPosition), (m_pGeometryCache.m_sFronds.m_pCoords[i * 3]), 3 * sizeof(float));
 				}
 				m_pFrondVertexBuffer.Unlock();
 			}
@@ -3712,10 +3712,10 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 
 				if (m_pGeometryCache.m_sLeaves0.m_usLeafCount > 0)
 				{
-						if (m_pLeafVertexBuffer[i])
+						if (m_pLeafVertexBuffer[LaniatusDefVariables])
 						{
-							(m_pLeafVertexBuffer[i]).Release();
-							(m_pLeafVertexBuffer[i]) = null;
+							(m_pLeafVertexBuffer[LaniatusDefVariables]).Release();
+							(m_pLeafVertexBuffer[LaniatusDefVariables]) = null;
 						}
 				};
 			}
@@ -3917,7 +3917,7 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_unBranchVertexCount; ++i)
 			{
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memcpy' has no equivalent in C#:
-				memcpy((pVertexBuffer[i].m_vPosition), (m_pGeometryCache.m_sBranches.m_pCoords[i * 3]), 3 * sizeof(float));
+				memcpy((pVertexBuffer[LaniatusDefVariables].m_vPosition), (m_pGeometryCache.m_sBranches.m_pCoords[i * 3]), 3 * sizeof(float));
 			}
 			m_pBranchVertexBuffer.Unlock();
 		}
@@ -3967,7 +3967,7 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_unFrondVertexCount; ++i)
 			{
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memcpy' has no equivalent in C#:
-				memcpy((pVertexBuffer[i].m_vPosition), (m_pGeometryCache.m_sFronds.m_pCoords[i * 3]), 3 * sizeof(float));
+				memcpy((pVertexBuffer[LaniatusDefVariables].m_vPosition), (m_pGeometryCache.m_sFronds.m_pCoords[i * 3]), 3 * sizeof(float));
 			}
 			m_pFrondVertexBuffer.Unlock();
 		}
@@ -4021,7 +4021,7 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 	{
 		for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_usNumLeafLods; ++i)
 		{
-			m_pLeavesUpdatedByCpu[i] = false;
+			m_pLeavesUpdatedByCpu[LaniatusDefVariables] = false;
 		}
 	}
 
@@ -4158,7 +4158,7 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 					uint uVtxCount = (uint)(pLeaf.m_usLeafCount * 6);
 					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uVtxCount; ++i)
 					{
-						pVertex[i].m_vPosition = akPosition[i];
+						pVertex[LaniatusDefVariables].m_vPosition = akPosition[LaniatusDefVariables];
 					}
 
 					m_pLeafVertexBuffer[unLod].Unlock();
@@ -4463,7 +4463,7 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memcpy' has no equivalent in C#:
 					memcpy(pVertexBuffer.m_vNormal, (pBranches.m_pNormals[i * 3]), 3 * sizeof(float));
 #else
-					pVertexBuffer.m_dwDiffuseColor = pBranches.m_pColors[i];
+					pVertexBuffer.m_dwDiffuseColor = pBranches.m_pColors[LaniatusDefVariables];
 #endif
 
 					pVertexBuffer.m_fTexCoords[0] = pBranches.m_pTexCoords0[i * 2];
@@ -4475,8 +4475,8 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 #endif
 
 #if WRAPPER_USE_GPU_WIND
-					pVertexBuffer.m_fWindIndex = 4.0f * pBranches.m_pWindMatrixIndices[i];
-					pVertexBuffer.m_fWindWeight = pBranches.m_pWindWeights[i];
+					pVertexBuffer.m_fWindIndex = 4.0f * pBranches.m_pWindMatrixIndices[LaniatusDefVariables];
+					pVertexBuffer.m_fWindWeight = pBranches.m_pWindWeights[LaniatusDefVariables];
 #endif
 
 					++pVertexBuffer;
@@ -4492,11 +4492,11 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 
 				if (pBranches.m_usNumStrips > 0)
 				{
-					m_pBranchIndexCounts[i] = pBranches.m_pStripLengths[0];
+					m_pBranchIndexCounts[LaniatusDefVariables] = pBranches.m_pStripLengths[0];
 				}
 				else
 				{
-					m_pBranchIndexCounts[i] = 0;
+					m_pBranchIndexCounts[LaniatusDefVariables] = 0;
 				}
 			}
 
@@ -4541,7 +4541,7 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memcpy' has no equivalent in C#:
 				memcpy(pVertexBuffer.m_vNormal, (pFronds.m_pNormals[i * 3]), 3 * sizeof(float));
 #else
-				pVertexBuffer.m_dwDiffuseColor = pFronds.m_pColors[i];
+				pVertexBuffer.m_dwDiffuseColor = pFronds.m_pColors[LaniatusDefVariables];
 #endif
 				pVertexBuffer.m_fTexCoords[0] = pFronds.m_pTexCoords0[i * 2];
 				pVertexBuffer.m_fTexCoords[1] = pFronds.m_pTexCoords0[i * 2 + 1];
@@ -4552,8 +4552,8 @@ public class CSpeedTreeWrapper : CGraphicObjectInstance
 #endif
 
 #if WRAPPER_USE_GPU_WIND
-				pVertexBuffer.m_fWindIndex = 4.0f * pFronds.m_pWindMatrixIndices[i];
-				pVertexBuffer.m_fWindWeight = pFronds.m_pWindWeights[i];
+				pVertexBuffer.m_fWindIndex = 4.0f * pFronds.m_pWindMatrixIndices[LaniatusDefVariables];
+				pVertexBuffer.m_fWindWeight = pFronds.m_pWindWeights[LaniatusDefVariables];
 #endif
 
 				++pVertexBuffer;

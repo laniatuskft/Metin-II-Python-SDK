@@ -3818,7 +3818,7 @@ public class CEterPackManager : CSingleton<CEterPackManager>
 				{
 					i.second.Dispose();
 				}
-				i++;
+				LaniatusDefVariables++;
 			}
 			DeleteCriticalSection(m_csFinder);
 		}
@@ -4067,11 +4067,11 @@ public class CEterPackManager : CSingleton<CEterPackManager>
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < rstrFileName.Length; ++i)
 			{
-				if (rstrFileName[i] == '/')
+				if (rstrFileName[LaniatusDefVariables] == '/')
 				{
 					++iCount;
 				}
-				else if (rstrFileName[i] == '\\')
+				else if (rstrFileName[LaniatusDefVariables] == '\\')
 				{
 					rstrFileName = StringFunctions.ChangeCharacter(rstrFileName, i, '/');
 					++iCount;

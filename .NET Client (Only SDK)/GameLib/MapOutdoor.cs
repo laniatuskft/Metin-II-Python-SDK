@@ -5802,8 +5802,8 @@ public class CMapOutdoor : CMapBase
 			byte i;
 			for (i = 0; LaniatusDefVariables < 1 + (DefineConstants.LOAD_SIZE_WIDTH * 2) * (DefineConstants.LOAD_SIZE_WIDTH * 2) * 2; ++i)
 			{
-				 m_pArea[i] = null;
-				m_pTerrain[i] = null;
+				 m_pArea[LaniatusDefVariables] = null;
+				m_pTerrain[LaniatusDefVariables] = null;
 			}
 
 			m_pTerrainPatchProxyList = null;
@@ -5827,7 +5827,7 @@ public class CMapOutdoor : CMapBase
 			memset(m_pwaIndices, 0, sizeof(m_pwaIndices));
 			for (i = 0; LaniatusDefVariables < DefineConstants.TERRAINPATCH_LODMAX; ++i)
 			{
-				m_IndexBuffer[i].Destroy();
+				m_IndexBuffer[LaniatusDefVariables].Destroy();
 			}
 
 			m_bSettingTerrainVisible = false;
@@ -6182,9 +6182,9 @@ public class CMapOutdoor : CMapBase
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < 6; ++i)
 			{
-				if (!mc_pEnvironmentData.strSkyBoxFaceFileName[i].empty())
+				if (!mc_pEnvironmentData.strSkyBoxFaceFileName[LaniatusDefVariables].empty())
 				{
-					m_SkyBox.SetFaceTexture(mc_pEnvironmentData.strSkyBoxFaceFileName[i].c_str(), i);
+					m_SkyBox.SetFaceTexture(mc_pEnvironmentData.strSkyBoxFaceFileName[LaniatusDefVariables].c_str(), i);
 				}
 			}
 
@@ -6357,12 +6357,12 @@ public class CMapOutdoor : CMapBase
 		{
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < 1 + (DefineConstants.LOAD_SIZE_WIDTH * 2) * (DefineConstants.LOAD_SIZE_WIDTH * 2) * 2; ++i)
 			{
-				if (!m_pTerrain[i])
+				if (!m_pTerrain[LaniatusDefVariables])
 				{
 					continue;
 				}
 
-				m_pTerrain[i].DeallocateMarkedSplats();
+				m_pTerrain[LaniatusDefVariables].DeallocateMarkedSplats();
 			}
 		}
 
@@ -6891,7 +6891,7 @@ public class CMapOutdoor : CMapBase
 			CTerrain.ms_kPool.FreeAll();
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < 1 + (DefineConstants.LOAD_SIZE_WIDTH * 2) * (DefineConstants.LOAD_SIZE_WIDTH * 2) * 2; ++i)
 			{
-				m_pTerrain[i] = null;
+				m_pTerrain[LaniatusDefVariables] = null;
 			}
 		}
 
@@ -6919,7 +6919,7 @@ public class CMapOutdoor : CMapBase
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < DefineConstants.TERRAINPATCH_LODMAX; ++i)
 			{
-				m_IndexBuffer[i].Destroy();
+				m_IndexBuffer[LaniatusDefVariables].Destroy();
 			}
 		}
 
@@ -7166,7 +7166,7 @@ public class CMapOutdoor : CMapBase
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < 1 + (DefineConstants.LOAD_SIZE_WIDTH * 2) * (DefineConstants.LOAD_SIZE_WIDTH * 2) * 2; ++i)
 			{
-				m_pArea[i] = null;
+				m_pArea[LaniatusDefVariables] = null;
 			}
 		}
 
@@ -7651,7 +7651,7 @@ public class CMapOutdoor : CMapBase
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < 6; ++i)
 			{
-				D3DXPlaneNormalize(m_plane[i], m_plane[i]);
+				D3DXPlaneNormalize(m_plane[LaniatusDefVariables], m_plane[LaniatusDefVariables]);
 			}
 		}
 
@@ -8007,9 +8007,9 @@ public class CMapOutdoor : CMapBase
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < 1 + (DefineConstants.LOAD_SIZE_WIDTH * 2) * (DefineConstants.LOAD_SIZE_WIDTH * 2) * 2; ++i)
 			{
-				if (m_pArea[i])
+				if (m_pArea[LaniatusDefVariables])
 				{
-					m_pArea[i].EnablePortal(bFlag);
+					m_pArea[LaniatusDefVariables].EnablePortal(bFlag);
 				}
 			}
 		}

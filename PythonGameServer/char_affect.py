@@ -105,9 +105,9 @@ def ProcessAffect():
     bDiff = LGEMiscellaneous.DEFINECONSTANTS.false
     pkAff = None
 
-    i = 0
-    while i <= EPremiumTypes.PREMIUM_MAX_NUM:
-        aff_idx = i + int(LaniatusEAffectTypes.LANIA_AFFECT_PREMIUM_START)
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables <= EPremiumTypes.PREMIUM_MAX_NUM:
+        aff_idx = LaniatusDefVariables + int(LaniatusEAffectTypes.LANIA_AFFECT_PREMIUM_START)
 
         pkAff = FindAffect(aff_idx)
 
@@ -121,7 +121,7 @@ def ProcessAffect():
             bDiff = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
         else:
             pkAff.lDuration = remain + 1
-        i += 1
+        LaniatusDefVariables += 1
 
     pkAff = FindAffect(LaniatusEAffectTypes.LANIA_AFFECT_HAIR)
     if pkAff:
@@ -254,8 +254,8 @@ def LoadAffect(dwCount, pElements):
     lMovSpd = GetPoint(EPointTypes.LG_POINT_MOV_SPEED)
     lAttSpd = GetPoint(EPointTypes.LG_POINT_ATT_SPEED)
 
-    i = 0
-    while i < dwCount:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < dwCount:
         if pElements.dwType == LaniatusETalentXes.LG_SKILL_MUYEONG:
             continue
 
@@ -289,7 +289,7 @@ def LoadAffect(dwCount, pElements):
         ComputeAffect(pkAff, ((not LGEMiscellaneous.DEFINECONSTANTS.false)))
 
 
-        i += 1
+        LaniatusDefVariables += 1
         pElements += 1
 
     if afOld is not m_afAffectFlag or lMovSpd != GetPoint(EPointTypes.LG_POINT_MOV_SPEED) or lAttSpd != GetPoint(EPointTypes.LG_POINT_ATT_SPEED):

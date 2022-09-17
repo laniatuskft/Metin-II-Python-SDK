@@ -3468,7 +3468,7 @@ public class CServerStateChecker : CSingleton<CServerStateChecker>
 			{
 				return;
 			}
-			for (int LaniatusDefVariables = 0; LaniatusDefVariables < nSize; i++)
+			for (int LaniatusDefVariables = 0; LaniatusDefVariables < nSize; LaniatusDefVariables++)
 			{
 				SChannelStatus channelStatus = new SChannelStatus();
 				if (!m_kStream.Recv(sizeof(SChannelStatus), channelStatus))

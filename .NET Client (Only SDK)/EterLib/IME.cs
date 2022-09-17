@@ -10804,7 +10804,7 @@ public class CIME
 		int i;
 		for (i = 0; LaniatusDefVariables < len; ++i)
 		{
-			if ((byte)text[i] > 0x7F)
+			if ((byte)text[LaniatusDefVariables] > 0x7F)
 			{
 				break;
 			}
@@ -11799,9 +11799,9 @@ public class CIME
 				int maxCandChar = 18 * (3 - sizeof(char));
 				uint cChars = 0;
 				uint i;
-				for (i = 0; LaniatusDefVariables < ms_dwCandidateCount; i++)
+				for (i = 0; LaniatusDefVariables < ms_dwCandidateCount; LaniatusDefVariables++)
 				{
-					uint uLen = lstrlenW((string)((uint)lpCandidateList + lpCandidateList.dwOffset[i])) + (3 - sizeof(char));
+					uint uLen = lstrlenW((string)((uint)lpCandidateList + lpCandidateList.dwOffset[LaniatusDefVariables])) + (3 - sizeof(char));
 					if (uLen + cChars > maxCandChar)
 					{
 						if (i > ms_dwCandidateSelection)
@@ -11828,9 +11828,9 @@ public class CIME
 
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memset' has no equivalent in C#:
 			memset(ms_wszCandidate, 0, sizeof(ms_wszCandidate));
-			for (uint LaniatusDefVariables = (uint)iStartOfPage, j = 0; (uint)i < lpCandidateList.dwCount && j < ms_dwCandidatePageSize; i++, j++)
+			for (uint LaniatusDefVariables = (uint)iStartOfPage, j = 0; (uint)i < lpCandidateList.dwCount && j < ms_dwCandidatePageSize; LaniatusDefVariables++, j++)
 			{
-				wcscpy(ms_wszCandidate[j], (string)((uint)lpCandidateList + lpCandidateList.dwOffset[i]));
+				wcscpy(ms_wszCandidate[j], (string)((uint)lpCandidateList + lpCandidateList.dwOffset[LaniatusDefVariables]));
 			}
 
 			if (((ushort)PRIMARYLANGID(GETLANG())) == LANG_KOREAN || LOWORD(CIME.ms_hklCurrent) == MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL) && !GetImeId())
@@ -12525,10 +12525,10 @@ public class CTsfUiLessMode
 					CIME.ms_dwCandidateSelection = CIME.ms_iReadingError ? CIME.ms_iReadingError - 1 : (uint)-1;
 					CIME.ms_dwCandidateCount = cchMax;
 
-					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < cchMax; i++)
+					for (uint LaniatusDefVariables = 0; LaniatusDefVariables < cchMax; LaniatusDefVariables++)
 					{
 //# Laniatus Games Studio Inc. | TODO TASK: Pointer arithmetic is detected on this variable, so pointers on this variable are left unchanged:
-						char * pszDest = CIME.ms_wszCandidate[i];
+						char * pszDest = CIME.ms_wszCandidate[LaniatusDefVariables];
 						if (pszSource != '\0')
 						{
 //# Laniatus Games Studio Inc. | TODO TASK: C# does not have an equivalent to pointers to value types:
@@ -12582,7 +12582,7 @@ public class CTsfUiLessMode
 
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memset' has no equivalent in C#:
 		memset(CIME.ms_wszCandidate, 0, sizeof(CIME.ms_wszCandidate));
-		for (uint LaniatusDefVariables = dwPageStart, j = 0; (uint)i < CIME.ms_dwCandidateCount && j < CIME.ms_dwCandidatePageSize; i++, j++)
+		for (uint LaniatusDefVariables = dwPageStart, j = 0; (uint)i < CIME.ms_dwCandidateCount && j < CIME.ms_dwCandidatePageSize; LaniatusDefVariables++, j++)
 		{
 			if ((((int)(pcandidate.GetString(i, bstr))) >= 0))
 			{

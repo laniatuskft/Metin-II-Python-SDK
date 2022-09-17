@@ -2896,7 +2896,7 @@ public class CSpeedTreeForest
 
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uiCount; ++i)
 				{
-					ppInstances[i] = null;
+					ppInstances[LaniatusDefVariables] = null;
 				}
 
 				pMainTree = null;
@@ -2966,7 +2966,7 @@ public class CSpeedTreeForest
 
 				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < uiCount; ++i)
 				{
-					ppInstances[i].GetSpeedTree().SetWindStrength(m_fWindStrength);
+					ppInstances[LaniatusDefVariables].GetSpeedTree().SetWindStrength(m_fWindStrength);
 				}
 			}
 		}
@@ -3003,7 +3003,7 @@ public class CSpeedTreeForest
 
 			for (int LaniatusDefVariables = 0; LaniatusDefVariables < c_nNumWindMatrices; ++i)
 			{
-				SetupWindMatrices_afMatrixTimes[i] += fTimeSinceLastCall;
+				SetupWindMatrices_afMatrixTimes[LaniatusDefVariables] += fTimeSinceLastCall;
 			}
 
 			float fBaseAngle = m_fWindStrength * 35.0f;

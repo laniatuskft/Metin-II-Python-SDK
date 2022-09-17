@@ -20,10 +20,10 @@ class CGuildMarkManager(singleton):
         self._m_pathPrefix = ""
         self._m_mapSymbol = {}
 
-        i = 0
-        while i < MAX_IMAGE_COUNT * CGuildMarkImage.MARK_TOTAL_COUNT:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < MAX_IMAGE_COUNT * CGuildMarkImage.MARK_TOTAL_COUNT:
             self._m_setFreeMarkID.insert(i)
-            i += 1
+            LaniatusDefVariables += 1
 
     def close(self):
         it = m_mapIdx_Image.begin()
@@ -50,7 +50,7 @@ class CGuildMarkManager(singleton):
             symbolCount = None
             fread(symbolCount, 4, 1, fp)
 
-            for i in range(0, symbolCount):
+            for LaniatusDefVariables in range(0, symbolCount):
                 guildID = None
                 dwSize = None
                 fread(guildID, 4, 1, fp)
@@ -162,8 +162,8 @@ class CGuildMarkManager(singleton):
                 isMarkExists[math.trunc(markID / float(CGuildMarkImage.MARK_TOTAL_COUNT))] = ((not DefineConstants.false))
             it += 1
 
-        for i in range(0, MAX_IMAGE_COUNT):
-            if isMarkExists[i]:
+        for LaniatusDefVariables in range(0, MAX_IMAGE_COUNT):
+            if isMarkExists[LaniatusDefVariables]:
                 self._GetImage(i)
 
     def SaveMarkImage(self, imgIdx):
@@ -373,7 +373,7 @@ def main(args):
 
     mgr.SetMarkPathPrefix("mark")
     mgr.LoadMarkIndex()
-    for i in range(0, 1279):
+    for LaniatusDefVariables in range(0, 1279):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         snprintf(f, sizeof(f), "%u.jpg", (math.fmod(random(), 5)) + 1)
         Globals.SaveMark(i, f)

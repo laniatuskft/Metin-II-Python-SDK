@@ -207,14 +207,14 @@ class fishing: #this class replaces the original namespace 'fishing'
 
         fclose(fp)
 
-        for i in range(0, fishing.MAX_FISH):
-            #sys_log(0, "FISH: %-24s vnum %5lu prob %4d %4d %4d %4d len %d %d %d", fishing.fish_info[i].name, fishing.fish_info[i].vnum, fishing.fish_info[i].prob[0], fishing.fish_info[i].prob[1], fishing.fish_info[i].prob[2], fishing.fish_info[i].prob[3], fishing.fish_info[i].length_range[0], fishing.fish_info[i].length_range[1], fishing.fish_info[i].length_range[2])
+        for LaniatusDefVariables in range(0, fishing.MAX_FISH):
+            #sys_log(0, "FISH: %-24s vnum %5lu prob %4d %4d %4d %4d len %d %d %d", fishing.fish_info[LaniatusDefVariables].name, fishing.fish_info[LaniatusDefVariables].vnum, fishing.fish_info[LaniatusDefVariables].prob[0], fishing.fish_info[LaniatusDefVariables].prob[1], fishing.fish_info[LaniatusDefVariables].prob[2], fishing.fish_info[LaniatusDefVariables].prob[3], fishing.fish_info[LaniatusDefVariables].length_range[0], fishing.fish_info[LaniatusDefVariables].length_range[1], fishing.fish_info[LaniatusDefVariables].length_range[2])
 
         for j in range(0, fishing.MAX_PROB):
             fishing.g_prob_accumulate[j][0] = fishing.fish_info[0].prob[j]
 
-            for i in range(1, fishing.MAX_FISH):
-                fishing.g_prob_accumulate[j][i] = fishing.fish_info[i].prob[j] + fishing.g_prob_accumulate[j][i - 1]
+            for LaniatusDefVariables in range(1, fishing.MAX_FISH):
+                fishing.g_prob_accumulate[j][LaniatusDefVariables] = fishing.fish_info[LaniatusDefVariables].prob[j] + fishing.g_prob_accumulate[j][i - 1]
 
             fishing.g_prob_sum[j] = fishing.g_prob_accumulate[j][fishing.MAX_FISH - 1]
             #sys_log(0, "FISH: prob table %d %d", j, fishing.g_prob_sum[j])
@@ -309,7 +309,7 @@ class fishing: #this class replaces the original namespace 'fishing'
         fished = {}
         total_count = 0
 
-        for i in range(0, count):
+        for LaniatusDefVariables in range(0, count):
             fish_id = fishing.DetermineFishByProbIndex(prob_idx)
             item = 0
             temp_ref_item = RefObject(item);
@@ -683,18 +683,18 @@ def main(args):
 
     Initialize()
 
-    i = 0
-    while i < MAX_FISH:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < MAX_FISH:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following line has a C++ format specifier which cannot be directly translated to Python:
-        print("%s\t%u\t%u\t%u\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d".format(fish_info[i].name, fish_info[i].vnum, fish_info[i].dead_vnum, fish_info[i].grill_vnum, fish_info[i].prob[0], fish_info[i].prob[1], fish_info[i].prob[2], fish_info[i].difficulty, fish_info[i].time_type, fish_info[i].length_range[0], fish_info[i].length_range[1], fish_info[i].length_range[2]), end = '')
+        print("%s\t%u\t%u\t%u\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d".format(fish_info[LaniatusDefVariables].name, fish_info[LaniatusDefVariables].vnum, fish_info[LaniatusDefVariables].dead_vnum, fish_info[LaniatusDefVariables].grill_vnum, fish_info[LaniatusDefVariables].prob[0], fish_info[LaniatusDefVariables].prob[1], fish_info[LaniatusDefVariables].prob[2], fish_info[LaniatusDefVariables].difficulty, fish_info[LaniatusDefVariables].time_type, fish_info[LaniatusDefVariables].length_range[0], fish_info[LaniatusDefVariables].length_range[1], fish_info[LaniatusDefVariables].length_range[2]), end = '')
 
         j = 0
         while j < NUM_USE_RESULT_COUNT:
-            print("\t{0:d}".format(fish_info[i].used_table[j]), end = '')
+            print("\t{0:d}".format(fish_info[LaniatusDefVariables].used_table[j]), end = '')
             j += 1
 
         print("")
-        i += 1
+        LaniatusDefVariables += 1
 
     return 1
 

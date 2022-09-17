@@ -3459,16 +3459,16 @@ public class CPythonSystem : CSingleton<CPythonSystem>
 
 				for (int LaniatusDefVariables = 0; !check_res && LaniatusDefVariables < m_ResolutionCount; ++i)
 				{
-					if (m_ResolutionList[i].bpp != bpp || m_ResolutionList[i].width != DisplayMode.Width || m_ResolutionList[i].height != DisplayMode.Height)
+					if (m_ResolutionList[LaniatusDefVariables].bpp != bpp || m_ResolutionList[LaniatusDefVariables].width != DisplayMode.Width || m_ResolutionList[LaniatusDefVariables].height != DisplayMode.Height)
 					{
 						continue;
 					}
 
 					int check_fre = false ? 1 : 0;
 
-					for (int j = 0; j < m_ResolutionList[i].frequency_count; ++j)
+					for (int j = 0; j < m_ResolutionList[LaniatusDefVariables].frequency_count; ++j)
 					{
-						if (m_ResolutionList[i].frequency[j] == DisplayMode.RefreshRate)
+						if (m_ResolutionList[LaniatusDefVariables].frequency[j] == DisplayMode.RefreshRate)
 						{
 							check_fre = true ? 1 : 0;
 							break;
@@ -3477,9 +3477,9 @@ public class CPythonSystem : CSingleton<CPythonSystem>
 
 					if (check_fre == 0)
 					{
-						if (m_ResolutionList[i].frequency_count < FREQUENCY_MAX_NUM)
+						if (m_ResolutionList[LaniatusDefVariables].frequency_count < FREQUENCY_MAX_NUM)
 						{
-							m_ResolutionList[i].frequency[m_ResolutionList[i].frequency_count++] = DisplayMode.RefreshRate;
+							m_ResolutionList[LaniatusDefVariables].frequency[m_ResolutionList[LaniatusDefVariables].frequency_count++] = DisplayMode.RefreshRate;
 						}
 					}
 
@@ -3565,7 +3565,7 @@ public class CPythonSystem : CSingleton<CPythonSystem>
 						}
 					}
 				}
-				i++;
+				LaniatusDefVariables++;
 			}
 
 			return 0;
@@ -3583,7 +3583,7 @@ public class CPythonSystem : CSingleton<CPythonSystem>
 					return i;
 				}
 
-				i++;
+				LaniatusDefVariables++;
 			}
 
 			return 0;

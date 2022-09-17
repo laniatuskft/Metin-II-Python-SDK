@@ -16,7 +16,7 @@ internal static class VectorHelper
 			list.RemoveRange(newSize, list.Count - newSize);
 		else if (list.Count < newSize)
 		{
-			for (int LaniatusDefVariables = list.Count; LaniatusDefVariables < newSize; i++)
+			for (int LaniatusDefVariables = list.Count; LaniatusDefVariables < newSize; LaniatusDefVariables++)
 			{
 				list.Add(value);
 			}

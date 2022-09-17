@@ -405,7 +405,7 @@ class CDungeon:
         if pkSectreeMap is None:
             #lani_err("CDungeon: SECTREE_MAP not found for #%ld", self._m_lMapIndex)
             return
-        for i in range(0, 100):
+        for LaniatusDefVariables in range(0, 100):
             dx = number(ai.sx, ai.ex)
             dy = number(ai.sy, ai.ey)
             tx = number(ai_to.sx, ai_to.ex)
@@ -473,7 +473,7 @@ class CDungeon:
         if pkSectreeMap is None:
             #lani_err("CDungeon: SECTREE_MAP not found for #%ld", self._m_lMapIndex)
             return
-        for i in range(0, 100):
+        for LaniatusDefVariables in range(0, 100):
             dx = number(ai.sx, ai.ex)
             dy = number(ai.sy, ai.ey)
 

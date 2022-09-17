@@ -2755,7 +2755,7 @@ public class CPythonSafeBox : CSingleton<CPythonSafeBox>
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_ItemInstanceVector.size(); ++i)
 			{
-				TItemData rInstance = m_ItemInstanceVector[i];
+				TItemData rInstance = m_ItemInstanceVector[LaniatusDefVariables];
 				ZeroMemory(rInstance, sizeof(TItemData));
 			}
 		}
@@ -2831,7 +2831,7 @@ public class CPythonSafeBox : CSingleton<CPythonSafeBox>
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_MallItemInstanceVector.size(); ++i)
 			{
-				TItemData rInstance = m_MallItemInstanceVector[i];
+				TItemData rInstance = m_MallItemInstanceVector[LaniatusDefVariables];
 				ZeroMemory(rInstance, sizeof(TItemData));
 			}
 		}

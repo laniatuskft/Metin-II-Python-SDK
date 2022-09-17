@@ -39,11 +39,11 @@ def LoginSuccess(dwHandle, data):
         LoginFailure(d, pTab.status)
         return
 
-    i = 0
-    while i != LGEMiscellaneous.PLAYER_PER_ACCOUNT:
-        player = pTab.players[i]
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables != LGEMiscellaneous.PLAYER_PER_ACCOUNT:
+        player = pTab.players[LaniatusDefVariables]
         #sys_log(0, "\tplayer(%s).job(%d)", player.szName, player.byJob)
-        i += 1
+        LaniatusDefVariables += 1
 
     bFound = GetServerLocation(pTab, pTab.bEmpire)
 
@@ -152,12 +152,12 @@ def ChangeName(d, data):
     if r.id == 0:
         return
 
-    i = 0
-    while i < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
-        if r.players[i].dwID == p.pid:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
+        if r.players[LaniatusDefVariables].dwID == p.pid:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
-            strncpy_s(r.players[i].szName, sizeof(r.players[i].szName), p.name, _TRUNCATE)
-            r.players[i].bChangeName = 0
+            strncpy_s(r.players[LaniatusDefVariables].szName, sizeof(r.players[LaniatusDefVariables].szName), p.name, _TRUNCATE)
+            r.players[LaniatusDefVariables].bChangeName = 0
 
             pgc = SPacketGCChangeName()
 
@@ -169,7 +169,7 @@ def ChangeName(d, data):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
             d.Packet(pgc, sizeof(SPacketGCChangeName))
             break
-        i += 1
+        LaniatusDefVariables += 1
 
 def PlayerLoad(d, data):
     pTab = data
@@ -254,10 +254,10 @@ def PlayerLoad(d, data):
 
     quest.CQuestManager.instance().BroadcastEventFlagOnLogin(ch)
 
-    i = 0
-    while i < LGEMiscellaneous.LG_QUICKSLOT_MAX_NUM:
-        ch.SetQuickslot(byte(i), pTab.quickslot[i])
-        i += 1
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.LG_QUICKSLOT_MAX_NUM:
+        ch.SetQuickslot(byte(i), pTab.quickslot[LaniatusDefVariables])
+        LaniatusDefVariables += 1
 
     ch.PointsPacket()
     ch.SkillLevelPacket()
@@ -412,14 +412,14 @@ def Boot(data):
 #ORIGINAL METINII C CODE: TItemAttrTable * p = (TItemAttrTable *) data;
         p = data
 
-        i = 0
-        while i < size:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < size:
             if p.dwApplyIndex >= EApplyTypes.MAX_APPLY_NUM:
                 continue
 
             g_map_itemAttr[p.dwApplyIndex] = *p
             #sys_log(0, "ITEM_ATTR[%d]: %s %u", p.dwApplyIndex, p.szApply, p.dwProb)
-            i += 1
+            LaniatusDefVariables += 1
             p += 1
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
@@ -441,14 +441,14 @@ def Boot(data):
 #ORIGINAL METINII C CODE: TItemAttrTable * p = (TItemAttrTable *) data;
         p = data
 
-        i = 0
-        while i < size:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < size:
             if p.dwApplyIndex >= EApplyTypes.MAX_APPLY_NUM:
                 continue
 
             g_map_itemRare[p.dwApplyIndex] = *p
             #sys_log(0, "ITEM_RARE[%d]: %s %u", p.dwApplyIndex, p.szApply, p.dwProb)
-            i += 1
+            LaniatusDefVariables += 1
             p += 1
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
@@ -470,10 +470,10 @@ def Boot(data):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         data += size * sizeof(TLand)
 
-        i = 0
-        while i < size:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < size:
             CManager.instance().LoadLand(TLand(kLand))
-            i += 1
+            LaniatusDefVariables += 1
             kLand += 1
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
@@ -506,10 +506,10 @@ def Boot(data):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
         data += size * sizeof(TObject)
 
-        i = 0
-        while i < size:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < size:
             CManager.instance().LoadObject(TObject(kObj), ((not LGEMiscellaneous.DEFINECONSTANTS.false)))
-            i += 1
+            LaniatusDefVariables += 1
             kObj += 1
     set_global_time(data)
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
@@ -700,14 +700,14 @@ def QuestLoad(d, c_pData):
         if pkPC.IsLoaded():
             return
 
-        for i in range(0, dwCount):
-            st = pQuestTable[i].szName
+        for LaniatusDefVariables in range(0, dwCount):
+            st = pQuestTable[LaniatusDefVariables].szName
 
             st += "."
-            st += pQuestTable[i].szState
+            st += pQuestTable[LaniatusDefVariables].szState
 
-            #sys_log(0, "            %s %d", st, pQuestTable[i].lValue)
-            pkPC.SetFlag(st, pQuestTable[i].lValue, LGEMiscellaneous.DEFINECONSTANTS.false)
+            #sys_log(0, "            %s %d", st, pQuestTable[LaniatusDefVariables].lValue)
+            pkPC.SetFlag(st, pQuestTable[LaniatusDefVariables].lValue, LGEMiscellaneous.DEFINECONSTANTS.false)
 
         pkPC.SetLoaded()
         pkPC.Build()
@@ -839,12 +839,12 @@ def EmpireSelect(d, c_pData):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
     d.Packet(pe, sizeof(pe))
 
-    i = 0
-    while i < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
-        if (rTable.players[i].dwID) != 0:
-            rTable.players[i].x = int(EMPIRE_START_X(rTable.bEmpire))
-            rTable.players[i].y = int(EMPIRE_START_Y(rTable.bEmpire))
-        i += 1
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.PLAYER_PER_ACCOUNT:
+        if (rTable.players[LaniatusDefVariables].dwID) != 0:
+            rTable.players[LaniatusDefVariables].x = int(EMPIRE_START_X(rTable.bEmpire))
+            rTable.players[LaniatusDefVariables].y = int(EMPIRE_START_Y(rTable.bEmpire))
+        LaniatusDefVariables += 1
 
     GetServerLocation(d.GetAccountTable(), rTable.bEmpire)
 
@@ -868,11 +868,11 @@ def MapLocations(c_pData):
 #ORIGINAL METINII C CODE: while (bCount--)
     while (bCount) != 0:
         bCount -= 1
-        for i in range(0, 32):
-            if 0 == pLoc.alMaps[i]:
+        for LaniatusDefVariables in range(0, 32):
+            if 0 == pLoc.alMaps[LaniatusDefVariables]:
                 break
 
-            CMapLocation.instance().Insert(pLoc.alMaps[i], pLoc.szHost, pLoc.wPort)
+            CMapLocation.instance().Insert(pLoc.alMaps[LaniatusDefVariables], pLoc.szHost, pLoc.wPort)
 
         pLoc += 1
     bCount -= 1
@@ -1021,8 +1021,8 @@ def ItemLoad(d, c_pData):
 #ORIGINAL METINII C CODE: SPlayerItem * p = (SPlayerItem *) c_pData;
     p = c_pData
 
-    i = 0
-    while i < dwCount:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < dwCount:
         item = ITEM_MANAGER.instance().CreateItem(p.vnum, p.count, p.id, DefineConstants.false, -1, DefineConstants.false)
 
         if item is None:
@@ -1051,7 +1051,7 @@ def ItemLoad(d, c_pData):
             #lani_err("Failed to call ITEM::OnAfterCreatedItem (vnum: %d, id: %d)", item.GetVnum(), item.GetID())
 
         item.SetSkipSave(LGEMiscellaneous.DEFINECONSTANTS.false)
-        i += 1
+        LaniatusDefVariables += 1
         p += 1
 
     it = v.begin()

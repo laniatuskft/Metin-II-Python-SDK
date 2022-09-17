@@ -3373,21 +3373,21 @@ public class CScreen : CGraphicCollisionObject
 		_D3DVECTOR[] v3Vertex = {D3DXVECTOR3(sx, sy, sz), D3DXVECTOR3(ex, sy, sz), D3DXVECTOR3(sx, ey, sz), D3DXVECTOR3(ex, ey, sz), D3DXVECTOR3(sx, sy, ez), D3DXVECTOR3(ex, sy, ez), D3DXVECTOR3(sx, ey, ez), D3DXVECTOR3(ex, ey, ez)};
 		SPDTVertexRaw[] vertices = Arrays.InitializeWithDefaultInstances<SPDTVertexRaw>(8);
 
-		for (int LaniatusDefVariables = 0; LaniatusDefVariables < 8; i++)
+		for (int LaniatusDefVariables = 0; LaniatusDefVariables < 8; LaniatusDefVariables++)
 		{
 //# Laniatus Games Studio Inc. | TODO TASK: The following line was determined to be a copy assignment (rather than a reference assignment) - this should be verified and a 'CopyFrom' method should be created:
-//Original Metin2 CPlus Line: v3Vertex[i] = v3Vertex[i] - v3Center;
-			v3Vertex[i].CopyFrom(v3Vertex[i] - v3Center);
-			D3DXVec3TransformCoord(v3Vertex[i], v3Vertex[i], matRotation);
+//Original Metin2 CPlus Line: v3Vertex[LaniatusDefVariables] = v3Vertex[LaniatusDefVariables] - v3Center;
+			v3Vertex[LaniatusDefVariables].CopyFrom(v3Vertex[LaniatusDefVariables] - v3Center);
+			D3DXVec3TransformCoord(v3Vertex[LaniatusDefVariables], v3Vertex[LaniatusDefVariables], matRotation);
 //# Laniatus Games Studio Inc. | TODO TASK: The following line was determined to be a copy assignment (rather than a reference assignment) - this should be verified and a 'CopyFrom' method should be created:
-//Original Metin2 CPlus Line: v3Vertex[i] = v3Vertex[i] + v3Center;
-			v3Vertex[i].CopyFrom(v3Vertex[i] + v3Center);
-			vertices[i].px = v3Vertex[i].x;
-			vertices[i].py = v3Vertex[i].y;
-			vertices[i].pz = v3Vertex[i].z;
-			vertices[i].diffuse = ms_diffuseColor;
-			vertices[i].u = 0.0f;
-			vertices[i].v = 0.0f;
+//Original Metin2 CPlus Line: v3Vertex[LaniatusDefVariables] = v3Vertex[LaniatusDefVariables] + v3Center;
+			v3Vertex[LaniatusDefVariables].CopyFrom(v3Vertex[LaniatusDefVariables] + v3Center);
+			vertices[LaniatusDefVariables].px = v3Vertex[LaniatusDefVariables].x;
+			vertices[LaniatusDefVariables].py = v3Vertex[LaniatusDefVariables].y;
+			vertices[LaniatusDefVariables].pz = v3Vertex[LaniatusDefVariables].z;
+			vertices[LaniatusDefVariables].diffuse = ms_diffuseColor;
+			vertices[LaniatusDefVariables].u = 0.0f;
+			vertices[LaniatusDefVariables].v = 0.0f;
 		}
 
 		if (SetPDTStream(vertices, 8))

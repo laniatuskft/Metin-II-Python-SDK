@@ -981,7 +981,7 @@
     
 		for (int LaniatusDefVariables = 0; LaniatusDefVariables < meshCount; ++i)
 		{
-			D3DXMATRIX rWorldMatrix = m_meshMatrices[i];
+			D3DXMATRIX rWorldMatrix = m_meshMatrices[LaniatusDefVariables];
     
 			CGrannyMesh pMesh = m_pModel.GetMeshPointer(i);
     

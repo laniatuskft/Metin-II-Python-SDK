@@ -170,12 +170,12 @@ class DragonSoulTable:
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
         vec_probs.resize(EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX)
-        i = 0
-        while i < EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX:
-            if not pRow.GetValue(Globals.g_astGradeName[i], vec_probs[i]):
-                #lani_err("Invalid value. DragonSoulGroup(%s) Grade(%s) Col(%s)", stDragonSoulName, Globals.g_astGradeName[grade_idx], Globals.g_astGradeName[i])
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX:
+            if not pRow.GetValue(Globals.g_astGradeName[LaniatusDefVariables], vec_probs[LaniatusDefVariables]):
+                #lani_err("Invalid value. DragonSoulGroup(%s) Grade(%s) Col(%s)", stDragonSoulName, Globals.g_astGradeName[grade_idx], Globals.g_astGradeName[LaniatusDefVariables])
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            i += 1
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -208,12 +208,12 @@ class DragonSoulTable:
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
         vec_probs.resize(EDragonSoulStepTypes.DRAGON_SOUL_STEP_MAX)
-        i = 0
-        while i < EDragonSoulStepTypes.DRAGON_SOUL_STEP_MAX:
-            if not pRow.GetValue(Globals.g_astStepName[i], vec_probs[i]):
-                #lani_err("Invalid value. DragonSoulGroup(%s) Step(%s) Col(%s)", stDragonSoulName, Globals.g_astStepName[step_idx], Globals.g_astStepName[i])
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EDragonSoulStepTypes.DRAGON_SOUL_STEP_MAX:
+            if not pRow.GetValue(Globals.g_astStepName[LaniatusDefVariables], vec_probs[LaniatusDefVariables]):
+                #lani_err("Invalid value. DragonSoulGroup(%s) Step(%s) Col(%s)", stDragonSoulName, Globals.g_astStepName[step_idx], Globals.g_astStepName[LaniatusDefVariables])
                 return LGEMiscellaneous.DEFINECONSTANTS.false
-            i += 1
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -263,8 +263,8 @@ class DragonSoulTable:
             return LGEMiscellaneous.DEFINECONSTANTS.false
         n = pRow.GetSize()
         vec_chargings.resize(n)
-        for i in range(0, n):
-            if not pRow.GetValue(i, vec_chargings[i]):
+        for LaniatusDefVariables in range(0, n):
+            if not pRow.GetValue(i, vec_chargings[LaniatusDefVariables]):
                 #lani_err("Invalid CHARGING value. DragonSoulGroup(%s), Col(%d)", stDragonSoulName, i)
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
@@ -277,8 +277,8 @@ class DragonSoulTable:
             #lani_err("Invalid row size(%d). It must be same CHARGING row size(%d). DragonSoulGroup(%s) Grade(%s)", m, n, stDragonSoulName, Globals.g_astGradeName[grade_idx])
             return LGEMiscellaneous.DEFINECONSTANTS.false
         vec_probs.resize(m)
-        for i in range(0, m):
-            if not pRow.GetValue(i, vec_probs[i]):
+        for LaniatusDefVariables in range(0, m):
+            if not pRow.GetValue(i, vec_probs[LaniatusDefVariables]):
                 #lani_err("Invalid value. DragonSoulGroup(%s), Grade(%s) Col(%d)", stDragonSoulName, Globals.g_astGradeName[grade_idx], i)
                 return LGEMiscellaneous.DEFINECONSTANTS.false
 
@@ -328,7 +328,7 @@ class DragonSoulTable:
 
             setTypes = std::set()
 
-            for i in range(0, n):
+            for LaniatusDefVariables in range(0, n):
                 pRow = None
                 pGroupNode.GetRow(i, pRow)
 
@@ -357,13 +357,13 @@ class DragonSoulTable:
             #lani_err("dragon_soul_table.txt need BasicApplys.")
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
-        i = 0
-        while i < len(self._m_vecDragonSoulNames):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self._m_vecDragonSoulNames):
             pChild = None
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
-#ORIGINAL METINII C CODE: if (NULL == (pChild = pGroupNode->GetChildNode(m_vecDragonSoulNames[i])))
-            if None is (pChild = pGroupNode.GetChildNode(self._m_vecDragonSoulNames[i])):
-                #lani_err("In Group BasicApplys, %s group is not defined.", self._m_vecDragonSoulNames[i])
+#ORIGINAL METINII C CODE: if (NULL == (pChild = pGroupNode->GetChildNode(m_vecDragonSoulNames[LaniatusDefVariables])))
+            if None is (pChild = pGroupNode.GetChildNode(self._m_vecDragonSoulNames[LaniatusDefVariables])):
+                #lani_err("In Group BasicApplys, %s group is not defined.", self._m_vecDragonSoulNames[LaniatusDefVariables])
                 return LGEMiscellaneous.DEFINECONSTANTS.false
             vecApplys = TVecApplys()
             n = pChild.GetRowCount()
@@ -381,19 +381,19 @@ class DragonSoulTable:
 
                 stTypeName = ""
                 if not pRow.GetValue("apply_type", stTypeName):
-                    #lani_err("In Group BasicApplys, %s group's apply_type is empty.", self._m_vecDragonSoulNames[i])
+                    #lani_err("In Group BasicApplys, %s group's apply_type is empty.", self._m_vecDragonSoulNames[LaniatusDefVariables])
                     return LGEMiscellaneous.DEFINECONSTANTS.false
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if (!(at = (EApplyTypes)FN_get_apply_type(stTypeName.c_str())))
                 if not(at = FN_get_apply_type(stTypeName)):
-                    #lani_err("In Group BasicApplys, %s group's apply_type %s is invalid.", self._m_vecDragonSoulNames[i], stTypeName)
+                    #lani_err("In Group BasicApplys, %s group's apply_type %s is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], stTypeName)
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 if not pRow.GetValue("apply_value", av):
-                    #lani_err("In Group BasicApplys, %s group's apply_value %s is invalid.", self._m_vecDragonSoulNames[i], av)
+                    #lani_err("In Group BasicApplys, %s group's apply_value %s is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], av)
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 vecApplys.push_back(SApply(at, av, 0.0))
-            self._m_map_basic_applys_group.insert(TMapApplyGroup.value_type(self._m_map_name_to_type[self._m_vecDragonSoulNames[i]], vecApplys))
-            i += 1
+            self._m_map_basic_applys_group.insert(TMapApplyGroup.value_type(self._m_map_name_to_type[self._m_vecDragonSoulNames[LaniatusDefVariables]], vecApplys))
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -403,13 +403,13 @@ class DragonSoulTable:
             #lani_err("dragon_soul_table.txt need AdditionalApplys.")
             return LGEMiscellaneous.DEFINECONSTANTS.false
 
-        i = 0
-        while i < len(self._m_vecDragonSoulNames):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self._m_vecDragonSoulNames):
             pChild = None
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
-#ORIGINAL METINII C CODE: if (NULL == (pChild = pGroupNode->GetChildNode(m_vecDragonSoulNames[i])))
-            if None is (pChild = pGroupNode.GetChildNode(self._m_vecDragonSoulNames[i])):
-                #lani_err("In Group AdditionalApplys, %s group is not defined.", self._m_vecDragonSoulNames[i])
+#ORIGINAL METINII C CODE: if (NULL == (pChild = pGroupNode->GetChildNode(m_vecDragonSoulNames[LaniatusDefVariables])))
+            if None is (pChild = pGroupNode.GetChildNode(self._m_vecDragonSoulNames[LaniatusDefVariables])):
+                #lani_err("In Group AdditionalApplys, %s group is not defined.", self._m_vecDragonSoulNames[LaniatusDefVariables])
                 return LGEMiscellaneous.DEFINECONSTANTS.false
             vecApplys = TVecApplys()
 
@@ -425,22 +425,22 @@ class DragonSoulTable:
                 prob = None
                 stTypeName = ""
                 if not pRow.GetValue("apply_type", stTypeName):
-                    #lani_err("In Group AdditionalApplys, %s group's apply_type is empty.", self._m_vecDragonSoulNames[i])
+                    #lani_err("In Group AdditionalApplys, %s group's apply_type is empty.", self._m_vecDragonSoulNames[LaniatusDefVariables])
                     return LGEMiscellaneous.DEFINECONSTANTS.false
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if (!(at = (EApplyTypes)FN_get_apply_type(stTypeName.c_str())))
                 if not(at = FN_get_apply_type(stTypeName)):
-                    #lani_err("In Group AdditionalApplys, %s group's apply_type %s is invalid.", self._m_vecDragonSoulNames[i], stTypeName)
+                    #lani_err("In Group AdditionalApplys, %s group's apply_type %s is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], stTypeName)
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 if not pRow.GetValue("apply_value", av):
-                    #lani_err("In Group AdditionalApplys, %s group's apply_value %s is invalid.", self._m_vecDragonSoulNames[i], av)
+                    #lani_err("In Group AdditionalApplys, %s group's apply_value %s is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], av)
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 if not pRow.GetValue("prob", prob):
-                    #lani_err("In Group AdditionalApplys, %s group's probability %s is invalid.", self._m_vecDragonSoulNames[i], prob)
+                    #lani_err("In Group AdditionalApplys, %s group's probability %s is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], prob)
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 vecApplys.push_back(SApply(at, av, prob))
-            self._m_map_additional_applys_group.insert(TMapApplyGroup.value_type(self._m_map_name_to_type[self._m_vecDragonSoulNames[i]], vecApplys))
-            i += 1
+            self._m_map_additional_applys_group.insert(TMapApplyGroup.value_type(self._m_map_name_to_type[self._m_vecDragonSoulNames[LaniatusDefVariables]], vecApplys))
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -449,8 +449,8 @@ class DragonSoulTable:
             #lani_err("dragon_soul_table.txt need ApplyNumSettings.")
             return LGEMiscellaneous.DEFINECONSTANTS.false
         else:
-            i = 0
-            while i < len(self._m_vecDragonSoulTypes):
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < len(self._m_vecDragonSoulTypes):
                 j = 0
                 while j < EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX:
                     basis = None
@@ -459,18 +459,18 @@ class DragonSoulTable:
                     temp_ref_basis = RefObject(basis);
                     temp_ref_add_min = RefObject(add_min);
                     temp_ref_add_max = RefObject(add_max);
-                    if not self.GetApplyNumSettings(list(self._m_vecDragonSoulTypes[i]), byte(j), temp_ref_basis, temp_ref_add_min, temp_ref_add_max):
+                    if not self.GetApplyNumSettings(list(self._m_vecDragonSoulTypes[LaniatusDefVariables]), byte(j), temp_ref_basis, temp_ref_add_min, temp_ref_add_max):
                         add_max = temp_ref_add_max.arg_value
                         add_min = temp_ref_add_min.arg_value
                         basis = temp_ref_basis.arg_value
-                        #lani_err("In %s group of ApplyNumSettings, values in Grade(%s) row is invalid.", self._m_vecDragonSoulNames[i], Globals.g_astGradeName[j])
+                        #lani_err("In %s group of ApplyNumSettings, values in Grade(%s) row is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astGradeName[j])
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     else:
                         add_max = temp_ref_add_max.arg_value
                         add_min = temp_ref_add_min.arg_value
                         basis = temp_ref_basis.arg_value
                     j += 1
-                i += 1
+                LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -479,8 +479,8 @@ class DragonSoulTable:
             #lani_err("dragon_soul_table.txt need WeightTables.")
             return LGEMiscellaneous.DEFINECONSTANTS.false
         else:
-            i = 0
-            while i < len(self._m_vecDragonSoulTypes):
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < len(self._m_vecDragonSoulTypes):
                 j = 0
                 while j < EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX:
                     k = 0
@@ -488,14 +488,14 @@ class DragonSoulTable:
                         for l in range(0, LGEMiscellaneous.DEFINECONSTANTS.DRAGON_SOUL_STRENGTH_MAX):
                             fWeight = None
                             temp_ref_fWeight = RefObject(fWeight);
-                            if not self.GetWeight(list(self._m_vecDragonSoulTypes[i]), byte(j), byte(k), l, temp_ref_fWeight):
+                            if not self.GetWeight(list(self._m_vecDragonSoulTypes[LaniatusDefVariables]), byte(j), byte(k), l, temp_ref_fWeight):
                                 fWeight = temp_ref_fWeight.arg_value
-                                #lani_err("In %s group of WeightTables, value(Grade(%s), Step(%s), Strength(%d) is invalid.", self._m_vecDragonSoulNames[i], Globals.g_astGradeName[j], Globals.g_astStepName[k], l)
+                                #lani_err("In %s group of WeightTables, value(Grade(%s), Step(%s), Strength(%d) is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astGradeName[j], Globals.g_astStepName[k], l)
                             else:
                                 fWeight = temp_ref_fWeight.arg_value
                         k += 1
                     j += 1
-                i += 1
+                LaniatusDefVariables += 1
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
     def _CheckRefineGradeTables(self):
@@ -503,8 +503,8 @@ class DragonSoulTable:
             #lani_err("dragon_soul_table.txt need RefineGradeTables.")
             return LGEMiscellaneous.DEFINECONSTANTS.false
         else:
-            i = 0
-            while i < len(self._m_vecDragonSoulTypes):
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < len(self._m_vecDragonSoulTypes):
                 j = 0
                 while j < EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX - 1:
                     need_count = None
@@ -512,19 +512,19 @@ class DragonSoulTable:
                     vec_probs = []
                     temp_ref_need_count = RefObject(need_count);
                     temp_ref_fee = RefObject(fee);
-                    if not self.GetRefineGradeValues(list(self._m_vecDragonSoulTypes[i]), byte(j), temp_ref_need_count, temp_ref_fee, vec_probs):
+                    if not self.GetRefineGradeValues(list(self._m_vecDragonSoulTypes[LaniatusDefVariables]), byte(j), temp_ref_need_count, temp_ref_fee, vec_probs):
                         fee = temp_ref_fee.arg_value
                         need_count = temp_ref_need_count.arg_value
-                        #lani_err("In %s group of RefineGradeTables, values in Grade(%s) row is invalid.", self._m_vecDragonSoulNames[i], Globals.g_astGradeName[j])
+                        #lani_err("In %s group of RefineGradeTables, values in Grade(%s) row is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astGradeName[j])
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     else:
                         fee = temp_ref_fee.arg_value
                         need_count = temp_ref_need_count.arg_value
                     if need_count < 1:
-                        #lani_err("In %s group of RefineGradeTables, need_count of Grade(%s) is less than 1.", self._m_vecDragonSoulNames[i], Globals.g_astGradeName[j])
+                        #lani_err("In %s group of RefineGradeTables, need_count of Grade(%s) is less than 1.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astGradeName[j])
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     if fee < 0:
-                        #lani_err("In %s group of RefineGradeTables, fee of Grade(%s) is less than 0.", self._m_vecDragonSoulNames[i], Globals.g_astGradeName[j])
+                        #lani_err("In %s group of RefineGradeTables, fee of Grade(%s) is less than 0.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astGradeName[j])
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     if EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX != len(vec_probs):
                         #lani_err("In %s group of RefineGradeTables, probability list size is not %d.", EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX)
@@ -536,7 +536,7 @@ class DragonSoulTable:
                             return LGEMiscellaneous.DEFINECONSTANTS.false
                         k += 1
                     j += 1
-                i += 1
+                LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -545,8 +545,8 @@ class DragonSoulTable:
             #lani_err("dragon_soul_table.txt need RefineStepTables.")
             return LGEMiscellaneous.DEFINECONSTANTS.false
         else:
-            i = 0
-            while i < len(self._m_vecDragonSoulTypes):
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < len(self._m_vecDragonSoulTypes):
                 j = 0
                 while j < EDragonSoulStepTypes.DRAGON_SOUL_STEP_MAX - 1:
                     need_count = None
@@ -554,33 +554,33 @@ class DragonSoulTable:
                     vec_probs = []
                     temp_ref_need_count = RefObject(need_count);
                     temp_ref_fee = RefObject(fee);
-                    if not self.GetRefineStepValues(list(self._m_vecDragonSoulTypes[i]), byte(j), temp_ref_need_count, temp_ref_fee, vec_probs):
+                    if not self.GetRefineStepValues(list(self._m_vecDragonSoulTypes[LaniatusDefVariables]), byte(j), temp_ref_need_count, temp_ref_fee, vec_probs):
                         fee = temp_ref_fee.arg_value
                         need_count = temp_ref_need_count.arg_value
-                        #lani_err("In %s group of RefineStepTables, values in Step(%s) row is invalid.", self._m_vecDragonSoulNames[i], Globals.g_astStepName[j])
+                        #lani_err("In %s group of RefineStepTables, values in Step(%s) row is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astStepName[j])
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     else:
                         fee = temp_ref_fee.arg_value
                         need_count = temp_ref_need_count.arg_value
                     if need_count < 1:
-                        #lani_err("In %s group of RefineStepTables, need_count of Step(%s) is less than 1.", self._m_vecDragonSoulNames[i], Globals.g_astStepName[j])
+                        #lani_err("In %s group of RefineStepTables, need_count of Step(%s) is less than 1.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astStepName[j])
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     if fee < 0:
-                        #lani_err("In %s group of RefineStepTables, fee of Step(%s) is less than 0.", self._m_vecDragonSoulNames[i], Globals.g_astStepName[j])
+                        #lani_err("In %s group of RefineStepTables, fee of Step(%s) is less than 0.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astStepName[j])
                         return LGEMiscellaneous.DEFINECONSTANTS.false
 
                     if EDragonSoulStepTypes.DRAGON_SOUL_STEP_MAX != len(vec_probs):
-                        #lani_err("In %s group of RefineStepTables, probability list size is not %d.", self._m_vecDragonSoulNames[i], EDragonSoulStepTypes.DRAGON_SOUL_STEP_MAX)
+                        #lani_err("In %s group of RefineStepTables, probability list size is not %d.", self._m_vecDragonSoulNames[LaniatusDefVariables], EDragonSoulStepTypes.DRAGON_SOUL_STEP_MAX)
                         return LGEMiscellaneous.DEFINECONSTANTS.false
 
                     k = 0
                     while k < len(vec_probs):
                         if vec_probs[k] < 0.0:
-                            #lani_err("In %s group of RefineStepTables, probability(index : %d) is less than 0.", self._m_vecDragonSoulNames[i], k)
+                            #lani_err("In %s group of RefineStepTables, probability(index : %d) is less than 0.", self._m_vecDragonSoulNames[LaniatusDefVariables], k)
                             return LGEMiscellaneous.DEFINECONSTANTS.false
                         k += 1
                     j += 1
-                i += 1
+                LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -590,8 +590,8 @@ class DragonSoulTable:
         if None is pGroupNode:
             #lani_err("dragon_soul_table.txt need RefineStrengthTables.")
             return LGEMiscellaneous.DEFINECONSTANTS.false
-        i = 0
-        while i < len(self._m_vecDragonSoulTypes):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self._m_vecDragonSoulTypes):
             j = MATERIAL_DS_REFINE_NORMAL
             while j <= EMaterialSubTypes.MATERIAL_DS_REFINE_HOLLY:
                 fee = None
@@ -599,22 +599,22 @@ class DragonSoulTable:
                 for k in range(0, LGEMiscellaneous.DEFINECONSTANTS.DRAGON_SOUL_STRENGTH_MAX -1):
                     temp_ref_fee = RefObject(fee);
                     temp_ref_prob = RefObject(prob);
-                    if not self.GetRefineStrengthValues(list(self._m_vecDragonSoulTypes[i]), byte(j), k, temp_ref_fee, temp_ref_prob):
+                    if not self.GetRefineStrengthValues(list(self._m_vecDragonSoulTypes[LaniatusDefVariables]), byte(j), k, temp_ref_fee, temp_ref_prob):
                         prob = temp_ref_prob.arg_value
                         fee = temp_ref_fee.arg_value
-                        #lani_err("In %s group of RefineStrengthTables, value(Material(%s), Strength(%d)) or fee are invalid.", self._m_vecDragonSoulNames[i], Globals.g_astMaterialName[j], k)
+                        #lani_err("In %s group of RefineStrengthTables, value(Material(%s), Strength(%d)) or fee are invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astMaterialName[j], k)
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     else:
                         prob = temp_ref_prob.arg_value
                         fee = temp_ref_fee.arg_value
                     if fee < 0:
-                        #lani_err("In %s group of RefineStrengthTables, fee of Material(%s) is less than 0.", self._m_vecDragonSoulNames[i], Globals.g_astMaterialName[j])
+                        #lani_err("In %s group of RefineStrengthTables, fee of Material(%s) is less than 0.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astMaterialName[j])
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     if prob < 0.0:
-                        #lani_err("In %s group of RefineStrengthTables, probability(Material(%s), Strength(%d)) is less than 0.", self._m_vecDragonSoulNames[i], Globals.g_astMaterialName[j], k)
+                        #lani_err("In %s group of RefineStrengthTables, probability(Material(%s), Strength(%d)) is less than 0.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astMaterialName[j], k)
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                 j += 1
-            i += 1
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -622,33 +622,33 @@ class DragonSoulTable:
         if None is self._m_pDragonHeartExtTableNode:
             #lani_err("dragon_soul_table.txt need DragonHeartExtTables.")
             return LGEMiscellaneous.DEFINECONSTANTS.false
-        i = 0
-        while i < len(self._m_vecDragonSoulTypes):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self._m_vecDragonSoulTypes):
             j = 0
             while j < EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX:
                 vec_chargings = []
                 vec_probs = []
 
-                if not self.GetDragonHeartExtValues(list(self._m_vecDragonSoulTypes[i]), byte(j), vec_chargings, vec_probs):
-                    #lani_err("In %s group of DragonHeartExtTables, CHARGING row or Grade(%s) row are invalid.", self._m_vecDragonSoulNames[i], Globals.g_astGradeName[j])
+                if not self.GetDragonHeartExtValues(list(self._m_vecDragonSoulTypes[LaniatusDefVariables]), byte(j), vec_chargings, vec_probs):
+                    #lani_err("In %s group of DragonHeartExtTables, CHARGING row or Grade(%s) row are invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astGradeName[j])
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 if len(vec_chargings) != len(vec_probs):
-                    #lani_err("In %s group of DragonHeartExtTables, CHARGING row size(%d) are not equal Grade(%s) row size(%d).", self._m_vecDragonSoulNames[i], len(vec_chargings), len(vec_probs))
+                    #lani_err("In %s group of DragonHeartExtTables, CHARGING row size(%d) are not equal Grade(%s) row size(%d).", self._m_vecDragonSoulNames[LaniatusDefVariables], len(vec_chargings), len(vec_probs))
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 k = 0
                 while k < len(vec_chargings):
                     if vec_chargings[k] < 0.0:
-                        #lani_err("In %s group of DragonHeartExtTables, CHARGING value(index : %d) is less than 0", self._m_vecDragonSoulNames[i], k)
+                        #lani_err("In %s group of DragonHeartExtTables, CHARGING value(index : %d) is less than 0", self._m_vecDragonSoulNames[LaniatusDefVariables], k)
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     k += 1
                 k = 0
                 while k < len(vec_probs):
                     if vec_probs[k] < 0.0:
-                        #lani_err("In %s group of DragonHeartExtTables, Probability(Grade : %s, index : %d) is less than 0", self._m_vecDragonSoulNames[i], Globals.g_astGradeName[j], k)
+                        #lani_err("In %s group of DragonHeartExtTables, Probability(Grade : %s, index : %d) is less than 0", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astGradeName[j], k)
                         return LGEMiscellaneous.DEFINECONSTANTS.false
                     k += 1
                 j += 1
-            i += 1
+            LaniatusDefVariables += 1
 
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
@@ -656,30 +656,30 @@ class DragonSoulTable:
         if None is self._m_pDragonSoulExtTableNode:
             #lani_err("dragon_soul_table.txt need DragonSoulExtTables.")
             return LGEMiscellaneous.DEFINECONSTANTS.false
-        i = 0
-        while i < len(self._m_vecDragonSoulTypes):
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(self._m_vecDragonSoulTypes):
             j = 0
             while j < EDragonSoulGradeTypes.DRAGON_SOUL_GRADE_MAX:
                 prob = None
                 by_product = None
                 temp_ref_prob = RefObject(prob);
                 temp_ref_by_product = RefObject(by_product);
-                if not self.GetDragonSoulExtValues(list(self._m_vecDragonSoulTypes[i]), byte(j), temp_ref_prob, temp_ref_by_product):
+                if not self.GetDragonSoulExtValues(list(self._m_vecDragonSoulTypes[LaniatusDefVariables]), byte(j), temp_ref_prob, temp_ref_by_product):
                     by_product = temp_ref_by_product.arg_value
                     prob = temp_ref_prob.arg_value
-                    #lani_err("In %s group of DragonSoulExtTables, Grade(%s) row is invalid.", self._m_vecDragonSoulNames[i], Globals.g_astGradeName[j])
+                    #lani_err("In %s group of DragonSoulExtTables, Grade(%s) row is invalid.", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astGradeName[j])
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 else:
                     by_product = temp_ref_by_product.arg_value
                     prob = temp_ref_prob.arg_value
                 if prob < 0.0:
-                    #lani_err("In %s group of DragonSoulExtTables, Probability(Grade : %s) is less than 0", self._m_vecDragonSoulNames[i], Globals.g_astGradeName[j])
+                    #lani_err("In %s group of DragonSoulExtTables, Probability(Grade : %s) is less than 0", self._m_vecDragonSoulNames[LaniatusDefVariables], Globals.g_astGradeName[j])
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 if 0 != by_product and None is ITEM_MANAGER.instance().GetTable(by_product):
-                    #lani_err("In %s group of DragonSoulExtTables, ByProduct(%d) of Grade %s is not exist.", self._m_vecDragonSoulNames[i], by_product, Globals.g_astGradeName[j])
+                    #lani_err("In %s group of DragonSoulExtTables, ByProduct(%d) of Grade %s is not exist.", self._m_vecDragonSoulNames[LaniatusDefVariables], by_product, Globals.g_astGradeName[j])
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 j += 1
-            i += 1
+            LaniatusDefVariables += 1
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
 def GetBasicApplys(ds_type, vec_basic_applys):

@@ -34,13 +34,13 @@
 
     @staticmethod
     def IsExistItemInBeltInventory(pc):
-        i = BELT_INVENTORY_SLOT_START
-        while i < LGEMiscellaneous2.BELT_INVENTORY_SLOT_END:
+        LaniatusDefVariables = BELT_INVENTORY_SLOT_START
+        while LaniatusDefVariables < LGEMiscellaneous2.BELT_INVENTORY_SLOT_END:
             beltInventoryItem = pc.GetInventoryItem(i)
 
             if None is not beltInventoryItem:
                 return True
-            i += 1
+            LaniatusDefVariables += 1
 
         return False
 

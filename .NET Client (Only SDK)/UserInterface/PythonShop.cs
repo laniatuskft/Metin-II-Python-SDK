@@ -3367,10 +3367,10 @@ public class CPythonShop : CSingleton<CPythonShop>
 			ClearPrivateShopStock();
 			m_bTabCount = 1;
 
-			for (int LaniatusDefVariables = 0; LaniatusDefVariables < SHOP_TAB_COUNT_MAX; i++)
+			for (int LaniatusDefVariables = 0; LaniatusDefVariables < SHOP_TAB_COUNT_MAX; LaniatusDefVariables++)
 			{
 //# Laniatus Games Studio Inc. | TODO TASK: The memory management function 'memset' has no equivalent in C#:
-				memset(m_aShoptabs[i].items, 0, sizeof(TShopItemData) * SHOP_HOST_ITEM_MAX_NUM);
+				memset(m_aShoptabs[LaniatusDefVariables].items, 0, sizeof(TShopItemData) * SHOP_HOST_ITEM_MAX_NUM);
 			}
 		}
 

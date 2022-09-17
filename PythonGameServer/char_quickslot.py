@@ -2,9 +2,9 @@
     if bOldPos == bNewPos:
         return
 
-    i = 0
-    while i < LGEMiscellaneous.LG_QUICKSLOT_MAX_NUM:
-        if m_quickslot[i].type == bType and m_quickslot[i].pos == bOldPos:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.LG_QUICKSLOT_MAX_NUM:
+        if m_quickslot[LaniatusDefVariables].type == bType and m_quickslot[LaniatusDefVariables].pos == bOldPos:
             if bNewPos == 255:
                 DelQuickslot(i)
             else:
@@ -14,7 +14,7 @@
                 slot.pos = bNewPos
 
                 SetQuickslot(i, slot)
-        i += 1
+        LaniatusDefVariables += 1
 
 def GetQuickslot(pos, ppSlot):
     if pos >= LGEMiscellaneous.LG_QUICKSLOT_MAX_NUM:
@@ -32,13 +32,13 @@ def SetQuickslot(pos, rSlot):
     if rSlot.type >= LG_QUICKSLOT_TYPE_MAX_NUM:
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
-    i = 0
-    while i < LGEMiscellaneous.LG_QUICKSLOT_MAX_NUM:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.LG_QUICKSLOT_MAX_NUM:
         if rSlot.type == 0:
             continue
-        elif m_quickslot[i].type == rSlot.type and m_quickslot[i].pos == rSlot.pos:
+        elif m_quickslot[LaniatusDefVariables].type == rSlot.type and m_quickslot[LaniatusDefVariables].pos == rSlot.pos:
             DelQuickslot(i)
-        i += 1
+        LaniatusDefVariables += 1
 
     srcCell = TItemPos(EWindows.INVENTORY, rSlot.pos)
 
@@ -110,9 +110,9 @@ def SwapQuickslot(a, b):
 def ChainQuickslotItem(pItem, bType, bOldPos):
     if pItem.IsDragonSoul():
         return
-    i = 0
-    while i < LGEMiscellaneous.LG_QUICKSLOT_MAX_NUM:
-        if m_quickslot[i].type == bType and m_quickslot[i].pos == bOldPos:
+    LaniatusDefVariables = 0
+    while LaniatusDefVariables < LGEMiscellaneous.LG_QUICKSLOT_MAX_NUM:
+        if m_quickslot[LaniatusDefVariables].type == bType and m_quickslot[LaniatusDefVariables].pos == bOldPos:
             slot = SQuickslot()
             slot.type = bType
             slot.pos = byte(pItem.GetCell())
@@ -120,5 +120,5 @@ def ChainQuickslotItem(pItem, bType, bOldPos):
             SetQuickslot(i, slot)
 
             break
-        i += 1
+        LaniatusDefVariables += 1
 

@@ -2824,11 +2824,11 @@ public class CAttributeInstance
 				}
 
 				uint dwVertexCount = (uint)c_pHeightData.v3VertexVector.size();
-				m_v3HeightDataVector[i].clear();
-				m_v3HeightDataVector[i].resize(dwVertexCount);
+				m_v3HeightDataVector[LaniatusDefVariables].clear();
+				m_v3HeightDataVector[LaniatusDefVariables].resize(dwVertexCount);
 				for (uint j = 0; j < dwVertexCount; ++j)
 				{
-					D3DXVec3TransformCoord(m_v3HeightDataVector[i][j], c_pHeightData.v3VertexVector[j], m_matGlobal);
+					D3DXVec3TransformCoord(m_v3HeightDataVector[LaniatusDefVariables][j], c_pHeightData.v3VertexVector[j], m_matGlobal);
 				}
 			}
 		}
@@ -2853,11 +2853,11 @@ public class CAttributeInstance
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_v3HeightDataVector.size(); ++i)
 			{
-				for (uint j = 0; j < m_v3HeightDataVector[i].size(); j += 3)
+				for (uint j = 0; j < m_v3HeightDataVector[LaniatusDefVariables].size(); j += 3)
 				{
-					D3DXVECTOR3 cv0 = m_v3HeightDataVector[i][j];
-					D3DXVECTOR3 cv2 = m_v3HeightDataVector[i][j + 1];
-					D3DXVECTOR3 cv1 = m_v3HeightDataVector[i][j + 2];
+					D3DXVECTOR3 cv0 = m_v3HeightDataVector[LaniatusDefVariables][j];
+					D3DXVECTOR3 cv2 = m_v3HeightDataVector[LaniatusDefVariables][j + 1];
+					D3DXVECTOR3 cv1 = m_v3HeightDataVector[LaniatusDefVariables][j + 2];
 
 					D3DXVECTOR3 n = new D3DXVECTOR3();
 					D3DXVec3Cross(n, (cv1 - cv0), (cv2 - cv0));
@@ -2940,11 +2940,11 @@ public class CAttributeInstance
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_v3HeightDataVector.size(); ++i)
 			{
-			for (uint j = 0; j < m_v3HeightDataVector[i].size(); j += 3)
+			for (uint j = 0; j < m_v3HeightDataVector[LaniatusDefVariables].size(); j += 3)
 			{
-				D3DXVECTOR3 c_rv3Vertex0 = m_v3HeightDataVector[i][j];
-				D3DXVECTOR3 c_rv3Vertex1 = m_v3HeightDataVector[i][j + 1];
-				D3DXVECTOR3 c_rv3Vertex2 = m_v3HeightDataVector[i][j + 2];
+				D3DXVECTOR3 c_rv3Vertex0 = m_v3HeightDataVector[LaniatusDefVariables][j];
+				D3DXVECTOR3 c_rv3Vertex1 = m_v3HeightDataVector[LaniatusDefVariables][j + 1];
+				D3DXVECTOR3 c_rv3Vertex2 = m_v3HeightDataVector[LaniatusDefVariables][j + 2];
 
 				if (fx < c_rv3Vertex0.x && fx < c_rv3Vertex1.x && fx < c_rv3Vertex2.x || fx> c_rv3Vertex0.x && fx> c_rv3Vertex1.x && fx> c_rv3Vertex2.x || fy < c_rv3Vertex0.y && fy < c_rv3Vertex1.y && fy < c_rv3Vertex2.y || fy> c_rv3Vertex0.y && fy> c_rv3Vertex1.y && fy> c_rv3Vertex2.y)
 				{

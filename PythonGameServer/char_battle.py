@@ -329,7 +329,7 @@ def RewardGold(pkAttacker):
 
         iSplitCount = number(25, 35)
 
-        for i in range(0, iSplitCount):
+        for LaniatusDefVariables in range(0, iSplitCount):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
             iGold = number(GetMobTable().dwGoldMin, GetMobTable().dwGoldMax) / iSplitCount
             if test_server:
@@ -355,7 +355,7 @@ def RewardGold(pkAttacker):
 
                 iTotalGold += iGold
     elif 1 == number(1, iGold10DropPct):
-        for i in range(0, 10):
+        for LaniatusDefVariables in range(0, 10):
             iGold = number(GetMobTable().dwGoldMin, GetMobTable().dwGoldMax)
             iGold = math.trunc(iGold * CHARACTER_MANAGER.instance().GetMobGoldAmountRate(pkAttacker) / float(100))
             iGold *= iGoldMultipler
@@ -393,7 +393,7 @@ def RewardGold(pkAttacker):
         if iGold != 0:
             iTotalGold += iGold
 
-            for i in range(0, iSplitCount):
+            for LaniatusDefVariables in range(0, iSplitCount):
                 if isAutoLoot:
                     pkAttacker.GiveGold(math.trunc(iGold / float(iSplitCount)))
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
@@ -420,11 +420,11 @@ def Reward(bItemDrop):
 
         #sys_log(0, "WAEGU Dead gold %d split %d", iGold, iSplitCount)
 
-        for i in range(1, iSplitCount + 1):
+        for LaniatusDefVariables in range(1, iSplitCount + 1):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if ((item = ITEM_MANAGER::instance().CreateItem(1, iGold / iSplitCount)))
             if (item = ITEM_MANAGER.instance().CreateItem(1, math.trunc(iGold / float(iSplitCount)), 0, DefineConstants.false, -1, DefineConstants.false)):
-                if i != 0:
+                if LaniatusDefVariables != 0:
                     pos.x = number(-7, 7) * 20
                     pos.y = number(-7, 7) * 20
 
@@ -622,7 +622,7 @@ def ItemDropPenalty(pkKiller):
 
     vec_item = []
     pkItem = None
-    i = None
+    LaniatusDefVariables = None
     isDropAllEquipments = LGEMiscellaneous.DEFINECONSTANTS.false
 
     r = table[iAlignIndex]
@@ -640,11 +640,11 @@ def ItemDropPenalty(pkKiller):
     if bDropInventory:
         vec_bSlots = []
 
-        i = 0
-        while i < LGEMiscellaneous.INVENTORY_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < LGEMiscellaneous.INVENTORY_MAX_NUM:
             if GetInventoryItem(i):
                 vec_bSlots.append(byte(i))
-            i += 1
+            LaniatusDefVariables += 1
 
         if vec_bSlots:
             rd = std::random_device()
@@ -656,14 +656,14 @@ def ItemDropPenalty(pkKiller):
             if iQty != 0:
                 iQty = number(1, iQty)
 
-            for i in range(0, iQty):
-                pkItem = GetInventoryItem(vec_bSlots[i])
+            for LaniatusDefVariables in range(0, iQty):
+                pkItem = GetInventoryItem(vec_bSlots[LaniatusDefVariables])
 
                 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
                 if IS_SET(pkItem.GetAntiFlag(), LaniatusEITMAntiFlagDcs.ITEM_ANTIFLAG_GIVE | LaniatusEITMAntiFlagDcs.ITEM_ANTIFLAG_PKDROP):
                     continue
 
-                SyncQuickslot(LG_QUICKSLOT_TYPE_ITEM, vec_bSlots[i], 255)
+                SyncQuickslot(LG_QUICKSLOT_TYPE_ITEM, vec_bSlots[LaniatusDefVariables], 255)
                 vec_item.append((pkItem.RemoveFromCharacter(), EWindows.INVENTORY))
         elif iAlignIndex == 8:
             isDropAllEquipments = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
@@ -671,11 +671,11 @@ def ItemDropPenalty(pkKiller):
     if bDropEquipment:
         vec_bSlots = []
 
-        i = 0
-        while i < EWearPositions.WEAR_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EWearPositions.WEAR_MAX_NUM:
             if GetWear(i):
                 vec_bSlots.append(byte(i))
-            i += 1
+            LaniatusDefVariables += 1
 
         if vec_bSlots:
             rd = std::random_device()
@@ -691,14 +691,14 @@ def ItemDropPenalty(pkKiller):
             if iQty != 0:
                 iQty = number(1, iQty)
 
-            for i in range(0, iQty):
-                pkItem = GetWear(vec_bSlots[i])
+            for LaniatusDefVariables in range(0, iQty):
+                pkItem = GetWear(vec_bSlots[LaniatusDefVariables])
 
                 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'IS_SET' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
                 if IS_SET(pkItem.GetAntiFlag(), LaniatusEITMAntiFlagDcs.ITEM_ANTIFLAG_GIVE | LaniatusEITMAntiFlagDcs.ITEM_ANTIFLAG_PKDROP):
                     continue
 
-                SyncQuickslot(LG_QUICKSLOT_TYPE_ITEM, vec_bSlots[i], 255)
+                SyncQuickslot(LG_QUICKSLOT_TYPE_ITEM, vec_bSlots[LaniatusDefVariables], 255)
                 vec_item.append((pkItem.RemoveFromCharacter(), EWindows.EQUIPMENT))
 
     if bDropAntiDropUniqueItem:
@@ -720,12 +720,12 @@ def ItemDropPenalty(pkKiller):
         pos.x = GetX()
         pos.y = GetY()
 
-        i = None
+        LaniatusDefVariables = None
 
-        i = 0
-        while i < len(vec_item):
-            item = vec_item[i][0]
-            window = vec_item[i][1]
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < len(vec_item):
+            item = vec_item[LaniatusDefVariables][0]
+            window = vec_item[LaniatusDefVariables][1]
 
             item.AddToGround(GetMapIndex(), pos, DefineConstants.false)
             item.StartDestroyEvent(300)
@@ -734,7 +734,7 @@ def ItemDropPenalty(pkKiller):
 
             pos.x = GetX() + number(-7, 7) * 20
             pos.y = GetY() + number(-7, 7) * 20
-            i += 1
+            LaniatusDefVariables += 1
 
 class FPartyAlignmentCompute:
     def __init__(self, iAmount, x, y):
@@ -1024,14 +1024,14 @@ def Damage(pAttacker, dam, type):
 
             #sys_log(0, "WAEGU DropGoldOnHit %d times", GetMaxSP())
 
-            for i in range(1, iSplitCount + 1):
+            for LaniatusDefVariables in range(1, iSplitCount + 1):
                 pos = pixel_position_s()
                 item = None
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
 #ORIGINAL METINII C CODE: if ((item = ITEM_MANAGER::instance().CreateItem(1, lldGold / iSplitCount)))
                 if (item = ITEM_MANAGER.instance().CreateItem(1, math.trunc(lldGold / float(iSplitCount)), 0, DefineConstants.false, -1, DefineConstants.false)):
-                    if i != 0:
+                    if LaniatusDefVariables != 0:
                         pos.x = (number(-14, 14) + number(-14, 14)) * 20
                         pos.y = (number(-14, 14) + number(-14, 14)) * 20
 
@@ -1229,17 +1229,17 @@ def Damage(pAttacker, dam, type):
 
             if pAttacker.GetPoint(EPointTypes.LG_POINT_HIT_HP_RECOVERY) != 0 and number(0, 4) > 0:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
-                i = MIN(dam, iCurHP) * pAttacker.GetPoint(EPointTypes.LG_POINT_HIT_HP_RECOVERY) / 100
+                LaniatusDefVariables = MIN(dam, iCurHP) * pAttacker.GetPoint(EPointTypes.LG_POINT_HIT_HP_RECOVERY) / 100
 
-                i != 0 i:
+                LaniatusDefVariables != 0 i:
                     CreateFly(FLY_HP_SMALL, pAttacker)
                     pAttacker.PointChange(EPointTypes.LG_POINT_HP, abs(i), DefineConstants.false, DefineConstants.false)
 
             if pAttacker.GetPoint(EPointTypes.LG_POINT_HIT_SP_RECOVERY) != 0 and number(0, 4) > 0:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
-                i = MIN(dam, iCurHP) * pAttacker.GetPoint(EPointTypes.LG_POINT_HIT_SP_RECOVERY) / 100
+                LaniatusDefVariables = MIN(dam, iCurHP) * pAttacker.GetPoint(EPointTypes.LG_POINT_HIT_SP_RECOVERY) / 100
 
-                i != 0 i:
+                LaniatusDefVariables != 0 i:
                     CreateFly(FLY_SP_SMALL, pAttacker)
                     pAttacker.PointChange(EPointTypes.LG_POINT_SP, i, DefineConstants.false, DefineConstants.false)
 
@@ -1987,7 +1987,7 @@ def UpdateAlignment(iAmount):
         bShow = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
-    i = m_iAlignment / 10
+    LaniatusDefVariables = m_iAlignment / 10
 
     m_iRealAlignment = MINMAX(-200000, m_iRealAlignment + iAmount, 200000)
 
@@ -1995,7 +1995,7 @@ def UpdateAlignment(iAmount):
         m_iAlignment = m_iRealAlignment
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
-        if i != m_iAlignment / 10:
+        if LaniatusDefVariables != m_iAlignment / 10:
             UpdatePacket()
 
 def SetKillerMode(isOn):

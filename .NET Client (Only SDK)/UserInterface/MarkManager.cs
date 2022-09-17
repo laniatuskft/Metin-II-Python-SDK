@@ -2807,7 +2807,7 @@ public class CGuildMarkManager : singleton<CGuildMarkManager>
 				uint symbolCount;
 				fread(symbolCount, 4, 1, fp);
 
-				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < symbolCount; i++)
+				for (uint LaniatusDefVariables = 0; LaniatusDefVariables < symbolCount; LaniatusDefVariables++)
 				{
 					uint guildID;
 					uint dwSize;
@@ -2946,7 +2946,7 @@ public class CGuildMarkManager : singleton<CGuildMarkManager>
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < MAX_IMAGE_COUNT; ++i)
 			{
-				if (isMarkExists[i])
+				if (isMarkExists[LaniatusDefVariables])
 				{
 					__GetImage(i);
 				}

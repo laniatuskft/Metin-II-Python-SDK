@@ -119,33 +119,33 @@ class CItem(CEntity):
         self.Destroy()
 
     def GetLevelLimit(self):
-        i = 0
-        while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
-            if self._m_pProto.aLimits[i].bType == ELimitTypes.LIMIT_LEVEL:
-                return self._m_pProto.aLimits[i].lValue
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
+            if self._m_pProto.aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_LEVEL:
+                return self._m_pProto.aLimits[LaniatusDefVariables].lValue
+            LaniatusDefVariables += 1
         return 0
 
     def CheckItemUseLevel(self, nLevel):
-        i = 0
-        while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
-            if self._m_pProto.aLimits[i].bType == ELimitTypes.LIMIT_LEVEL:
-                if self._m_pProto.aLimits[i].lValue > nLevel:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
+            if self._m_pProto.aLimits[LaniatusDefVariables].bType == ELimitTypes.LIMIT_LEVEL:
+                if self._m_pProto.aLimits[LaniatusDefVariables].lValue > nLevel:
                     return LGEMiscellaneous.DEFINECONSTANTS.false
                 else:
                     return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-            i += 1
+            LaniatusDefVariables += 1
         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
     def FindApplyValue(self, bApplyType):
         if self._m_pProto is None:
             return 0
 
-        i = 0
-        while i < EItemMisc.ITEM_APPLY_MAX_NUM:
-            if self._m_pProto.aApplies[i].bType == bApplyType:
-                return self._m_pProto.aApplies[i].lValue
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_APPLY_MAX_NUM:
+            if self._m_pProto.aApplies[LaniatusDefVariables].bType == bApplyType:
+                return self._m_pProto.aApplies[LaniatusDefVariables].lValue
+            LaniatusDefVariables += 1
 
         return 0
 
@@ -268,8 +268,8 @@ class CItem(CEntity):
     def GetRealImmuneFlag(self):
         dwImmuneFlag = self.GetImmuneFlag()
 
-        i = 0
-        while i < EItemMisc.ITEM_ATTRIBUTE_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_ATTRIBUTE_MAX_NUM:
             if (self.GetAttribute(i).sValue) == 0:
                 continue
 
@@ -282,7 +282,7 @@ class CItem(CEntity):
             elif self.GetAttribute(i).bType == EApplyTypes.APPLY_IMMUNE_FALL:
                 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'SET_BIT' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
                 SET_BIT(dwImmuneFlag, EImmuneFlags.IMMUNE_FALL)
-            i += 1
+            LaniatusDefVariables += 1
 
         return dwImmuneFlag
 
@@ -449,11 +449,11 @@ class CItem(CEntity):
             if iCandidateCell < 0:
                 return EWearPositions.WEAR_MAX_NUM + self.GetSubType()
             else:
-                i = 0
-                while i < EDragonSoulDeckType.DRAGON_SOUL_DECK_MAX_NUM:
-                    if EWearPositions.WEAR_MAX_NUM + i * int(EDragonSoulSubType.DS_SLOT_MAX) + self.GetSubType() == iCandidateCell:
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < EDragonSoulDeckType.DRAGON_SOUL_DECK_MAX_NUM:
+                    if EWearPositions.WEAR_MAX_NUM + LaniatusDefVariables * int(EDragonSoulSubType.DS_SLOT_MAX) + self.GetSubType() == iCandidateCell:
                         return iCandidateCell
-                    i += 1
+                    LaniatusDefVariables += 1
                 return -1
         elif self.GetType() == EItemTypes.ITEM_COSTUME:
             if self.GetSubType() == ECostumeSubTypes.COSTUME_BODY:
@@ -536,13 +536,13 @@ class CItem(CEntity):
 
         dwImmuneFlag = 0
 
-        i = 0
-        while i < EWearPositions.WEAR_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EWearPositions.WEAR_MAX_NUM:
             pItem = self._m_pOwner.GetWear(ushort(i))
             if self._m_pOwner.GetWear(ushort(i)):
                 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'SET_BIT' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
                 SET_BIT(dwImmuneFlag, pItem.GetRealImmuneFlag())
-            i += 1
+            LaniatusDefVariables += 1
 
         self._m_pOwner.SetImmuneFlag(dwImmuneFlag)
 
@@ -623,10 +623,10 @@ class CItem(CEntity):
         pack.Cell = TItemPos(self.GetWindow(), self._m_wCell)
         pack.count = ushort(self._m_dwCount)
 
-        i = 0
-        while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
-            pack.alSockets[i] = self._m_alSockets[i]
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            pack.alSockets[LaniatusDefVariables] = self._m_alSockets[LaniatusDefVariables]
+            LaniatusDefVariables += 1
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
@@ -662,8 +662,8 @@ class CItem(CEntity):
 
         if LGEMiscellaneous.DEFINECONSTANTS.false == self.IsAccessoryForSocket():
             if (self._m_pProto.bType == EItemTypes.ITEM_WEAPON or self._m_pProto.bType == EItemTypes.ITEM_ARMOR) and self._m_pProto.bSubType != EWeaponSubTypes.WEAPON_QUIVER:
-                i = 0
-                while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+                LaniatusDefVariables = 0
+                while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
                     dwVnum = None
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following assignments within expression was not converted by # Laniatus Games Studio Inc. |:
@@ -678,52 +678,52 @@ class CItem(CEntity):
                         continue
 
                     if EItemTypes.ITEM_METIN == p.bType:
-                        i = 0
-                        while i < EItemMisc.ITEM_APPLY_MAX_NUM:
-                            if p.aApplies[i].bType == EApplyTypes.APPLY_NONE:
+                        LaniatusDefVariables = 0
+                        while LaniatusDefVariables < EItemMisc.ITEM_APPLY_MAX_NUM:
+                            if p.aApplies[LaniatusDefVariables].bType == EApplyTypes.APPLY_NONE:
                                 continue
 
-                            if p.aApplies[i].bType == EApplyTypes.APPLY_SKILL:
-                                self._m_pOwner.ApplyPoint(p.aApplies[i].bType,p.aApplies[i].lValue if bAdd else p.aApplies[i].lValue ^ 0x00800000)
+                            if p.aApplies[LaniatusDefVariables].bType == EApplyTypes.APPLY_SKILL:
+                                self._m_pOwner.ApplyPoint(p.aApplies[LaniatusDefVariables].bType,p.aApplies[LaniatusDefVariables].lValue if bAdd else p.aApplies[LaniatusDefVariables].lValue ^ 0x00800000)
                             else:
-                                self._m_pOwner.ApplyPoint(p.aApplies[i].bType,p.aApplies[i].lValue if bAdd else -p.aApplies[i].lValue)
-                            i += 1
-                    i += 1
+                                self._m_pOwner.ApplyPoint(p.aApplies[LaniatusDefVariables].bType,p.aApplies[LaniatusDefVariables].lValue if bAdd else -p.aApplies[LaniatusDefVariables].lValue)
+                            LaniatusDefVariables += 1
+                    LaniatusDefVariables += 1
 
             accessoryGrade = 0
         else:
             accessoryGrade = MIN(self.GetAccessorySocketGrade(), Globals.ITEM_ACCESSORY_SOCKET_MAX_NUM)
 
-        i = 0
-        while i < EItemMisc.ITEM_APPLY_MAX_NUM:
-            if self._m_pProto.aApplies[i].bType == EApplyTypes.APPLY_NONE:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_APPLY_MAX_NUM:
+            if self._m_pProto.aApplies[LaniatusDefVariables].bType == EApplyTypes.APPLY_NONE:
                 continue
 
-            type = self._m_pProto.aApplies[i].bType
-            value = self._m_pProto.aApplies[i].lValue
+            type = self._m_pProto.aApplies[LaniatusDefVariables].bType
+            value = self._m_pProto.aApplies[LaniatusDefVariables].lValue
 
             if EItemTypes.ITEM_COSTUME == self.GetType() and ECostumeSubTypes.COSTUME_ACCE == self.GetSubType() and self.GetSocket(1) > 0:
                 acceInItemTable = ITEM_MANAGER.instance().GetTable(uint(self.GetSocket(1)))
                 if acceInItemTable:
-                    type = acceInItemTable.aApplies[i].bType
-                    value = acceInItemTable.aApplies[i].lValue
+                    type = acceInItemTable.aApplies[LaniatusDefVariables].bType
+                    value = acceInItemTable.aApplies[LaniatusDefVariables].lValue
                     drainPct = self.GetSocket(0)
                     value = 1 if value < 0 else int((float(value) / 100) * drainPct)
 
-            if self._m_pProto.aApplies[i].bType == EApplyTypes.APPLY_SKILL:
-                self._m_pOwner.ApplyPoint(self._m_pProto.aApplies[i].bType,value if bAdd else value ^ 0x00800000)
+            if self._m_pProto.aApplies[LaniatusDefVariables].bType == EApplyTypes.APPLY_SKILL:
+                self._m_pOwner.ApplyPoint(self._m_pProto.aApplies[LaniatusDefVariables].bType,value if bAdd else value ^ 0x00800000)
             else:
                 if 0 != accessoryGrade:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
                     value += MAX(accessoryGrade, value * aiAccessorySocketEffectivePct[accessoryGrade] / 100)
 
-                self._m_pOwner.ApplyPoint(self._m_pProto.aApplies[i].bType,value if bAdd else -value)
-            i += 1
+                self._m_pOwner.ApplyPoint(self._m_pProto.aApplies[LaniatusDefVariables].bType,value if bAdd else -value)
+            LaniatusDefVariables += 1
         if ((not LGEMiscellaneous.DEFINECONSTANTS.false)) == CItemVnumHelper.IsRamadanMoonRing(self.GetVnum()) or ((not LGEMiscellaneous.DEFINECONSTANTS.false)) == CItemVnumHelper.IsHalloweenCandy(self.GetVnum()) or ((not LGEMiscellaneous.DEFINECONSTANTS.false)) == CItemVnumHelper.IsHappinessRing(self.GetVnum()) or ((not LGEMiscellaneous.DEFINECONSTANTS.false)) == CItemVnumHelper.IsLovePendant(self.GetVnum()):
             pass
         else:
-            i = 0
-            while i < EItemMisc.ITEM_ATTRIBUTE_MAX_NUM:
+            LaniatusDefVariables = 0
+            while LaniatusDefVariables < EItemMisc.ITEM_ATTRIBUTE_MAX_NUM:
                 if self.GetAttributeType(i) != 0:
                     ia = self.GetAttribute(i)
                     value = ia.sValue
@@ -736,7 +736,7 @@ class CItem(CEntity):
                         self._m_pOwner.ApplyPoint(ia.bType,value if bAdd else value ^ 0x00800000)
                     else:
                         self._m_pOwner.ApplyPoint(ia.bType,value if bAdd else -value)
-                i += 1
+                LaniatusDefVariables += 1
 
         if (self._m_pProto.bType == EItemTypes.ITEM_PICK) or (self._m_pProto.bType == EItemTypes.ITEM_ROD):
                 if bAdd:
@@ -853,7 +853,7 @@ class CItem(CEntity):
     def GetSockets(self):
         return self._m_alSockets[0]
     def GetSocket(self, i):
-        return self._m_alSockets[i]
+        return self._m_alSockets[LaniatusDefVariables]
     def SetSockets(self, c_al):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'memcpy' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: There is no Python equivalent to 'sizeof':
@@ -861,17 +861,17 @@ class CItem(CEntity):
         self.Save()
 
     def SetSocket(self, i, v, bLog = (!LGEMiscellaneous.DefineConstants.false)):
-        assert i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM
-        self._m_alSockets[i] = v
+        assert LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM
+        self._m_alSockets[LaniatusDefVariables] = v
         self.UpdatePacket()
         self.Save()
 
     def GetSocketCount(self):
-        i = 0
-        while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
             if self.GetSocket(i) == 0:
                 return i
-            i += 1
+            LaniatusDefVariables += 1
         return EItemMisc.LG_ITEM_SOCKET_MAX_NUM
 
     def AddSocket(self):
@@ -885,12 +885,12 @@ class CItem(CEntity):
         return self._m_aAttr
     def GetAttribute(self, i):
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The following line was determined to contain a copy constructor call - this should be verified and a copy constructor should be created:
-#ORIGINAL METINII C CODE: return m_aAttr[i];
-        return TPlayerItemAttribute(self._m_aAttr[i])
+#ORIGINAL METINII C CODE: return m_aAttr[LaniatusDefVariables];
+        return TPlayerItemAttribute(self._m_aAttr[LaniatusDefVariables])
     def GetAttributeType(self, i):
-        return self._m_aAttr[i].bType
+        return self._m_aAttr[LaniatusDefVariables].bType
     def GetAttributeValue(self, i):
-        return self._m_aAttr[i].sValue
+        return self._m_aAttr[LaniatusDefVariables].sValue
 # Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: Missing function; 03-06-2021 The implementation method for the function has not been implemented yet. It belongs to TSX00389.
 #    SetAttributes(c_pAttribute)
 # Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: Missing function; 03-06-2021 The implementation method for the function has not been implemented yet. It belongs to TSX00389.
@@ -1051,7 +1051,7 @@ class CItem(CEntity):
             #sys_log(0, "Invalid Socket Count %d, set to maximum", EItemMisc.LG_ITEM_SOCKET_MAX_NUM)
             iSocketCount = EItemMisc.LG_ITEM_SOCKET_MAX_NUM
 
-        for i in range(0, iSocketCount):
+        for LaniatusDefVariables in range(0, iSocketCount):
             self.SetSocket(i, 1, ((not DefineConstants.false)))
 
     def GetRefineSet(self):
@@ -1118,9 +1118,9 @@ class CItem(CEntity):
     def StartRealTimeExpireEvent(self):
         if self._m_pkRealTimeExpireEvent:
             return
-        i = 0
-        while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
-            if ELimitTypes.LIMIT_REAL_TIME == self.GetProto().aLimits[i].bType or ELimitTypes.LIMIT_REAL_TIME_START_FIRST_USE == self.GetProto().aLimits[i].bType:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
+            if ELimitTypes.LIMIT_REAL_TIME == self.GetProto().aLimits[LaniatusDefVariables].bType or ELimitTypes.LIMIT_REAL_TIME_START_FIRST_USE == self.GetProto().aLimits[LaniatusDefVariables].bType:
                 info = Globals.AllocEventInfo()
                 info.item_vid = self.GetVID()
 
@@ -1129,16 +1129,16 @@ class CItem(CEntity):
                 #sys_log(0, "REAL_TIME_EXPIRE: StartRealTimeExpireEvent")
 
                 return
-            i += 1
+            LaniatusDefVariables += 1
 
     def IsRealTimeItem(self):
         if self.GetProto() is None:
             return LGEMiscellaneous.DEFINECONSTANTS.false
-        i = 0
-        while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
-            if ELimitTypes.LIMIT_REAL_TIME == self.GetProto().aLimits[i].bType:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
+            if ELimitTypes.LIMIT_REAL_TIME == self.GetProto().aLimits[LaniatusDefVariables].bType:
                 return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-            i += 1
+            LaniatusDefVariables += 1
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
     def StopUniqueExpireEvent(self):
@@ -1190,11 +1190,11 @@ class CItem(CEntity):
         if self.GetProto() is None:
             return -1
 
-        i = 0
-        while i < EItemMisc.ITEM_LIMIT_MAX_NUM:
-            if ELimitTypes.LIMIT_REAL_TIME == self.GetProto().aLimits[i].bType:
-                return self.GetProto().aLimits[i].lValue
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_LIMIT_MAX_NUM:
+            if ELimitTypes.LIMIT_REAL_TIME == self.GetProto().aLimits[LaniatusDefVariables].bType:
+                return self.GetProto().aLimits[LaniatusDefVariables].lValue
+            LaniatusDefVariables += 1
 
         if -1 != self.GetProto().cLimitTimerBasedOnWearIndex:
             return self.GetProto().aLimits[self.GetProto().cLimitTimerBasedOnWearIndex].lValue
@@ -1325,12 +1325,12 @@ class CItem(CEntity):
         infos = [[ 50634, 14420, 16220, 17220 ], [ 50635, 14500, 16500, 17500 ], [ 50636, 14520, 16520, 17520 ], [ 50637, 14540, 16540, 17540 ], [ 50638, 14560, 16560, 17560 ], [ 50639, 14570, 16570, 17570 ]]
 
         item_type = (math.trunc(item.GetVnum() / float(10))) * 10
-        i = 0
+        LaniatusDefVariables = 0
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: # Laniatus Games Studio Inc. | cannot determine whether both operands of this division are integer types - if they are then you should change 'lhs / rhs' to 'math.trunc(lhs / float(rhs))':
 ## Laniatus Games Studio Inc. | WARNING: This 'sizeof' ratio was replaced with a direct reference to the array length:
-#ORIGINAL METINII C CODE: for (int i = 0; i < sizeof(infos) / sizeof(infos[0]); i++)
-        while i < len(infos):
-            info = infos[i]
+#ORIGINAL METINII C CODE: for (int LaniatusDefVariables = 0; LaniatusDefVariables < sizeof(infos) / sizeof(infos[0]); LaniatusDefVariables++)
+        while LaniatusDefVariables < len(infos):
+            info = infos[LaniatusDefVariables]
             if item.GetSubType() == EArmorSubTypes.ARMOR_WRIST:
                 if info.wrist == item_type:
                     if info.jewel == self.GetVnum():
@@ -1349,7 +1349,7 @@ class CItem(CEntity):
                         return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
                     else:
                         return LGEMiscellaneous.DEFINECONSTANTS.false
-            i += 1
+            LaniatusDefVariables += 1
         if item.GetSubType() == EArmorSubTypes.ARMOR_WRIST:
             vnum -= 14000
         elif item.GetSubType() == EArmorSubTypes.ARMOR_NECK:
@@ -1384,10 +1384,10 @@ class CItem(CEntity):
 # Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: Missing function; 03-06-2021 The implementation method for the function has not been implemented yet. It belongs to TSX00389.
 #    CopyAttributeTo(pItem)
     def CopySocketTo(self, pItem):
-        i = 0
-        while i < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
-            pItem._m_alSockets[i] = self._m_alSockets[i]
-            i += 1
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.LG_ITEM_SOCKET_MAX_NUM:
+            pItem._m_alSockets[LaniatusDefVariables] = self._m_alSockets[LaniatusDefVariables]
+            LaniatusDefVariables += 1
 
 # Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: Missing function; 03-06-2021 The implementation method for the function has not been implemented yet. It belongs to TSX00389.
 #    GetRareAttrCount()
@@ -1439,13 +1439,13 @@ class CItem(CEntity):
 
         dwImmuneFlag = 0
 
-        i = 0
-        while i < EWearPositions.WEAR_MAX_NUM:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EWearPositions.WEAR_MAX_NUM:
             pItem = self._m_pOwner.GetWear(ushort(i))
             if pItem:
                 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The #define macro 'SET_BIT' was defined in multiple preprocessor conditionals and cannot be replaced in-line:
                 SET_BIT(dwImmuneFlag, self._m_pOwner.GetWear(ushort(i)).GetImmuneFlag())
-            i += 1
+            LaniatusDefVariables += 1
 
         self._m_pOwner.ComputeBattlePoints()
 

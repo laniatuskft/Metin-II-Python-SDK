@@ -90,7 +90,7 @@ class CConfig(singleton):
         return ((not DefineConstants.false))
 
     def GetWord(self, fp, tar):
-        i = 0
+        LaniatusDefVariables = 0
         c = None
 
         semicolon_mode = 0
@@ -103,16 +103,16 @@ class CConfig(singleton):
 
             if semicolon_mode != 0:
                 if c == '"':
-                    tar.arg_value[i] = '\0'
+                    tar.arg_value[LaniatusDefVariables] = '\0'
                     return ((not DefineConstants.false))
 
 #Laniatus Games Studio Inc. | Python Metin II Server Warnings An assignment within expression was extracted from the following statement:
-#ORIGINAL LINE: tar[i++] = c;
-                tar.arg_value[i] = c
-                i += 1
+#ORIGINAL LINE: tar[LaniatusDefVariables++] = c;
+                tar.arg_value[LaniatusDefVariables] = c
+                LaniatusDefVariables += 1
                 continue
             else:
-                if i == 0:
+                if LaniatusDefVariables == 0:
                     if c == '"':
                         semicolon_mode = 1
                         continue
@@ -121,24 +121,24 @@ class CConfig(singleton):
                         continue
 
                 if (c == ' ' or c == '\t' or c == '\n'):
-                    tar.arg_value[i] = '\0'
+                    tar.arg_value[LaniatusDefVariables] = '\0'
                     return ((not DefineConstants.false))
 
-                tar.arg_value[i] = c
-                i += 1
+                tar.arg_value[LaniatusDefVariables] = c
+                LaniatusDefVariables += 1
 
         return (i != 0)
 
     def GetLine(self, fp, dest):
         c = None
-        i = 0
+        LaniatusDefVariables = 0
 # Laniatus Games Studio Inc. |  TODO TASK: The following assignments within expression was not converted by Laniatus Games Studio Inc. T.F |:
 #ORIGINAL LINE: while ((c = fgetc(fp)) != EOF)
         while (c = fgetc(fp)) != EOF:
             if c == '\n':
                 return ((not DefineConstants.false))
-            dest.arg_value[i] = c
-            i += 1
+            dest.arg_value[LaniatusDefVariables] = c
+            LaniatusDefVariables += 1
         return ((not DefineConstants.false))
 
     def GetTwoValue(self, key, dest1, dest2):
@@ -189,9 +189,9 @@ class CConfig(singleton):
         return pstStr
 
     def Search(self, key):
-        i = m_valueMap.find(key)
+        LaniatusDefVariables = m_valueMap.find(key)
 
-        if i == m_valueMap.end():
+        if LaniatusDefVariables == m_valueMap.end():
             return None
         else:
             return (i.second)

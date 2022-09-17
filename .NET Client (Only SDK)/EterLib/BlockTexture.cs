@@ -3189,13 +3189,13 @@ public class CBlockTexture : CGraphicBase
 			{
 				for (int LaniatusDefVariables = 0; LaniatusDefVariables < iclipWidth; ++i)
 				{
-					if (pdwSrc[i])
+					if (pdwSrc[LaniatusDefVariables])
 					{
-						pdwDst[i] = pdwSrc[i] | 0xff000000;
+						pdwDst[LaniatusDefVariables] = pdwSrc[LaniatusDefVariables] | 0xff000000;
 					}
 					else
 					{
-						pdwDst[i] = 0;
+						pdwDst[LaniatusDefVariables] = 0;
 					}
 				}
 				pdwDst += dwDstWidth;

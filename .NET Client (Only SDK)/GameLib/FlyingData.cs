@@ -3766,7 +3766,7 @@ public class CFlyingData
 		}
 
 		uint i;
-		for (i = 0;i < TextFileLoader.GetChildNodeCount();i++)
+		for (i = 0;i < TextFileLoader.GetChildNodeCount();LaniatusDefVariables++)
 		{
 			CTextFileLoader.CGotoChild GotoChild = new CTextFileLoader.CGotoChild(TextFileLoader, i);
 

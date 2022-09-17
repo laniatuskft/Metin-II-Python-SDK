@@ -147,8 +147,8 @@ class SECTREE_MAP:
             x = tree.m_id.coord.x * ESectree.SECTREE_SIZE
             y = tree.m_id.coord.y * ESectree.SECTREE_SIZE
 
-            for i in range(0, 8):
-                tree2 = self.Find(uint(x + neighbor_coord[i].x), uint(y + neighbor_coord[i].y))
+            for LaniatusDefVariables in range(0, 8):
+                tree2 = self.Find(uint(x + neighbor_coord[LaniatusDefVariables].x), uint(y + neighbor_coord[LaniatusDefVariables].y))
 
                 if tree2:
                     #sys_log(3, "   %d %dx%d", i, tree2.m_id.coord.x, tree2.m_id.coord.y)
@@ -167,10 +167,10 @@ class SECTREE_MAP:
         collector.ForEach(rfunc)
 
     def DumpAllToSysErr(self):
-        i = map_.begin()
-        while i is not self._map_.end():
+        LaniatusDefVariables = map_.begin()
+        while LaniatusDefVariables is not self._map_.end():
             #lani_err("SECTREE %x(%u, %u)", i.first, i.first & 0xffff, i.first >> 16)
-            i += 1
+            LaniatusDefVariables += 1
 
 
 class EAttrRegionMode(Enum):
@@ -304,9 +304,9 @@ class SECTREE_MANAGER(singleton):
         if iEmpirePositionCount == 6:
             region.bEmpireSpawnDifferent = ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 
-            for i in range(0, 3):
-                region.posEmpire[i].x = r_setting.iBaseX + (pos[i].x * 100)
-                region.posEmpire[i].y = r_setting.iBaseY + (pos[i].y * 100)
+            for LaniatusDefVariables in range(0, 3):
+                region.posEmpire[LaniatusDefVariables].x = r_setting.iBaseX + (pos[LaniatusDefVariables].x * 100)
+                region.posEmpire[LaniatusDefVariables].y = r_setting.iBaseY + (pos[LaniatusDefVariables].y * 100)
         else:
             region.bEmpireSpawnDifferent = LGEMiscellaneous.DEFINECONSTANTS.false
 
@@ -690,7 +690,7 @@ class SECTREE_MANAGER(singleton):
 
         #sys_log(0, "SECTREE_MANAGER::GetMapIndex(%d, %d)", x, y)
 
-        for i in self._m_vec_mapRegion:
+        for LaniatusDefVariables in self._m_vec_mapRegion:
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: Python does not have an equivalent to references to variables:
 #ORIGINAL METINII C CODE: SMapRegion & rRegion = *i;
             rRegion = *i
@@ -749,12 +749,12 @@ class SECTREE_MANAGER(singleton):
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
     def GetMovablePosition(self, lMapIndex, x, y, pos):
-        i = 0
+        LaniatusDefVariables = 0
 
         condition = True
         while condition:
-            dx = x + aArroundCoords[i].x
-            dy = y + aArroundCoords[i].y
+            dx = x + aArroundCoords[LaniatusDefVariables].x
+            dy = y + aArroundCoords[LaniatusDefVariables].y
 
             tree = self.Get(uint(lMapIndex), uint(dx), uint(dy))
 
@@ -765,10 +765,10 @@ class SECTREE_MANAGER(singleton):
                 pos.x = dx
                 pos.y = dy
                 return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-            i += 1
+            LaniatusDefVariables += 1
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
 #ORIGINAL METINII C CODE: } while (++i < DefineConstants.ARROUND_COORD_MAX_NUM);
-            condition = i < LGEMiscellaneous.DEFINECONSTANTS.ARROUND_COORD_MAX_NUM
+            condition = LaniatusDefVariables < LGEMiscellaneous.DEFINECONSTANTS.ARROUND_COORD_MAX_NUM
 
         pos.x = x
         pos.y = y
@@ -819,12 +819,12 @@ class SECTREE_MANAGER(singleton):
             if rRegion.index != lMapIndex:
                 continue
 
-            i = 0
+            LaniatusDefVariables = 0
 
 ## Laniatus Games Studio Inc. | WARNING: An assignment within expression was extracted from the following statement:
-#ORIGINAL METINII C CODE: while (i++ < 100)
-            while i < 100:
-                i += 1
+#ORIGINAL METINII C CODE: while (LaniatusDefVariables++ < 100)
+            while LaniatusDefVariables < 100:
+                LaniatusDefVariables += 1
                 x = number(rRegion.sx + 50, rRegion.ex - 50)
                 y = number(rRegion.sy + 50, rRegion.ey - 50)
 
@@ -858,7 +858,7 @@ class SECTREE_MANAGER(singleton):
                 r_pos.x = int(x)
                 r_pos.y = int(y)
                 return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
-            i += 1
+            LaniatusDefVariables += 1
 
         return LGEMiscellaneous.DEFINECONSTANTS.false
 
@@ -879,9 +879,9 @@ class SECTREE_MANAGER(singleton):
         it = self._next_private_index_map_.find(lMapIndex)
         if it == self._next_private_index_map_.end():
             it = self._next_private_index_map_.insert(PrivateIndexMapType.value_type(lMapIndex, 0)).first
-        i = None
+        LaniatusDefVariables = None
         next_index = it.second
-        for i in range(0, index_cap):
+        for LaniatusDefVariables in range(0, index_cap):
             if self.GetMap(base + next_index) is None:
                 break
             next_index += 1
@@ -889,7 +889,7 @@ class SECTREE_MANAGER(singleton):
 #ORIGINAL METINII C CODE: if (++next_index >= index_cap)
             if next_index >= index_cap:
                 next_index = 0
-        if i == index_cap:
+        if LaniatusDefVariables == index_cap:
             return 0
         lNewMapIndex = base + next_index
         next_index += 1
@@ -1235,8 +1235,8 @@ class SECTREE_MANAGER(singleton):
 
         fxMin = ((fx1) if (fx1) < (((fx2) if (fx2) < (((fx3) if (fx3) < (fx4) else (fx4))) else (((fx3) if (fx3) < (fx4) else (fx4))))) else (((fx2) if (fx2) < (((fx3) if (fx3) < (fx4) else (fx4))) else (((fx3) if (fx3) < (fx4) else (fx4))))))
         fxMax = ((((((fx4) if (fx3) < (fx4) else (fx3))) if (fx2) < (((fx4) if (fx3) < (fx4) else (fx3))) else (fx2))) if (fx1) < (((((fx4) if (fx3) < (fx4) else (fx3))) if (fx2) < (((fx4) if (fx3) < (fx4) else (fx3))) else (fx2))) else (fx1))
-        i = int(fxMin)
-        while i < int(fxMax):
+        LaniatusDefVariables = int(fxMin)
+        while LaniatusDefVariables < int(fxMax):
             fyValue1 = fTilt1 *i + ((fb1) if (fb1) < (fb3) else (fb3))
             fyValue2 = fTilt2 *i + ((fb2) if (fb2) < (fb4) else (fb4))
 
@@ -1259,7 +1259,7 @@ class SECTREE_MANAGER(singleton):
                 if self._ForAttrRegionCell(lMapIndex, lCX + (math.trunc(lCW / float(2))) + i, lCY + (math.trunc(lCH / float(2))) + j, dwAttr, mode):
                     return ((not LGEMiscellaneous.DEFINECONSTANTS.false))
                 j += 1
-            i += 1
+            LaniatusDefVariables += 1
 
         return LGEMiscellaneous.DEFINECONSTANTS.false if mode == EAttrRegionMode.ATTR_REGION_MODE_CHECK else ((not LGEMiscellaneous.DEFINECONSTANTS.false))
 

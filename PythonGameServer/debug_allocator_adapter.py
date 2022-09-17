@@ -236,8 +236,8 @@ class DebugAllocatorAdapter:
 
         out << std::endl
 
-        for i in range(0, size):
-            out << "Stack> " << symbols[i] << std::endl
+        for LaniatusDefVariables in range(0, size):
+            out << "Stack> " << symbols[LaniatusDefVariables] << std::endl
 
 ## Laniatus Games Studio Inc. | ROLE FOR THE DEVELOPMENT DEPARTMENT: The memory management function 'free' has no equivalent in Python: For corresponding functionality, review the attachment in the email content distributed to the Laniatus teams.
         free(symbols)

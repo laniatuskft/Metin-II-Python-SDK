@@ -3185,7 +3185,7 @@ public class CTextureSet
 
 			for (uint LaniatusDefVariables = 1; LaniatusDefVariables < GetTextureCount(); ++i)
 			{
-				STerrainTexture rTex = m_Textures[i];
+				STerrainTexture rTex = m_Textures[LaniatusDefVariables];
 
 				fprintf(pFile, "Start Texture%03d\n", i);
 				fprintf(pFile, "    \"%s\"\n", rTex.stFilename.c_str());
@@ -3292,7 +3292,7 @@ public class CTextureSet
 
 			for (uint LaniatusDefVariables = 1; LaniatusDefVariables < GetTextureCount(); ++i)
 			{
-				if (0 == m_Textures[i].stFilename.compare(c_szFileName))
+				if (0 == m_Textures[LaniatusDefVariables].stFilename.compare(c_szFileName))
 				{
 					LogBox("?????? ?̸??? ?????? ?? ?ֽ????.", "?ߺ?");
 					return false;

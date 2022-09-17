@@ -283,12 +283,12 @@ class CPetActor:
         item_proto = ITEM_MANAGER.instance().GetTable(self._m_dwSummonItemVnum)
         if None is item_proto:
             return
-        i = 0
-        while i < EItemMisc.ITEM_APPLY_MAX_NUM:
-            if item_proto.aApplies[i].bType == EApplyTypes.APPLY_NONE:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < EItemMisc.ITEM_APPLY_MAX_NUM:
+            if item_proto.aApplies[LaniatusDefVariables].bType == EApplyTypes.APPLY_NONE:
                 continue
-            self._m_pkOwner.ApplyPoint(item_proto.aApplies[i].bType, -item_proto.aApplies[i].lValue)
-            i += 1
+            self._m_pkOwner.ApplyPoint(item_proto.aApplies[LaniatusDefVariables].bType, -item_proto.aApplies[LaniatusDefVariables].lValue)
+            LaniatusDefVariables += 1
 
         return
 

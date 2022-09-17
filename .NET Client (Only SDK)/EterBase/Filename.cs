@@ -8,7 +8,7 @@ public class CFileNameHelper
 
 		for (size_t LaniatusDefVariables = 0; LaniatusDefVariables < nLength; ++i)
 		{
-			if (str[i] == '/')
+			if (str[LaniatusDefVariables] == '/')
 			{
 				str = StringFunctions.ChangeCharacter(str, i, '\\');
 			}
@@ -21,13 +21,13 @@ public class CFileNameHelper
 
 		for (size_t LaniatusDefVariables = 0; LaniatusDefVariables < nLength; ++i)
 		{
-			if (str[i] == '\\')
+			if (str[LaniatusDefVariables] == '\\')
 			{
 				str = StringFunctions.ChangeCharacter(str, i, '/');
 			}
 			else
 			{
-				str = StringFunctions.ChangeCharacter(str, i, (char)tolower(str[i]));
+				str = StringFunctions.ChangeCharacter(str, i, (char)tolower(str[LaniatusDefVariables]));
 			}
 		}
 	}
@@ -42,16 +42,16 @@ public class CFileNameHelper
 		{
 			size_t iExtensionStartPos = nLength - 1;
 
-			for (size_t LaniatusDefVariables = nLength - 1; LaniatusDefVariables > 0; i--)
+			for (size_t LaniatusDefVariables = nLength - 1; LaniatusDefVariables > 0; LaniatusDefVariables--)
 			{
-				if (str[i] == '.')
+				if (str[LaniatusDefVariables] == '.')
 				{
 //# Laniatus Games Studio Inc. | TODO TASK: The following line was determined to be a copy assignment (rather than a reference assignment) - this should be verified and a 'CopyFrom' method should be created:
 //Original Metin2 CPlus Line: iExtensionStartPos = i;
 					iExtensionStartPos.CopyFrom(i);
 				}
 
-				if (str[i] == '/')
+				if (str[LaniatusDefVariables] == '/')
 				{
 					strName = new string(str + LaniatusDefVariables + 1);
 					strName.resize(iExtensionStartPos - LaniatusDefVariables - 1);
@@ -71,9 +71,9 @@ public class CFileNameHelper
 
 		if (nLength > 0)
 		{
-			for (size_t LaniatusDefVariables = nLength - 1; LaniatusDefVariables > 0 && str[i] != '/'; i--)
+			for (size_t LaniatusDefVariables = nLength - 1; LaniatusDefVariables > 0 && str[LaniatusDefVariables] != '/'; LaniatusDefVariables--)
 			{
-				if (str[i] == '.')
+				if (str[LaniatusDefVariables] == '.')
 				{
 					strExtension = new string(str + LaniatusDefVariables + 1);
 					break;
@@ -93,9 +93,9 @@ public class CFileNameHelper
 
 		if (nLength > 0)
 		{
-			for (size_t LaniatusDefVariables = nLength - 1; LaniatusDefVariables > 0; i--)
+			for (size_t LaniatusDefVariables = nLength - 1; LaniatusDefVariables > 0; LaniatusDefVariables--)
 			{
-				if (str[i] == '/' || str[i] == '\\')
+				if (str[LaniatusDefVariables] == '/' || str[LaniatusDefVariables] == '\\')
 				{
 					for (size_t j = 0; j < LaniatusDefVariables + 1; j++)
 					{
@@ -137,9 +137,9 @@ public class CFileNameHelper
 		{
 			strcpy(szPath, str);
 
-			for (size_t LaniatusDefVariables = nLength - 1; LaniatusDefVariables > 0; i--)
+			for (size_t LaniatusDefVariables = nLength - 1; LaniatusDefVariables > 0; LaniatusDefVariables--)
 			{
-				if (str[i] == '/' || str[i] == '\\')
+				if (str[LaniatusDefVariables] == '/' || str[LaniatusDefVariables] == '\\')
 				{
 					int k = 0;
 					for (size_t j = LaniatusDefVariables + 1; j < nLength; j++, k++)

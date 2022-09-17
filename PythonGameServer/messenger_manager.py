@@ -301,8 +301,8 @@
 
         #sys_log(1, "Messenger::LoadList")
 
-        i = 0
-        while i < msg.Get().uiNumRows:
+        LaniatusDefVariables = 0
+        while LaniatusDefVariables < msg.Get().uiNumRows:
             row = mysql_fetch_row(msg.Get().pSQLResult)
 
             if row[0] and row[1]:
@@ -311,7 +311,7 @@
 
                 self._m_Relation[row[0]].insert(row[1])
                 self._m_InverseRelation[row[1]].insert(row[0])
-            i += 1
+            LaniatusDefVariables += 1
 
         self._SendList(account)
 

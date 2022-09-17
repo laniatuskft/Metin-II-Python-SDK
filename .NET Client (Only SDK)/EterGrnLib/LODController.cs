@@ -3856,7 +3856,7 @@ public class CGrannyLODController : CGraphicBase
 
 			for (uint LaniatusDefVariables = 0; LaniatusDefVariables < m_AttachedModelDataVector.size(); ++i)
 			{
-				TAttachingModelData rModelData = m_AttachedModelDataVector[i];
+				TAttachingModelData rModelData = m_AttachedModelDataVector[LaniatusDefVariables];
 
 				CGrannyModelInstance pSrcInstance = rModelData.pkLODController.GetModelInstance();
 				if (pSrcInstance == null)
